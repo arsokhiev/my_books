@@ -1,0 +1,2700 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Справочник Unreal Engine">
+      
+      
+        <meta name="author" content="aftamat4ik">
+      
+      
+      
+        <link rel="prev" href="8_DataAssets_AssetManager.html">
+      
+      
+        <link rel="next" href="10_Anim_Instance.html">
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
+    
+    
+      
+        <title>Работа с файловой системой - Справочник Unreal Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-header__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Справочник Unreal Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Работа с файловой системой
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1_Basics/1_First_Project.html" class="md-tabs__link">
+          
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="1_Delegates.html" class="md-tabs__link">
+          
+  
+  Ключевые системы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../3_Advanced/1_HUD.html" class="md-tabs__link">
+          
+  
+  Продвинутая разработка
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-tabs__link">
+          
+  
+  Решение проблем
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../5_Tips/Change_Asset_Icons.html" class="md-tabs__link">
+          
+  
+  Советы
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-nav__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    Справочник Unreal Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Основы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Основы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/1_First_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/2_Engine_Introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/3_CPP_Recommendations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Рекомендации по написанию кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/4_SimplePlugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создание простейшего плагина для Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/5_Macroses_Reflection_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Макросы Reflection System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/6_Logging.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Печать информации в лог
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/7_Pointers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Указатели
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/8_ModernCpp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возможности современного c++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/9_Working_With_Strings.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа со строками
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/10_Timers_In_%D0%A1%2B%2B.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Таймеры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/11_Instances_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Доступ к различным сущностям
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Asserts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Asserts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Console Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ключевые системы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ключевые системы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Delegates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Components.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_SubObjects.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Multithreading.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Многопоточность
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Function_Libraries.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Библиотеки Функций для Blueprint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Latent_And_Async_Actions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latent и Async Action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Gameplay_Tags.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_DataAssets_AssetManager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с ассетами и данными
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="9_FileSystem.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fpaths" class="md-nav__link">
+    Интерфейс FPaths, пути к файлам
+  </a>
+  
+    <nav class="md-nav" aria-label="Интерфейс FPaths, пути к файлам">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Папки проекта
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Доступ к папке Resources модуля
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources_1" class="md-nav__link">
+    Доступ к папке Resources плагина
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Папки движка
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fplatformfilemanager" class="md-nav__link">
+    Интерфейс FPlatformFileManager
+  </a>
+  
+    <nav class="md-nav" aria-label="Интерфейс FPlatformFileManager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directory-exists" class="md-nav__link">
+    Directory Exists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Создание директорий
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Создание нескольких директорий подряд
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Удаление директорий
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Рекурсивное удаление директории
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Вывод всех файлов в директории
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Вывод всех файлов в директории, рекурсивно
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-exists" class="md-nav__link">
+    File Exists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Копирование файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Перемещение файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Удаление файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    Размер файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Чтение из файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    Запись текста в файл
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    Запись бинарных данных в файл
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    Чтение бинарных данных из файла
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_Anim_Instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anim Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_SubSystems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Подсистемы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12.%20UObject%20Interface.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Interface или UInterface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Продвинутая разработка
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Продвинутая разработка
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/1_HUD.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HUD или Heads-up Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/2_UFUNCTION_Wildcard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/3_Slate%20Runtime.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slate Runtimе, введение в Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/4_UMG.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/5_K2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/6_Registe_New_Asset_Type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/7_ACharacter_And_Enhanced%20Input.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACharacter и Enhanced Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/8_Gameplay_Ability_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Ability System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/9_Global_Data_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальнный доступ к данным
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/10_Global_Event_Bus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальная шина событий
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Решение проблем
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Решение проблем
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с кодировкой в LiveCoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/Reset_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Сброс (Reset) проекта
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/generatedh_Problems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с файлом .generated.h
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Советы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Советы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Change_Asset_Icons.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Asset Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Character_And_EnhancedInput.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character Boilerplate with Enhanced Input Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/DefaultToSelf_WorldContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DefaultToSelf WorldContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Different_UPROPERTY.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/GameInputMode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Изменение GameInputMode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Get_UScriptStruct_FromStruct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ::UScriptStruct из встроенной структуры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Input_Binding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События ввода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Iterate_TMap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterate TMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Read_Blueprint_Properties.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Чтение параметров Blueprint класса
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Return_UObject.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возвращение UObject по ссылке из функции
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Run_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Запуск консольных команд
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Screen_Size.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Размер экрана
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Slate_Snippets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Полезные сниппеты Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Spawn_Actors.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawn, призыв объектов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Time_Measuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Замер времени исполнения кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Trace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UEnum_To_String.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UEnum to FString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UObject_Base_Class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Base Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Variable_Type_Print_Template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Шаблон для печати типа переменной
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/struct_operator%3D%3D.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    struct и оператор ==
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fpaths" class="md-nav__link">
+    Интерфейс FPaths, пути к файлам
+  </a>
+  
+    <nav class="md-nav" aria-label="Интерфейс FPaths, пути к файлам">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Папки проекта
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Доступ к папке Resources модуля
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources_1" class="md-nav__link">
+    Доступ к папке Resources плагина
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Папки движка
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fplatformfilemanager" class="md-nav__link">
+    Интерфейс FPlatformFileManager
+  </a>
+  
+    <nav class="md-nav" aria-label="Интерфейс FPlatformFileManager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directory-exists" class="md-nav__link">
+    Directory Exists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Создание директорий
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Создание нескольких директорий подряд
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Удаление директорий
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Рекурсивное удаление директории
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Вывод всех файлов в директории
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Вывод всех файлов в директории, рекурсивно
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-exists" class="md-nav__link">
+    File Exists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Копирование файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Перемещение файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Удаление файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    Размер файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Чтение из файла
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    Запись текста в файл
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    Запись бинарных данных в файл
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    Чтение бинарных данных из файла
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">Работа с файловой системой</h1>
+<p>В написании этой статьи мне очень сильно помогли материалы с неофициальной википедии <code>Unreal Engine</code>.</p>
+<p>https://unrealcommunity.wiki/file-and-folder-management-create-find-delete-et2g64gx</p>
+<p>https://unrealcommunity.wiki/file-management-create-folders-delete-files-and-more-rvs5whps</p>
+<p>Эти статьи на столько идеальны, что я до последнего не хотел добавлять главу про файловую систему в свою книгу.</p>
+<p>Однако, у читателя может не быть доступа к интернету и соответственно, он может не иметь доступа к приведенным выше ссылкам, понадеявшись на мою книгу. Именно поэтому я все-же решил осветить эту тему.</p>
+<p>К тому-же я исправил часть проблем с кодом в первой статье, а так-же дополнил некоторые моменты второй статьи.</p>
+<h2 id="fpaths">Интерфейс <code>FPaths</code>, пути к файлам</h2>
+<p>Относительные пути к файлам в папке проекта или игры могут быть получены из интерфейса <code>FPaths</code>.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Misc/Paths.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">ProjectDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectDir</span><span class="p">();</span><span class="n">FString</span><span class="w"> </span><span class="n">ProjectDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectDirectory</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="_2">Папки проекта</h3>
+<p><a class="glightbox" href="../images/19a8e3ef8dac461c81a7e8ec96da02a0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="19a8e3ef8dac461c81a7e8ec96da02a0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/19a8e3ef8dac461c81a7e8ec96da02a0.png" /></a></p>
+<p>Пути к папкам проекта могут быть получены так:
+<div class="highlight"><pre><span></span><code><span class="n">FString</span><span class="w"> </span><span class="n">ProjectDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">ProjectConfigDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectConfigDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectConfigDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">ProjectContentDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectContentDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectContentDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectContentDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">ProjectIntermediateDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectIntermediateDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectIntermediateDirectory: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectIntermediateDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">ProjectLogDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectLogDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectLogDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectLogDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">ProjectModsDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectModsDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectModsDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectModsDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">ProjectPluginsDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectPluginsDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectPluginsDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectPluginsDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">ProjectSavedDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectSavedDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectSavedDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectSavedDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">ProjectUserDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectUserDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectUserDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectUserDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">ProjectPersistentDownloadDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectPersistentDownloadDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectPersistentDownloadDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectPersistentDownloadDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">ProjectPlatformExtensionsDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectPlatformExtensionsDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: ProjectPlatformExtensionsDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">ProjectPlatformExtensionsDirectory</span><span class="p">);</span>
+</code></pre></div>
+Результат:
+<div class="highlight"><pre><span></span><code><span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">ProjectDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">ProjectConfigDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">ProjectContentDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Content</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">ProjectIntermediateDirectory</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Intermediate</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">ProjectLogDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Saved</span><span class="o">/</span><span class="n">Logs</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">ProjectModsDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Mods</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">ProjectPluginsDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Plugins</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">ProjectSavedDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Saved</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">ProjectUserDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">ProjectPersistentDownloadDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Saved</span><span class="o">/</span><span class="n">PersistentDownloadDir</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">ProjectPlatformExtensionsDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span>
+</code></pre></div></p>
+<h3 id="resources">Доступ к папке <code>Resources</code> модуля</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// this method should form relative path to assets of the plugin / module</span>
+<span class="k">static</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="nf">InContent</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="o">&amp;</span><span class="w"> </span><span class="n">RelativePath</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ANSICHAR</span><span class="o">*</span><span class="w"> </span><span class="n">Extension</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// since we work with module:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">ContentDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">GameSourceDir</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;SlateRuntimeModule/Resources/&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">ContentDir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">RelativePath</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Extension</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="resources_1">Доступ к папке <code>Resources</code> плагина</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// this method should form relative path to assets of the plugin / module</span>
+<span class="k">static</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="nf">InContent</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="o">&amp;</span><span class="w"> </span><span class="n">RelativePath</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ANSICHAR</span><span class="o">*</span><span class="w"> </span><span class="n">Extension</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// this is how it should work with plugins:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">ContentDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IPluginManager</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">FindPlugin</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;StateTreeEditorModule&quot;</span><span class="p">))</span><span class="o">-&gt;</span><span class="n">GetContentDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Resources&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">ContentDir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">RelativePath</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Extension</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_3">Папки движка</h3>
+<p>Доступ к папкам движка крайне важен для доступа к встроенным в движок ресурсам, например иконкам.</p>
+<p>В главе про <code>Slate</code> я использую иконки папки <code>Content</code> движка.</p>
+<p>Если мы откроем папку движка, в моем случае это <code>\UE_5.1\Engine\Content\Slate\Common\</code> то увидим множество иконок. К ним можно получать доступ для создания своих стилей.</p>
+<p><a class="glightbox" href="../images/3076a94d6286cd10712d5aca37b923cd.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3076a94d6286cd10712d5aca37b923cd.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3076a94d6286cd10712d5aca37b923cd.png" /></a></p>
+<p>Способы получения пути к различным директориям движка:
+<div class="highlight"><pre><span></span><code><span class="n">FString</span><span class="w"> </span><span class="n">EngineDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: EngineDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">EngineDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">EngineConfigDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineConfigDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: EngineConfigDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">EngineConfigDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">EngineContentDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineConfigDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: EngineContentDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">EngineContentDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">EngineIntermediateDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineIntermediateDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: EngineIntermediateDirectory: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">EngineIntermediateDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">EnginePluginsDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">EnginePluginsDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: EnginePluginsDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">EnginePluginsDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">EngineSavedDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineSavedDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: EngineSavedDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">EngineSavedDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">EngineUserDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineUserDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: EngineUserDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">EngineUserDirectory</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">EngineDefaultLayoutDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineDefaultLayoutDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: EngineDefaultLayoutDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">EngineDefaultLayoutDir</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">EnginePlatformExtensionsDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">EnginePlatformExtensionsDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: EnginePlatformExtensionsDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">EnginePlatformExtensionsDir</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">EngineUserLayoutDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineUserLayoutDir</span><span class="p">();</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: EngineUserLayoutDir: %s&quot;</span><span class="p">),</span><span class="o">*</span><span class="n">EngineUserLayoutDir</span><span class="p">);</span>
+</code></pre></div>
+Результат:
+<div class="highlight"><pre><span></span><code><span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">EngineDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Engine</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">EngineConfigDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Engine</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">EngineContentDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Engine</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">EngineIntermediateDirectory</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Engine</span><span class="o">/</span><span class="n">Intermediate</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">EnginePluginsDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Engine</span><span class="o">/</span><span class="n">Plugins</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">EngineSavedDir</span><span class="o">:</span><span class="w"> </span><span class="n">C</span><span class="o">:/</span><span class="n">Users</span><span class="o">/</span><span class="n">USER</span><span class="o">/</span><span class="n">AppData</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">UnrealEngine</span><span class="o">/</span><span class="mf">5.1</span><span class="o">/</span><span class="n">Saved</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">EngineUserDir</span><span class="o">:</span><span class="w"> </span><span class="n">C</span><span class="o">:/</span><span class="n">Users</span><span class="o">/</span><span class="n">USER</span><span class="o">/</span><span class="n">AppData</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">UnrealEngine</span><span class="o">/</span><span class="mf">5.1</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">EngineDefaultLayoutDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Engine</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Layouts</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">EnginePlatformExtensionsDir</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Engine</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">EngineUserLayoutDir</span><span class="o">:</span><span class="w"> </span><span class="n">C</span><span class="o">:/</span><span class="n">Users</span><span class="o">/</span><span class="n">USER</span><span class="o">/</span><span class="n">AppData</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">UnrealEngine</span><span class="o">/</span><span class="mf">5.1</span><span class="o">/</span><span class="n">Saved</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Layouts</span><span class="o">/</span>
+</code></pre></div></p>
+<h2 id="fplatformfilemanager">Интерфейс <code>FPlatformFileManager</code></h2>
+<p>Для прямой работы с файлами в операционной системе движок <code>Unreal Engine</code> предоставляет кроссплатформенный интерфейс <code>FPlatformFileManager</code>.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+</code></pre></div>
+Работа с интерфейсом крайне проста и доступна.</p>
+<p>Рассмотрим примеры:</p>
+<h3 id="directory-exists">Directory Exists</h3>
+<p>Проверка на существование директории выполняется так:
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="c1">// Getting the directory we want to check if it exists</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">MyConfigDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Layouts&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">DirectoryExists</span><span class="p">(</span><span class="o">*</span><span class="n">MyConfigDirectory</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory Exists&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory Does not exist&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Данный код проверяет существование папки <code>/Config/Layouts</code> внутри проекта.</p>
+<p><a class="glightbox" href="../images/61997459aa8d4e1a8d3b33f3839ff171.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="61997459aa8d4e1a8d3b33f3839ff171.png" auto_="auto;" display="block;" margin:="margin:" src="../images/61997459aa8d4e1a8d3b33f3839ff171.png" /></a></p>
+<p>Результат:
+<div class="highlight"><pre><span></span><code><span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">Directory</span><span class="w"> </span><span class="n">Exists</span>
+</code></pre></div></p>
+<h3 id="_4">Создание директорий</h3>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="c1">// New Directory path</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">MyConfigDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;CustomDirectory&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">CreateDirectory</span><span class="p">(</span><span class="o">*</span><span class="n">MyConfigDirectory</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory was created&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory was not created&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Данный код создаст директорию <code>/Config/CustomDirectory</code> внутри проекта.</p>
+<p><a class="glightbox" href="../images/5ceb0770bfc25dd2f47855b32726d90a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5ceb0770bfc25dd2f47855b32726d90a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5ceb0770bfc25dd2f47855b32726d90a.png" /></a></p>
+<h3 id="_5">Создание нескольких директорий подряд</h3>
+<p>Предыдущий метод не создает подпапки. Если это требуется, можно использовать следующий подход:
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="c1">// Tree Directory path</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">MyConfigDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;CustomDirectoryTree&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;SubFolder1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;SubFolder2&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">CreateDirectoryTree</span><span class="p">(</span><span class="o">*</span><span class="n">MyConfigDirectory</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory was created&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory was not created&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Данный код создаст древо с вложенными каталогами по пути <code>/Config/CustomDirectoryTree/SubFolder1/SubFolder2</code>.</p>
+<p><a class="glightbox" href="../images/4f0d6a6a07661913368e734f0c99467e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4f0d6a6a07661913368e734f0c99467e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4f0d6a6a07661913368e734f0c99467e.png" /></a></p>
+<h3 id="_6">Удаление директорий</h3>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="c1">// Directory path</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">MyConfigDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;CustomDirectory&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">DeleteDirectory</span><span class="p">(</span><span class="o">*</span><span class="n">MyConfigDirectory</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory was created&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory was not created&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Данный код удаляет папку <code>CustomDirectory</code>.</p>
+<p><a class="glightbox" href="../images/f927e64a51bb198b698c9648152c9faa.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f927e64a51bb198b698c9648152c9faa.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f927e64a51bb198b698c9648152c9faa.png" /></a></p>
+<p><a class="glightbox" href="../images/2724e9baebe0a7989c80e9bef1588847.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2724e9baebe0a7989c80e9bef1588847.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2724e9baebe0a7989c80e9bef1588847.png" /></a></p>
+<h3 id="_7">Рекурсивное удаление директории</h3>
+<p>Удаляет директорию и все, что в ней есть.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="c1">// Directory path</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">MyConfigDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;CustomDirectoryTree&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">DeleteDirectoryRecursively</span><span class="p">(</span><span class="o">*</span><span class="n">MyConfigDirectory</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory was created&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory was not created&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/fbf6e3a16e243d65a4ba9faef9778ef5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fbf6e3a16e243d65a4ba9faef9778ef5.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fbf6e3a16e243d65a4ba9faef9778ef5.png" /></a></p>
+<p><a class="glightbox" href="../images/74c27e10751c4a5660fe488c85c240ee.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="74c27e10751c4a5660fe488c85c240ee.png" auto_="auto;" display="block;" margin:="margin:" src="../images/74c27e10751c4a5660fe488c85c240ee.png" /></a></p>
+<h3 id="_8">Вывод всех файлов в директории</h3>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">FDirectoryVisitor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IPlatformFile</span><span class="o">::</span><span class="n">FDirectoryVisitor</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">//This function is called for every file or directory it finds.</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Visit</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TCHAR</span><span class="o">*</span><span class="w"> </span><span class="n">FilenameOrDirectory</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">bIsDirectory</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// did we find a Directory or a file?</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bIsDirectory</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory found: %s&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">FilenameOrDirectory</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: File Found: %s&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">FilenameOrDirectory</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">// make instance of our visitor</span>
+<span class="n">FDirectoryVisitor</span><span class="w"> </span><span class="n">Visitor</span><span class="p">;</span>
+<span class="c1">//IPluginManager::Get().FindPlugin(TEXT(&quot;StateTreeEditorModule&quot;))</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="c1">// Directory path</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">TargetDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectContentDir</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">IterateDirectory</span><span class="p">(</span><span class="o">*</span><span class="n">TargetDirectory</span><span class="p">,</span><span class="w"> </span><span class="n">Visitor</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory&#39;s or files found&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory did not exist or visitor returned false&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Данный код напечатает список директорий и файлов в папке <code>Config</code> проекта.</p>
+<p><a class="glightbox" href="../images/9053d93dac930295a22fe8a4668289c7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9053d93dac930295a22fe8a4668289c7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9053d93dac930295a22fe8a4668289c7.png" /></a></p>
+<p>Результат:
+<div class="highlight"><pre><span></span><code><span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultEditor</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultEditorPerProjectUserSettings</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultEngine</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultGame</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultGameplayTags</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultInput</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">Directory</span><span class="w"> </span><span class="n">found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Layouts</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">Directory</span><span class="w"> </span><span class="n">found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Localization</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">Directory</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">found</span>
+</code></pre></div></p>
+<h3 id="_9">Вывод всех файлов в директории, рекурсивно</h3>
+<p>Предыдущий код может работать рекурсивно, если заменить <code>IterateDirectory</code> на <code>IterateDirectoryRecursively</code>.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">FDirectoryVisitor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IPlatformFile</span><span class="o">::</span><span class="n">FDirectoryVisitor</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">//This function is called for every file or directory it finds.</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Visit</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TCHAR</span><span class="o">*</span><span class="w"> </span><span class="n">FilenameOrDirectory</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">bIsDirectory</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// did we find a Directory or a file?</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bIsDirectory</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory found: %s&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">FilenameOrDirectory</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: File Found: %s&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">FilenameOrDirectory</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">// make instance of our visitor</span>
+<span class="n">FDirectoryVisitor</span><span class="w"> </span><span class="n">Visitor</span><span class="p">;</span>
+<span class="c1">//IPluginManager::Get().FindPlugin(TEXT(&quot;StateTreeEditorModule&quot;))</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="c1">// Directory path</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">TargetDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">IterateDirectoryRecursively</span><span class="p">(</span><span class="o">*</span><span class="n">TargetDirectory</span><span class="p">,</span><span class="w"> </span><span class="n">Visitor</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory&#39;s or files found&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Directory did not exist or visitor returned false&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Результат:
+<div class="highlight"><pre><span></span><code><span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultEditor</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultEditorPerProjectUserSettings</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultEngine</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultGame</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultGameplayTags</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">DefaultInput</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">Directory</span><span class="w"> </span><span class="n">found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Layouts</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">Directory</span><span class="w"> </span><span class="n">found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Localization</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Localization</span><span class="o">/</span><span class="n">Game_Compile</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Localization</span><span class="o">/</span><span class="n">Game_Export</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Localization</span><span class="o">/</span><span class="n">Game_ExportDialogueScript</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Localization</span><span class="o">/</span><span class="n">Game_Gather</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Localization</span><span class="o">/</span><span class="n">Game_GenerateReports</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Localization</span><span class="o">/</span><span class="n">Game_Import</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Localization</span><span class="o">/</span><span class="n">Game_ImportDialogue</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Found</span><span class="o">:</span><span class="w"> </span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">SubsystemTest</span><span class="o">/</span><span class="n">Config</span><span class="o">/</span><span class="n">Localization</span><span class="o">/</span><span class="n">Game_ImportDialogueScript</span><span class="p">.</span><span class="n">ini</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">Directory</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">found</span>
+</code></pre></div></p>
+<h3 id="file-exists">File Exists</h3>
+<p>Проверка на существование файла делается так:
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="c1">// File path</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">TargetPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;DefaultEditor.ini&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">FileExists</span><span class="p">(</span><span class="o">*</span><span class="n">TargetPath</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: File found!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: File not found!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Этот код проверяет, есть ли в проекте файл <code>Config/DefaultEditor.ini</code>.</p>
+<p><a class="glightbox" href="../images/19e4882babff6fa0425c3b5c2eb352df.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="19e4882babff6fa0425c3b5c2eb352df.png" auto_="auto;" display="block;" margin:="margin:" src="../images/19e4882babff6fa0425c3b5c2eb352df.png" /></a></p>
+<p>Результат:
+<div class="highlight"><pre><span></span><code><span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">found</span><span class="o">!</span>
+</code></pre></div></p>
+<h3 id="_10">Копирование файла</h3>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">SourceFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;DefaultEditor.ini&quot;</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">DestinationFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;DefaultEditor_Copy.ini&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">CopyFile</span><span class="p">(</span><span class="o">*</span><span class="n">DestinationFile</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">SourceFile</span><span class="p">,</span><span class="w"> </span><span class="n">EPlatformFileRead</span><span class="o">::</span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="n">EPlatformFileWrite</span><span class="o">::</span><span class="n">None</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Copied!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Failed!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Данный код копирует файл <code>Config/DefaultEditor.ini</code> в файл <code>Config/DefaultEditor_Copy.ini</code>.</p>
+<p><a class="glightbox" href="../images/6c006b3030c951d343599ceb2b765f25.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6c006b3030c951d343599ceb2b765f25.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6c006b3030c951d343599ceb2b765f25.png" /></a></p>
+<p><a class="glightbox" href="../images/f9e3104438cdadc9c6e6c8fed3defcd1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f9e3104438cdadc9c6e6c8fed3defcd1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f9e3104438cdadc9c6e6c8fed3defcd1.png" /></a></p>
+<h3 id="_11">Перемещение файла</h3>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">SourceFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;DefaultEditor_Copy.ini&quot;</span><span class="p">);</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">DestinationFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;TargetLocation&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;DefaultEditor_Copy.ini&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">MoveFile</span><span class="p">(</span><span class="o">*</span><span class="n">DestinationFile</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">SourceFile</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Moved!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Failed!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Данный код переместит файл <code>Config/DefaultEditor_Copy.ini</code> в папку <code>Config/TargetLocation/</code>.</p>
+<p><a class="glightbox" href="../images/22b152d001a0d4cf3936466820541f44.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="22b152d001a0d4cf3936466820541f44.png" auto_="auto;" display="block;" margin:="margin:" src="../images/22b152d001a0d4cf3936466820541f44.png" /></a></p>
+<h3 id="_12">Удаление файла</h3>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">FileLocation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;TargetLocation&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;DefaultEditor_Copy.ini&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">DeleteFile</span><span class="p">(</span><span class="o">*</span><span class="n">FileLocation</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Deleted!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: Failed!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Данный код удалит файл <code>Config/TargetLocation/DefaultEditor_Copy.ini</code>.</p>
+<p><a class="glightbox" href="../images/f6ea6328cfde03917497b32e2f7b3605.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f6ea6328cfde03917497b32e2f7b3605.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f6ea6328cfde03917497b32e2f7b3605.png" /></a></p>
+<p><a class="glightbox" href="../images/8a27974b5ac5a8666dcecf1797dcf456.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="8a27974b5ac5a8666dcecf1797dcf456.png" auto_="auto;" display="block;" margin:="margin:" src="../images/8a27974b5ac5a8666dcecf1797dcf456.png" /></a></p>
+<h3 id="_13">Размер файла</h3>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">FileLocation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;DefaultEditor.ini&quot;</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">FileSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">FileSize</span><span class="p">(</span><span class="o">*</span><span class="n">FileLocation</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileSize</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: File Size: %d bytes&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">FileSize</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: File Not Found!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Данный код напечатает в лог размер файла <code>Config/DefaultEditor.ini</code> в байтах.
+<div class="highlight"><pre><span></span><code><span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">FilePaths</span><span class="o">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">Size</span><span class="o">:</span><span class="w"> </span><span class="mi">20915</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/53cd1c1dcef2be462743a2c0740fa9d4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="53cd1c1dcef2be462743a2c0740fa9d4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/53cd1c1dcef2be462743a2c0740fa9d4.png" /></a></p>
+<h3 id="_14">Чтение из файла</h3>
+<p>Читать данные из файла можно при помощи интерфейса <code>FFileHelper</code>. Причем можно извлекать данные как в бинарном виде, так и в виде строки.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">FilePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;DefaultEditor.ini&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">FileExists</span><span class="p">(</span><span class="o">*</span><span class="n">FilePath</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: File found!&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">FileContent</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FFileHelper</span><span class="o">::</span><span class="n">LoadFileToString</span><span class="p">(</span><span class="n">FileContent</span><span class="p">,</span><span class="o">*</span><span class="n">FilePath</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FileContent:</span><span class="se">\n</span><span class="s">%s&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="n">FileContent</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FilePaths: File not found!&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Приведенный выше код напечатает в лог содержимое файла <code>Config/DefaultEditor.ini</code>.</p>
+<p><a class="glightbox" href="../images/7b653145bc41d8bd9354c44246d409ee.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7b653145bc41d8bd9354c44246d409ee.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7b653145bc41d8bd9354c44246d409ee.png" /></a></p>
+<h3 id="_15">Запись текста в файл</h3>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">FilePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;MyFile.txt&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IFileHandle</span><span class="o">*</span><span class="w"> </span><span class="n">FileHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">OpenWrite</span><span class="p">(</span><span class="o">*</span><span class="n">FilePath</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Guid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FString</span><span class="p">(</span>
+<span class="w">        </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;// This file is written to disk</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;// GUID = &quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">FGuid</span><span class="o">::</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">ToString</span><span class="p">();</span>
+<span class="w">    </span><span class="n">FileHandle</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">((</span><span class="k">const</span><span class="w"> </span><span class="n">uint8</span><span class="o">*</span><span class="p">)</span><span class="n">TCHAR_TO_ANSI</span><span class="p">(</span><span class="o">*</span><span class="n">Guid</span><span class="p">),</span><span class="w"> </span><span class="n">Guid</span><span class="p">.</span><span class="n">Len</span><span class="p">());</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">FileHandle</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+Приведенный выше код запишет текст в файл <code>Config/MyFile.txt</code>. Если файла нет - он будет создан автоматически.</p>
+<p><a class="glightbox" href="../images/9df47f80f51ac99bd2568afc0da68f29.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9df47f80f51ac99bd2568afc0da68f29.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9df47f80f51ac99bd2568afc0da68f29.png" /></a></p>
+<h3 id="_16">Запись бинарных данных в файл</h3>
+<p>Для записи бинарных данных, автор статьи с вики рекомендует использовать тип <code>uint8</code>. На всякий случай, предлагаю не отходить от его реализации.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">FilePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;MyArrayBytes&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IFileHandle</span><span class="o">*</span><span class="w"> </span><span class="n">FileHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">OpenWrite</span><span class="p">(</span><span class="o">*</span><span class="n">FilePath</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">DataArray</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">};</span><span class="w"> </span><span class="c1">// int array</span>
+<span class="w">    </span><span class="n">uint8</span><span class="o">*</span><span class="w"> </span><span class="n">ByteBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">uint8</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">DataArray</span><span class="p">);</span><span class="w"> </span><span class="c1">// cast memory to uint8</span>
+<span class="w">    </span><span class="c1">// Write the bytes to the file</span>
+<span class="w">    </span><span class="n">FileHandle</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">(</span><span class="n">ByteBuffer</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Close the file again</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">FileHandle</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+Приведенный выше код записывает массив типа <code>TArray&lt;int&gt;</code> в файл <code>Config/MyArrayBytes</code>.</p>
+<p><a class="glightbox" href="../images/a3c51c22cc729651d7901dd7a0279154.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a3c51c22cc729651d7901dd7a0279154.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a3c51c22cc729651d7901dd7a0279154.png" /></a></p>
+<p><a class="glightbox" href="../images/6332f49e85d3543cb24c1c7c0441e726.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6332f49e85d3543cb24c1c7c0441e726.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6332f49e85d3543cb24c1c7c0441e726.png" /></a></p>
+<h3 id="_17">Чтение бинарных данных из файла</h3>
+<p>Давайте считаем данные из предыдущего файла снова в массив типа <code>TArray</code>.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HAL/PlatformFileManager.h&quot;</span>
+<span class="c1">//...</span>
+<span class="n">FPlatformFileManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">FileManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPlatformFileManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">FilePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FPaths</span><span class="o">::</span><span class="n">ProjectConfigDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;MyArrayBytes&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IFileHandle</span><span class="o">*</span><span class="w"> </span><span class="n">FileHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileManager</span><span class="p">.</span><span class="n">GetPlatformFile</span><span class="p">().</span><span class="n">OpenRead</span><span class="p">(</span><span class="o">*</span><span class="n">FilePath</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ULONG</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// all what we need to know is exact size of data in the file</span>
+<span class="w">    </span><span class="c1">// allocate buffer for 3 items of TArray&lt;&gt;</span>
+<span class="w">    </span><span class="n">uint8</span><span class="o">*</span><span class="w"> </span><span class="n">ByteBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">uint8</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// read byres to buffer</span>
+<span class="w">    </span><span class="n">FileHandle</span><span class="o">-&gt;</span><span class="n">Read</span><span class="p">(</span><span class="n">ByteBuffer</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// cast buffer to required type</span>
+<span class="w">    </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">DataArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">ByteBuffer</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataArray</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Array Item = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">item</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// free memory</span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">ByteBuffer</span><span class="p">);</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">FileHandle</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+В этом коде я читаю данные из файла <code>Config/MyArrayBytes</code>. В предыдущей главе я записал в этот файл 3 числа - <code>5, 3, 7</code>.
+Результат считывания:</p>
+<p><a class="glightbox" href="../images/d9a1593511ea1b9503c21920cc58fea6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d9a1593511ea1b9503c21920cc58fea6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d9a1593511ea1b9503c21920cc58fea6.png" /></a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            К началу
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      aftamat4ik
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

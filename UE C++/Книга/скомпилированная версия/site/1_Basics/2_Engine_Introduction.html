@@ -1,0 +1,3189 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Справочник Unreal Engine">
+      
+      
+        <meta name="author" content="aftamat4ik">
+      
+      
+      
+        <link rel="prev" href="1_First_Project.html">
+      
+      
+        <link rel="next" href="3_CPP_Recommendations.html">
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
+    
+    
+      
+        <title>Знакомство с движком - Справочник Unreal Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-header__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Справочник Unreal Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Знакомство с движком
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="1_First_Project.html" class="md-tabs__link">
+          
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../2_Core/1_Delegates.html" class="md-tabs__link">
+          
+  
+  Ключевые системы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../3_Advanced/1_HUD.html" class="md-tabs__link">
+          
+  
+  Продвинутая разработка
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-tabs__link">
+          
+  
+  Решение проблем
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../5_Tips/Change_Asset_Icons.html" class="md-tabs__link">
+          
+  
+  Советы
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-nav__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    Справочник Unreal Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Основы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Основы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_First_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="2_Engine_Introduction.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Подготовка к работе
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-unreal-engine" class="md-nav__link">
+    Особенности c++ в Unreal Engine
+  </a>
+  
+    <nav class="md-nav" aria-label="Особенности c++ в Unreal Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward-declaration" class="md-nav__link">
+    Forward Declaration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflection-system" class="md-nav__link">
+    Reflection system
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-studio" class="md-nav__link">
+    Исходники движка внутри проекта Visual Studio
+  </a>
+  
+    <nav class="md-nav" aria-label="Исходники движка внутри проекта Visual Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unreal-engine" class="md-nav__link">
+    Модули Unreal Engine
+  </a>
+  
+    <nav class="md-nav" aria-label="Модули Unreal Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#editor" class="md-nav__link">
+    Editor модули
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developer" class="md-nav__link">
+    Developer модули
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime" class="md-nav__link">
+    Runtime модули
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unreal-engine_1" class="md-nav__link">
+    Модуль, запускающий Unreal Engine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Архитектура модулей в игровом проекте
+  </a>
+  
+    <nav class="md-nav" aria-label="Архитектура модулей в игровом проекте">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Создание модулей
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Загрузка модулей
+  </a>
+  
+    <nav class="md-nav" aria-label="Загрузка модулей">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Включение и отключение модулей из кода.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Конструктор модуля
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Добавление классов в модули из движка
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Добавление файлов с кодом в модули вручную
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавление файлов с кодом в модули вручную">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pragma-once" class="md-nav__link">
+    #pragma once
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Создание модуля вручную
+  </a>
+  
+    <nav class="md-nav" aria-label="Создание модуля вручную">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Создаем иерархию файлов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Добавляем конструктор модуля
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    Добавляем модуль в систему  сборки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project" class="md-nav__link">
+    Регистрируем модуль в файле .project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unrealheadertool-generatedh-reflection-system" class="md-nav__link">
+    UnrealHeaderTool, generated.h и Reflection System
+  </a>
+  
+    <nav class="md-nav" aria-label="UnrealHeaderTool, generated.h и Reflection System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generatedh" class="md-nav__link">
+    .generated.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unrealheadertool" class="md-nav__link">
+    UnrealHeaderTool
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflection-system_1" class="md-nav__link">
+    Пример использования Reflection System
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unreal-unreal-build-tool" class="md-nav__link">
+    Система сборки Unreal - Unreal Build Tool
+  </a>
+  
+    <nav class="md-nav" aria-label="Система сборки Unreal - Unreal Build Tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubt" class="md-nav__link">
+    Исходные файлы UBT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Конфигурация сборщика модулей
+  </a>
+  
+    <nav class="md-nav" aria-label="Конфигурация сборщика модулей">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#precompiled-headers-pch" class="md-nav__link">
+    Precompiled Headers (PCH)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-private-dependencies" class="md-nav__link">
+    Public и Private Dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publicincludepaths-privateincludepaths" class="md-nav__link">
+    PublicIncludePaths и PrivateIncludePaths
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    Конфигурация сборщика проекта
+  </a>
+  
+    <nav class="md-nav" aria-label="Конфигурация сборщика проекта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    Параметр Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defaultbuildsettings" class="md-nav__link">
+    Параметр DefaultBuildSettings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    Как добавлять модули в систему сборки
+  </a>
+  
+    <nav class="md-nav" aria-label="Как добавлять модули в систему сборки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    Ищем информацию о сборке в документации
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    Самостоятельо дополняем файл сборки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    Итог
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_CPP_Recommendations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Рекомендации по написанию кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_SimplePlugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создание простейшего плагина для Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Macroses_Reflection_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Макросы Reflection System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Logging.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Печать информации в лог
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Pointers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Указатели
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_ModernCpp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возможности современного c++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_Working_With_Strings.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа со строками
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_Timers_In_%D0%A1%2B%2B.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Таймеры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_Instances_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Доступ к различным сущностям
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Debug/Debug_Asserts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Asserts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Debug/Debug_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Console Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ключевые системы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ключевые системы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/1_Delegates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/2_Components.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/3_SubObjects.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/4_Multithreading.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Многопоточность
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/5_Function_Libraries.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Библиотеки Функций для Blueprint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/6_Latent_And_Async_Actions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latent и Async Action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/7_Gameplay_Tags.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/8_DataAssets_AssetManager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с ассетами и данными
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/9_FileSystem.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/10_Anim_Instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anim Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/11_SubSystems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Подсистемы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/12.%20UObject%20Interface.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Interface или UInterface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Продвинутая разработка
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Продвинутая разработка
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/1_HUD.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HUD или Heads-up Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/2_UFUNCTION_Wildcard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/3_Slate%20Runtime.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slate Runtimе, введение в Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/4_UMG.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/5_K2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/6_Registe_New_Asset_Type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/7_ACharacter_And_Enhanced%20Input.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACharacter и Enhanced Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/8_Gameplay_Ability_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Ability System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/9_Global_Data_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальнный доступ к данным
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/10_Global_Event_Bus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальная шина событий
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Решение проблем
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Решение проблем
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с кодировкой в LiveCoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/Reset_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Сброс (Reset) проекта
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/generatedh_Problems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с файлом .generated.h
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Советы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Советы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Change_Asset_Icons.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Asset Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Character_And_EnhancedInput.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character Boilerplate with Enhanced Input Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/DefaultToSelf_WorldContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DefaultToSelf WorldContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Different_UPROPERTY.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/GameInputMode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Изменение GameInputMode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Get_UScriptStruct_FromStruct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ::UScriptStruct из встроенной структуры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Input_Binding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События ввода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Iterate_TMap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterate TMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Read_Blueprint_Properties.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Чтение параметров Blueprint класса
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Return_UObject.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возвращение UObject по ссылке из функции
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Run_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Запуск консольных команд
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Screen_Size.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Размер экрана
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Slate_Snippets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Полезные сниппеты Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Spawn_Actors.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawn, призыв объектов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Time_Measuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Замер времени исполнения кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Trace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UEnum_To_String.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UEnum to FString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UObject_Base_Class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Base Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Variable_Type_Print_Template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Шаблон для печати типа переменной
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/struct_operator%3D%3D.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    struct и оператор ==
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Подготовка к работе
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-unreal-engine" class="md-nav__link">
+    Особенности c++ в Unreal Engine
+  </a>
+  
+    <nav class="md-nav" aria-label="Особенности c++ в Unreal Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward-declaration" class="md-nav__link">
+    Forward Declaration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflection-system" class="md-nav__link">
+    Reflection system
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-studio" class="md-nav__link">
+    Исходники движка внутри проекта Visual Studio
+  </a>
+  
+    <nav class="md-nav" aria-label="Исходники движка внутри проекта Visual Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unreal-engine" class="md-nav__link">
+    Модули Unreal Engine
+  </a>
+  
+    <nav class="md-nav" aria-label="Модули Unreal Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#editor" class="md-nav__link">
+    Editor модули
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developer" class="md-nav__link">
+    Developer модули
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime" class="md-nav__link">
+    Runtime модули
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unreal-engine_1" class="md-nav__link">
+    Модуль, запускающий Unreal Engine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Архитектура модулей в игровом проекте
+  </a>
+  
+    <nav class="md-nav" aria-label="Архитектура модулей в игровом проекте">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Создание модулей
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Загрузка модулей
+  </a>
+  
+    <nav class="md-nav" aria-label="Загрузка модулей">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Включение и отключение модулей из кода.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Конструктор модуля
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Добавление классов в модули из движка
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Добавление файлов с кодом в модули вручную
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавление файлов с кодом в модули вручную">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pragma-once" class="md-nav__link">
+    #pragma once
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Создание модуля вручную
+  </a>
+  
+    <nav class="md-nav" aria-label="Создание модуля вручную">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Создаем иерархию файлов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Добавляем конструктор модуля
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    Добавляем модуль в систему  сборки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project" class="md-nav__link">
+    Регистрируем модуль в файле .project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unrealheadertool-generatedh-reflection-system" class="md-nav__link">
+    UnrealHeaderTool, generated.h и Reflection System
+  </a>
+  
+    <nav class="md-nav" aria-label="UnrealHeaderTool, generated.h и Reflection System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generatedh" class="md-nav__link">
+    .generated.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unrealheadertool" class="md-nav__link">
+    UnrealHeaderTool
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflection-system_1" class="md-nav__link">
+    Пример использования Reflection System
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unreal-unreal-build-tool" class="md-nav__link">
+    Система сборки Unreal - Unreal Build Tool
+  </a>
+  
+    <nav class="md-nav" aria-label="Система сборки Unreal - Unreal Build Tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubt" class="md-nav__link">
+    Исходные файлы UBT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Конфигурация сборщика модулей
+  </a>
+  
+    <nav class="md-nav" aria-label="Конфигурация сборщика модулей">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#precompiled-headers-pch" class="md-nav__link">
+    Precompiled Headers (PCH)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-private-dependencies" class="md-nav__link">
+    Public и Private Dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publicincludepaths-privateincludepaths" class="md-nav__link">
+    PublicIncludePaths и PrivateIncludePaths
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    Конфигурация сборщика проекта
+  </a>
+  
+    <nav class="md-nav" aria-label="Конфигурация сборщика проекта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    Параметр Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defaultbuildsettings" class="md-nav__link">
+    Параметр DefaultBuildSettings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    Как добавлять модули в систему сборки
+  </a>
+  
+    <nav class="md-nav" aria-label="Как добавлять модули в систему сборки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    Ищем информацию о сборке в документации
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    Самостоятельо дополняем файл сборки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    Итог
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">Знакомство с движком</h1>
+<p>Одним  из ключевых навыков в работе с <code>Unreal Engine</code> является умение читать его исходный код.</p>
+<p>Исходный код <code>Unreal Engine</code> поставляется вместе с движком и автоматически загружается при открытии проекта в <code>Visual Studio</code>.</p>
+<p><a class="glightbox" href="../images/4cfed9596ac20c7fda2ab54abb9a1c41.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4cfed9596ac20c7fda2ab54abb9a1c41.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4cfed9596ac20c7fda2ab54abb9a1c41.png" /></a></p>
+<p>Большая часть статей в этой книге основана на изучении исходного кода движка.</p>
+<p>Несмотря на то, что в этой статье я практически не пишу код, чтение ее крайне важно, для  понимания книги, потому что тут я затрагиваю архитектуру модулей и работу с зависимосями для проекта.</p>
+<blockquote>
+<p>Помимо этой статьи, на ютубе есть полезное видео, раскрывающее принцип работы движка от функции <a href="https://www.youtube.com/watch?v=IaU2Hue-ApI">tick</a>. 
+Советую ознакомиться.</p>
+</blockquote>
+<h2 id="_2">Подготовка к работе</h2>
+<p>В предыдущей главе мы создали проект <code>SubsystemTest</code>. Запускаем его через <code>Epic Games Launcher</code> или через и файл <code>.uproject</code>.</p>
+<p><a class="glightbox" href="../images/e3b348a6c8e875c56106517d20458e57.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e3b348a6c8e875c56106517d20458e57.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e3b348a6c8e875c56106517d20458e57.png" /></a></p>
+<p><a class="glightbox" href="../images/6505c872784ea85c636f579266a0f31e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6505c872784ea85c636f579266a0f31e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6505c872784ea85c636f579266a0f31e.png" /></a></p>
+<p>Открываем <code>Visual Studio</code> из меню <code>Tools -&gt; Open Visual Studio 2022</code>.</p>
+<p><a class="glightbox" href="../images/87f8018311a2c22b0f5c6ea450f473ee.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="87f8018311a2c22b0f5c6ea450f473ee.png" auto_="auto;" display="block;" margin:="margin:" src="../images/87f8018311a2c22b0f5c6ea450f473ee.png" /></a></p>
+<h2 id="c-unreal-engine">Особенности <code>c++</code> в <code>Unreal Engine</code></h2>
+<p>В этой статье мы будем изучать исходный код движка. Однако, прежде чем приступать к главному блюду, давайте рассмотрим некоторые сложные моменты.</p>
+<h3 id="forward-declaration"><code>Forward Declaration</code></h3>
+<p>На что наткнется начинающий <code>с++</code> разработчик, когда откроет исходные файлы движка? На странные конструкции вида <code>class ClassName;</code>.
+Что это такое? Эти конструкции называются <code>Forward Declaration</code>.</p>
+<p><a class="glightbox" href="../images/d1052fcbaafac85cf6c09592213a0b33.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d1052fcbaafac85cf6c09592213a0b33.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d1052fcbaafac85cf6c09592213a0b33.png" /></a></p>
+<p>Зачем они нужны в <code>с++</code>?
+Операторы <code>Forward Declaration</code> позволяют избежать проблемы с цикличной зависимостью … то есть с <code>cyclic dependency</code>.
+Как это выглядит.</p>
+<p>Предположим есть два класса, зависимых друг от друга. Причем классы эти расположены в двух разных файлах.
+<div class="highlight"><pre><span></span><code><span class="c1">//file Class1.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Class2.h&quot;</span><span class="c1"> // include second class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ClassName1</span><span class="p">{</span>
+<span class="w">    </span><span class="n">ClassName2</span><span class="w"> </span><span class="n">VariableC2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//file Class2.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Class1.h&quot;</span><span class="c1"> // include first class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ClassName1</span><span class="p">{</span>
+<span class="w">    </span><span class="n">ClassName1</span><span class="w"> </span><span class="n">VariableC1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+Между такими классами имеется т.н. <code>Cyclic Dependency</code>. Система сборки не сможет понять, какой из этих классов надо скомпилировать первым. Потому что <code>ClassName1</code> ссылается на <code>ClassName2</code>, а <code>ClassName2</code> ссылается на <code>ClassName1</code>. Стандартными способами эту проблему физически решить Не ВОЗМОЖНО.</p>
+<p>Эта проблема решается  с помощью <code>Forward Declaration</code>. Вот как выглядит код с применением этой техники.
+<div class="highlight"><pre><span></span><code><span class="c1">//file Class1.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Class2.h&quot;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ClassName1</span><span class="p">{</span>
+<span class="w">    </span><span class="n">ClassName2</span><span class="w"> </span><span class="n">VariableC2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//file Class2.h</span>
+<span class="c1">//#include &quot;Class1.h&quot; - don&#39;t need to include</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ClassName1</span><span class="p">;</span><span class="w"> </span><span class="c1">// forward declaration</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ClassName1</span><span class="p">{</span>
+<span class="w">    </span><span class="n">ClassName1</span><span class="w"> </span><span class="n">VariableC1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+В этом коде циклической зависимости не будет, потому что системе сразу понятно, какой файл компилировать первым.</p>
+<p>При разработке для <code>Unreal Engine</code> очень часто используется техника <code>Forward Declaration</code>.</p>
+<h3 id="reflection-system"><code>Reflection system</code></h3>
+<p>Теперь коснемся макросов, вроде <code>UCLASS</code>, <code>GENERATED_BODY</code>, <code>UFUNCTION</code>,  или <code>UOBJECT</code>, которые применяются повсеместно.</p>
+<p><a class="glightbox" href="../images/78f54b5b7fd62a6077908ef371a7aa22.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="78f54b5b7fd62a6077908ef371a7aa22.png" auto_="auto;" display="block;" margin:="margin:" src="../images/78f54b5b7fd62a6077908ef371a7aa22.png" /></a></p>
+<p>Это макросы <code>Reflection system</code>. Они применяются для отражения <code>с++</code> кода в <code>blueprint</code> и параметры движка. Данные макросы, перед компиляцией, автоматически заменяются сгенерированным кодом. Отвечает за это система, под названием <code>Unreal Header Tool</code>, ее я рассмотрю в одной из следующих глав. А пока, просто помните, что в этих макросах ничего "странного" нет. Они не стандартны, но их существование вполне оправданно.</p>
+<h2 id="visual-studio">Исходники движка внутри проекта <code>Visual Studio</code></h2>
+<p>Запустите <code>Visual Studio</code> из пункта меню <code>Tools -&gt; Open Visual Studio 2022</code>, если еще не сделали это.</p>
+<p><a class="glightbox" href="../images/5031f26df82d2f6b4e350fc8bb2b6121.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5031f26df82d2f6b4e350fc8bb2b6121.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5031f26df82d2f6b4e350fc8bb2b6121.png" /></a></p>
+<p>Обратите внимание на вкладку - <code>Solution Explorer</code>. Здесь вы найдете папку <code>UE5</code> с исходниками <code>Unreal Engine</code>. Она загружается автоматически в каждый проект.</p>
+<p><a class="glightbox" href="../images/b519d78741ec702d7121a1a228bafe98.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b519d78741ec702d7121a1a228bafe98.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b519d78741ec702d7121a1a228bafe98.png" /></a></p>
+<p>Если раскрыть папку <code>UE5</code>, появится список каталогов, среди которых будут <code>Plugins</code> и <code>Source</code>.</p>
+<p><a class="glightbox" href="../images/1342ab7f0c910a2084b46094c004f088.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1342ab7f0c910a2084b46094c004f088.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1342ab7f0c910a2084b46094c004f088.png" /></a></p>
+<p>В каталоге <code>Plugins</code> находятся все встроенные плагины движка. Включая те, которые вы купили на маркетплейсе.</p>
+<p><a class="glightbox" href="../images/9ad127e7263b433d1197dc9719515d20.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9ad127e7263b433d1197dc9719515d20.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9ad127e7263b433d1197dc9719515d20.png" /></a></p>
+<p>Вы можете посмотреть cделаны любые плагины движка, не покидая свой текущий проект.
+<em>(про создание собственных плагинов читайте следующую главу)</em>
+В каталоге <code>Source</code> находятся основные исходники <code>Unreal Engine</code>.</p>
+<p><a class="glightbox" href="../images/cdf6ce39443a760c44e6517143cd4f75.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="cdf6ce39443a760c44e6517143cd4f75.png" auto_="auto;" display="block;" margin:="margin:" src="../images/cdf6ce39443a760c44e6517143cd4f75.png" /></a></p>
+<p>Здесь нас интересуют папки <code>Developer</code>, <code>Editor</code> и <code>Runtime</code>. Каждая из них содержит модули, завязанные на систему сборки <code>Unreal</code>.</p>
+<h3 id="unreal-engine">Модули <code>Unreal Engine</code></h3>
+<p>Модули в движке делятся на три типа.</p>
+<h4 id="editor"><code>Editor</code> модули</h4>
+<p>Это модули редактора <code>Unreal Engine</code>.
+Тут можно найти модуль редактора анимаций.</p>
+<p><a class="glightbox" href="../images/4ff71583c5dd7ec16bf4d6abf94e4d77.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4ff71583c5dd7ec16bf4d6abf94e4d77.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4ff71583c5dd7ec16bf4d6abf94e4d77.png" /></a></p>
+<p>То есть конкретно вот этот редактор.</p>
+<p><a class="glightbox" href="../images/7b2a6b947c3d75a944f27c30203ef586.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7b2a6b947c3d75a944f27c30203ef586.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7b2a6b947c3d75a944f27c30203ef586.png" /></a></p>
+<p>Если хотите знать, как устроены подобные модули - советую покопаться в этой папке и выяснить. Но перед этим - рекомендую прочитать главу про <code>Slate</code>, без знакомства с которой понять код такого модуля будет затруднительно.</p>
+<h4 id="developer"><code>Developer</code> модули</h4>
+<p>Эти модули содержат в себе <code>third party</code> утилиты и библиотеки, а так-же короткие запускаемые скрипты и операции.</p>
+<p>Например, в папке <code>Developer</code> можно найти код операций, доступных для ассета.</p>
+<p><a class="glightbox" href="../images/zaetovotmenyu.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="за это вот меню.png" auto_="auto;" display="block;" margin:="margin:" src="../images/zaetovotmenyu.png" /></a></p>
+<p>Код, генерирующий это меню ассета, находится в модуле <code>AssetTools</code>, который, в свою очередь, находится в папке <code>Developer</code>. Полный путь до файла выглядит так - <code>Developer -&gt; AssetTools -&gt; Private -&gt; AssetTypeActions -&gt; AssetTypeActions_AnimationAsset.cpp</code></p>
+<p><a class="glightbox" href="../images/a4b417e29590fd34282790d9bf8e8bea.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a4b417e29590fd34282790d9bf8e8bea.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a4b417e29590fd34282790d9bf8e8bea.png" /></a></p>
+<p>Можете поизучать и его устройство, чтобы знать, как создаются подобные меню и пункты для них.</p>
+<h4 id="runtime"><code>Runtime</code> модули</h4>
+<p>Данные модули составляют ядро движка <code>Unreal Engine</code> и всегда загружаются вместе с проектом.</p>
+<p>Именно в <code>Runtime</code> модуле находится ядро движка <code>Unreal Engint</code>, а так-же основной цикл тика. Модуль этот называется <code>Launch</code>.</p>
+<p><a class="glightbox" href="../images/040d7380c2f23f8e74126a24f25f9ca3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="040d7380c2f23f8e74126a24f25f9ca3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/040d7380c2f23f8e74126a24f25f9ca3.png" /></a></p>
+<h4 id="unreal-engine_1">Модуль, запускающий <code>Unreal Engine</code></h4>
+<p>Модуль, запускающий игровой движок, называется <code>Launch</code>. Это <code>Runtime</code> модуль, и файлы в нем распределены по типам операционных систем, которые поддерживает <code>Unreal Engine</code>.
+В случае с <code>Windows</code> движок подключается к <code>WinAPI</code> откуда соединяется с функцией <code>WinMain</code>. Это и есть точка входа в наше приложение.</p>
+<p>Исходный код файла выглядит так:</p>
+<p><a class="glightbox" href="../images/a1ba0c795c07540c3b423e61aabeebc9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a1ba0c795c07540c3b423e61aabeebc9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a1ba0c795c07540c3b423e61aabeebc9.png" /></a></p>
+<p>Из этой функции затем вызывается другая - <code>LaunchWindowsStartup</code>, куда вынесена основная логика запуска движка под <code>Windows</code>. Оттуда идет вызов следующей функции - <code>GuardedMain</code>, которая и является точкой входа в цикл <code>tick</code> для движка.</p>
+<p><a class="glightbox" href="../images/f9ccdbf4c1691066e87a771f7d25d995.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f9ccdbf4c1691066e87a771f7d25d995.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f9ccdbf4c1691066e87a771f7d25d995.png" /></a></p>
+<p>Сама функция <code>GuardedMain</code> находится в файле <code>Launch.cpp</code> по пути <code>Runtime -&gt; Launch -&gt; Private -&gt; Launch.cpp</code>.
+Так или иначе эта функция вызывается в каждой из поддерживаемых движком ОС.</p>
+<p><a class="glightbox" href="../images/fd1e1e9c40a574cd06fadf9181855948.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fd1e1e9c40a574cd06fadf9181855948.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fd1e1e9c40a574cd06fadf9181855948.png" /></a></p>
+<p>Теперь предлагаю взглянуть на основной цикл обновления движка. Это замкнутый цикл <code>while</code>, каждую итерацию цикла вызывается метод <code>tick</code>.
+Цикл обновления движка надохдится в том-же файле <code>Launch.cpp</code>.</p>
+<p>Выглядит он так:</p>
+<p><a class="glightbox" href="../images/e4b0a9b3195758fb65d01211a948b2b7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e4b0a9b3195758fb65d01211a948b2b7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e4b0a9b3195758fb65d01211a948b2b7.png" /></a></p>
+<p>Размотаем цепочку вызовов.</p>
+<p>Функция <code>EngineTick</code> выглядит так:</p>
+<p><a class="glightbox" href="../images/4284d7ff3f35546437dca096dcca190a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4284d7ff3f35546437dca096dcca190a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4284d7ff3f35546437dca096dcca190a.png" /></a></p>
+<p>Из нее вызывается метод в другом классе - <code>FEngineLoop</code>. Внутри него мы можем видеть полноценную реализацию метода <code>Tick()</code>.</p>
+<p><a class="glightbox" href="../images/23e6671df6215e352d31d5e3ac0689f2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="23e6671df6215e352d31d5e3ac0689f2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/23e6671df6215e352d31d5e3ac0689f2.png" /></a></p>
+<p><a class="glightbox" href="../images/35170142a678e1893349d335c597aa50.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="35170142a678e1893349d335c597aa50.png" auto_="auto;" display="block;" margin:="margin:" src="../images/35170142a678e1893349d335c597aa50.png" /></a></p>
+<h2 id="_3">Архитектура модулей в игровом проекте</h2>
+<p>Давайте детально рассотрим то, из чего собран весь движок <code>Unreal Engine</code> - модули.</p>
+<p>В предыдущей главе мы касались модуля <code>Launch</code>, который запускает игровой движок.</p>
+<p>Давайте создадим свой  собственный подуль.</p>
+<h3 id="_4">Создание модулей</h3>
+<p>В корне проекта (в папке <code>Source</code>) мы видим список доступных нам модулей. Основной модуль создается по умолчанию и имеет то-же самое название, которое выставлено у проекта. Остальные мы создали вручную, в данном случае это модули <code>CharactersModule</code> и <code>TestModule</code>, ну а проект у нас называется, если вы еще не забыли - <code>SubsystemTest</code>.</p>
+<p><a class="glightbox" href="../images/c35c14a31ca45df1137d068698f99531.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c35c14a31ca45df1137d068698f99531.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c35c14a31ca45df1137d068698f99531.png" /></a></p>
+<p>Давайте рассмотрим процесс создания модуля <code>TestModule</code>.
+Стандартного инструментария в Unreal Engine для создания модулей - нет. Подразумевается, что разработчик будет создавать их вручную (что мы рассмотрим чуть пожже).
+Однако существуют сторонние (и при этом бесплатные) плагины, позволяющие создавать модули в пару кликов мыши.</p>
+<p><a class="glightbox" href="../images/Plaginygeneratsiimoduley.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Плагины генерации модулей.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Plaginygeneratsiimoduley.png" /></a></p>
+<p>Всего таких плагинов два. Использовать буду тот, который <a href="https://marketplace-website-node-launcher-prod.ol.epicgames.com/ue/marketplace/en-US/product/c-module-generator">C++ Module Generator</a>. Не помню почему я использую именно его. Предыдущий, вроде, имеет какие-то недоработки.</p>
+<p>Добавляем в библиотеку, загружаем в движок, включаем.</p>
+<p><a class="glightbox" href="../images/PlaginmozhnonaytivsektsiiOther.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Плагин можно найти в секции Other.png" auto_="auto;" display="block;" margin:="margin:" src="../images/PlaginmozhnonaytivsektsiiOther.png" /></a></p>
+<p>После включения и перезапуска движка, появится новый пункт меню в Window -&gt; Module Generator.</p>
+<p><a class="glightbox" href="../images/Punktmenyu.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Пункт меню" auto_="auto;" display="block;" margin:="margin:" src="../images/Punktmenyu.png" /></a></p>
+<p>Тыкаем туда, чтобы появился диалог.</p>
+<p><a class="glightbox" href="../images/Dialoggeneratsiimodulya.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Диалог генерации модуля.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Dialoggeneratsiimodulya.png" /></a></p>
+<p>Здесь вы можете выбрать имя модуля, а так-же его способ загрузки. По умолчанию есть два шаблона загрузки - Editor и Runtime.
+Эти шаблоны отвечают за конфигурацию модуля в файле <code>.uproject</code>.  Подробный разбор конфигурации будет ниже.</p>
+<p><a class="glightbox" href="../images/Shablonymodulya.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Шаблоны модуля.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Shablonymodulya.png" /></a></p>
+<p>Для теста нам достаточно выбрать Runtime, то есть оставить все как есть, задать имя - <code>TestModule</code> и нажать на <code>Generate New Module</code>. (я этот  модуль уже создал, просто воспроизвожу процесс)</p>
+<p><a class="glightbox" href="../images/Budetpredlozhenoperezapustitdvizhok-.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Будет предложено перезапустить движок" auto_="auto;" display="block;" margin:="margin:" src="../images/Budetpredlozhenoperezapustitdvizhok-.png" /></a></p>
+<p>После этого появится сообщение о необходимости перезапуска движка.</p>
+<p>При перезапуске система спросит - не хотите ли пересобрать проект? Жмете <code>Yes</code> ждете пересборки.</p>
+<p>После открытия проекта разработчик может столкнутсья с проблемой - новый модуль не появился в списке файлов, в проводнике Unreal.</p>
+<p><a class="glightbox" href="../images/Modulvspiskenepoyavilsya%2Cpokachto.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Модуль в списке не появился, пока что" auto_="auto;" display="block;" margin:="margin:" src="../images/Modulvspiskenepoyavilsya%2Cpokachto.png" /></a></p>
+<p>Однако не пугайтесь, он там. Просто проводник не отображает пустые папки.</p>
+<p>Чтобы убедиться в том, что модуль действительно создан, давайте запустим Visual Studio. Но сначала надо сделать Tools -&gt; Refresh Visual Studio 2022 Project.</p>
+<p><a class="glightbox" href="../images/ObnovlyaemVSProject.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Обновляем VS Project" auto_="auto;" display="block;" margin:="margin:" src="../images/ObnovlyaemVSProject.png" /></a></p>
+<p>После открытия Visual Studio, мы можем видеть новый модуль в SolutionExplorer'е.</p>
+<p><a class="glightbox" href="../images/VisualStudionovyymodul.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Visual Studio новый модуль.png" auto_="auto;" display="block;" margin:="margin:" src="../images/VisualStudionovyymodul.png" /></a></p>
+<p>Модуль автоматически загружен в Unreal Build System.
+Откройте файлы <code>ИмяПроекта.Target.cs</code> чтобы убедиться в этом.</p>
+<p><a class="glightbox" href="../images/Faylysborki.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Файлы сборки" auto_="auto;" display="block;" margin:="margin:" src="../images/Faylysborki.png" /></a></p>
+<p>Теперь, когда мы создали наш модуль, давайте пройдемся по его архитектуре.</p>
+<h3 id="_5">Загрузка модулей</h3>
+<p>Модули загружаются в движок через файл конфигурации проекта - <code>.uproject</code>, где под них отведена секция <code>Modules</code>.</p>
+<p><a class="glightbox" href="../images/1f3e55370d2ca5dabd4cdd70951825c6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1f3e55370d2ca5dabd4cdd70951825c6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1f3e55370d2ca5dabd4cdd70951825c6.png" /></a></p>
+<p>Если вы используете плагины, то в файле <code>.uplugin</code> вы так-же найдете список модулей, из которых состоит плагин.</p>
+<p><a class="glightbox" href="../images/e6b6a71f0685a3c1890f517e12b2b784.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e6b6a71f0685a3c1890f517e12b2b784.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e6b6a71f0685a3c1890f517e12b2b784.png" /></a></p>
+<p>Каждый модуль имеет тип и фазу загрузки, которые задаются соответствующими строчками в конфиге.
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TestModule&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Runtime&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// тип модуля</span>
+<span class="w">    </span><span class="nt">&quot;LoadingPhase&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">//фаза загрузки</span>
+<span class="w">    </span><span class="nt">&quot;AdditionalDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;Engine&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+И вот эти то строчки <code>Type</code> и <code>LoadingPhase</code> я бы хотел рассмотреть отдельно.</p>
+<p>Как узнать - какие значения они могут принимать?
+Ведь автозавершение в VS не выводит никаких подсказок.</p>
+<p>Кто-то скажет, что надо посмотреть в документацию на сайте, но там она достаточно кастрирована.</p>
+<p>Давайте лучше найдем внутри исходников движка заголовочный файл, отвечающий за загрузку модулей и чтение их конфигов. Там мы и узнаем допустимые знчения для каждой из строк указанных выше.</p>
+<p>И да, такой файл действительно имеется. Находится он в модуле <code>Runtime -&gt; Projects</code> и называется <code>ModuleDescriptor.h</code>.</p>
+<p><a class="glightbox" href="../images/Modul%2Ckotoryyzagruzhaetdrugiemoduli.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Модуль, который загружает другие модули.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Modul%2Ckotoryyzagruzhaetdrugiemoduli.png" /></a></p>
+<p>Так-же в этой папке есть <code>PluginDescriptor.h</code>, в котором, очевидно, находятся значения настроек для плагина.</p>
+<p>Но мы остановимся на дескрипторе модуля.</p>
+<p>Внутри файла <code>ModuleDescriptor.h</code> можно обнаружить два перечисления (enum) со следующими названиями: <code>ELoadingPhase</code> и <code>EHostType</code>.
+Очевидно, что они соответствуют допустимым значениям для <code>LoadingPhase</code> и <code>Type</code> настроек в конфигурации модуля.</p>
+<p>Возможные значения для <code>LoadingPhase</code> выглядят так:</p>
+<p><a class="glightbox" href="../images/b1570b67f60b526eb574fbe338b7da42.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b1570b67f60b526eb574fbe338b7da42.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b1570b67f60b526eb574fbe338b7da42.png" /></a></p>
+<p>Обратите внимание на пункт <code>None</code>.
+Если вы хотите отключить модуль, можете установить ему <code>None</code> в настройке <code>LoadingPhase</code>.
+Возможные значения для настройки <code>Type</code> выглядят так:</p>
+<p><a class="glightbox" href="../images/5dd5c5add527e644fd721688d6562127.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5dd5c5add527e644fd721688d6562127.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5dd5c5add527e644fd721688d6562127.png" /></a></p>
+<p>Обычно используется <code>Runtime</code>.
+Помимо автоматической загрузки модулей через строки конфигурации, их можно загружать и используя код. Например, прямо во время геймплея. И хотя врятли это хорошая идея, такая возможность все равно имеется. Давайте ее рассмотрим.</p>
+<h4 id="_6">Включение и отключение модулей из кода.</h4>
+<p>В движке есть синглтон <code>FModuleManager</code> (вот его <a href="https://docs.unrealengine.com/4.27/en-US/API/Runtime/Core/Modules/FModuleManager/">документация</a>), который позволяет обратиться к конструктору модуля, то есть его главному классу практически из любого  места движка.</p>
+<p>Если вы создадите в основном классе модуля какой-то функционал, то вы можете получить к нему доступ вот так:
+<div class="highlight"><pre><span></span><code><span class="n">FAssetRegistryModule</span><span class="o">&amp;</span><span class="w"> </span><span class="n">AssetRegistryModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FModuleManager</span><span class="o">::</span><span class="n">LoadModuleChecked</span><span class="o">&lt;</span><span class="n">FAssetRegistryModule</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;AssetRegistry&quot;</span><span class="p">));</span>
+</code></pre></div>
+В данном случае код получает доступ к модулю <code>AssetRegistry</code>. Я взял его из модуля <code>Developer/AssetTools/Private/AssetToolsModule.cpp</code>.
+Метод <code>LoadModuleChecked</code> - загружает модуль и возвращает на него ссылку. Если модуль уже загружен - просто возвращает на него ссылку.</p>
+<p>Так-же в классе <code>FModuleManager</code> есть методы вроде <code>UnloadModule</code> - для остановки модуля и <code>AbandonModule</code> - для приостановки модуля по имени. Документацию класса можете найти выше, я привел ссылку.</p>
+<h3 id="_7">Конструктор модуля</h3>
+<p>Конструктор и деструктор - это части любого класса в<code>c++</code>
+Модули тоже имеют свой конструктор и деструктор в виде методов, вызываемых из главного класса модуля.</p>
+<p>Этот класс всегда имплементирует интерфейс <code>IModuleInterface</code>, а так-же содержит в себе макрос - <code>IMPLEMENT_MODULE</code>, в котором указывается название модуля и класс, который этот модуль реализует.</p>
+<p>По этому макросу Unreal определяет главный класс для модуля.</p>
+<p>В нашем случае макрос выглядит так:
+<div class="highlight"><pre><span></span><code><span class="n">IMPLEMENT_MODULE</span><span class="p">(</span><span class="n">FTestModule</span><span class="p">,</span><span class="w"> </span><span class="n">TestModule</span><span class="p">)</span>
+</code></pre></div>
+Этот макрос может находиться в любом <code>.cpp</code> файле, но обычно название этого файла совпадает с названием модуля или имеет постфикс (*Module.cpp). В нашем случае это <code>TestModule.cpp</code>.
+Файл <code>TestModule.cpp</code>:</p>
+<p><a class="glightbox" href="../images/0fd722dc5252a11b5e2e8a778ac8aafb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0fd722dc5252a11b5e2e8a778ac8aafb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0fd722dc5252a11b5e2e8a778ac8aafb.png" /></a></p>
+<p>Заголовочный файл <code>TestModule.h</code>:</p>
+<p><a class="glightbox" href="../images/049264425c4fa3703fccdcbbe679adbd.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="049264425c4fa3703fccdcbbe679adbd.png" auto_="auto;" display="block;" margin:="margin:" src="../images/049264425c4fa3703fccdcbbe679adbd.png" /></a></p>
+<p>Название класса - <code>FTestModule</code> имеет префикс <code>F</code>, потому что все функциональные классы в UnrealEngine должны иметь этот префикс по стандарту. (О Стандартах с++ кода в Unreal мы поговорим в другой статье.)</p>
+<p>Этот класс реализует две функции из интерфейса - <code>StartupModule</code> и <code>ShutdownModule</code>, давайте их рассмотрим.</p>
+<ul>
+<li>
+<p><code>StartupModule</code>, очевидно, вызывается, когда модуль запускается (порядок запуска модуля зависит от его конфигурации в файле <code>.uproject</code> или <code>.uplugin</code>, выше мы их рассматривали, сточка - <code>LoadingPhase</code>)</p>
+</li>
+<li>
+<p><code>ShutdownModule</code> вызывается, когда модуль отключается.</p>
+</li>
+</ul>
+<p>Тут, к стати, можно добавить, что модули можно включать и отключать не только из файла конфигурации, но так-же используя интерфейс движка.</p>
+<p>Какая обычно логика задается модулю при его запуске и остановке?
+При запуске в модуле создают пункты настройки в параметрах проекта, регистрируют собственные меню в движке, запускают какие-либо потоки или подсистемы, а так-же регистрируют свои редакторы переменных.</p>
+<p>Ну а при остановке модуля все зарегистрированное - убирается.</p>
+<p>К примеру модуль <code>AudioEditor</code> запускается вот так:</p>
+<p><a class="glightbox" href="../images/a9be2b47216ef3e46baf96b3fe5abd2c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a9be2b47216ef3e46baf96b3fe5abd2c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a9be2b47216ef3e46baf96b3fe5abd2c.png" /></a></p>
+<p>На данном этапе я не буду добавлять код ни в конструктор ни в деструктор модуля. Вместо этого мы сосредоточимся на добавлении своих собственных классов внутрь модулей.</p>
+<h3 id="_8">Добавление классов в модули из движка</h3>
+<p>Теперь, давайте создадим собственный класс внутри модуля. Пусть это будет обычный класс Actor'а, чтобы не тратить много времени.</p>
+<p>Идем в <code>Tools -&gt; New C++ Class</code>. Выбираем <code>Actor</code>.</p>
+<p><a class="glightbox" href="../images/SozdanieklassaActor.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Создание класса Actor" auto_="auto;" display="block;" margin:="margin:" src="../images/SozdanieklassaActor.png" /></a></p>
+<p>Жмем <code>Next</code>.
+На следующем экране задаем имя нашего файла, а так-же выставляем ему модификатор Public, чтобы организовать заголовочный файл и файл реализации(*.cpp) в соответствующие папки.</p>
+<p><a class="glightbox" href="../images/Sozdanieklassa.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Создание класса" auto_="auto;" display="block;" margin:="margin:" src="../images/Sozdanieklassa.png" /></a></p>
+<p>Тут важно. В правом выпадающем меню можно выбрать модуль, в котором будет создан новый класс. Выберите тут TestModule, чтобы было как-то так:</p>
+<p><a class="glightbox" href="../images/SozdaniefaylavTestModule.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Создание файла в TestModule" auto_="auto;" display="block;" margin:="margin:" src="../images/SozdaniefaylavTestModule.png" /></a></p>
+<p>Теперь жмем Create Class.
+В Visual Studio будет запрос на перезагрузку проекта, жмем Reload All.</p>
+<p><a class="glightbox" href="../images/ZaprosvVisualStudio.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Запрос в Visual Studio.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ZaprosvVisualStudio.png" /></a></p>
+<p>И вот, внутри модуля появился наш класс.</p>
+<p><a class="glightbox" href="../images/KlassActorvnutrimodulya.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Класс Actor внутри модуля.png" auto_="auto;" display="block;" margin:="margin:" src="../images/KlassActorvnutrimodulya.png" /></a></p>
+<p>Давайте добавим в него тестовый код, выводящий текст на экран.
+<div class="highlight"><pre><span></span><code><span class="n">GEngine</span><span class="o">-&gt;</span><span class="n">AddOnScreenDebugMessage</span><span class="p">(</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">,</span><span class="w"> </span><span class="n">FColor</span><span class="o">::</span><span class="n">Cyan</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Module Actor TEST&quot;</span><span class="p">));</span>
+</code></pre></div>
+Чтобы было так:</p>
+<p><a class="glightbox" href="../images/Testovyykodvnutrimetodatick.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Тестовый код внутри метода tick.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Testovyykodvnutrimetodatick.png" /></a></p>
+<p>Ну и скомпилируем все это нажав сочетание клавиш <code>Ctrl + Alt + F11</code>.</p>
+<p><a class="glightbox" href="../images/Rezultatkompilyatsiimodulya.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Результат компиляции модуля.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Rezultatkompilyatsiimodulya.png" /></a></p>
+<p>А теперь, в  движке, перетащите созданный нами класс ModuleTestActor в игровой мир и запустите симуляцию.</p>
+<p><a class="glightbox" href="../images/Testovyyklassaktoravnutrimodulyavdvizhke.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Тестовый класс актора внутри модуля в движке.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Testovyyklassaktoravnutrimodulyavdvizhke.png" /></a></p>
+<p><a class="glightbox" href="../images/Peretaschiliegovmir.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Перетащили его в мир.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Peretaschiliegovmir.png" /></a></p>
+<p>Результат симуляции:</p>
+<p><a class="glightbox" href="../images/Rezultatsimulyatsiismodulem.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Результат симуляции с модулем.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Rezultatsimulyatsiismodulem.png" /></a></p>
+<h3 id="_9">Добавление файлов с кодом в модули вручную</h3>
+<p>Иногда в проект Unreal необходимо добавить не-шаблонный класс или заголовочный файл. В некоторых случаях мы не можем (или не хотим) использовать классический способ добавления класса из меню движка. Например, если файл, который мы добавляем, содержит не класс, а <code>enum</code>. При этом нужен лишь заголовочный файл <code>.h</code>, а файл <code>.cpp</code> не нужен.</p>
+<blockquote>
+<p><strong>Ни в коем случае не добавляйте файл через меню <code>Visual Studio</code>! <code>VS</code> создает файлы проекта внутри папки <code>intermediate</code>, откуда их потом придется или извлекать или полностью удалять папку <code>intermediate</code>, после чего пересобирать проект.</strong>
+Открываем в обычном проводнике папку модуля проекта, в нашем случае это <code>TestModule</code> и добавляем туда папку <code>Enums</code>.</p>
+</blockquote>
+<p><a class="glightbox" href="../images/cd2c252bdac42e43ca87f390daf0eee9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="cd2c252bdac42e43ca87f390daf0eee9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/cd2c252bdac42e43ca87f390daf0eee9.png" /></a></p>
+<p>В папке щелкаем <code>пкм -&gt; Создать -&gt; Текстовый документ</code></p>
+<p><a class="glightbox" href="../images/6fb764486c499f394f952eabe06292aa.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6fb764486c499f394f952eabe06292aa.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6fb764486c499f394f952eabe06292aa.png" /></a></p>
+<p>Называем: <code>TestEnums.h</code>.</p>
+<p><a class="glightbox" href="../images/83cbb43bba365c243ee3c69d340bca83.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="83cbb43bba365c243ee3c69d340bca83.png" auto_="auto;" display="block;" margin:="margin:" src="../images/83cbb43bba365c243ee3c69d340bca83.png" /></a></p>
+<p>Если вы не можете отредактировать расширение файла - в проводнике перейдите на вкладку "вид" и включите опцию "расширения имен файлов".</p>
+<p><a class="glightbox" href="../images/ab0288207b8a3722206b8f5180ef1c31.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ab0288207b8a3722206b8f5180ef1c31.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ab0288207b8a3722206b8f5180ef1c31.png" /></a></p>
+<p>Однако созданный файл не появится в Visual Studio сразу. Чтобы файл появился в проекте, откройте движок далее <code>Tools -&gt; Refresh Visual Studio 2022 Project</code>.</p>
+<p><a class="glightbox" href="../images/7badb81b41a4dfc2bb21468818fb219c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7badb81b41a4dfc2bb21468818fb219c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7badb81b41a4dfc2bb21468818fb219c.png" /></a></p>
+<p>После этого в <code>Visual Studio -&gt; Solution Explorer</code> появится созданный нами файл.</p>
+<p>Но он пока пуст.</p>
+<p><a class="glightbox" href="../images/ee42f5a3baf0bb544a9c1a56b668e37a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ee42f5a3baf0bb544a9c1a56b668e37a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ee42f5a3baf0bb544a9c1a56b668e37a.png" /></a></p>
+<p>Поместите в файл, например, такой код:
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;UObject/ObjectMacros.h&gt;</span>
+<span class="c1">// UHT</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TestEnums.generated.h&quot;</span>
+<span class="c1">// Our Test Enum</span>
+<span class="n">UENUM</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EMyFruitsList</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">uint8</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Apple</span><span class="w"> </span><span class="n">UMETA</span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Green Apple&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Orange</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Cherry</span><span class="w"> </span><span class="n">UMETA</span><span class="p">(</span><span class="n">ToolTip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Some Test Tooltip.&quot;</span><span class="p">),</span>
+<span class="p">};</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/355df1591a0ad1f1a4de8e5e0099b411.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="355df1591a0ad1f1a4de8e5e0099b411.png" auto_="auto;" display="block;" margin:="margin:" src="../images/355df1591a0ad1f1a4de8e5e0099b411.png" /></a></p>
+<p>Теперь давайте подключим этот файл в конструкторе модуля. Откройте файл <code>TestModule.h</code> и пропишите <code>#include "Enums/TestEnums.h"</code>.</p>
+<p><a class="glightbox" href="../images/17d4f13bfbd26fe4bc1d32a87fc68915.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="17d4f13bfbd26fe4bc1d32a87fc68915.png" auto_="auto;" display="block;" margin:="margin:" src="../images/17d4f13bfbd26fe4bc1d32a87fc68915.png" /></a></p>
+<p>Если вам не хочется всякий раз указывать имя папки, в которой находится подключаемый файл, можете открыть файл <code>TestModule.build.cs</code> и включить эту папку в категорию <code>PublicIncludePaths</code>.</p>
+<p><a class="glightbox" href="../images/db7ceb06a4b0205c02f469a1f44bb2a0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="db7ceb06a4b0205c02f469a1f44bb2a0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/db7ceb06a4b0205c02f469a1f44bb2a0.png" /></a></p>
+<p>Теперь можно заменить <code>#include "Enums/TestEnums.h"</code> на <code>#include "TestEnums.h"</code>.</p>
+<h4 id="pragma-once"><code>#pragma once</code></h4>
+<p>В начале заголовочных файлов всегда надо использовать команду <code>#pragma once</code>.
+Эта команда заставляет компилятор подключать заголовчный файл всего один раз.</p>
+<p>Поскольку ваши заголовочные файлы внутри проекта могут быть использованы из других модулей или скомпонованы с другими файлами на этапе сборки - эта команда <strong>обязательна</strong> к использованию для каждого заголовочного файла <code>.h</code> в <code>Unreal</code>.</p>
+<h3 id="_10">Создание модуля вручную</h3>
+<blockquote>
+<p><em>Этот материал является дополнением, я написал его уже после того, как закончил статью. Мне показалось, что статья без него не является полной.</em>
+Давайте, ради спортивного интереса и дополнительных знаний, создадим модуль вручную.</p>
+</blockquote>
+<h4 id="_11">Создаем иерархию файлов</h4>
+<p>Для начала делаем директорию с названием модуля в папке <code>/Sources</code> проекта.</p>
+<p>Модуль у нас будет называться <code>HandmadeModule</code>.</p>
+<p><a class="glightbox" href="../images/e6aa9f6c0f33fbd1a2cd70102d7afeea.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e6aa9f6c0f33fbd1a2cd70102d7afeea.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e6aa9f6c0f33fbd1a2cd70102d7afeea.png" /></a></p>
+<p>Заходим в созданную папку и добавляем текстовый файл <code>HandmadeModule.build.cs</code>.</p>
+<p><a class="glightbox" href="../images/3696ce567b212f94b52647925660e44c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3696ce567b212f94b52647925660e44c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3696ce567b212f94b52647925660e44c.png" /></a></p>
+<p>В этот файл помещаем следующий код:
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">UnrealBuildTool</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">HandmadeModule</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ModuleRules</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">HandmadeModule</span><span class="p">(</span><span class="n">ReadOnlyTargetRules</span><span class="w"> </span><span class="n">Target</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">base</span><span class="p">(</span><span class="n">Target</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PCHUsage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCHUsageMode</span><span class="p">.</span><span class="n">UseExplicitOrSharedPCHs</span><span class="p">;</span>
+<span class="w">        </span><span class="n">PublicDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Core&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CoreUObject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Engine&quot;</span><span class="p">});</span>
+<span class="w">        </span><span class="n">PublicIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;HandmadeModule/Public&quot;</span><span class="p">});</span>
+<span class="w">        </span><span class="n">PrivateIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;HandmadeModule/Private&quot;</span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+Обратите внимание на строчки <code>HandmadeModule</code> внутри кода. Им соответствует конструктор класса, а так-же сам класс. Если ваш модуль имеет другое название - замените эти строчки.</p>
+<h4 id="_12">Добавляем конструктор модуля</h4>
+<p>Теперь создаем две папки <code>Public</code> и <code>Private</code>.</p>
+<p><a class="glightbox" href="../images/77e53713be9b801d3cf0b7a4f04103d4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="77e53713be9b801d3cf0b7a4f04103d4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/77e53713be9b801d3cf0b7a4f04103d4.png" /></a></p>
+<p>В папке <code>Public</code> создаем основной файл модуля, с названием <code>HandmadeModule.h</code>.</p>
+<p><a class="glightbox" href="../images/16024bf6826f6ae5c60d1067f44864bc.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="16024bf6826f6ae5c60d1067f44864bc.png" auto_="auto;" display="block;" margin:="margin:" src="../images/16024bf6826f6ae5c60d1067f44864bc.png" /></a></p>
+<p>С таким содержимым:
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Modules/ModuleManager.h&quot;</span>
+<span class="n">DECLARE_LOG_CATEGORY_EXTERN</span><span class="p">(</span><span class="n">HandmadeModule</span><span class="p">,</span><span class="w"> </span><span class="n">All</span><span class="p">,</span><span class="w"> </span><span class="n">All</span><span class="p">);</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FHandmadeModule</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IModuleInterface</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="cm">/* Called when the module is loaded */</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">StartupModule</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/* Called when the module is unloaded */</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ShutdownModule</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+(Замените в коде строки <code>HandmadeModule</code> на свое название модуля, при необходимости.)
+Теперь в папке <code>Private</code> создаем файл <code>HandmadeModule.cpp</code>.</p>
+<p><a class="glightbox" href="../images/ef292d4a07e291972119bfa39007b3de.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ef292d4a07e291972119bfa39007b3de.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ef292d4a07e291972119bfa39007b3de.png" /></a></p>
+<p>И помещаем туда такой код:
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;HandmadeModule.h&quot;</span>
+<span class="n">DEFINE_LOG_CATEGORY</span><span class="p">(</span><span class="n">HandmadeModule</span><span class="p">);</span>
+<span class="cp">#define LOCTEXT_NAMESPACE &quot;FHandmadeModule&quot;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">FHandmadeModule::StartupModule</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">HandmadeModule</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;HandmadeModule module has been loaded&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">FHandmadeModule::ShutdownModule</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">HandmadeModule</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;HandmadeModule module has been unloaded&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="cp">#undef LOCTEXT_NAMESPACE</span>
+<span class="n">IMPLEMENT_MODULE</span><span class="p">(</span><span class="n">FHandmadeModule</span><span class="p">,</span><span class="w"> </span><span class="n">HandmadeModule</span><span class="p">)</span>
+</code></pre></div></p>
+<h4 id="_13">Добавляем модуль в систему  сборки</h4>
+<p>Теперь открываем файлы <code>.target.cs</code> в папке <code>Source</code>.</p>
+<p><a class="glightbox" href="../images/7864bd63732f4602f30460091ee469a0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7864bd63732f4602f30460091ee469a0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7864bd63732f4602f30460091ee469a0.png" /></a></p>
+<p>Добавляем наш модуль в систему сборки. В оба файла.</p>
+<p><a class="glightbox" href="../images/0fe1594066d24eb821d67124ed24d9eb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0fe1594066d24eb821d67124ed24d9eb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0fe1594066d24eb821d67124ed24d9eb.png" /></a></p>
+<p><a class="glightbox" href="../images/9b03b0496880def8e3228a598300f0b2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9b03b0496880def8e3228a598300f0b2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9b03b0496880def8e3228a598300f0b2.png" /></a></p>
+<h4 id="project">Регистрируем модуль в файле <code>.project</code></h4>
+<p>Модуль надо зарегистрировать. Для этого открываем файл <code>.uproject</code> в корне проекта.</p>
+<p><a class="glightbox" href="../images/0a9992967dd45b04e6c7456117f4d624.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0a9992967dd45b04e6c7456117f4d624.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0a9992967dd45b04e6c7456117f4d624.png" /></a></p>
+<p>В секцию <code>Modules</code> вписываем это:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HandmadeModule&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Runtime&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;LoadingPhase&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;AdditionalDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;Engine&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">},</span>
+</code></pre></div>
+Чтобы было так:</p>
+<p><a class="glightbox" href="../images/1b8933adc8af54d10a656f58a73175c4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1b8933adc8af54d10a656f58a73175c4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1b8933adc8af54d10a656f58a73175c4.png" /></a></p>
+<p>Модуль готов. Чтобы скомпилировать все это дело и загрузить - сначала закройте движок, если он у вас открыт. Удалите папки <code>Intermediate</code> и <code>Binaries</code>. Запустите движок.</p>
+<p>Перед вами появится такое сообщение, обратите внмиание на строчку <code>HandmadeModule</code>. Наш модуль подключен и будет собран системой.</p>
+<p><a class="glightbox" href="../images/b4ca2c66896b41cdd086fa0addec117f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b4ca2c66896b41cdd086fa0addec117f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b4ca2c66896b41cdd086fa0addec117f.png" /></a></p>
+<p>Ждите пока пройдет компиляция.</p>
+<p>Если все прошло успешно идем в <code>Tools-&gt;Refresh Visual Studio 2022 Project</code>.</p>
+<p><a class="glightbox" href="../images/900cc156c060851187d021b3e5769a4a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="900cc156c060851187d021b3e5769a4a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/900cc156c060851187d021b3e5769a4a.png" /></a></p>
+<p>Теперь можно попробовать добавить в новый модуль класс из движка. Жмем <code>New C++ Class</code>.</p>
+<p><a class="glightbox" href="../images/efefd81b5dee99bb66a8c9d8be8246d8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="efefd81b5dee99bb66a8c9d8be8246d8.png" auto_="auto;" display="block;" margin:="margin:" src="../images/efefd81b5dee99bb66a8c9d8be8246d8.png" /></a></p>
+<p>Как вы видите, возможность добавить класс внутрь модуля появилась в диалоге.</p>
+<h2 id="unrealheadertool-generatedh-reflection-system"><code>UnrealHeaderTool</code>, <code>generated.h</code> и <code>Reflection System</code></h2>
+<p>Если сейчас в созданном нами классе <code>Actor'а</code> открыть заголовочный файл <code>ModuleTestActor.h</code>, то, среди прочего, мы увидим такую строчку:
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ModuleTestActor.generated.h&quot;</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/dd04b6494be6836d4ae5a25fda9e695e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="dd04b6494be6836d4ae5a25fda9e695e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/dd04b6494be6836d4ae5a25fda9e695e.png" /></a></p>
+<h3 id="generatedh"><code>.generated.h</code></h3>
+<p>Подключаемый файл <code>.generated.h</code> генерируется автоматически системой, под названием <code>UnrealHeaderTool</code>.
+Генерируется он всякий раз при компиляции проекта для каждого файла, в котором используются макросы <code>reflection system</code>, а именно: <code>UCLASS, UPROPERTY, USTRUCT</code> и другие…
+Содержимое сгенерированного файла можно просмотреть. Откройте папку проекта по пути <code>/Intermediate/Build/Win64/UnrealEditor/Inc/TestModule/UHT</code>. Эта папка относится к <code>UHT</code> и в нее складываются все файлы, генерируемые этой системой для текущего проекта.</p>
+<p><a class="glightbox" href="../images/e62d57876942ea28457ddd66819b943d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e62d57876942ea28457ddd66819b943d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e62d57876942ea28457ddd66819b943d.png" /></a></p>
+<p>Вы можете сгенерировать такой файл для любого класса, в котором применяется <code>reflection</code>, то есть отражение <code>с++</code> кода в <code>blueprint</code>.
+Давайте создадим в папке проекта пустой текстовый файл <code>TestGFile.h</code>, прямо из проводника.</p>
+<p><a class="glightbox" href="../images/c8e6595c44f6fdbaa85bae1112de43f3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c8e6595c44f6fdbaa85bae1112de43f3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c8e6595c44f6fdbaa85bae1112de43f3.png" /></a></p>
+<p>Необходимо обновить проект <code>Tools-&gt;Refresh Visual Studio 2022 Project</code>, чтобы файл появился в Visual Studio.</p>
+<p><a class="glightbox" href="../images/108a85d69644d2cd76385b414e54c596.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="108a85d69644d2cd76385b414e54c596.png" auto_="auto;" display="block;" margin:="margin:" src="../images/108a85d69644d2cd76385b414e54c596.png" /></a></p>
+<p>В файл поместите простой код:
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="c1">// UHT</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TestGFile.generated.h&quot;</span>
+<span class="n">UCLASS</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TESTMODULE_API</span><span class="w"> </span><span class="n">UTestGFile</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UObject</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">//public:</span>
+<span class="p">};</span>
+</code></pre></div>
+Если скомпилировать код, то файл <code>TestGFile.generated.h</code> автоматически сгенерируется в папке <code>/Intermediate/Build/Win64/UnrealEditor/Inc/TestModule/UHT</code>.</p>
+<p><a class="glightbox" href="../images/493f70c4228e2744fd5129a7a7116853.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="493f70c4228e2744fd5129a7a7116853.png" auto_="auto;" display="block;" margin:="margin:" src="../images/493f70c4228e2744fd5129a7a7116853.png" /></a></p>
+<h3 id="unrealheadertool"><code>UnrealHeaderTool</code></h3>
+<p>Исходники <code>UnrealHeaderTool</code>, далее просто <code>UHT</code>, можно найти в папке <code>Programs</code> движка.</p>
+<p><a class="glightbox" href="../images/6fa907cef8227270d7b4a5fe7a6343a2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6fa907cef8227270d7b4a5fe7a6343a2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6fa907cef8227270d7b4a5fe7a6343a2.png" /></a></p>
+<p>Внутри вы можете найти файл, отвечающий за генерацию кода - <code>CodeGenerator.cpp</code>.</p>
+<p><a class="glightbox" href="../images/1aab20091251c2bc9f121e8b8172c187.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1aab20091251c2bc9f121e8b8172c187.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1aab20091251c2bc9f121e8b8172c187.png" /></a></p>
+<p>Этот файл генерируется лишь для классов, в которых так или иначе используются макросы <code>Reflection system</code>. К примеру: <code>UCLASS(), UOBJECT(), GENERATED_BODY()</code> и так далее.</p>
+<p>Полный список макросов вы можете найти в файле <code>Runtime -&gt; CoreUObject -&gt; Public -&gt; UObject -&gt; ObjectMacros.h</code>.</p>
+<p><a class="glightbox" href="../images/9c136a42a664b0bd234eeb08598f2fd7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9c136a42a664b0bd234eeb08598f2fd7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9c136a42a664b0bd234eeb08598f2fd7.png" /></a></p>
+<p>Но если вы откроете указанный файл, то увидите, что в теле макросов ничего нет.</p>
+<p>Обратите внимание: код <code>UPROPERTY(...)</code> задан как пустой макрос с тремя точками внутри. Потому что реальный код этого макроса генерируется системой <code>UHT</code> индивидуально для нужных файлов.</p>
+<h3 id="reflection-system_1">Пример использования <code>Reflection System</code></h3>
+<p>В качестве примера использования <code>RS</code> мы можем рассмотреть взаимодействие <code>с++</code> с <code>blueprint</code>, написав небольшой тестовый код.</p>
+<p>Поскольку у нас уже есть класс <code>ModuleTestActor.h</code>, то с ним мы и будем работать.</p>
+<p>Откройте его заголовок и добавьте такой код после конструктора:
+<div class="highlight"><pre><span></span><code><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ExposedVariables&quot;</span><span class="p">)</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">SomeVariable</span><span class="p">;</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/e6d10331f24c448668fb6859a52d717a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e6d10331f24c448668fb6859a52d717a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e6d10331f24c448668fb6859a52d717a.png" /></a></p>
+<p>Если теперь скомпилировать код и посмотреть на наш класс <code>ModuleTestActor</code> на уровне, можно будет увидеть среди его настроек и параметр <code>SomeVariable</code>, который появился там благодаря макросу <code>UPROPERTY</code> и <code>reflection system</code>.</p>
+<p><a class="glightbox" href="../images/8d36848420e806d9378acabd016d2fd0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="8d36848420e806d9378acabd016d2fd0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/8d36848420e806d9378acabd016d2fd0.png" /></a></p>
+<p>Итоговый код класса:
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameFramework/Actor.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ModuleTestActor.generated.h&quot;</span>
+<span class="n">UCLASS</span><span class="p">()</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TESTMODULE_API</span><span class="w"> </span><span class="n">AModuleTestActor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">AActor</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Sets default values for this actor&#39;s properties</span>
+<span class="w">    </span><span class="n">AModuleTestActor</span><span class="p">();</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ExposedVariables&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SomeVariable</span><span class="p">;</span>
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Called when the game starts or when spawned</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">BeginPlay</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Called every frame</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">Tick</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/de18eb596f3a0ab322ac7ed5c4c92d51.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="de18eb596f3a0ab322ac7ed5c4c92d51.png" auto_="auto;" display="block;" margin:="margin:" src="../images/de18eb596f3a0ab322ac7ed5c4c92d51.png" /></a></p>
+<p>Давайте посмотрим, какой код был сгенерирован <code>UHT</code> для нашего класса.</p>
+<p>Идем в папку <code>Intermediate\Build\Win64\UnrealEditor\Inc\TestModule\UHT</code> и открываем файл <code>MModuleTestActor.gen.cpp</code>. Он достаточно большой, поэтому я приведу лишь изображение с отрывком содержимого.</p>
+<p><a class="glightbox" href="../images/2808a4e51f21a756aaeabdb1fa6157fb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2808a4e51f21a756aaeabdb1fa6157fb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2808a4e51f21a756aaeabdb1fa6157fb.png" /></a></p>
+<h2 id="unreal-unreal-build-tool">Система сборки <code>Unreal</code> - <code>Unreal Build Tool</code></h2>
+<p>Unreal Engine использует собственную систему сборки - <a href="https://docs.unrealengine.com/4.26/en-US/ProductionPipelines/BuildTools/UnrealBuildTool/">Unreal Build Tool</a>, написанную на <code>C#</code>.</p>
+<h3 id="ubt">Исходные файлы <code>UBT</code></h3>
+<p>Исходные файлы <code>UBT</code> находятся в папке <code>Programs</code> движка, правда из <code>SolutionExplorer</code> найти ее не получится.</p>
+<p><a class="glightbox" href="../images/1bb3a8da31ab18c1e831d0a083b96dab.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1bb3a8da31ab18c1e831d0a083b96dab.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1bb3a8da31ab18c1e831d0a083b96dab.png" /></a></p>
+<p>Доступ к исходникам <code>Unreal Build Tool</code> возможен, если открыть папку <code>Programs</code>, в директории движка обычным файловым менеджером.</p>
+<p><a class="glightbox" href="../images/3a937dcd5ccb1a7877533d6704827008.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3a937dcd5ccb1a7877533d6704827008.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3a937dcd5ccb1a7877533d6704827008.png" /></a></p>
+<p>Внутри папки <code>Programs / UnrealBuildTool</code>, в подпапке <code>Configuration</code> можно найти файлы, в которых заданы основные инструкции системы. В частности, файл <code>ModuleRules.cs</code>, с настройками сборщика модулей.</p>
+<p 0="0" align="center;" auto_="auto;" display="block;" margin:="margin:"><a class="glightbox" href="../images/c7cb9422672d54da8cc5b244634e4075.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c7cb9422672d54da8cc5b244634e4075.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c7cb9422672d54da8cc5b244634e4075.png" /></a></p>
+<p>Внутри этого файла находятся абсолютно все актуальные настройки для сборщика модулей, точнее для файлов <code>.build.cs</code> этого самого сборщика.</p>
+<p><a class="glightbox" href="../images/1d30c56b74a7cdda1ea97254e40405bf.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1d30c56b74a7cdda1ea97254e40405bf.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1d30c56b74a7cdda1ea97254e40405bf.png" /></a></p>
+<p>Вместе с пояснениями и комментариями.</p>
+<p 0="0" align="center;" auto_="auto;" display="block;" margin:="margin:"><a class="glightbox" href="../images/c7cb9422672d54da8cc5b244634e4075.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c7cb9422672d54da8cc5b244634e4075.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c7cb9422672d54da8cc5b244634e4075.png" /></a></p>
+<h3 id="_14">Конфигурация сборщика модулей</h3>
+<p>Файлы сборщика модулей имеют расширение <code>.build.cs</code>. Здесь указываются зависимости модулей.</p>
+<p><a class="glightbox" href="../images/661f86d78ec46f70c801b34029779305.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="661f86d78ec46f70c801b34029779305.png" auto_="auto;" display="block;" margin:="margin:" src="../images/661f86d78ec46f70c801b34029779305.png" /></a></p>
+<p>Если посмотреть на содержимое файла <code>TestModule.build.cs</code>, то внутри мы обнаружим <code>c#</code> класс. Именно тут задаются названия связанных модулей, к файлам которых мы будем делать <code>#include</code> из собственного кода.</p>
+<p><a class="glightbox" href="../images/715c47f214d2ae5e8a1a0c2b52ca2b5e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="715c47f214d2ae5e8a1a0c2b52ca2b5e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/715c47f214d2ae5e8a1a0c2b52ca2b5e.png" /></a></p>
+<p>Весь список доступных методов и команд для сборщика модулей можно найти в <a href="https://docs.unrealengine.com/5.1/en-US/module-properties-in-unreal-engine/">документации</a>.</p>
+<h4 id="precompiled-headers-pch">Precompiled Headers (PCH)</h4>
+<p>Рассмотрим опцию:
+<div class="highlight"><pre><span></span><code><span class="n">PCHUsage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCHUsageMode</span><span class="p">.</span><span class="n">UseExplicitOrSharedPCHs</span>
+</code></pre></div>
+Данная инструкция ускоряет компиляцию модуля, за счет предкомпиляции заголовочных файлов.</p>
+<p>Рассмотрим процесс компиляции.</p>
+<p>При компиляции проекта, препроцессор <code>C++</code>, прибавляет исходный код файлов, переданных через <code>#include</code>, к исходному коду основного файла.</p>
+<p>Если мы выбираем <code>PredcompiledHeaders</code>, то сборщик движка будет анализировать наши исходные файлы на наличие инструкций <code>#include</code>, а потом компилировать то, что найдет, замещая ссылки на чистые <code>#include</code>, ссылками на предкомпилированные библиотеки. Что сокращает время компиляции кода файла, потому что объем данных, необходимый для компиляции, сокращается.</p>
+<p>Рекомендую ознакомиться с тем, как происходит процесс сборки файла в компиряторе <code>с++</code>, с применением предкомилированных заголовков, прочитав <a href="https://stackoverflow.com/a/497067/2574125">пост со Stackowerflow</a>.
+Давайте пройдемся по каждому режиму <code>PCH</code>, благо их тут мало.
++ <code>NoPCHs</code> - все заголовки, подклюенные в <code>#include</code> будут добавлены в содержимое файлов модуля перед его сборкой и собраны вместе с модулем, даже если до этого эти заголовки уже были скомпилированы для других модулей.
++ <code>NoSharedPCHs</code> - предкомпилировать заголовки, подключенные в <code>#include</code> эксклюзивно для этого модуля. То есть если эти заголовки уже были скомпилированы для других модулей - не  подключать готовые версии. Скомпилировать эксклюзивно для этого модуля и использовать. Например если в модуле есть два класса <code>Actor</code>, ссылающихся на модуль <code>Core</code>, то для них этот модуль будет скомпилирован и использован. При этом если модуль <code>Core</code> уже был собран для других модулей движка - его скомпилированную shared версию система для текущего  модуля использовать не будет. Она проведет компиляцию эксклюзивно для нашего модуля.
++ <code>UseSharedPCHs</code> - если зависимость из <code>#include</code> уже скомпилирована для других модулей - связать скомпилированную библиотеку  с нашим модулем при сборке.
++ <code>UseExplicitOrSharedPCHs</code> - это значение по умолчанию. Если зависимость из заголовка, подключенного через <code>#include</code> находится в массиве <code>PublicDependencyModuleNames</code> или <code>PrivateDependencyModuleNames</code> - использовать ее предкомпилированную версию.</p>
+<h4 id="public-private-dependencies"><code>Public</code> и <code>Private</code> Dependencies</h4>
+<p>Обратите внимание на строку:
+<div class="highlight"><pre><span></span><code><span class="n">PublicDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Core&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CoreUObject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Engine&quot;</span><span class="p">});</span>
+</code></pre></div>
+Она отвечает за добавление зависимостей от других модулей.</p>
+<p>Есть две команды добавления зависимостей от других модулей, это: <code>PublicDependencyModuleNames</code> и <code>PrivateDependencyModuleNames</code>.
+Подключив сторонний модуль как зависимость через команду <code>*DependencyModuleNames</code> мы открываем себе возможность подключать его заголовочные файлы в своем собсвтенном модуле используя инструкцию <code>#include</code>.
+<div class="highlight"><pre><span></span><code><span class="n">PublicDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Core&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CoreUObject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Engine&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;InputCore&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EnhancedInput&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;GameplayAbilities&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;GameplayTasks&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;GameFeatures&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;GameplayTags&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;Slate&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;SlateCore&quot;</span>
+<span class="p">});</span>
+</code></pre></div>
+Например класс <code>ModuleTestActor</code>, созданный нами в предыдущем шаге, содержит в себе две инструкции <code>#include</code>, относящиеся к сторонним модулям.</p>
+<p><a class="glightbox" href="../images/b170b51c6a182ead6922a4d29836069e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b170b51c6a182ead6922a4d29836069e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b170b51c6a182ead6922a4d29836069e.png" /></a></p>
+<p>В данном случае файл <code>CoreMinimal.h</code> является частью модуля <code>Core</code>, файл <code>GameFramework/Actor.h</code> является частью модуля <code>Engine</code> Оба они подключены как <code>PublicDependancy</code>, то есть как публичные зависимости.</p>
+<p>Если бы я захотел использовать в своем проекте виджеты <code>Slate</code>, которых мы коснемся чуть пожже, я бы включил в зависимости следующие модули: <code>Slate</code> и <code>SlateCore</code>.</p>
+<p><a class="glightbox" href="../images/823cafb5efe994839d843b0e848eb7eb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="823cafb5efe994839d843b0e848eb7eb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/823cafb5efe994839d843b0e848eb7eb.png" /></a></p>
+<p>Они оба так-же находятся в папке движка. Подключение модулей в качестве зависимостей позволило бы мне делать <code>#include</code> к файлам <code>SlateCore/Widgets</code>, например к файлу <code>SWidget.h</code>, для создания собственных виджетов на<code>c++</code></p>
+<p><a class="glightbox" href="../images/1107762ab5b46490df5b1cb5ab76517b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1107762ab5b46490df5b1cb5ab76517b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1107762ab5b46490df5b1cb5ab76517b.png" /></a></p>
+<p>В чем разница между параметрами <code>PublicDependencyModuleNames</code> и <code>PrivateDependencyModuleNames</code>?
+У модулей есть система наследования или ее подобие. Те кто знаком с нормальным ООП понимают о чем речь.</p>
+<p>Зависимости, перечисленные в массиве <code>PublicDependencyModuleNames</code> наследуются зависимыми модулями.</p>
+<p>Зависимости, которые перечислены в <code>PrivateDependencyModuleNames</code> не наследуются зависимыми модулями.</p>
+<h4 id="publicincludepaths-privateincludepaths"><code>PublicIncludePaths</code> и <code>PrivateIncludePaths</code></h4>
+<p>Используя данные параметры, разработчик может определить, к каким файлам у зависимых модулей будет доступ, а к каким - не будет.
+<div class="highlight"><pre><span></span><code><span class="n">PublicIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;TestModule/Public&quot;</span><span class="p">});</span>
+<span class="n">PrivateIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;TestModule/Private&quot;</span><span class="p">});</span>
+</code></pre></div>
+Под зависимыми модулями имеются в виду модули, которые используют текущий модуль как зависимость (да, тавтология, а что вы хотели?).
+По умолчанию все, что находится в папке <code>/Public</code> доступно зависимым модулям для использования в инструкциях <code>#include</code>.
+Если вам надо выделить какую-то дополнительную папку для этих целей - можете включить ее относительный путь в массив.</p>
+<h3 id="_15">Конфигурация сборщика проекта</h3>
+<p>Файлы, отвечающие за сборку проекта имеют расширение <code>.Target.cs</code>. Их документацию вы тоже можете найти на <a href="https://docs.unrealengine.com/4.26/en-US/ProductionPipelines/BuildTools/UnrealBuildTool/TargetFiles/">официальном сайте</a>.
+Рассмотрим файл сборщика из корня проекта. У меня это <code>SubsystemTest.Target.cs</code>.</p>
+<p><a class="glightbox" href="../images/bb340d929dd18a753e06f73f169ba72a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="bb340d929dd18a753e06f73f169ba72a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/bb340d929dd18a753e06f73f169ba72a.png" /></a></p>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Fill out your copyright notice in the Description page of Project Settings.</span>
+<span class="k">using</span><span class="w"> </span><span class="n">UnrealBuildTool</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">Generic</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SubsystemTestTarget</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">TargetRules</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SubsystemTestTarget</span><span class="p">(</span><span class="n">TargetInfo</span><span class="w"> </span><span class="n">Target</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">base</span><span class="p">(</span><span class="n">Target</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TargetType</span><span class="p">.</span><span class="n">Game</span><span class="p">;</span>
+<span class="w">        </span><span class="n">DefaultBuildSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BuildSettingsVersion</span><span class="p">.</span><span class="n">V2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ExtraModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;SubsystemTest&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">);</span>
+<span class="w">        </span><span class="n">ExtraModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;TestModule&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="n">ExtraModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;CharactersModule&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+В этом файле вы должны перечислить все модули, которые будут компилироваться вместе с текущим проектом. За это отвечает параметр <code>ExtraModuleNames</code>.
+Разберем остальные параметры сборщика.</p>
+<h4 id="type">Параметр <code>Type</code></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TargetType</span><span class="p">.</span><span class="n">Game</span><span class="p">;</span>
+</code></pre></div>
+Отвечает за цель сборки.
+<code>UnrealEngine</code> - это не только игровой движок. Его можно использовать для разных целей. Например - на нем можно написать игровой сервер, который будет запускаться в виде консольного приложения и не будет иметь <code>3D</code> составляющей вообще.</p>
+<p>Настройка <code>Type</code>  позволяет указать, как именно должен быть собран конкретный проект.</p>
+<p>Возможные варианты:</p>
+<ol>
+<li><code>Game</code> - Стандартный вариант сборки. Содержит сетевую составляющую, рассчитанную на  парралельный кооператив.</li>
+<li><code>Client</code> - То-же самое, что и <code>Game</code>, но без серверной сетевой составляющей для кооператива.</li>
+<li><code>Server</code> - В этом варианте сборки движок будет представлять из себя консольное приложение, работающее как игровой сервер, к которому подключаются клиенты.</li>
+<li><code>Editor</code> - Вариант сборки, в котором линкуются <code>editor</code> модули.</li>
+<li><code>Program</code> - для программ, собранных на <code>Unreal Engine</code>. Хоть это и игровой движок, делать в нем нормальные утилиты и программы тоже можно.</li>
+</ol>
+<h4 id="defaultbuildsettings">Параметр <code>DefaultBuildSettings</code></h4>
+<p>Данный параметр отвечает за выбор версии системы сборки:
+<div class="highlight"><pre><span></span><code><span class="n">DefaultBuildSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BuildSettingsVersion</span><span class="p">.</span><span class="n">V2</span><span class="p">;</span>
+</code></pre></div>
+Это стандартный параметр для любой системы сборки, в <code>CMAKE</code> вы его тоже выставляете, если кто помнит.</p>
+<p>Он нужен, чтобы система сборки могла определить набор доступных пользователю функций (в зависимости от версии они могут отличаться). Этот параметр вообще трогать не надо.</p>
+<h2 id="_16">Как добавлять модули в систему сборки</h2>
+<p>Предположим, мы бы хотели использовать в нашем классе переменную типа <code>FKey</code>, например так:
+<div class="highlight"><pre><span></span><code><span class="c1">// Default Key</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Input&quot;</span><span class="p">)</span>
+<span class="n">FKey</span><span class="w"> </span><span class="n">KeyMapping</span><span class="p">;</span>
+</code></pre></div>
+Как нам узнать, какие заголовочные файлы надо подключить в <code>#include</code> и какие модули надо добавить в <code>.build.cs</code>, чтобы тип <code>FKey</code> был доступен для использования?</p>
+<h3 id="_17">Ищем информацию о сборке в документации</h3>
+<p>Самое простое - найти документацию по классу <code>FKey</code> <a href="https://docs.unrealengine.com/4.27/en-US/API/Runtime/InputCore/FKey/">на официальном сайте</a>. Открыв страницу документации для структуры <code>FKey</code> вы увидите таблицу с инструкциями для подключения.</p>
+<p><a class="glightbox" href="../images/b5a3fc4ec0dc124f8fa881e2712480f9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b5a3fc4ec0dc124f8fa881e2712480f9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b5a3fc4ec0dc124f8fa881e2712480f9.png" /></a></p>
+<p>Колонка <code>Module</code>, очевидно, идет в файл сборщика <code>.build.cs</code>. Колонка <code>Include</code> идет в оператор <code>#include</code>.</p>
+<h3 id="_18">Самостоятельо дополняем файл сборки</h3>
+<p>Что делать, если на официальном сайте документации ваш класс еще не описан или никогда не будет описан, потому что это класс стороннего плагина, который вы купили на маркетплейсе?
+В этом случае надо вручную выяснить в каком именно файле находится выбранный вами тип данных. Тут нам поможет <code>Intellisense</code>. В <code>Visual Studio</code> зажимаем клавишу <code>Ctrl</code> и щелкаем на названии типа.</p>
+<p><a class="glightbox" href="../images/e6c285fe273d0cbc9bb3e8b53e7c9387.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e6c285fe273d0cbc9bb3e8b53e7c9387.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e6c285fe273d0cbc9bb3e8b53e7c9387.png" /></a></p>
+<p>Почти сразу, или через небольшой промежуток времени, <code>Visual Studio</code> откроет файл, в котором реализован выбранный тип. В моем случае это <code>FKey</code>.</p>
+<p><a class="glightbox" href="../images/a69209ed7f9fcc7d349f3ecff5c8ee69.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a69209ed7f9fcc7d349f3ecff5c8ee69.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a69209ed7f9fcc7d349f3ecff5c8ee69.png" /></a></p>
+<p>Щелкаем на заголовке файла правой кнопкой мыши.</p>
+<p><a class="glightbox" href="../images/5a31902c33f757013ee9662c0a9eded7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5a31902c33f757013ee9662c0a9eded7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5a31902c33f757013ee9662c0a9eded7.png" /></a></p>
+<p>Выбираем пункт - <code>CopyFullPath</code>. Или просто наводим мышь на заголовок файла и смотрим на полученный путь до файла внутри модуля.</p>
+<p><a class="glightbox" href="../images/fde2ee0c5b2cbf7b0be34b30c7386879.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fde2ee0c5b2cbf7b0be34b30c7386879.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fde2ee0c5b2cbf7b0be34b30c7386879.png" /></a></p>
+<p>В моем случае путь выглядит так:
+<div class="highlight"><pre><span></span><code><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">GameEngine</span><span class="err">\</span><span class="n">UE_5</span><span class="mf">.1</span><span class="err">\</span><span class="n">Engine</span><span class="err">\</span><span class="n">Source</span><span class="err">\</span><span class="n">Runtime</span><span class="err">\</span><span class="n">InputCore</span><span class="err">\</span><span class="n">Classes</span><span class="err">\</span><span class="n">InputCoreTypes</span><span class="p">.</span><span class="n">h</span>
+</code></pre></div>
+Модули в <code>Unreal Engine</code> делятся на три категории - <code>Runtime</code>, <code>Developer</code> и <code>Editor</code>.
+Проанализировав путь, мы можем понять, что модуль с файлом <code>InputCoreTypes.h</code> называется <code>InputCore</code> и находтся он в папке <code>Runtime</code>.
+Соответственно, в зависимости надо добавить строчку <code>InputCore</code>, а в <code>#include</code> - <code>InputCoreTypes.h</code>.
+Я часто пользуюсь этим методом.</p>
+<h3 id="_19">Итог</h3>
+<p>Таким образом для использования структуры <code>FKey</code> в своем проекте надо добавить в файл <code>.build.cs</code> следующую строку:
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;InputCore&quot;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+А в заголовочный файл <code>.h</code> следующую строку:
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;InputCoreTypes.h&quot;</span>
+</code></pre></div></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            К началу
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      aftamat4ik
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

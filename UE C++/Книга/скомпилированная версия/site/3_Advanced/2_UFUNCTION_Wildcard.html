@@ -1,0 +1,2431 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Справочник Unreal Engine">
+      
+      
+        <meta name="author" content="aftamat4ik">
+      
+      
+      
+        <link rel="prev" href="1_HUD.html">
+      
+      
+        <link rel="next" href="3_Slate%20Runtime.html">
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
+    
+    
+      
+        <title>UFUNCTION Wildcard - Справочник Unreal Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ufunction-wildcard" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-header__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Справочник Unreal Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UFUNCTION Wildcard
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1_Basics/1_First_Project.html" class="md-tabs__link">
+          
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../2_Core/1_Delegates.html" class="md-tabs__link">
+          
+  
+  Ключевые системы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="1_HUD.html" class="md-tabs__link">
+          
+  
+  Продвинутая разработка
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-tabs__link">
+          
+  
+  Решение проблем
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../5_Tips/Change_Asset_Icons.html" class="md-tabs__link">
+          
+  
+  Советы
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-nav__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    Справочник Unreal Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Основы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Основы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/1_First_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/2_Engine_Introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/3_CPP_Recommendations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Рекомендации по написанию кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/4_SimplePlugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создание простейшего плагина для Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/5_Macroses_Reflection_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Макросы Reflection System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/6_Logging.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Печать информации в лог
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/7_Pointers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Указатели
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/8_ModernCpp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возможности современного c++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/9_Working_With_Strings.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа со строками
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/10_Timers_In_%D0%A1%2B%2B.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Таймеры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/11_Instances_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Доступ к различным сущностям
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Asserts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Asserts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Console Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ключевые системы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ключевые системы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/1_Delegates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/2_Components.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/3_SubObjects.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/4_Multithreading.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Многопоточность
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/5_Function_Libraries.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Библиотеки Функций для Blueprint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/6_Latent_And_Async_Actions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latent и Async Action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/7_Gameplay_Tags.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/8_DataAssets_AssetManager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с ассетами и данными
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/9_FileSystem.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/10_Anim_Instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anim Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/11_SubSystems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Подсистемы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/12.%20UObject%20Interface.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Interface или UInterface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Продвинутая разработка
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Продвинутая разработка
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_HUD.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HUD или Heads-up Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="2_UFUNCTION_Wildcard.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Базовые принципы системы
+  </a>
+  
+    <nav class="md-nav" aria-label="Базовые принципы системы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Секция параметров
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Секция вычислений
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Задаем значение "выходным" output пинам
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-value" class="md-nav__link">
+    return value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Упрощенный метод доступа к значениям в пинах
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Усложненный метод доступа к значениям в пинах
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Пины, передающие значение "по  ссылке"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wildcard" class="md-nav__link">
+    Wildcard массивы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wildcard-map" class="md-nav__link">
+    Wildcard Map
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_Slate%20Runtime.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slate Runtimе, введение в Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_UMG.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_K2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Registe_New_Asset_Type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_ACharacter_And_Enhanced%20Input.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACharacter и Enhanced Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_Gameplay_Ability_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Ability System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_Global_Data_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальнный доступ к данным
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_Global_Event_Bus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальная шина событий
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Решение проблем
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Решение проблем
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с кодировкой в LiveCoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/Reset_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Сброс (Reset) проекта
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/generatedh_Problems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с файлом .generated.h
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Советы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Советы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Change_Asset_Icons.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Asset Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Character_And_EnhancedInput.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character Boilerplate with Enhanced Input Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/DefaultToSelf_WorldContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DefaultToSelf WorldContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Different_UPROPERTY.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/GameInputMode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Изменение GameInputMode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Get_UScriptStruct_FromStruct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ::UScriptStruct из встроенной структуры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Input_Binding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События ввода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Iterate_TMap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterate TMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Read_Blueprint_Properties.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Чтение параметров Blueprint класса
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Return_UObject.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возвращение UObject по ссылке из функции
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Run_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Запуск консольных команд
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Screen_Size.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Размер экрана
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Slate_Snippets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Полезные сниппеты Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Spawn_Actors.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawn, призыв объектов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Time_Measuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Замер времени исполнения кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Trace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UEnum_To_String.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UEnum to FString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UObject_Base_Class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Base Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Variable_Type_Print_Template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Шаблон для печати типа переменной
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/struct_operator%3D%3D.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    struct и оператор ==
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Базовые принципы системы
+  </a>
+  
+    <nav class="md-nav" aria-label="Базовые принципы системы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Секция параметров
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Секция вычислений
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Задаем значение "выходным" output пинам
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-value" class="md-nav__link">
+    return value
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Упрощенный метод доступа к значениям в пинах
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Усложненный метод доступа к значениям в пинах
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Пины, передающие значение "по  ссылке"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wildcard" class="md-nav__link">
+    Wildcard массивы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wildcard-map" class="md-nav__link">
+    Wildcard Map
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ufunction-wildcard"><code>UFUNCTION Wildcard</code></h1>
+<p>В <code>Unreal Engine</code> есть возможность создавать функции с <code>Wildcard</code> пинами. Ключевой особенностью <code>Wildcard</code> пинов является возможность подводить к ним данные любого типа.</p>
+<p>В коде движка есть масса функций, которые используются <code>wildcard</code> пины. Чтобы их найти, нажмите <code>Ctrl + Shift + F</code> и вбейте в поле поиска ключевое слово модификатора -  <code>CustomThunk</code>.
+Найденные функции послужат отличным примером, для изучения <code>wildcard</code> пинов.</p>
+<p><a class="glightbox" href="../images/2070b91283be528aef44f8a7b21d4d09.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2070b91283be528aef44f8a7b21d4d09.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2070b91283be528aef44f8a7b21d4d09.png" /></a></p>
+<p>Важно помнить, что по этой теме в сети практически нет никакой информации. Есть лишь небольшая ветка на форуме - https://forums.unrealengine.com/t/how-to-implement-wildcard-pins-in-c/543008/2
+Все, что вы читаете в этой статье - результат моих экспериментов и изысканий на основе исходников движка.</p>
+<h2 id="_1">Базовые принципы системы</h2>
+<p>Для реализации собственной функции с <code>Wildcard</code> пином надо использовать модификатор <code>CustomThunk</code> в макросе <code>UPROPERTY</code>.
+<code>Wildcard</code> пины должны быть переданы в макрос в виде <code>meta</code>параметра <code>CustomStructureParam</code>.
+<div class="highlight"><pre><span></span><code><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">CustomThunk</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Custom Functions|Widcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CustomStructureParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WCPinForInt,WCPinForFloat,WCSummOutput&quot;</span><span class="p">))</span>
+</code></pre></div>
+Разделять аргументы <code>CustomStructureParam</code> между собой надо одной запятой <code>,</code> БЕЗ ПРОБЕЛА. Это важно.</p>
+<p>В качестве <code>wildcard</code> пина выступает аргумент функции типа <code>int&amp;</code>.
++ Используем <code>const int32&amp;</code> для входного параметра.
++ Используем  <code>int32&amp;</code> для выходного параметра.
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Wildcard as function input</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">CustomThunk</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Custom Functions|Widcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CustomStructureParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WCPinForInt,WCPinForFloat,WCSummOutput&quot;</span><span class="p">))</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">WildcardFunctionTest</span><span class="p">(</span><span class="n">FString</span><span class="w"> </span><span class="n">StringProperty</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCPinForInt</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCPinForFloat</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCSummOutput</span><span class="p">);</span>
+<span class="n">DECLARE_FUNCTION</span><span class="p">(</span><span class="n">execWildcardFunctionTest</span><span class="p">);</span>
+</code></pre></div>
+После тела функции необходимо добавить макрос <code>DECLARE_FUNCTION</code>. Данный макрос должен содержать название функции-реализации. Это название должно начинаться с ключевого слова <code>exec</code>, с маленькой буквы, за которым следует название самой функции. В моем случае это <code>execWildcardFunctionTest</code>.</p>
+<p><a class="glightbox" href="../images/fd0fe592b6399514e6582f451bec93fe.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fd0fe592b6399514e6582f451bec93fe.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fd0fe592b6399514e6582f451bec93fe.png" /></a></p>
+<p>Реализация <code>Wildcard</code> ноды создается в файле <code>.cpp</code>. Для этого надо использовать макрос <code>DEFINE_FUNCTION</code>. В этом макросе прописывается путь к методу, заданному через макрос <code>DECLARE_FUNCTION</code>. В моем случае это <code>UObjectTestClass::execWildcardFunctionTest</code>.
+Общий шаблон реализации выглядит так:
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Wildcard as function input</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">CustomThunk</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Custom Functions|Widcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CustomStructureParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WCPinForInt,WCPinForFloat,WCSummOutput&quot;</span><span class="p">))</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">WildcardFunctionTest</span><span class="p">(</span><span class="n">FString</span><span class="w"> </span><span class="n">StringProperty</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCPinForInt</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCPinForFloat</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCSummOutput</span><span class="p">);</span>
+<span class="n">DECLARE_FUNCTION</span><span class="p">(</span><span class="n">execWildcardFunctionTest</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// function with wildcad pins</span>
+<span class="n">DEFINE_FUNCTION</span><span class="p">(</span><span class="n">UObjectTestClass</span><span class="o">::</span><span class="n">execWildcardFunctionTest</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// properties section begin:</span>
+<span class="w">    </span><span class="c1">// Property order MATTERS!</span>
+<span class="w">    </span><span class="cm">/* retrive properties here */</span>
+<span class="w">    </span><span class="n">P_FINISH</span><span class="p">;</span><span class="w"> </span><span class="c1">// properties section end</span>
+<span class="w">    </span><span class="c1">// global values should be initialized before NATIVE section</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">bResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">P_NATIVE_BEGIN</span><span class="p">;</span>
+<span class="w">        </span><span class="cm">/* if you need some calculations - do them here */</span>
+<span class="w">    </span><span class="n">P_NATIVE_END</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Function Return Value</span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="kt">bool</span><span class="o">*</span><span class="p">)</span><span class="n">RESULT_PARAM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bResult</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="_2">Секция параметров</h3>
+<p>Секция параметров начинается сразу после заголовка функции, вплоть до макроса <code>P_FINISH</code>. В этой секции можно получить параметры функции, приведенные к указанному типу.</p>
+<p>Сделать это можно двумя способами.</p>
+<p>Первый способ получения параметров самый простой - макросом <code>P_GET_</code>. Макросов такого вида достаточно много, полный список можно найти в файле <code>\Runtime\CoreUObject\Public\UObject\ScriptMacros.h</code>.
+Использование:
+<div class="highlight"><pre><span></span><code><span class="n">P_GET_OBJECT</span><span class="p">(</span><span class="n">FString</span><span class="p">,</span><span class="w"> </span><span class="n">StringProperty</span><span class="p">);</span><span class="w"> </span><span class="c1">// FString is Class</span>
+<span class="n">P_GET_PROPERTY</span><span class="p">(</span><span class="n">FIntProperty</span><span class="p">,</span><span class="w"> </span><span class="n">IntValue</span><span class="p">);</span>
+<span class="n">P_GET_PROPERTY</span><span class="p">(</span><span class="n">FDoubleProperty</span><span class="p">,</span><span class="w"> </span><span class="n">FloatValue</span><span class="p">);</span>
+</code></pre></div>
+Второй способ получения параметров чуть сложнее. Надо двигать указатель в стеке параметров <code>Stack</code> вперед на 1 единицу до тех пор, пока все параметры не будут получены.
+<div class="highlight"><pre><span></span><code><span class="c1">// clear stack property values if any</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FIntProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1</span>
+<span class="c1">// get wildcard property value from stack</span>
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">IntPropValueContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">FIntProperty</span><span class="o">*</span><span class="w"> </span><span class="n">IntWCProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FIntProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="c1">// clear stack property values if any</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FDoubleProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1</span>
+<span class="c1">// get wildcard property value from stack</span>
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">FloatPropValueContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">FDoubleProperty</span><span class="o">*</span><span class="w"> </span><span class="n">FloatWCProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FDoubleProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="c1">// get return value wildcard pin</span>
+<span class="c1">// clear stack property values if any</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1, this is outbut pin, there is no value</span>
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ResultValueContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">FProperty</span><span class="o">*</span><span class="w"> </span><span class="n">ResultWCProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="n">P_FINISH</span><span class="p">;</span><span class="w"> </span><span class="c1">// properties section end</span>
+</code></pre></div>
+Возвращаемый параметр может быть получен только из стека.
+<div class="highlight"><pre><span></span><code><span class="c1">// get return value wildcard pin</span>
+<span class="c1">// clear stack property values if any</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1, this is outbut pin, there is no value</span>
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ResultValueContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">FProperty</span><span class="o">*</span><span class="w"> </span><span class="n">ResultWCProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="n">P_FINISH</span><span class="p">;</span><span class="w"> </span><span class="c1">// properties section end</span>
+</code></pre></div></p>
+<h3 id="_3">Секция вычислений</h3>
+<p>Вычисления логики внутри метода должны происходить между макросами <code>P_NATIVE_BEGIN</code>и <code>P_NATIVE_END</code>.
+Тут можно сложить полученные значения или присвоить пину какое либо значение.
+<div class="highlight"><pre><span></span><code><span class="c1">// global values should be initialized before NATIVE section</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">bResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="c1">// NATIVE section</span>
+<span class="n">P_NATIVE_BEGIN</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IntWCProp</span><span class="o">-&gt;</span><span class="n">GetPropertyValue</span><span class="p">(</span><span class="n">IntPropValuePtr</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">FloatWCProp</span><span class="o">-&gt;</span><span class="n">GetPropertyValue</span><span class="p">(</span><span class="n">FloatPropValuePtr</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">4.f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">bResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IntWCProp</span><span class="o">-&gt;</span><span class="n">GetPropertyValue</span><span class="p">(</span><span class="n">IntPropValuePtr</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">FMath</span><span class="o">::</span><span class="n">TruncToInt</span><span class="p">(</span><span class="n">FloatWCProp</span><span class="o">-&gt;</span><span class="n">GetPropertyValue</span><span class="p">(</span><span class="n">FloatPropValuePtr</span><span class="p">));</span>
+<span class="w">    </span><span class="n">ResultWCProp</span><span class="o">-&gt;</span><span class="n">CopySingleValueFromScriptVM</span><span class="p">(</span><span class="n">ResultValueAddr</span><span class="p">,</span><span class="o">&amp;</span><span class="n">res</span><span class="p">);</span>
+<span class="w">    </span><span class="cm">/* in you need some calculations - do them here */</span>
+<span class="n">P_NATIVE_END</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="output">Задаем значение "выходным" <code>output</code> пинам</h3>
+<p>Пин <code>WCSummOutput</code> является "выходным". Чтобы отправить на него значение суммы двух входных  пинов я использую метод <code>CopySingleValueFromScriptVM</code>.
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IntPropVal</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">FMath</span><span class="o">::</span><span class="n">TruncToInt</span><span class="p">(</span><span class="n">FloatPropVal</span><span class="p">);</span>
+<span class="n">ResultWCProp</span><span class="o">-&gt;</span><span class="n">CopySingleValueFromScriptVM</span><span class="p">(</span><span class="n">ResultValueContainer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">res</span><span class="p">);</span>
+</code></pre></div>
+Данный метод копирует значение памяти со второго аргумента на первый. Таким образом число, переданное на второй аргумент <code>Src</code>, копируется в первый аргумент <code>Dest</code>.</p>
+<p><a class="glightbox" href="../images/99bcd214482a530b2d0946daa4b54a7b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="99bcd214482a530b2d0946daa4b54a7b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/99bcd214482a530b2d0946daa4b54a7b.png" /></a></p>
+<p><a class="glightbox" href="../images/968b7b8d76db9ffda741fc2ba37275f6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="968b7b8d76db9ffda741fc2ba37275f6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/968b7b8d76db9ffda741fc2ba37275f6.png" /></a></p>
+<h3 id="return-value"><code>return value</code></h3>
+<p>Моя тестовая функция возвращает <code>bool</code>.
+Возвращаемое значение вычисляется  в секции <code>NATIVE</code> как параметр <code>bResult</code>. Далее значение должно быть передано макросу <code>RESULT_PARAM</code>, в самом конце функции.
+<div class="highlight"><pre><span></span><code><span class="c1">//...</span>
+<span class="c1">// global values should be initialized before NATIVE section</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">bResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="c1">// NATIVE section</span>
+<span class="n">P_NATIVE_BEGIN</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// get values from containers</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">IntPropVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IntWCProp</span><span class="o">-&gt;</span><span class="n">GetPropertyValue</span><span class="p">(</span><span class="n">IntPropValueContainer</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">FloatPropVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FloatWCProp</span><span class="o">-&gt;</span><span class="n">GetPropertyValue</span><span class="p">(</span><span class="n">FloatPropValueContainer</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IntPropVal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">FloatPropVal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">4.f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">bResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IntPropVal</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">FMath</span><span class="o">::</span><span class="n">TruncToInt</span><span class="p">(</span><span class="n">FloatPropVal</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ResultWCProp</span><span class="o">-&gt;</span><span class="n">CopySingleValueFromScriptVM</span><span class="p">(</span><span class="n">ResultValueContainer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">res</span><span class="p">);</span>
+<span class="w">    </span><span class="cm">/* in you need some calculations - do them here */</span>
+<span class="n">P_NATIVE_END</span><span class="p">;</span>
+<span class="c1">// Function Return Value</span>
+<span class="o">*</span><span class="p">(</span><span class="kt">bool</span><span class="o">*</span><span class="p">)</span><span class="n">RESULT_PARAM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bResult</span><span class="p">;</span>
+</code></pre></div></p>
+<h2 id="_4">Упрощенный метод доступа к значениям в пинах</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Wildcard as function input</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">CustomThunk</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Custom Functions|Widcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CustomStructureParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WCPinForInt,WCPinForFloat,WCSummOutput&quot;</span><span class="p">))</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">WildcardFunctionTest</span><span class="p">(</span><span class="n">FString</span><span class="w"> </span><span class="n">StringProperty</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCPinForInt</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCPinForFloat</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCSummOutput</span><span class="p">);</span>
+<span class="n">DECLARE_FUNCTION</span><span class="p">(</span><span class="n">execWildcardFunctionTest</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// function with wildcad pins</span>
+<span class="n">DEFINE_FUNCTION</span><span class="p">(</span><span class="n">UObjectTestClass</span><span class="o">::</span><span class="n">execWildcardFunctionTest</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// properties section begin:</span>
+<span class="w">    </span><span class="c1">// Property order MATTERS!</span>
+<span class="w">    </span><span class="c1">// function properties can be obtained this way:</span>
+<span class="w">    </span><span class="n">P_GET_OBJECT</span><span class="p">(</span><span class="n">FString</span><span class="p">,</span><span class="w"> </span><span class="n">StringProperty</span><span class="p">);</span><span class="w"> </span><span class="c1">// FString is Class</span>
+<span class="w">    </span><span class="n">P_GET_PROPERTY</span><span class="p">(</span><span class="n">FIntProperty</span><span class="p">,</span><span class="w"> </span><span class="n">IntValue</span><span class="p">);</span>
+<span class="w">    </span><span class="n">P_GET_PROPERTY</span><span class="p">(</span><span class="n">FDoubleProperty</span><span class="p">,</span><span class="w"> </span><span class="n">FloatValue</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// get return value wildcard pin</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1, this is outbut pin, there is no value</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ResultValueAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FProperty</span><span class="o">*</span><span class="w"> </span><span class="n">ResultWCProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="w">    </span><span class="n">P_FINISH</span><span class="p">;</span><span class="w"> </span><span class="c1">// properties section end</span>
+<span class="w">    </span><span class="c1">// global values should be initialized before NATIVE section</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">bResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">P_NATIVE_BEGIN</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IntValue</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">FloatValue</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">4.f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">bResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IntValue</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">FMath</span><span class="o">::</span><span class="n">TruncToInt</span><span class="p">(</span><span class="n">FloatValue</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ResultWCProp</span><span class="o">-&gt;</span><span class="n">CopySingleValueFromScriptVM</span><span class="p">(</span><span class="n">ResultValueAddr</span><span class="p">,</span><span class="o">&amp;</span><span class="n">res</span><span class="p">);</span>
+<span class="w">    </span><span class="n">P_NATIVE_END</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Function Return Value</span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="kt">bool</span><span class="o">*</span><span class="p">)</span><span class="n">RESULT_PARAM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bResult</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/4314e5c409d8a82dda2c34d2dbcd1970.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4314e5c409d8a82dda2c34d2dbcd1970.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4314e5c409d8a82dda2c34d2dbcd1970.png" /></a></p>
+<p><a class="glightbox" href="../images/e499441f123fc2472c87524cd4e53cd6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e499441f123fc2472c87524cd4e53cd6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e499441f123fc2472c87524cd4e53cd6.png" /></a></p>
+<p><a class="glightbox" href="../images/83faf44fb912579d4e3e05567510627e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="83faf44fb912579d4e3e05567510627e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/83faf44fb912579d4e3e05567510627e.png" /></a></p>
+<h2 id="_5">Усложненный метод доступа к значениям в пинах</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Wildcard as function input</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">CustomThunk</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Custom Functions|Widcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CustomStructureParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WCPinForInt,WCPinForFloat,WCSummOutput&quot;</span><span class="p">))</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">WildcardFunctionTest</span><span class="p">(</span><span class="n">FString</span><span class="w"> </span><span class="n">StringProperty</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCPinForInt</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCPinForFloat</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">WCSummOutput</span><span class="p">);</span>
+<span class="n">DECLARE_FUNCTION</span><span class="p">(</span><span class="n">execWildcardFunctionTest</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// function with wildcad pins</span>
+<span class="n">DEFINE_FUNCTION</span><span class="p">(</span><span class="n">UObjectTestClass</span><span class="o">::</span><span class="n">execWildcardFunctionTest</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// properties section begin:</span>
+<span class="w">    </span><span class="c1">// Property order MATTERS!</span>
+<span class="w">    </span><span class="c1">// function properties can be obtained in two ways</span>
+<span class="w">    </span><span class="c1">// simple way:</span>
+<span class="w">    </span><span class="n">P_GET_OBJECT</span><span class="p">(</span><span class="n">FString</span><span class="p">,</span><span class="w"> </span><span class="n">StringProperty</span><span class="p">);</span><span class="w"> </span><span class="c1">// FString is Class</span>
+<span class="w">    </span><span class="c1">// complex way:</span>
+<span class="w">    </span><span class="c1">// clear stack property values if any</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FIntProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1</span>
+<span class="w">    </span><span class="c1">// get wildcard property value from stack</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">IntPropValueAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FIntProperty</span><span class="o">*</span><span class="w"> </span><span class="n">IntWCProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FIntProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// clear stack property values if any</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FDoubleProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1</span>
+<span class="w">    </span><span class="c1">// get wildcard property value from stack</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">FloatPropValueAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FDoubleProperty</span><span class="o">*</span><span class="w"> </span><span class="n">FloatWCProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FDoubleProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// get return value wildcard pin</span>
+<span class="w">    </span><span class="c1">// clear stack property values if any</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1, this is outbut pin, there is no value</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ResultValueAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FProperty</span><span class="o">*</span><span class="w"> </span><span class="n">ResultWCProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ResultWCProp</span><span class="o">-&gt;</span><span class="n">InitializeValue</span><span class="p">(</span><span class="n">ResultValueAddr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">P_FINISH</span><span class="p">;</span><span class="w"> </span><span class="c1">// properties section end</span>
+<span class="w">    </span><span class="c1">// global values should be initialized before NATIVE section</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">bResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// NATIVE section</span>
+<span class="w">    </span><span class="n">P_NATIVE_BEGIN</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// get values from containers</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">IntPropVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IntWCProp</span><span class="o">-&gt;</span><span class="n">GetPropertyValue</span><span class="p">(</span><span class="n">IntPropValueAddr</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">FloatPropVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FloatWCProp</span><span class="o">-&gt;</span><span class="n">GetPropertyValue</span><span class="p">(</span><span class="n">FloatPropValueAddr</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IntPropVal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">FloatPropVal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">4.f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">bResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IntPropVal</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">FMath</span><span class="o">::</span><span class="n">TruncToInt</span><span class="p">(</span><span class="n">FloatPropVal</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ResultWCProp</span><span class="o">-&gt;</span><span class="n">CopySingleValueFromScriptVM</span><span class="p">(</span><span class="n">ResultValueAddr</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">res</span><span class="p">);</span>
+<span class="w">    </span><span class="n">P_NATIVE_END</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Function Return Value</span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="kt">bool</span><span class="o">*</span><span class="p">)</span><span class="n">RESULT_PARAM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bResult</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_6">Пины, передающие значение "по  ссылке"</h2>
+<p>Для передачи значения <code>wildcard</code> по ссылке, в <code>meta</code> надо добавить атрибут <code>AutoCreateRefTerm</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Wildcard with ref pin</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">CustomThunk</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Custom Functions|Widcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CustomStructureParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;InRefPin&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">AutoCreateRefTerm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;InRefPin&quot;</span><span class="p">))</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">WildcardPassByRef</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">InRefPin</span><span class="p">);</span>
+<span class="n">DECLARE_FUNCTION</span><span class="p">(</span><span class="n">execWildcardPassByRef</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// function with wildcad pin that passed by &quot;ref&quot;</span>
+<span class="n">DEFINE_FUNCTION</span><span class="p">(</span><span class="n">UObjectTestClass</span><span class="o">::</span><span class="n">execWildcardPassByRef</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// properties section begin:</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FNameProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1, this is outbut pin, there is no value</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ValueAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FNameProperty</span><span class="o">*</span><span class="w"> </span><span class="n">Prop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FNameProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="w">    </span><span class="n">P_FINISH</span><span class="p">;</span><span class="w"> </span><span class="c1">// properties section end</span>
+<span class="w">    </span><span class="n">P_NATIVE_BEGIN</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FName</span><span class="w"> </span><span class="n">NewValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;This Is New Text Value!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Prop</span><span class="o">-&gt;</span><span class="n">CopyCompleteValueToScriptVM</span><span class="p">(</span><span class="n">ValueAddr</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">NewValue</span><span class="p">);</span>
+<span class="w">    </span><span class="n">P_NATIVE_END</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/f24c418aeb7e9213329fe1b99a3983b6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f24c418aeb7e9213329fe1b99a3983b6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f24c418aeb7e9213329fe1b99a3983b6.png" /></a></p>
+<p><a class="glightbox" href="../images/b83e393f455e5538a70b9f59094d9986.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b83e393f455e5538a70b9f59094d9986.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b83e393f455e5538a70b9f59094d9986.png" /></a></p>
+<p><a class="glightbox" href="../images/0a1c2b5962592c1488fd53f140a34af6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0a1c2b5962592c1488fd53f140a34af6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0a1c2b5962592c1488fd53f140a34af6.png" /></a></p>
+<h2 id="wildcard"><code>Wildcard</code> массивы</h2>
+<p>Самое очевидное применение <code>Wildcard</code> пина - для универсального массива.</p>
+<p>Для массивов требуется использовать параметры типа <code>const TArray&lt;int32&gt;&amp;</code>, а так-же следующие <code>meta</code> параметры: <code>ArrayParm</code> и <code>ArrayTypeDependentParams</code>.
+Параметр <code>ArrayTypeDependentParams</code> позволяет изменять тип пинов, связанных с массивом.</p>
+<p>Параметр <code>ArrayParm</code> может принимать несколько значений массивов подряд, при этом каждый массив будет задан как <code>Wildcard</code> пин.
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Wildcard with Array pin</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">CustomThunk</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Custom Functions|Widcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ArrayParm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;InArray,OutArray&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">AutoCreateRefTerm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;InArray&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ArrayTypeDependentParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ElementToAdd,OutArray&quot;</span><span class="p">))</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">WildcardArrayTest</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">InArray</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ElementToAdd</span><span class="p">,</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">OutArray</span><span class="p">);</span>
+<span class="n">DECLARE_FUNCTION</span><span class="p">(</span><span class="n">execWildcardArrayTest</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// function with wildcad array pin</span>
+<span class="n">DEFINE_FUNCTION</span><span class="p">(</span><span class="n">UObjectTestClass</span><span class="o">::</span><span class="n">execWildcardArrayTest</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// properties section begin:</span>
+<span class="w">    </span><span class="c1">// Property order MATTERS!</span>
+<span class="w">    </span><span class="c1">// clear stack property values if any</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FArrayProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1</span>
+<span class="w">    </span><span class="c1">// get wildcard property value from stack</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">InArrayValueAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FArrayProperty</span><span class="o">*</span><span class="w"> </span><span class="n">InArrayProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExactCastField</span><span class="o">&lt;</span><span class="n">FArrayProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// clear stack property values if any</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1</span>
+<span class="w">    </span><span class="c1">// get wildcard property value from stack</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ElementValueAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FProperty</span><span class="o">*</span><span class="w"> </span><span class="n">ElementProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// clear stack property values if any</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FArrayProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1</span>
+<span class="w">    </span><span class="c1">// get wildcard property value from stack</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">OutArrayValueAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FArrayProperty</span><span class="o">*</span><span class="w"> </span><span class="n">OutArrayProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExactCastField</span><span class="o">&lt;</span><span class="n">FArrayProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="w">    </span><span class="n">P_FINISH</span><span class="p">;</span><span class="w"> </span><span class="c1">// properties section end</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">InArrayValueAddr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Stack</span><span class="p">.</span><span class="n">bArrayContextFailed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">int32</span><span class="w"> </span><span class="n">NewIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INDEX_NONE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">P_NATIVE_BEGIN</span><span class="p">;</span>
+<span class="w">        </span><span class="n">FScriptArrayHelper</span><span class="w"> </span><span class="nf">ArrayHelper</span><span class="p">(</span><span class="n">InArrayProperty</span><span class="p">,</span><span class="w"> </span><span class="n">InArrayValueAddr</span><span class="p">);</span>
+<span class="w">        </span><span class="n">FProperty</span><span class="o">*</span><span class="w"> </span><span class="n">InnerProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InArrayProperty</span><span class="o">-&gt;</span><span class="n">Inner</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// this will generate new empty array items</span>
+<span class="w">        </span><span class="n">NewIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ArrayHelper</span><span class="p">.</span><span class="n">AddValue</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// set new value of array element</span>
+<span class="w">        </span><span class="n">InnerProp</span><span class="o">-&gt;</span><span class="n">CopySingleValueToScriptVM</span><span class="p">(</span><span class="n">ArrayHelper</span><span class="p">.</span><span class="n">GetRawPtr</span><span class="p">(</span><span class="n">NewIndex</span><span class="p">),</span><span class="w"> </span><span class="n">ElementValueAddr</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// copy values to output</span>
+<span class="w">        </span><span class="n">FScriptArrayHelper</span><span class="w"> </span><span class="nf">OutArrayHelper</span><span class="p">(</span><span class="n">OutArrayProperty</span><span class="p">,</span><span class="w"> </span><span class="n">OutArrayValueAddr</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// initialize Num values in OutArray</span>
+<span class="w">        </span><span class="n">OutArrayHelper</span><span class="p">.</span><span class="n">AddValues</span><span class="p">(</span><span class="n">ArrayHelper</span><span class="p">.</span><span class="n">Num</span><span class="p">());</span>
+<span class="w">        </span><span class="n">FProperty</span><span class="o">*</span><span class="w"> </span><span class="n">InnerPropOA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OutArrayProperty</span><span class="o">-&gt;</span><span class="n">Inner</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">Index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">Index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ArrayHelper</span><span class="p">.</span><span class="n">Num</span><span class="p">();</span><span class="w"> </span><span class="n">Index</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// copy</span>
+<span class="w">            </span><span class="n">InnerPropOA</span><span class="o">-&gt;</span><span class="n">CopySingleValueToScriptVM</span><span class="p">(</span><span class="n">OutArrayHelper</span><span class="p">.</span><span class="n">GetRawPtr</span><span class="p">(</span><span class="n">Index</span><span class="p">),</span><span class="w"> </span><span class="n">ArrayHelper</span><span class="p">.</span><span class="n">GetRawPtr</span><span class="p">(</span><span class="n">Index</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="n">P_NATIVE_END</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/85511ce3978d44c57b8dd20b679704df.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="85511ce3978d44c57b8dd20b679704df.png" auto_="auto;" display="block;" margin:="margin:" src="../images/85511ce3978d44c57b8dd20b679704df.png" /></a></p>
+<p><a class="glightbox" href="../images/0b6f4c4c9d2a83d926670d55378cb926.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0b6f4c4c9d2a83d926670d55378cb926.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0b6f4c4c9d2a83d926670d55378cb926.png" /></a></p>
+<p><a class="glightbox" href="../images/1c9f534e5e5dabfe6d96e9d6e8b17dde.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1c9f534e5e5dabfe6d96e9d6e8b17dde.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1c9f534e5e5dabfe6d96e9d6e8b17dde.png" /></a></p>
+<p><a class="glightbox" href="../images/1b421a30b5393234b8dcd0053373077d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1b421a30b5393234b8dcd0053373077d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1b421a30b5393234b8dcd0053373077d.png" /></a></p>
+<h2 id="wildcard-map"><code>Wildcard</code> Map</h2>
+<p>Помимо массивов <code>wildcard</code> пины могут работать с типом <code>Map</code>.</p>
+<p><a class="glightbox" href="../images/ba313d07aa1b193cfdcd6f2e43271135.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ba313d07aa1b193cfdcd6f2e43271135.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ba313d07aa1b193cfdcd6f2e43271135.png" /></a></p>
+<p>Давайте сделаем собственную реализацию этого подхода.</p>
+<p>Для добавления <code>wildcard</code> типа <code>Map</code> надо использовать аргумент вида: <code>const TMap&lt;int32, int32&gt;&amp;</code>.
+<code>Meta</code> параметры нужны следующие:
++ <code>MapParam</code> - параметр, отвечающий за инициализацию <code>wildcard</code>
++ <code>MapKeyParam</code> - опциональный параметр, тип которого автоматически изменится в соответствии с типом <code>wildcard</code>, когда к нему подведут переменную типа <code>map</code>
++ <code>MapValueParam</code> - опциональный параметр, тип которого автоматически изменится в соответствии с типом <code>wildcard</code>, когда к нему подведут переменную типа <code>map</code>
+Параметр <code>wildcard map</code> у функции может быть только один. Я проверял, с несколькими - не получилось.
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Kismet/BlueprintMapLibrary.h&gt;</span>
+<span class="c1">// Wildcard with Map pin</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">CustomThunk</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Custom Functions|Widcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">MapParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TargetMap&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MapKeyParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Key&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">MapValueParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Value&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">AutoCreateRefTerm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Key,Value&quot;</span><span class="p">))</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">WildcardMapTest</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TMap</span><span class="o">&lt;</span><span class="n">int32</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">TargetMap</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Value</span><span class="p">);</span>
+<span class="n">DECLARE_FUNCTION</span><span class="p">(</span><span class="n">execWildcardMapTest</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// function with map pin</span>
+<span class="c1">// build based on UBlueprintMapLibrary::Map_Add, see /Runtime/Engine/Classes/Kismet/BlueprintMapLibrary.h</span>
+<span class="n">DEFINE_FUNCTION</span><span class="p">(</span><span class="n">UObjectTestClass</span><span class="o">::</span><span class="n">execWildcardMapTest</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// properties section begin:</span>
+<span class="w">    </span><span class="c1">// Property order MATTERS!</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FMapProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w">  </span><span class="c1">// move property pointer stack forward to 1</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">MapAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FMapProperty</span><span class="o">*</span><span class="w"> </span><span class="n">MapProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FMapProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentProperty</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">MapProperty</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Stack</span><span class="p">.</span><span class="n">bArrayContextFailed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Since Key and Value aren&#39;t really an int, step the stack manually</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FProperty</span><span class="o">*</span><span class="w"> </span><span class="n">CurrKeyProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MapProperty</span><span class="o">-&gt;</span><span class="n">KeyProp</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">KeyPropertySize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CurrKeyProp</span><span class="o">-&gt;</span><span class="n">ElementSize</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CurrKeyProp</span><span class="o">-&gt;</span><span class="n">ArrayDim</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// manually allocate memory for the Key</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">KeyStorageSpace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FMemory_Alloca</span><span class="p">(</span><span class="n">KeyPropertySize</span><span class="p">);</span>
+<span class="w">    </span><span class="n">CurrKeyProp</span><span class="o">-&gt;</span><span class="n">InitializeValue</span><span class="p">(</span><span class="n">KeyStorageSpace</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">KeyStorageSpace</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1 and fill value</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FProperty</span><span class="o">*</span><span class="w"> </span><span class="n">CurrValueProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MapProperty</span><span class="o">-&gt;</span><span class="n">ValueProp</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">ValuePropertySize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CurrValueProp</span><span class="o">-&gt;</span><span class="n">ElementSize</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CurrValueProp</span><span class="o">-&gt;</span><span class="n">ArrayDim</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// manually allocate memory for the Value</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ValueStorageSpace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FMemory_Alloca</span><span class="p">(</span><span class="n">ValuePropertySize</span><span class="p">);</span>
+<span class="w">    </span><span class="n">CurrValueProp</span><span class="o">-&gt;</span><span class="n">InitializeValue</span><span class="p">(</span><span class="n">ValueStorageSpace</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">MostRecentPropertyContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Stack</span><span class="p">.</span><span class="n">StepCompiledIn</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ValueStorageSpace</span><span class="p">);</span><span class="w"> </span><span class="c1">// move property pointer stack forward to 1 and fill value</span>
+<span class="w">    </span><span class="n">P_FINISH</span><span class="p">;</span><span class="w"> </span><span class="c1">// properties section end</span>
+<span class="w">    </span><span class="n">P_NATIVE_BEGIN</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">MapAddr</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">FScriptMapHelper</span><span class="w"> </span><span class="nf">MapHelper</span><span class="p">(</span><span class="n">MapProperty</span><span class="p">,</span><span class="w"> </span><span class="n">MapAddr</span><span class="p">);</span>
+<span class="w">            </span><span class="n">MapHelper</span><span class="p">.</span><span class="n">AddPair</span><span class="p">(</span><span class="n">KeyStorageSpace</span><span class="p">,</span><span class="w"> </span><span class="n">ValueStorageSpace</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="n">P_NATIVE_END</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CurrValueProp</span><span class="o">-&gt;</span><span class="n">DestroyValue</span><span class="p">(</span><span class="n">ValueStorageSpace</span><span class="p">);</span>
+<span class="w">    </span><span class="n">CurrKeyProp</span><span class="o">-&gt;</span><span class="n">DestroyValue</span><span class="p">(</span><span class="n">KeyStorageSpace</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/e0a6bff1ec755eb6ea81b218b7eb7070.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e0a6bff1ec755eb6ea81b218b7eb7070.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e0a6bff1ec755eb6ea81b218b7eb7070.png" /></a></p>
+<p><a class="glightbox" href="../images/7bfd5145c3d50942ffa605b72d504ace.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7bfd5145c3d50942ffa605b72d504ace.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7bfd5145c3d50942ffa605b72d504ace.png" /></a></p>
+<p><a class="glightbox" href="../images/45f14b2a0cfe075fda315a084c329cee.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="45f14b2a0cfe075fda315a084c329cee.png" auto_="auto;" display="block;" margin:="margin:" src="../images/45f14b2a0cfe075fda315a084c329cee.png" /></a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            К началу
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      aftamat4ik
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

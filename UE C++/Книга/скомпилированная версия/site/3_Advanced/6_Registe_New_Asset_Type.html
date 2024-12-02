@@ -1,0 +1,2250 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Справочник Unreal Engine">
+      
+      
+        <meta name="author" content="aftamat4ik">
+      
+      
+      
+        <link rel="prev" href="5_K2.html">
+      
+      
+        <link rel="next" href="7_ACharacter_And_Enhanced%20Input.html">
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
+    
+    
+      
+        <title>Регистрируем новый тип ассета - Справочник Unreal Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-header__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Справочник Unreal Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Регистрируем новый тип ассета
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1_Basics/1_First_Project.html" class="md-tabs__link">
+          
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../2_Core/1_Delegates.html" class="md-tabs__link">
+          
+  
+  Ключевые системы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="1_HUD.html" class="md-tabs__link">
+          
+  
+  Продвинутая разработка
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-tabs__link">
+          
+  
+  Решение проблем
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../5_Tips/Change_Asset_Icons.html" class="md-tabs__link">
+          
+  
+  Советы
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-nav__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    Справочник Unreal Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Основы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Основы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/1_First_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/2_Engine_Introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/3_CPP_Recommendations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Рекомендации по написанию кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/4_SimplePlugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создание простейшего плагина для Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/5_Macroses_Reflection_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Макросы Reflection System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/6_Logging.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Печать информации в лог
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/7_Pointers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Указатели
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/8_ModernCpp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возможности современного c++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/9_Working_With_Strings.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа со строками
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/10_Timers_In_%D0%A1%2B%2B.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Таймеры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/11_Instances_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Доступ к различным сущностям
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Asserts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Asserts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Console Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ключевые системы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ключевые системы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/1_Delegates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/2_Components.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/3_SubObjects.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/4_Multithreading.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Многопоточность
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/5_Function_Libraries.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Библиотеки Функций для Blueprint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/6_Latent_And_Async_Actions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latent и Async Action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/7_Gameplay_Tags.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/8_DataAssets_AssetManager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с ассетами и данными
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/9_FileSystem.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/10_Anim_Instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anim Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/11_SubSystems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Подсистемы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/12.%20UObject%20Interface.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Interface или UInterface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Продвинутая разработка
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Продвинутая разработка
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_HUD.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HUD или Heads-up Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_UFUNCTION_Wildcard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_Slate%20Runtime.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slate Runtimе, введение в Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_UMG.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_K2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="6_Registe_New_Asset_Type.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Подготовка к работе
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Добавляем класс ассета
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавляем класс ассета">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extendeditormoduleh" class="md-nav__link">
+    Файл ExtendEditorModule.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extendeditormodulecpp" class="md-nav__link">
+    Файл ExtendEditorModule.cpp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Разбор
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_ACharacter_And_Enhanced%20Input.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACharacter и Enhanced Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_Gameplay_Ability_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Ability System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_Global_Data_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальнный доступ к данным
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_Global_Event_Bus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальная шина событий
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Решение проблем
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Решение проблем
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с кодировкой в LiveCoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/Reset_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Сброс (Reset) проекта
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/generatedh_Problems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с файлом .generated.h
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Советы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Советы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Change_Asset_Icons.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Asset Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Character_And_EnhancedInput.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character Boilerplate with Enhanced Input Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/DefaultToSelf_WorldContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DefaultToSelf WorldContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Different_UPROPERTY.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/GameInputMode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Изменение GameInputMode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Get_UScriptStruct_FromStruct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ::UScriptStruct из встроенной структуры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Input_Binding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События ввода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Iterate_TMap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterate TMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Read_Blueprint_Properties.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Чтение параметров Blueprint класса
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Return_UObject.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возвращение UObject по ссылке из функции
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Run_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Запуск консольных команд
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Screen_Size.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Размер экрана
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Slate_Snippets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Полезные сниппеты Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Spawn_Actors.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawn, призыв объектов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Time_Measuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Замер времени исполнения кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Trace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UEnum_To_String.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UEnum to FString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UObject_Base_Class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Base Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Variable_Type_Print_Template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Шаблон для печати типа переменной
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/struct_operator%3D%3D.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    struct и оператор ==
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Подготовка к работе
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Добавляем класс ассета
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавляем класс ассета">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extendeditormoduleh" class="md-nav__link">
+    Файл ExtendEditorModule.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extendeditormodulecpp" class="md-nav__link">
+    Файл ExtendEditorModule.cpp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Разбор
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">Регистрируем новый тип ассета</h1>
+<p>Если в <code>Content Browser</code> нажать на кнопку <code>Add</code> мы увидим меню ассетов, которые разработчик может создавать.</p>
+<p><a class="glightbox" href="../images/d6795bde56b4e5a992aebbb175074f9f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d6795bde56b4e5a992aebbb175074f9f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d6795bde56b4e5a992aebbb175074f9f.png" /></a></p>
+<p>Как добавить в это меню свой собственный тип ассета?
+Давайте рассмотрим этот процесс в подробностях.</p>
+<p>Замечу, что создание ассетов делится на две категории. Мы можем создаваь <code>blueprint</code> ассеты, а так-же ассеты произвольного типа. Я предлагаю рассмотреть в главе создание <code>blueprint</code> ассета, потому что для него "по умолчанию" уже есть редактор. В противном случае редактор придется писать самому и это уже никак не тянет на короткую статью.</p>
+<h2 id="_2">Подготовка к работе</h2>
+<p>Для начала, нам нужен <code>Runtime</code> модуль, в который я планирую добавлять различные вспомогательные классы.</p>
+<p>Я назвал этот модуль <code>ExtendHelpersModule</code>.</p>
+<p><a class="glightbox" href="../images/1e61af927d40359abe17020665e50e9a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1e61af927d40359abe17020665e50e9a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1e61af927d40359abe17020665e50e9a.png" /></a></p>
+<p>Добавляем модуль. перезапускаем движок.</p>
+<p>Теперь, нам нужен модуль редактора. Это основной модуль для нашей работы. Я назвал его <code>ExtendEditorModule</code>.</p>
+<p><a class="glightbox" href="../images/eba909222ef785b9f0b92058027f8f4f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="eba909222ef785b9f0b92058027f8f4f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/eba909222ef785b9f0b92058027f8f4f.png" /></a></p>
+<p>Перезапускаем движок, а потом выполняем команду <code>Tools -&gt; Refresh Visual Studio 2022 Project</code>, чтобы обновить файлы проекта.</p>
+<p><a class="glightbox" href="../images/3f9fd1d976104d2098d7b178cc5efd41.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3f9fd1d976104d2098d7b178cc5efd41.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3f9fd1d976104d2098d7b178cc5efd41.png" /></a></p>
+<p>В зависимости модуля <code>ExtendEditorModule</code> надо добавить <code>AssetTools</code>.
+Изменяем файл <code>ExtendEditorModule.build.cs</code> следующим образом:
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">UnrealBuildTool</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ExtendEditorModule</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ModuleRules</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">ExtendEditorModule</span><span class="p">(</span><span class="n">ReadOnlyTargetRules</span><span class="w"> </span><span class="n">Target</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">base</span><span class="p">(</span><span class="n">Target</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PCHUsage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCHUsageMode</span><span class="p">.</span><span class="n">UseExplicitOrSharedPCHs</span><span class="p">;</span>
+<span class="w">        </span><span class="n">PublicDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Core&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CoreUObject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Engine&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;UnrealEd&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ExtendHelpersModule&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;AssetTools&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;PropertyEditor&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;DetailCustomizations&quot;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="n">PublicIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;ExtendEditorModule/Public&quot;</span><span class="p">});</span>
+<span class="w">        </span><span class="n">PrivateIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;ExtendEditorModule/Private&quot;</span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="_3">Добавляем класс ассета</h2>
+<p>Нам нужен класс, который мы собираемся регистрировать в качестве <code>blueprint</code> ассета. Добавим его. Идем <code>Tools -&gt; New C++ Class -&gt; All Classes -&gt; Object</code>.</p>
+<p><a class="glightbox" href="../images/faca8557b307c9a733d53a97cc51480a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="faca8557b307c9a733d53a97cc51480a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/faca8557b307c9a733d53a97cc51480a.png" /></a></p>
+<p>Называем новый класс <code>CustomObjectAsset</code>.</p>
+<p><a class="glightbox" href="../images/1c8e51f58ee3694ece0f2dd515736028.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1c8e51f58ee3694ece0f2dd515736028.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1c8e51f58ee3694ece0f2dd515736028.png" /></a></p>
+<p>Добавляем этот класс в <code>Runtime</code> модуль <code>ExtendHelpersModule</code>.
+В я уже создал заготовку для класса <code>UObject</code>, просто копируем ее и заменяем название класса на <code>UCustomObjectAsset</code>.
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UObject/NoExportTypes.h&quot;</span>
+<span class="c1">// kismet</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Kismet/KismetSystemLibrary.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Kismet/GameplayStatics.h&quot;</span>
+<span class="c1">// just in case</span>
+<span class="c1">// actor class can be included this way:</span>
+<span class="c1">//#include &quot;GameFramework/Actor.h&quot;</span>
+<span class="c1">// component class can be included this way:</span>
+<span class="c1">//#include &quot;Components/StaticMeshComponent.h&quot;</span>
+<span class="c1">// .generated.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CustomObjectAsset.generated.h&quot;</span>
+<span class="cm">/**</span>
+<span class="cm"> * Constom object asset that can be created via unreal menu</span>
+<span class="cm"> */</span>
+<span class="n">UCLASS</span><span class="p">(</span><span class="n">Blueprintable</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">EXTENDHELPERSMODULE_API</span><span class="w"> </span><span class="n">UCustomObjectAsset</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UObject</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">FTickableGameObject</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// constructor</span>
+<span class="w">    </span><span class="n">UCustomObjectAsset</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="c1">// Override PostInitProperties to make BeginPlay</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">PostInitProperties</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Super</span><span class="o">::</span><span class="n">PostInitProperties</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// only after this we can tick. it&#39;s &quot;BeginPlay&quot;.</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GetOuter</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">GetOuter</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetWorld</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">bIsInit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">            </span><span class="n">BeginPlay</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Begin Play in Blueprint</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintNativeEvent</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BeginPlay&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">ReceiveBeginPlay</span><span class="p">();</span><span class="w"> </span><span class="c1">// don&#39;t make realization for this function, it&#39;s generated by UHT</span>
+<span class="w">    </span><span class="c1">// _Implementation is function that spawned by &quot;Add Call To Parent Function&quot;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">ReceiveBeginPlay_Implementation</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* your implementation */</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="c1">// Real BeginPlay</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">BeginPlay</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// call bp version of the BeginPlay</span>
+<span class="w">        </span><span class="n">ReceiveBeginPlay</span><span class="p">();</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="c1">// Tick event binding</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintNativeEvent</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tick&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">ReceiveTick</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">);</span><span class="w"> </span><span class="c1">// don&#39;t make realization for this function, it&#39;s generated by UHT</span>
+<span class="w">    </span><span class="c1">// _Implementation is function that spawned by &quot;Add Call To Parent Function&quot;</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">ReceiveTick_Implementation</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* your implementation */</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="c1">// Begin FTickableGameObject Interface.</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Tick</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ReceiveTick</span><span class="p">(</span><span class="n">DeltaTime</span><span class="p">);</span><span class="w"> </span><span class="c1">// call blueprint tick</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// true if object is ready to be ticked, false otherwise.</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsTickable</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">bIsInit</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">IsTickableOption</span><span class="p">;</span><span class="w"> </span><span class="c1">// tick only after object is loaded to the world</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// return the stat id to use for this tickable</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">TStatId</span><span class="w"> </span><span class="nf">GetStatId</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">UObject</span><span class="o">::</span><span class="n">GetStatID</span><span class="p">();</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="c1">// world refrence, required to enable usage of latent actions inside of the UOBJECT</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">UWorld</span><span class="o">*</span><span class="w"> </span><span class="nf">GetWorld</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//Return null if the called from the CDO, or if the outer is being destroyed</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">HasAnyFlags</span><span class="p">(</span><span class="n">RF_ClassDefaultObject</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">GetOuter</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">HasAnyFlags</span><span class="p">(</span><span class="n">RF_BeginDestroyed</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">GetOuter</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">IsUnreachable</span><span class="p">())</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">//Try to get the world from the owning actor if we have one</span>
+<span class="w">            </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Outer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetTypedOuter</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Outer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">Outer</span><span class="o">-&gt;</span><span class="n">GetWorld</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">//Else return null - the latent action will fail to initialize</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// properties section</span>
+<span class="w">    </span><span class="c1">// will start tick on object once it&#39;s loaded to scene</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tick&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Is Tickable&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsTickableOption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">bIsInit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// true if object loaded to the world</span>
+<span class="p">};</span>
+</code></pre></div>
+После компиляции мы сможем наследовать собственные <code>blueprint</code> классы от типа <code>UCustomObjectAsset</code>.
+Если кто забыл, то делается это так: в <code>Content Explorer</code> идем <code>Add -&gt; Blueprint Class</code>.</p>
+<p><a class="glightbox" href="../images/64409c1c01d13d3ca0c9072457a516d7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="64409c1c01d13d3ca0c9072457a516d7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/64409c1c01d13d3ca0c9072457a516d7.png" /></a></p>
+<p>В появившемся окне, открываем вкладку <code>All Classes</code>, здесь будет созданный нами класс <code>CustomObjectAsset</code>.</p>
+<p><a class="glightbox" href="../images/68c6e34d4b64f8d7e772dc3a0b9558ce.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="68c6e34d4b64f8d7e772dc3a0b9558ce.png" auto_="auto;" display="block;" margin:="margin:" src="../images/68c6e34d4b64f8d7e772dc3a0b9558ce.png" /></a></p>
+<p>Как вы понимаете, создавать экземпляры класса таким способом крайне неудобно. Давайте разместим класс <code>UCustomObjectAsset</code> в меню создания ассетов, для более быстрого доступа.</p>
+<p>Чтобы понять как это делается, можно обратить внимание на модуль <code>BehaviourTreeEditor</code>. В этом модуле нас интересует файл <code>\Engine\Source\Editor\BehaviorTreeEditor\Private\BehaviorTreeEditorModule.cpp</code>.</p>
+<p><a class="glightbox" href="../images/a0652364a0efa76ebb289cfb52246f28.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a0652364a0efa76ebb289cfb52246f28.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a0652364a0efa76ebb289cfb52246f28.png" /></a></p>
+<p>Это класс конструктора модуля. В этом классе прошу обратить ваше внимание на инструкции <code>RegisterAssetTypeActions</code>, именно через них задаются типы ассетов, доступные для модуля <code>BehaviourTree</code>, а именно: <code>Blackboard</code> и <code>BehaviourTree</code>.</p>
+<p><a class="glightbox" href="../images/705e81f110252fc9401ef169bc0ce383.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="705e81f110252fc9401ef169bc0ce383.png" auto_="auto;" display="block;" margin:="margin:" src="../images/705e81f110252fc9401ef169bc0ce383.png" /></a></p>
+<p>Давайте повторим логику регистрации ассета, для класса <code>UCustomObjectAsset</code>.</p>
+<h3 id="extendeditormoduleh">Файл <code>ExtendEditorModule.h</code></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Modules/ModuleManager.h&quot;</span>
+<span class="c1">// kismet</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Kismet2/KismetEditorUtilities.h&quot;</span>
+<span class="c1">// assets</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;IAssetTools.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;AssetTypeActions_Base.h&quot;</span><span class="c1"> // asset actions base class</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;AssetTypeActions/AssetTypeActions_Blueprint.h&quot;</span><span class="c1"> // asset action for blueprints</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;AssetToolsModule.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;AssetRegistry/AssetData.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Factories/Factory.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Factories/BlueprintFactory.h&quot;</span>
+<span class="c1">// asset that we register</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CustomObjectAsset.h&quot;</span>
+<span class="c1">//.generated.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ExtendEditorModule.generated.h&quot;</span>
+<span class="n">DECLARE_LOG_CATEGORY_EXTERN</span><span class="p">(</span><span class="n">ExtendEditorModule</span><span class="p">,</span><span class="w"> </span><span class="n">All</span><span class="p">,</span><span class="w"> </span><span class="n">All</span><span class="p">);</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FExtendEditorModule</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IModuleInterface</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="cm">/* Called when the module is loaded */</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">StartupModule</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/* Called when the module is unloaded */</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ShutdownModule</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Asset type actions array</span>
+<span class="w">    </span><span class="c1">// locks in memory each asset action</span>
+<span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FAssetTypeActions_Base</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">AssetTypeActions</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="cm">/**</span>
+<span class="cm"> * Asset Actions</span>
+<span class="cm"> * use FAssetTypeActions_Base for assets, that are generated with NewObject in Factory</span>
+<span class="cm"> * use FAssetTypeActions_Blueprint for assets, that are generated with FKismetEditorUtilities::CreateBlueprint in Factory</span>
+<span class="cm"> */</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FAssetTypeActions_CustomObject</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">FAssetTypeActions_Blueprint</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">//~ Begin IAssetTypeActions interface</span>
+<span class="w">    </span><span class="c1">// asset name</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">FText</span><span class="w"> </span><span class="n">GetName</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">NSLOCTEXT</span><span class="p">(</span><span class="s">&quot;AssetTypeActions&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;AssetTypeActions_CustomObjectAsset&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Custom Object&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// icon color</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">FColor</span><span class="w"> </span><span class="n">GetTypeColor</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">FColor</span><span class="p">(</span><span class="mi">149</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// asset class, that controlled by this AssetActions</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">UClass</span><span class="o">*</span><span class="w"> </span><span class="n">GetSupportedClass</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">UCustomObjectAsset</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// asset menu category</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">uint32</span><span class="w"> </span><span class="n">GetCategories</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">IAssetTools</span><span class="o">&amp;</span><span class="w"> </span><span class="n">AssetToolsInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FModuleManager</span><span class="o">::</span><span class="n">LoadModuleChecked</span><span class="o">&lt;</span><span class="n">FAssetToolsModule</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;AssetTools&quot;</span><span class="p">).</span><span class="n">Get</span><span class="p">();</span>
+<span class="w">        </span><span class="n">EAssetTypeCategories</span><span class="o">::</span><span class="n">Type</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">AssetToolsInterface</span><span class="p">.</span><span class="n">RegisterAdvancedAssetCategory</span><span class="p">(</span>
+<span class="w">            </span><span class="n">FName</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;CustomAsset&quot;</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">NSLOCTEXT</span><span class="p">(</span><span class="s">&quot;AssetTypeActions&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CustomAssetName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Custom Asset Instance&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// we can combine categories this way:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">EAssetTypeCategories</span><span class="o">::</span><span class="n">Misc</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Category</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">//~ End of IAssetTypeActions interface</span>
+<span class="w">    </span><span class="c1">//~ Begin FAssetTypeActions_Blueprint interface</span>
+<span class="w">    </span><span class="c1">// register asset generation factory</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">UFactory</span><span class="o">*</span><span class="w"> </span><span class="n">GetFactoryForBlueprintType</span><span class="p">(</span><span class="n">UBlueprint</span><span class="o">*</span><span class="w"> </span><span class="n">InBlueprint</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UCustomObjectFactory</span><span class="o">*</span><span class="w"> </span><span class="n">BlueprintFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UCustomObjectFactory</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">UFactory</span><span class="o">*</span><span class="p">)</span><span class="n">BlueprintFactory</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">//~ End FAssetTypeActions_Blueprint interface</span>
+<span class="p">};</span>
+<span class="c1">// Factories are responsible for creting new assets</span>
+<span class="c1">// here we generate our blueprint</span>
+<span class="n">UCLASS</span><span class="p">(</span><span class="n">MinimalAPI</span><span class="p">,</span><span class="w"> </span><span class="n">HideCategories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Object</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UCustomObjectFactory</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UFactory</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// constructor</span>
+<span class="w">    </span><span class="n">UCustomObjectFactory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">SupportedClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UCustomObjectAsset</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">();</span>
+<span class="w">        </span><span class="n">bCreateNew</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">bEditAfterNew</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">FactoryCreateNew</span><span class="p">(</span><span class="n">UClass</span><span class="o">*</span><span class="w"> </span><span class="n">InClass</span><span class="p">,</span><span class="w"> </span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">InParent</span><span class="p">,</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="n">InName</span><span class="p">,</span><span class="w"> </span><span class="n">EObjectFlags</span><span class="w"> </span><span class="n">Flags</span><span class="p">,</span><span class="w"> </span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span><span class="w"> </span><span class="n">FFeedbackContext</span><span class="o">*</span><span class="w"> </span><span class="n">Warn</span><span class="p">,</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="n">CallingContext</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// just call other method</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">FactoryCreateNew</span><span class="p">(</span><span class="n">InClass</span><span class="p">,</span><span class="w"> </span><span class="n">InParent</span><span class="p">,</span><span class="w"> </span><span class="n">InName</span><span class="p">,</span><span class="w"> </span><span class="n">Flags</span><span class="p">,</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span><span class="w"> </span><span class="n">Warn</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">FactoryCreateNew</span><span class="p">(</span><span class="n">UClass</span><span class="o">*</span><span class="w"> </span><span class="n">Class</span><span class="p">,</span><span class="w"> </span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">InParent</span><span class="p">,</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">EObjectFlags</span><span class="w"> </span><span class="n">Flags</span><span class="p">,</span><span class="w"> </span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span><span class="w"> </span><span class="n">FFeedbackContext</span><span class="o">*</span><span class="w"> </span><span class="n">Warn</span><span class="p">)</span><span class="w"> </span><span class="k">override</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="cm">/*</span>
+<span class="cm">        // use this if you want to create Object file with custom editor, instead of blueprint class</span>
+<span class="cm">        return NewObject&lt;UCustomObjectAsset&gt;(InParent, Class, Name, Flags, Context);</span>
+<span class="cm">        */</span>
+<span class="w">        </span><span class="c1">// create blueprint</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">FKismetEditorUtilities</span><span class="o">::</span><span class="n">CreateBlueprint</span><span class="p">(</span><span class="n">Class</span><span class="p">,</span><span class="w"> </span><span class="n">InParent</span><span class="p">,</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">BPTYPE_Normal</span><span class="p">,</span><span class="w"> </span><span class="n">UBlueprint</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">UBlueprintGeneratedClass</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="extendeditormodulecpp">Файл <code>ExtendEditorModule.cpp</code></h3>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ExtendEditorModule.h&quot;</span>
+<span class="n">DEFINE_LOG_CATEGORY</span><span class="p">(</span><span class="n">ExtendEditorModule</span><span class="p">);</span>
+<span class="cp">#define LOCTEXT_NAMESPACE &quot;FExtendEditorModule&quot;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">FExtendEditorModule::StartupModule</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">ExtendEditorModule</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;ExtendEditorModule module has been loaded&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="n">IAssetTools</span><span class="o">&amp;</span><span class="w"> </span><span class="n">AssetToolsInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FModuleManager</span><span class="o">::</span><span class="n">LoadModuleChecked</span><span class="o">&lt;</span><span class="n">FAssetToolsModule</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;AssetTools&quot;</span><span class="p">).</span><span class="n">Get</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// Register new Assset</span>
+<span class="w">    </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FAssetTypeActions_CustomObject</span><span class="o">&gt;</span><span class="w"> </span><span class="n">CustomObjectAssetAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MakeShareable</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FAssetTypeActions_CustomObject</span><span class="p">());</span>
+<span class="w">    </span><span class="n">AssetTypeActions</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">CustomObjectAssetAction</span><span class="p">);</span>
+<span class="w">    </span><span class="n">AssetToolsInterface</span><span class="p">.</span><span class="n">RegisterAssetTypeActions</span><span class="p">(</span><span class="n">CustomObjectAssetAction</span><span class="p">.</span><span class="n">ToSharedRef</span><span class="p">());</span>
+<span class="w">    </span><span class="c1">// this will force &quot;BlueprintNativeEvent&quot; nodes to appear inside of the blueprint once class is crated</span>
+<span class="w">    </span><span class="n">FKismetEditorUtilities</span><span class="o">::</span><span class="n">RegisterAutoGeneratedDefaultEvent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">UCustomObjectAsset</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;ReceiveBeginPlay&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">FKismetEditorUtilities</span><span class="o">::</span><span class="n">RegisterAutoGeneratedDefaultEvent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">UCustomObjectAsset</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;ReceiveTick&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">FExtendEditorModule::ShutdownModule</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">ExtendEditorModule</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;ExtendEditorModule module has been unloaded&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">FModuleManager</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">IsModuleLoaded</span><span class="p">(</span><span class="s">&quot;AssetTools&quot;</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// unregister asset actions</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AssetTypeActions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">FAssetToolsModule</span><span class="o">::</span><span class="n">GetModule</span><span class="p">().</span><span class="n">Get</span><span class="p">().</span><span class="n">UnregisterAssetTypeActions</span><span class="p">(</span><span class="n">Action</span><span class="p">.</span><span class="n">ToSharedRef</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">#undef LOCTEXT_NAMESPACE</span>
+<span class="n">IMPLEMENT_MODULE</span><span class="p">(</span><span class="n">FExtendEditorModule</span><span class="p">,</span><span class="w"> </span><span class="n">ExtendEditorModule</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_4">Разбор</h3>
+<p>За логику размещения ассета в движке отвечает класс <code>FAssetTypeActions_CustomObject</code>. Здесь задается категория ассета, его название и класс ассета, который должен быть создан.</p>
+<p><a class="glightbox" href="../images/e5575ef8edfa1c4407db06e4ff3084a2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e5575ef8edfa1c4407db06e4ff3084a2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e5575ef8edfa1c4407db06e4ff3084a2.png" /></a></p>
+<p>В качестве категории я указал <code>Custom Asset Instance</code>.
+Если скомпилировать код, то это категория появится в меню добавления ассета.</p>
+<p><a class="glightbox" href="../images/22100c470942cdadff1636649e87ccb0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="22100c470942cdadff1636649e87ccb0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/22100c470942cdadff1636649e87ccb0.png" /></a></p>
+<p>Можно указать сразу несколько категорий для ассета, как сделал я. В качестве второй категории у меня выступает <code>Miscelanneous</code>.</p>
+<p><a class="glightbox" href="../images/e63b0db21b62f13ceece086c0269cdb3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e63b0db21b62f13ceece086c0269cdb3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e63b0db21b62f13ceece086c0269cdb3.png" /></a></p>
+<p>Имя ассета в категории задается внутри метода <code>GetName</code>.</p>
+<p><a class="glightbox" href="../images/627401a38bc8034c844e89430c6d70c2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="627401a38bc8034c844e89430c6d70c2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/627401a38bc8034c844e89430c6d70c2.png" /></a></p>
+<p>За генерацию ассета, по нажатию на пункт меню, отвечает класс <code>UCustomObjectFactory</code>. Его логика крайне проста и шаблонна. Для генерации <code>blueprint</code> ассета используется <code>FKismetEditorUtilities::CreateBlueprint</code>.</p>
+<p><a class="glightbox" href="../images/ef9f41bb733f825e7ee844a52d9d14e4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ef9f41bb733f825e7ee844a52d9d14e4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ef9f41bb733f825e7ee844a52d9d14e4.png" /></a></p>
+<p>Давайте создадим один из экземпляров нашего нового ассета.</p>
+<p><a class="glightbox" href="../images/e94eb6d849de1c88d68577659115ae8a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e94eb6d849de1c88d68577659115ae8a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e94eb6d849de1c88d68577659115ae8a.png" /></a></p>
+<p>Если открыть полученный <code>blueprint</code> класс, мы увидим, что он унаследован от класса <code>CustomObjectAsset</code>.</p>
+<p><a class="glightbox" href="../images/e853064aa15c28f6c02014e763cf30bd.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e853064aa15c28f6c02014e763cf30bd.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e853064aa15c28f6c02014e763cf30bd.png" /></a></p>
+<p>Обратите внимание на следующие строчки:
+<div class="highlight"><pre><span></span><code><span class="c1">// this will force &quot;BlueprintNativeEvent&quot; nodes to appear inside of the blueprint once class is crated</span>
+<span class="n">FKismetEditorUtilities</span><span class="o">::</span><span class="n">RegisterAutoGeneratedDefaultEvent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">UCustomObjectAsset</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;ReceiveBeginPlay&quot;</span><span class="p">);</span>
+<span class="n">FKismetEditorUtilities</span><span class="o">::</span><span class="n">RegisterAutoGeneratedDefaultEvent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">UCustomObjectAsset</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;ReceiveTick&quot;</span><span class="p">);</span>
+</code></pre></div>
+Они позволяют автоматически создавать ноды <code>BeginPlay</code> и <code>Tick</code> для функций, которые заданы как <code>BlueprintNativeEvent</code> внутри класса <code>UCustomObjectAsset</code>.</p>
+<p><a class="glightbox" href="../images/b4108c7caa3fe0282bb0b6301d35e86e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b4108c7caa3fe0282bb0b6301d35e86e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b4108c7caa3fe0282bb0b6301d35e86e.png" /></a></p>
+<p>Если вы создадите новый ассет типа <code>CustomObjectAsset</code>, то увидите, что ноды, относящиеся к этим функциям, автоматически созданы.</p>
+<p><a class="glightbox" href="../images/15de7b086e5ce1de39f452158414a1e0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="15de7b086e5ce1de39f452158414a1e0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/15de7b086e5ce1de39f452158414a1e0.png" /></a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            К началу
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      aftamat4ik
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

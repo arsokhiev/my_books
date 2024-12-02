@@ -1,0 +1,3006 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Справочник Unreal Engine">
+      
+      
+        <meta name="author" content="aftamat4ik">
+      
+      
+      
+        <link rel="prev" href="1_Delegates.html">
+      
+      
+        <link rel="next" href="3_SubObjects.html">
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
+    
+    
+      
+        <title>Компоненты в Unreal Engine - Справочник Unreal Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unreal-engine" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-header__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Справочник Unreal Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Компоненты в Unreal Engine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1_Basics/1_First_Project.html" class="md-tabs__link">
+          
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="1_Delegates.html" class="md-tabs__link">
+          
+  
+  Ключевые системы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../3_Advanced/1_HUD.html" class="md-tabs__link">
+          
+  
+  Продвинутая разработка
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-tabs__link">
+          
+  
+  Решение проблем
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../5_Tips/Change_Asset_Icons.html" class="md-tabs__link">
+          
+  
+  Советы
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-nav__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    Справочник Unreal Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Основы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Основы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/1_First_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/2_Engine_Introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/3_CPP_Recommendations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Рекомендации по написанию кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/4_SimplePlugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создание простейшего плагина для Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/5_Macroses_Reflection_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Макросы Reflection System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/6_Logging.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Печать информации в лог
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/7_Pointers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Указатели
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/8_ModernCpp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возможности современного c++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/9_Working_With_Strings.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа со строками
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/10_Timers_In_%D0%A1%2B%2B.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Таймеры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/11_Instances_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Доступ к различным сущностям
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Asserts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Asserts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Console Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ключевые системы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ключевые системы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Delegates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="2_Components.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Введение в компоненты
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Базовые классы компонентов
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aactor" class="md-nav__link">
+    Поиск компонентов в классе AActor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Создание своего компонента
+  </a>
+  
+    <nav class="md-nav" aria-label="Создание своего компонента">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Код компонента
+  </a>
+  
+    <nav class="md-nav" aria-label="Код компонента">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testscenecomponenth" class="md-nav__link">
+    Файл TestSceneComponent.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testscenecomponentcpp" class="md-nav__link">
+    Файл TestSceneComponent.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Разбор кода.
+  </a>
+  
+    <nav class="md-nav" aria-label="Разбор кода.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Конструктор.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onregister" class="md-nav__link">
+    Метод OnRegister
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refreshproxy" class="md-nav__link">
+    Метод RefreshProxy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onupdatetransform" class="md-nav__link">
+    Метод OnUpdateTransform.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oncomponentdestroyed" class="md-nav__link">
+    Метод OnComponentDestroyed.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Добавление компонентов во время геймплея
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавление компонентов во время геймплея">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Копирование параметров компонента
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Замена иконки у компонента
+  </a>
+  
+    <nav class="md-nav" aria-label="Замена иконки у компонента">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Добавляем зависимости
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Регистрируем стиль
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#componentvisualizer" class="md-nav__link">
+    ComponentVisualizer
+  </a>
+  
+    <nav class="md-nav" aria-label="ComponentVisualizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Создаем модуль
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    Дополняем файлы сборки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#componentvisualizer_1" class="md-nav__link">
+    Создаем класс для ComponentVisualizer
+  </a>
+  
+    <nav class="md-nav" aria-label="Создаем класс для ComponentVisualizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testscenecomponentvisualizerh" class="md-nav__link">
+    Файл TestSceneComponentVisualizer.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testscenecomponentvisualizercpp" class="md-nav__link">
+    Файл TestSceneComponentVisualizer.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#componentvisualizer_2" class="md-nav__link">
+    Регистрируем ComponentVisualizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Итоговый вид
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cv" class="md-nav__link">
+    Усложняем логику CV
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_SubObjects.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Multithreading.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Многопоточность
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Function_Libraries.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Библиотеки Функций для Blueprint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Latent_And_Async_Actions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latent и Async Action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Gameplay_Tags.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_DataAssets_AssetManager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с ассетами и данными
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_FileSystem.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_Anim_Instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anim Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_SubSystems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Подсистемы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12.%20UObject%20Interface.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Interface или UInterface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Продвинутая разработка
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Продвинутая разработка
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/1_HUD.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HUD или Heads-up Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/2_UFUNCTION_Wildcard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/3_Slate%20Runtime.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slate Runtimе, введение в Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/4_UMG.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/5_K2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/6_Registe_New_Asset_Type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/7_ACharacter_And_Enhanced%20Input.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACharacter и Enhanced Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/8_Gameplay_Ability_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Ability System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/9_Global_Data_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальнный доступ к данным
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/10_Global_Event_Bus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальная шина событий
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Решение проблем
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Решение проблем
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с кодировкой в LiveCoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/Reset_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Сброс (Reset) проекта
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/generatedh_Problems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с файлом .generated.h
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Советы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Советы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Change_Asset_Icons.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Asset Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Character_And_EnhancedInput.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character Boilerplate with Enhanced Input Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/DefaultToSelf_WorldContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DefaultToSelf WorldContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Different_UPROPERTY.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/GameInputMode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Изменение GameInputMode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Get_UScriptStruct_FromStruct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ::UScriptStruct из встроенной структуры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Input_Binding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События ввода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Iterate_TMap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterate TMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Read_Blueprint_Properties.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Чтение параметров Blueprint класса
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Return_UObject.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возвращение UObject по ссылке из функции
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Run_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Запуск консольных команд
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Screen_Size.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Размер экрана
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Slate_Snippets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Полезные сниппеты Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Spawn_Actors.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawn, призыв объектов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Time_Measuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Замер времени исполнения кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Trace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UEnum_To_String.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UEnum to FString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UObject_Base_Class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Base Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Variable_Type_Print_Template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Шаблон для печати типа переменной
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/struct_operator%3D%3D.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    struct и оператор ==
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Введение в компоненты
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Базовые классы компонентов
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aactor" class="md-nav__link">
+    Поиск компонентов в классе AActor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Создание своего компонента
+  </a>
+  
+    <nav class="md-nav" aria-label="Создание своего компонента">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Код компонента
+  </a>
+  
+    <nav class="md-nav" aria-label="Код компонента">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testscenecomponenth" class="md-nav__link">
+    Файл TestSceneComponent.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testscenecomponentcpp" class="md-nav__link">
+    Файл TestSceneComponent.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Разбор кода.
+  </a>
+  
+    <nav class="md-nav" aria-label="Разбор кода.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Конструктор.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onregister" class="md-nav__link">
+    Метод OnRegister
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refreshproxy" class="md-nav__link">
+    Метод RefreshProxy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onupdatetransform" class="md-nav__link">
+    Метод OnUpdateTransform.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oncomponentdestroyed" class="md-nav__link">
+    Метод OnComponentDestroyed.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Добавление компонентов во время геймплея
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавление компонентов во время геймплея">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Копирование параметров компонента
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Замена иконки у компонента
+  </a>
+  
+    <nav class="md-nav" aria-label="Замена иконки у компонента">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Добавляем зависимости
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Регистрируем стиль
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#componentvisualizer" class="md-nav__link">
+    ComponentVisualizer
+  </a>
+  
+    <nav class="md-nav" aria-label="ComponentVisualizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Создаем модуль
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    Дополняем файлы сборки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#componentvisualizer_1" class="md-nav__link">
+    Создаем класс для ComponentVisualizer
+  </a>
+  
+    <nav class="md-nav" aria-label="Создаем класс для ComponentVisualizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testscenecomponentvisualizerh" class="md-nav__link">
+    Файл TestSceneComponentVisualizer.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testscenecomponentvisualizercpp" class="md-nav__link">
+    Файл TestSceneComponentVisualizer.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#componentvisualizer_2" class="md-nav__link">
+    Регистрируем ComponentVisualizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Итоговый вид
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cv" class="md-nav__link">
+    Усложняем логику CV
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="unreal-engine">Компоненты в Unreal Engine</h1>
+<p>В этой статье мы освоим компоненты, а так-же попробуем сделать с ними все, что может понадобиться в реальной практике.</p>
+<p>Файлы классов мы будем создавать внутри <code>blueprint-based</code> проекта с модулями.</p>
+<p>Компоненты для теста будут добавляться в основной <code>blueprint</code> класс персонажа - <code>BP_ThirdPersonCharacter</code>.</p>
+<p><a class="glightbox" href="../images/e15e0d4270726da5e317a3aa8bdb2303.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e15e0d4270726da5e317a3aa8bdb2303.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e15e0d4270726da5e317a3aa8bdb2303.png" /></a></p>
+<h2 id="_1">Введение в компоненты</h2>
+<p>Компоненты - одна из сильнейших сторон <code>Unreal Engine</code> (и его "ахиллесова пята", потому что именно компоненты - главная причина плохой производительности движка при работе с большими сценами).</p>
+<p>Благодаря компонентам разработчик может конструировать игровые объекты. Они - один из лучших способов организации игровой логики.</p>
+<p>Чтобы добавить компонент к блюпринту <code>BP_ThirdPersonCharacter</code> нажмите на кнопку <code>Add</code> в меню <code>Components</code>.</p>
+<p><a class="glightbox" href="../images/4bab16bb9bfc2ff9f5f96d8110215db5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4bab16bb9bfc2ff9f5f96d8110215db5.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4bab16bb9bfc2ff9f5f96d8110215db5.png" /></a></p>
+<p>Вы увидите огромное количество доступных для использования компонентов.</p>
+<p><a class="glightbox" href="../images/310ce4ff63025f1002e18b3e8c97808f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="310ce4ff63025f1002e18b3e8c97808f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/310ce4ff63025f1002e18b3e8c97808f.png" /></a></p>
+<p>Класс персонажа по умолчанию состоит из следующих компонент:</p>
+<p><a class="glightbox" href="../images/26cb422433bb153bed17f0ab0b832dd1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="26cb422433bb153bed17f0ab0b832dd1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/26cb422433bb153bed17f0ab0b832dd1.png" /></a></p>
+<p>Важно понимать, что компоненты можно создавать и через блюпринты.</p>
+<p>Однако у таких компонентов не получится создать визуальную составляющую, как бы вы этого не хотели. К тому-же производительность <code>blueprint</code> компонентов оставляет желать лучшего и  я не рекомендую выносить логику метода <code>tick</code> в <code>blueprint</code> компоненты.</p>
+<p>Высокопроизводительные компоненты с визуальной составляющей, такие как <code>SkeletalMeshComponent</code>, можно создавать только через <code>с++</code>.
+Компоненты можно добавлять ко всем классам, унаследованным от <code>UObject</code>. Однако удобное меню добавления компонентов есть только у классов, унаследованных от <code>Actor</code>.
+Большинство встроенных компонентов движка находится в модуле <code>Engine</code> в папке <code>Classes -&gt; Components</code>.
+Относительный путь: <code>Runtime\Engine\Classes\Components\ActorComponent.h</code>.</p>
+<p><a class="glightbox" href="../images/2e67b20175d4d75746bf3af2d42f744c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2e67b20175d4d75746bf3af2d42f744c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2e67b20175d4d75746bf3af2d42f744c.png" /></a></p>
+<p>Однако, некоторые компоненты идут в отдельных папках, например в <code>Plugins</code>. Компонент камеры <code>UCameraComponent</code>, который мы будем изучать в этой статье, находится тут: <code>Runtime\Engine\Classes\Camera\CameraComponent.h</code>.</p>
+<p><a class="glightbox" href="../images/6af8ef4f2ea79c3e64ff326642fbe28b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6af8ef4f2ea79c3e64ff326642fbe28b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6af8ef4f2ea79c3e64ff326642fbe28b.png" /></a></p>
+<h2 id="_2">Базовые классы компонентов</h2>
+<p><code>Unreal Engine</code> предоставляет пользователю ряд готовых основ для будущих компонентов.</p>
+<p>Это такие классы как:
+<code>UActorComponent</code> - базовый класс для всех компонентов. В нем минимум логики, у него нет параметра <code>Transform</code>.
+<code>USceneComponent</code> - базовый класс для чуть более сложных компонентов. Его можно крепить к  сокетам, у этого компонента есть параметр <code>Transform</code>, но все еще нет визуального представления. Которое пользователь, тем не менее, может сгенерировать сам.</p>
+<p>Все остальные компонеты движка, так или иначе, наследуются от этих трех типов.</p>
+<h2 id="aactor">Поиск компонентов в классе <code>AActor</code></h2>
+<p>Поскольку все <code>Actor'ы</code> на игровом уровне состоят из компонентов - умение эти компоненты находить и потом использовать - ключевое и наиболее часто применяемое.</p>
+<p>Прежде чем приступать к созданию собственного компонента, давайте изучим способы нахождения имеющихся компонентов, на примере класса персонажа.</p>
+<p>В <code>blueprint</code> коде у вас есть 4 функции для поиска компоненетов.</p>
+<p>Это:
+- <code>Get Component By Class</code> - ищет компонент по классу
+- <code>Get Components By Class</code> - ищет все компоненты указанного класса
+- <code>Get Component By Tag</code> - ищет все компоненты, помеченные определенным тегом
+- <code>Get Component By Interface</code> - ищет все компоненты, реализующие выбранный класс интерфейса</p>
+<p><a class="glightbox" href="../images/a4abde8077df86e3bae0e102a7ff8750.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a4abde8077df86e3bae0e102a7ff8750.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a4abde8077df86e3bae0e102a7ff8750.png" /></a></p>
+<p>Все эти методы есть и в <code>с++</code>. Но в дополнение к обычным <code>GetComponentByClass</code>, есть так-же и методы <code>Find*</code>, которые чуть удобнее ибо представляют из себя шаблоны, которые сразу выдают приведенный к нужному классу экземпляр компонента.</p>
+<p><a class="glightbox" href="../images/af6811b1531a5c27ea188ca9c073bb82.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="af6811b1531a5c27ea188ca9c073bb82.png" auto_="auto;" display="block;" margin:="margin:" src="../images/af6811b1531a5c27ea188ca9c073bb82.png" /></a></p>
+<p>Привожу примеры поиска компонентов в классе <code>AActor</code>:
+<div class="highlight"><pre><span></span><code><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetOwner</span><span class="p">();</span><span class="w"> </span><span class="c1">// Get Component owner</span>
+<span class="c1">// Get USkeletalMeshComponent in different methods</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Using FindComponentByClass</span>
+<span class="w">    </span><span class="n">USkeletalMeshComponent</span><span class="o">*</span><span class="w"> </span><span class="n">SKCmponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Owner</span><span class="o">-&gt;</span><span class="n">FindComponentByClass</span><span class="o">&lt;</span><span class="n">USkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SKCmponent</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;[find skeletal mesh by class] name = %s&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">SKCmponent</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()))</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Using Components Array</span>
+<span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">UActorComponent</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">Components</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="n">Owner</span><span class="o">-&gt;</span><span class="n">GetComponents</span><span class="p">(</span><span class="n">Components</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">UActorComponent</span><span class="o">*</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Components</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">USkeletalMeshComponent</span><span class="o">*</span><span class="w"> </span><span class="n">SKCmponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">USkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Component</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SKCmponent</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;[skeletal mesh from components array] name = %s&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">SKCmponent</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()))</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Using GetComponentByClass</span>
+<span class="w">    </span><span class="n">UActorComponent</span><span class="o">*</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Owner</span><span class="o">-&gt;</span><span class="n">GetComponentByClass</span><span class="p">(</span><span class="n">USkeletalMeshComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">());</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Component</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">USkeletalMeshComponent</span><span class="o">*</span><span class="w"> </span><span class="n">SKCmponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">USkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Component</span><span class="p">);</span>
+<span class="w">        </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;[skeletal mesh by class] name = %s&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">SKCmponent</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()))</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Using GetComponentsByClass</span>
+<span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">UActorComponent</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">SkeletalMeshes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Owner</span><span class="o">-&gt;</span><span class="n">GetComponentsByClass</span><span class="p">(</span><span class="n">USkeletalMeshComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">());</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">UActorComponent</span><span class="o">*</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">SkeletalMeshes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">USkeletalMeshComponent</span><span class="w"> </span><span class="o">*</span><span class="n">SKCmponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">USkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Component</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SKCmponent</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UE_LOG</span><span class="p">(</span><span class="w"> </span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;[skeletal meshes by class] name = %s&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">SKCmponent</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">())</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Using GetComponentsByTag</span>
+<span class="w">    </span><span class="c1">// *note - before using - add tag `SK_Component` to skeletal mesh component of the character</span>
+<span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">UActorComponent</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">SkeletalMeshes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Owner</span><span class="o">-&gt;</span><span class="n">GetComponentsByTag</span><span class="p">(</span><span class="n">USkeletalMeshComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;SK_Component&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">UActorComponent</span><span class="o">*</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">SkeletalMeshes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">USkeletalMeshComponent</span><span class="o">*</span><span class="w"> </span><span class="n">SKCmponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">USkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Component</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SKCmponent</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;[skeletal mesh by tag] name = %s&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">SKCmponent</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()))</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/94fdee3528a593e6b5396a1897a99ba1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="94fdee3528a593e6b5396a1897a99ba1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/94fdee3528a593e6b5396a1897a99ba1.png" /></a></p>
+<p>Компоненты, добавленные как суб объекты, методом <code>CreateDefaultSubobject</code> можно получить следующим образом:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Using Subobjects</span>
+<span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">UObject</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">SubOjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="n">Owner</span><span class="o">-&gt;</span><span class="n">GetDefaultSubobjects</span><span class="p">(</span><span class="n">SubOjects</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">Obj</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">SubOjects</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">USkeletalMeshComponent</span><span class="o">*</span><span class="w"> </span><span class="n">SKCmponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">USkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Obj</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SKCmponent</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;[skeletal mesh from sub objects array] name = %s&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">SKCmponent</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()))</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/83f9fb37769bfe7df49835bfa5955f46.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="83f9fb37769bfe7df49835bfa5955f46.png" auto_="auto;" display="block;" margin:="margin:" src="../images/83f9fb37769bfe7df49835bfa5955f46.png" /></a></p>
+<h2 id="_3">Создание своего компонента</h2>
+<p>Реализуем собственный компонент с визуальным представлением.</p>
+<p>В качестве родительского класса, я предлагаю выбрать <code>SceneComponent</code>. Потому что у компонента данного типа есть параметр <code>transform</code>.
+Создадим новый <code>SceneComponent</code> перейдя <code>Tools -&gt; New C++ Class -&gt; All Classes -&gt; SceneComponent</code>. 
+<a class="glightbox" href="../images/f10d008dce76dd8232c4e6b5a468f1bc.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f10d008dce76dd8232c4e6b5a468f1bc.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f10d008dce76dd8232c4e6b5a468f1bc.png" /></a></p>
+<p>Добавляем компонент в тестовый модуль.</p>
+<p><a class="glightbox" href="../images/6e5902a3026160002af33cfe988ed5e9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6e5902a3026160002af33cfe988ed5e9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6e5902a3026160002af33cfe988ed5e9.png" /></a></p>
+<p>В коде нам понадобится указатель типа <code>UStaticMesh</code> из которого мы будем брать прокси меш для отрисовки. Меш будет отрисовываться в суб объекте типа <code>UStaticMeshComponent</code>. Назовем его <code>ProxyMeshComponent</code>.
+Инициализировать <code>ProxyMeshComponent</code> мы будем в событии <code>OnRegister</code>, то есть в тот момент, когда компонент добавляется на сцену.</p>
+<p>Разумеется, наш суб объект с мешем надо не только создавать, но еще и удалять вместе с удалением основного компонента <code>TestSceneComponent</code>. За это отвечает событие <code>OnComponentDestroyed</code>.
+Так-же, необходимо заставить трансформации <code>ProxyMeshComponent</code> следовать за трансформациями рута <code>TestSceneComponent</code>. За отслеживание позиции <code>SceneComponent</code> отвечает событие <code>OnUpdateTransform</code>.
+На данном этапе класс выглядит так: 
+<a class="glightbox" href="../images/ff3049ff83f5e8c6de5c9fe01f6aecb7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ff3049ff83f5e8c6de5c9fe01f6aecb7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ff3049ff83f5e8c6de5c9fe01f6aecb7.png" /></a></p>
+<p>После ряда правок, я завершил написание основы для первой части компонента.</p>
+<p>Для начала посмотрим как это выглядит, а потом разберем полученный код.</p>
+<p><a class="glightbox" href="../images/03621098c38a8d3b76e1e5885ef9d487.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="03621098c38a8d3b76e1e5885ef9d487.png" auto_="auto;" display="block;" margin:="margin:" src="../images/03621098c38a8d3b76e1e5885ef9d487.png" /></a></p>
+<p>Я сделал компонент, который рендерит на сцене синий куб (в данный момент). Куб двигается вслед за компонентом и удаляется, если удаляют компонент.</p>
+<p><a class="glightbox" href="../images/0bbdf58c48ca53150512fb3d3c677adc.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0bbdf58c48ca53150512fb3d3c677adc.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0bbdf58c48ca53150512fb3d3c677adc.png" /></a></p>
+<p>Суб объект куба присутствует как в игровом мире, так и в редакторе.</p>
+<p>Мы можем запустить игру, чтобы увидеть как работает с данным суб объектом.</p>
+<p><a class="glightbox" href="../images/46ed9ced02f2ee68f5910bc8c983ea2e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="46ed9ced02f2ee68f5910bc8c983ea2e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/46ed9ced02f2ee68f5910bc8c983ea2e.png" /></a></p>
+<h3 id="_4">Код компонента</h3>
+<p>Базовый класс компонента выглядит так:</p>
+<p><a class="glightbox" href="../images/b63c4102ddb3df35e77e96d0e7d2cc21.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b63c4102ddb3df35e77e96d0e7d2cc21.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b63c4102ddb3df35e77e96d0e7d2cc21.png" /></a></p>
+<h4 id="testscenecomponenth">Файл <code>TestSceneComponent.h</code></h4>
+<div class="highlight"><pre><span></span><code><span class="n">UCLASS</span><span class="p">(</span><span class="n">ClassGroup</span><span class="o">=</span><span class="p">(</span><span class="n">TestComponents</span><span class="p">),</span><span class="w"> </span><span class="n">Blueprintable</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="o">=</span><span class="p">(</span><span class="n">BlueprintSpawnableComponent</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TESTMODULE_API</span><span class="w"> </span><span class="n">UTestSceneComponent</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">USceneComponent</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TestMesh</span><span class="p">)</span>
+<span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">UStaticMesh</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TestMeshToShow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Out TestMesh will be loaded into subcomponent of StaticMesh</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">UStaticMeshComponent</span><span class="o">*</span><span class="w"> </span><span class="n">ProxyMeshComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Sets default values for this component&#39;s properties</span>
+<span class="w">    </span><span class="n">UTestSceneComponent</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Updates ProxyMesh in ProxyMeshcomponent if necessary</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">RefreshProxy</span><span class="p">();</span>
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Called when the game starts</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">BeginPlay</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Called every frame</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">TickComponent</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">,</span><span class="w"> </span><span class="n">ELevelTick</span><span class="w"> </span><span class="n">TickType</span><span class="p">,</span><span class="w"> </span><span class="n">FActorComponentTickFunction</span><span class="o">*</span><span class="w"> </span><span class="n">ThisTickFunction</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Component Entered Scene</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">OnRegister</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Component moved and it&#39;s should also move ProxyMeshComponent</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">OnUpdateTransform</span><span class="p">(</span><span class="n">EUpdateTransformFlags</span><span class="w"> </span><span class="n">UpdateTransformFlags</span><span class="p">,</span><span class="w"> </span><span class="n">ETeleportType</span><span class="w"> </span><span class="n">Teleport</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Once component is Destroyed - ProxyMeshComponent should be destroyed as well</span>
+<span class="w">    </span><span class="c1">// *hmmm ... will garbage collector do that for me?..</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">OnComponentDestroyed</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">bDestroyingHierarchy</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="testscenecomponentcpp">Файл <code>TestSceneComponent.cpp</code></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Sets default values for this component&#39;s properties</span>
+<span class="c1">// Constructor</span>
+<span class="n">UTestSceneComponent</span><span class="o">::</span><span class="n">UTestSceneComponent</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Super</span><span class="p">(</span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features</span>
+<span class="w">    </span><span class="c1">// off to improve performance if you don&#39;t need them.</span>
+<span class="w">    </span><span class="n">PrimaryComponentTick</span><span class="p">.</span><span class="n">bCanEverTick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//if (!IsRunningCommandlet()){</span>
+<span class="w">        </span><span class="c1">// Load Static Mesh by Refrence</span>
+<span class="w">        </span><span class="c1">//static ConstructorHelpers::FObjectFinder&lt;UStaticMesh&gt; TestLoadedMesh(TEXT(&quot;/Game/LevelPrototyping/Meshes/SM_ChamferCube.SM_ChamferCube&quot;));</span>
+<span class="w">        </span><span class="c1">// Set Static Mesh ref to variable</span>
+<span class="w">        </span><span class="c1">//this-&gt;TestMeshToShow = TestLoadedMesh.Object;</span>
+<span class="w">    </span><span class="c1">//}</span>
+<span class="w">    </span><span class="c1">// Use StaticLoadObject to load our Satic Mesh from desired path and then Cast it to the necessary type</span>
+<span class="w">    </span><span class="n">UStaticMesh</span><span class="o">*</span><span class="w"> </span><span class="n">StaticLoadedMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UStaticMesh</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StaticLoadObject</span><span class="p">(</span><span class="n">UStaticMesh</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Game/LevelPrototyping/Meshes/SM_ChamferCube.SM_ChamferCube&quot;</span><span class="p">)));</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StaticLoadedMesh</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">TestMeshToShow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StaticLoadedMesh</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">//UE_LOG(LogTemp, Warning, TEXT(&quot;Loaded!&quot;))</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Component Entered Scene</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTestSceneComponent</span><span class="o">::</span><span class="n">OnRegister</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">OwnerActor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetOwner</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">OwnerActor</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ProxyMeshComponent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ProxyMeshComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UStaticMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">OwnerActor</span><span class="p">,</span><span class="w"> </span><span class="n">NAME_None</span><span class="p">,</span><span class="w"> </span><span class="n">RF_Transactional</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RF_TextExportTransient</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// Attach proxy to current component</span>
+<span class="w">            </span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">SetupAttachment</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// This one just to mark current component as helper. Dosen&#39; do anything.</span>
+<span class="w">            </span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">SetIsVisualizationComponent</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="w">            </span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">bHiddenInGame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">CastShadow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="c1">// Inherit</span>
+<span class="w">            </span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">CreationMethod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">CreationMethod</span><span class="p">;</span>
+<span class="w">            </span><span class="c1">// Without this line component won&#39;t appear even if it is instanced!</span>
+<span class="w">            </span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">RegisterComponentWithWorld</span><span class="p">(</span><span class="n">GetWorld</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// this will set TestMeshToShow to ProxyMeshComponent</span>
+<span class="w">        </span><span class="n">RefreshProxy</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Call parent</span>
+<span class="w">    </span><span class="n">Super</span><span class="o">::</span><span class="n">OnRegister</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="c1">// Component moved and it&#39;s should also move ProxyMeshComponent</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTestSceneComponent</span><span class="o">::</span><span class="n">OnUpdateTransform</span><span class="p">(</span><span class="n">EUpdateTransformFlags</span><span class="w"> </span><span class="n">UpdateTransformFlags</span><span class="p">,</span><span class="w"> </span><span class="n">ETeleportType</span><span class="w"> </span><span class="n">Teleport</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ProxyMeshComponent</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">){</span>
+<span class="w">        </span><span class="c1">// Copy Transforms to ProxyMeshComponent</span>
+<span class="w">        </span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">SetWorldTransform</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">GetComponentToWorld</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Once component is Destroyed - ProxyMeshComponent should be destroyed as well</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTestSceneComponent</span><span class="o">::</span><span class="n">OnComponentDestroyed</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">bDestroyingHierarchy</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Remove ProxyMeshComponent</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ProxyMeshComponent</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">DestroyComponent</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Propagate to parent</span>
+<span class="w">    </span><span class="n">Super</span><span class="o">::</span><span class="n">OnComponentDestroyed</span><span class="p">(</span><span class="n">bDestroyingHierarchy</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// Refresh ProxyMesh</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTestSceneComponent</span><span class="o">::</span><span class="n">RefreshProxy</span><span class="p">(){</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ProxyMeshComponent</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">){</span>
+<span class="w">        </span><span class="c1">// Update Mesh</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">GetStaticMesh</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">TestMeshToShow</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">SetStaticMesh</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">TestMeshToShow</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// Disable Collision</span>
+<span class="w">            </span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">SetCollisionProfileName</span><span class="p">(</span><span class="n">UCollisionProfile</span><span class="o">::</span><span class="n">NoCollision_ProfileName</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// Reset Proxy Component&#39;s Transform</span>
+<span class="w">        </span><span class="n">ProxyMeshComponent</span><span class="o">-&gt;</span><span class="n">ResetRelativeTransform</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_5">Разбор кода.</h3>
+<h4 id="_6">Конструктор.</h4>
+<p>В конструкторе задается меш, который затем отображается в суб объекте <code>TestMeshToShow</code>. За это отвечает данный код:
+<div class="highlight"><pre><span></span><code><span class="n">UStaticMesh</span><span class="o">*</span><span class="w"> </span><span class="n">StaticLoadedMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UStaticMesh</span><span class="o">&gt;</span><span class="p">(</span><span class="n">StaticLoadObject</span><span class="p">(</span><span class="n">UStaticMesh</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Game/LevelPrototyping/Meshes/SM_ChamferCube.SM_ChamferCube&quot;</span><span class="p">)));</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StaticLoadedMesh</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">TestMeshToShow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StaticLoadedMesh</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//UE_LOG(LogTemp, Warning, TEXT(&quot;Loaded!&quot;))</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/a30bda65a52129e7d34959da1a6f44c3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a30bda65a52129e7d34959da1a6f44c3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a30bda65a52129e7d34959da1a6f44c3.png" /></a></p>
+<h4 id="onregister">Метод <code>OnRegister</code></h4>
+<p>Данный метод срабатывает, когда когда компонент добавлен на сцену. </p>
+<p><a href="https://docs.unrealengine.com/4.27/en-US/API/Runtime/Engine/Components/UActorComponent/OnRegister/">Документация</a> гласит, что это происходит до рендера самого компонента.</p>
+<p>В этом методе я инициализирую под-компонент <code>ProxyMeshComponent</code>, в котором и рендерится наш кубик. А так-же задаю ему определенные параметры.</p>
+<p><a class="glightbox" href="../images/a953bdc3b135883bd7fde11e0cfcf646.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a953bdc3b135883bd7fde11e0cfcf646.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a953bdc3b135883bd7fde11e0cfcf646.png" /></a></p>
+<h4 id="refreshproxy">Метод <code>RefreshProxy</code></h4>
+<p>В этом методе происходит обновление меша, отображаемого в суб объекте.</p>
+<p>Метод выглядит так:</p>
+<p><a class="glightbox" href="../images/2281534340e72b6168e9d1485e68634c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2281534340e72b6168e9d1485e68634c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2281534340e72b6168e9d1485e68634c.png" /></a></p>
+<p>Пользователь может изменить меш в переменной <code>this-&gt;TestMeshToShow</code>. Когда это происходит условие <code>ProxyMeshComponent-&gt;GetStaticMesh() != this-&gt;TestMeshToShow</code> возвращает <code>true</code>, потому что текущий меш, в компоненте <code>ProxyMeshComponent</code> перестает совпадать с тем, на который указывает <code>TestMeshToShow</code>. Это приводит к обновлению отображаемого меша.</p>
+<p>Вот как выглядит замена меша:</p>
+<p><a class="glightbox" href="../images/f6f549f956f3a06fd5d7a016c2265b6b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f6f549f956f3a06fd5d7a016c2265b6b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f6f549f956f3a06fd5d7a016c2265b6b.png" /></a></p>
+<p>После замены меша мы отключаем у него коллизии и сбрасываем трансформации. Врятли стоит эти строчки разжевывать, они очевидны.</p>
+<h4 id="onupdatetransform">Метод <code>OnUpdateTransform</code>.</h4>
+<p><code>OnUpdateTransform</code> вызывается компонентом всякий раз, когда изменяется его положение в мире. Здесь мы заставляем прокси-компонент <code>ProxyMeshComponent</code> следовать за основным компонентом.</p>
+<p><a class="glightbox" href="../images/5ddb009a09c8b41006b2620ea1e45523.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5ddb009a09c8b41006b2620ea1e45523.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5ddb009a09c8b41006b2620ea1e45523.png" /></a></p>
+<p>Используя метод <code>this-&gt;GetComponentToWorld()</code> мы получаем трансформы основного компонента, апотом переносим их на прокси. Все это делатся в одну строчку очень легко и  просто.</p>
+<h4 id="oncomponentdestroyed">Метод <code>OnComponentDestroyed</code>.</h4>
+<p>Этот метод вызывается, когда разработчик(или игрок) удаляет компонент со сцены. Здесь мы должны проследить, чтобы прокси-компонент так-же удалился, иначе он будет вечно торчать в мире и убрать его никак не получится (без перезапуска движка).</p>
+<p><a class="glightbox" href="../images/c563641923ebb84a8aadcd8b97edbe9e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c563641923ebb84a8aadcd8b97edbe9e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c563641923ebb84a8aadcd8b97edbe9e.png" /></a></p>
+<p>У каждого компонента есть метод <code>DestroyComponent</code>, который его убирает с уровня. Этот метод мы и вызываем на прокси, после чего переходим к родительскому методу вызывая <code>Super::OnComponentDestroyed(bDestroyingHierarchy);</code>.
+Собственно <code>Super</code> - это указатель на базовый класс, от которого унаследован наш текущий класс. Базовым классом для <code>USceneComponent</code> является <code>UActorComponent</code>.</p>
+<h2 id="_7">Добавление компонентов во время геймплея</h2>
+<p>Компоненты можно создавать прямо во время геймплея. Иногда это бывает полезно.</p>
+<p>Базовый способ генерации компонента выглядит так:
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameFramework/Character.h&quot;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// Spawn skeletal mesh component on owning character and copy parameters of character-&gt;mesh to it</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">UTestSceneComponent::SpawnSkeletalMeshComponent</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">TWeakObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OwnerActor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetOwner</span><span class="p">();</span>
+<span class="w">    </span><span class="n">FName</span><span class="w"> </span><span class="n">NewMeshCompName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;CustomSkeletalComponent&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">USkeletalMeshComponent</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pNewSkeletalMeshComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">USkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">USkeletalMeshComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">NewMeshCompName</span><span class="p">,</span><span class="w"> </span><span class="n">RF_NoFlags</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pNewSkeletalMeshComponent</span><span class="o">-&gt;</span><span class="n">SetupAttachment</span><span class="p">(</span><span class="n">OwnerActor</span><span class="o">-&gt;</span><span class="n">GetRootComponent</span><span class="p">());</span><span class="w"> </span><span class="c1">// Attach to actor&#39;s root</span>
+<span class="w">    </span><span class="n">pNewSkeletalMeshComponent</span><span class="o">-&gt;</span><span class="n">RegisterComponent</span><span class="p">();</span>
+<span class="w">    </span><span class="n">OwnerActor</span><span class="o">-&gt;</span><span class="n">AddInstanceComponent</span><span class="p">(</span><span class="n">pNewSkeletalMeshComponent</span><span class="p">);</span><span class="w"> </span><span class="c1">//without this, component wont show up in properties</span>
+<span class="p">}</span>
+</code></pre></div>
+Если сейчас добавить вызов этой функции в <code>BeginPlay</code>, нашего тестового компонента, а потом скомпилировать код то мы увидим следующее:</p>
+<p><a class="glightbox" href="../images/aa42a5c8af63840d7fa96311dc29d93f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="aa42a5c8af63840d7fa96311dc29d93f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/aa42a5c8af63840d7fa96311dc29d93f.png" /></a></p>
+<p><a class="glightbox" href="../images/c4028f417ac97aded8bae4573bf0a91e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c4028f417ac97aded8bae4573bf0a91e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c4028f417ac97aded8bae4573bf0a91e.png" /></a></p>
+<p>Компонент с именем <code>CustomSkeletalComponent</code> генерируется, однако он пуст.</p>
+<p>Давайте это исправим.</p>
+<h3 id="_8">Копирование параметров компонента</h3>
+<p>У шаблона <code>NewObject</code> есть возможность скопировать все параметры одного компонента - в другой при его создании.</p>
+<p>Для ее демонстрации. предлагаю копировать в генерируемый компонент содержимое компонента <code>Mesh</code> нашего <code>BP_ThirdPresonCharacter'а</code>.
+Копирование происходит вместе с материалами, настройками AnimGraph и прочим.</p>
+<p><a class="glightbox" href="../images/a26f26abdf6ce10ad80513c1e0b7c748.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a26f26abdf6ce10ad80513c1e0b7c748.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a26f26abdf6ce10ad80513c1e0b7c748.png" /></a></p>
+<p>Для начала надо получить указатель на этот самый <code>Mesh</code>.
+Делается это так:
+<div class="highlight"><pre><span></span><code><span class="c1">// cast owner to character class</span>
+<span class="n">TWeakObjectPtr</span><span class="o">&lt;</span><span class="n">ACharacter</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OwningCharacter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">ACharacter</span><span class="o">&gt;</span><span class="p">(</span><span class="n">OwnerActor</span><span class="p">);</span>
+<span class="c1">// take refrence of character&#39;s Mesh component</span>
+<span class="n">TWeakObjectPtr</span><span class="o">&lt;</span><span class="n">UObject</span><span class="o">&gt;</span><span class="w"> </span><span class="n">FoundSkeletalMeshComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">OwningCharacter</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">FoundSkeletalMeshComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UObject</span><span class="o">&gt;</span><span class="p">(</span><span class="w"> </span><span class="n">OwningCharacter</span><span class="o">-&gt;</span><span class="n">GetMesh</span><span class="p">()</span><span class="w"> </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+После получения ссылки на копируемый компонент, мы можем скормить эту ссылку в шаблон <code>NewObject</code>, в качестве параметра <code>Template</code>.</p>
+<p><a class="glightbox" href="../images/b6f318ed938e199b4ddb90e5f77a9998.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b6f318ed938e199b4ddb90e5f77a9998.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b6f318ed938e199b4ddb90e5f77a9998.png" /></a></p>
+<p>Итоговый код будет таким:
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameFramework/Character.h&quot;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// Spawn skeletal mesh component on owning character and copy parameters of character-&gt;mesh to it</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">UTestSceneComponent::SpawnSkeletalMeshComponent</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">TWeakObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OwnerActor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetOwner</span><span class="p">();</span>
+<span class="w">    </span><span class="n">FName</span><span class="w"> </span><span class="n">NewMeshCompName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;CustomSkeletalComponent&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// cast owner to character class</span>
+<span class="w">    </span><span class="n">TWeakObjectPtr</span><span class="o">&lt;</span><span class="n">ACharacter</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OwningCharacter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">ACharacter</span><span class="o">&gt;</span><span class="p">(</span><span class="n">OwnerActor</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// copy properties of character&#39;s Skeletal Mesh component into new spawned component</span>
+<span class="w">    </span><span class="c1">// take refrence of character&#39;s Mesh component</span>
+<span class="w">    </span><span class="n">TWeakObjectPtr</span><span class="o">&lt;</span><span class="n">UObject</span><span class="o">&gt;</span><span class="w"> </span><span class="n">FoundSkeletalMeshComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">OwningCharacter</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">FoundSkeletalMeshComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UObject</span><span class="o">&gt;</span><span class="p">(</span><span class="w"> </span><span class="n">OwningCharacter</span><span class="o">-&gt;</span><span class="n">GetMesh</span><span class="p">()</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">//take note of last argument here, it almost makes a perfect copy of FoundSkeletalMeshComponent, including scale and USkeletalMesh</span>
+<span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">USkeletalMeshComponent</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pNewSkeletalMeshComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">USkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">USkeletalMeshComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">NewMeshCompName</span><span class="p">,</span><span class="w"> </span><span class="n">RF_NoFlags</span><span class="p">,</span><span class="w"> </span><span class="n">FoundSkeletalMeshComponent</span><span class="p">.</span><span class="n">Get</span><span class="p">());</span>
+<span class="w">    </span><span class="n">pNewSkeletalMeshComponent</span><span class="o">-&gt;</span><span class="n">SetupAttachment</span><span class="p">(</span><span class="n">OwnerActor</span><span class="o">-&gt;</span><span class="n">GetRootComponent</span><span class="p">());</span><span class="w"> </span><span class="c1">// Attach to actor&#39;s root</span>
+<span class="w">    </span><span class="n">pNewSkeletalMeshComponent</span><span class="o">-&gt;</span><span class="n">RegisterComponent</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">//pNewSkeletalMeshComponent-&gt;AttachToComponent(args) this will crash the game, and its redundant as RegisterComponent does an AttachToComponent using data from SetupAttachment!!!</span>
+<span class="w">    </span><span class="n">OwnerActor</span><span class="o">-&gt;</span><span class="n">AddInstanceComponent</span><span class="p">(</span><span class="n">pNewSkeletalMeshComponent</span><span class="p">);</span><span class="w"> </span><span class="c1">//without this, component wont show up in properties</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/709e2f0f2ca9f19b7193643ccc50fd74.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="709e2f0f2ca9f19b7193643ccc50fd74.png" auto_="auto;" display="block;" margin:="margin:" src="../images/709e2f0f2ca9f19b7193643ccc50fd74.png" /></a></p>
+<p><a class="glightbox" href="../images/1fe35f9ff52a0bbd24134c735152d181.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1fe35f9ff52a0bbd24134c735152d181.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1fe35f9ff52a0bbd24134c735152d181.png" /></a></p>
+<p>Если скомпилировать данный код, а потом запустить, мы получим компонент <code>CustomSkeletalComponent</code>, который копирует все параметры компонента <code>Mesh</code>.</p>
+<p><a class="glightbox" href="../images/895ed18ebcc1a730529e2cffff73a87b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="895ed18ebcc1a730529e2cffff73a87b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/895ed18ebcc1a730529e2cffff73a87b.png" /></a></p>
+<h2 id="_9">Замена иконки у компонента</h2>
+<p>У любого <code>UObject'а</code>, в том числе и у компонента, можно заменить иконку класса. Предлагаю сделать это.</p>
+<p>В данный момент наш компонент выглядит крайне невзрачно.</p>
+<p><a class="glightbox" href="../images/1dc3c2d5a6ef33ab90a6260b0b7b6042.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1dc3c2d5a6ef33ab90a6260b0b7b6042.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1dc3c2d5a6ef33ab90a6260b0b7b6042.png" /></a></p>
+<p>Поменяем его иконку на что-нибудь сносное.</p>
+<h3 id="_10">Добавляем зависимости</h3>
+<p>Для отрисовки иконок нам понадобится создать <code>StyleSet</code>. За функционал этого типа логики отвечает графический фреймворк <code>Slate</code>. Необходимо подключить его файле сборки <code>.build.cs</code> нашего модуля.</p>
+<p>Открываем файл <code>TestModule.build.cs</code> и добавляем в <code>PublicDependencyModuleNames</code> строчки <code>Slate</code> и <code>SlateCore</code>.
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">UnrealBuildTool</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TestModule</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ModuleRules</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">TestModule</span><span class="p">(</span><span class="n">ReadOnlyTargetRules</span><span class="w"> </span><span class="n">Target</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">base</span><span class="p">(</span><span class="n">Target</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PCHUsage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCHUsageMode</span><span class="p">.</span><span class="n">UseExplicitOrSharedPCHs</span><span class="p">;</span>
+<span class="w">        </span><span class="n">PublicDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;Core&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;CoreUObject&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Engine&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Slate&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;SlateCore&quot;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="n">PublicIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;TestModule/Public&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TestModule/Public/Enums&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="n">PrivateIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">ModuleDirectory</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Private&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="_11">Регистрируем стиль</h3>
+<p>Для регистрации нового стиля оформления, с иконкой, нам понадобится конструктор модуля. В нашем случае он находится в файлах <code>TestModule.h</code> и <code>TestModule.cpp</code>.
+Добавляем в файл <code>TestModule.h</code> переменную будущего стиля <code>TSharedPtr&lt;FSlateStyleSet&gt; UiStyle;</code>.
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Modules/ModuleManager.h&quot;</span>
+<span class="c1">// Slate</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Slate/SlateGameResources.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Styling/ISlateStyle.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Styling/SlateStyle.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Styling/SlateStyleMacros.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Styling/SlateStyleRegistry.h&quot;</span><span class="c1"> // to register our styles in</span>
+<span class="n">DECLARE_LOG_CATEGORY_EXTERN</span><span class="p">(</span><span class="n">TestModule</span><span class="p">,</span><span class="w"> </span><span class="n">All</span><span class="p">,</span><span class="w"> </span><span class="n">All</span><span class="p">);</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FTestModule</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IModuleInterface</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Here will be our current module Style</span>
+<span class="w">    </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FSlateStyleSet</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ModuleStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/* Called when the module is loaded */</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">StartupModule</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/* Called when the module is unloaded */</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ShutdownModule</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FSlateStyleSet</span><span class="o">&gt;</span><span class="w"> </span><span class="n">UiStyle</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+Регистрируем стиль с новой иконкой в файле <code>TestModule.cpp</code>.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TestModule.h&quot;</span>
+<span class="n">DEFINE_LOG_CATEGORY</span><span class="p">(</span><span class="n">TestModule</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">FTestModule::StartupModule</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">TestModule</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;TestModule module has been loaded&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// register custom widget style class</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">UiStyle</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//UiStyle = MakeShared&lt;FSlateStyleSet&gt;();</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FSlateStyleSet</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FSlateStyleSet</span><span class="p">(</span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;TestSceneComponentStyleSet&quot;</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">SetContentRoot</span><span class="p">(</span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineContentDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Editor/Slate/Icons/AssetIcons&quot;</span><span class="p">));</span>
+<span class="w">        </span><span class="c1">// Common sizes for icons and thumbnails</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">FVector2D</span><span class="w"> </span><span class="n">Icon64x64</span><span class="p">(</span><span class="mf">64.f</span><span class="p">,</span><span class="w"> </span><span class="mf">64.f</span><span class="p">);</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">FVector2D</span><span class="w"> </span><span class="n">Icon16x16</span><span class="p">(</span><span class="mf">16.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">16.0f</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Set the Images of the properties to be equal of our new images, finding the property names can be a bit tricky however.</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;ClassThumbnail.TestSceneComponent&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FSlateImageBrush</span><span class="p">(</span>
+<span class="w">            </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">RootToContentDir</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;ObjectLibrary_64x&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;.png&quot;</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">Icon64x64</span>
+<span class="w">        </span><span class="p">));</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;ClassIcon.TestSceneComponent&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FSlateImageBrush</span><span class="p">(</span>
+<span class="w">            </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">RootToContentDir</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;ObjectLibrary_16x&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;.png&quot;</span><span class="p">)),</span>
+<span class="w">            </span><span class="n">Icon16x16</span>
+<span class="w">        </span><span class="p">));</span>
+<span class="w">        </span><span class="c1">// register our styles</span>
+<span class="w">        </span><span class="n">FSlateStyleRegistry</span><span class="o">::</span><span class="n">RegisterSlateStyle</span><span class="p">(</span><span class="o">*</span><span class="n">UiStyle</span><span class="p">.</span><span class="n">Get</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">FTestModule::ShutdownModule</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// unregister widget style and free memory</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">UiStyle</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">FSlateStyleRegistry</span><span class="o">::</span><span class="n">UnRegisterSlateStyle</span><span class="p">(</span><span class="o">*</span><span class="n">UiStyle</span><span class="p">.</span><span class="n">Get</span><span class="p">());</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">TestModule</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;TestModule module has been unloaded&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="n">IMPLEMENT_MODULE</span><span class="p">(</span><span class="n">FTestModule</span><span class="p">,</span><span class="w"> </span><span class="n">TestModule</span><span class="p">)</span>
+</code></pre></div>
+Основные иконки <code>Unreal Engine</code> поставляются вместе с движком. Найти их можно в папке установки движка, по пути <code>Engine\Content\Editor\Slate\Icons\</code>. Иконки ассетов и <code>blueprint</code> классов находятся в подпапке <code>AssetIcons</code>.
+Для нашего компонента я решил использовать иконки <code>ObjectLibrary_16x</code> и <code>ObjectLibrary_64x</code>.</p>
+<p><a class="glightbox" href="../images/4d6b63a1d543c391dbe98754a11029ba.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4d6b63a1d543c391dbe98754a11029ba.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4d6b63a1d543c391dbe98754a11029ba.png" /></a></p>
+<p>Для начала я задал каталог, в котором будут искаться файлы иконок.
+<div class="highlight"><pre><span></span><code><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">SetContentRoot</span><span class="p">(</span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineContentDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Editor/Slate/Icons/AssetIcons&quot;</span><span class="p">));</span>
+</code></pre></div>
+Затем установил иконки для класса <code>TestSceneComponent</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">// Set the Images of the properties to be equal of our new images, finding the property names can be a bit tricky however.</span>
+<span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;ClassThumbnail.TestSceneComponent&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FSlateVectorImageBrush</span><span class="p">(</span>
+<span class="w">    </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">RootToContentDir</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;ObjectLibrary_64x&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;.png&quot;</span><span class="p">)),</span>
+<span class="w">    </span><span class="n">Icon64x64</span>
+<span class="p">));</span>
+<span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;ClassIcon.TestSceneComponent&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FSlateVectorImageBrush</span><span class="p">(</span>
+<span class="w">    </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">RootToContentDir</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;ObjectLibrary_16x&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;.png&quot;</span><span class="p">)),</span>
+<span class="w">    </span><span class="n">Icon16x16</span>
+<span class="p">));</span>
+</code></pre></div>
+Формат задания стилей <code>UI</code>: <code>ТипСтиля.КлассСтиля</code>.
+Таким образом строка <code>ClassThumbnail.TestSceneComponent</code> задает миниатюру класса для <code>TestSceneComponent</code>. А строка <code>ClassIcon.TestSceneComponent</code> задает иконку класса <code>TestSceneComponent</code>.
+После компиляции - перезапустите движок.</p>
+<p>Добавим <code>TestSceneComponent</code> к тестовому <code>Actor blueprint</code>. Как вы видите - иконка компонента поменялась.</p>
+<p><a class="glightbox" href="../images/de047ee34671593df4f8eb15e72db6c6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="de047ee34671593df4f8eb15e72db6c6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/de047ee34671593df4f8eb15e72db6c6.png" /></a></p>
+<p>Если создать <code>blueprint</code> класс, унаследованный от <code>TestSceneComponent</code>, то вы увидите, что иконка ассета тоже поменялась.</p>
+<p><a class="glightbox" href="../images/4e03939464e794ac46e32efe6915fb80.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4e03939464e794ac46e32efe6915fb80.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4e03939464e794ac46e32efe6915fb80.png" /></a></p>
+<h2 id="componentvisualizer"><code>ComponentVisualizer</code></h2>
+<p><code>CV</code> позволяет разработчику отобразить вспомогательную графическую информацию для выбранного компонента. Это <code>Editor</code> функционал. То есть функционал расширения движка. <code>CV</code> не работают в <code>Runtime</code> модулях.</p>
+<p>Доступные варианты классов <code>FComponentVisualizer</code> находятся в папке <code>Source / Editor / ComponentVisualizers</code>.</p>
+<p><a class="glightbox" href="../images/b46cb32b9d3a89fbebac0f096edb5f19.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b46cb32b9d3a89fbebac0f096edb5f19.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b46cb32b9d3a89fbebac0f096edb5f19.png" /></a></p>
+<p>Рассмотрим работу <code>CV</code> на примере <code>SplineComponentVisualizer</code>.
+Если вы добавите к персонажу компонент <code>Spline</code>, то выделив его сможете изменять положения точек.</p>
+<p><a class="glightbox" href="../images/fd639137e66c3c56fa0fbd1edf464ae0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fd639137e66c3c56fa0fbd1edf464ae0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fd639137e66c3c56fa0fbd1edf464ae0.png" /></a></p>
+<p>Рендеринг сплайна происходит именно благодаря <code>CV</code>.
+Однако, создание такого сложного <code>CV</code>, как <code>SplineComponentVisualizer</code> займет у меня кучу времени и врятли описание его кода можно будет поместить в нашу и так непомерно раздутую статью.</p>
+<p>Куда проще посмотреть в сторону <code>RadialForceComponentVisualizer</code>.
+При добавлении этого компонента к нашему игровому персонажу вы увидите сферу, радиус которой соответствует радиусу применения радиальной силы. Сама сфера и есть - <code>ComponentVisualizer</code>, поскольку иной визуальной репрезентации у компонента <code>RadialForce</code> нет.</p>
+<p><a class="glightbox" href="../images/f06f39f32bbe77a2f28ee54f69a48652.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f06f39f32bbe77a2f28ee54f69a48652.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f06f39f32bbe77a2f28ee54f69a48652.png" /></a></p>
+<p>Базовый класс для каждого <code>CV</code> называется <code>FComponentVisualizer</code> и находится в файле <code>Source -&gt; Editor\UnrealEd\Public\ComponentVisualizer.h</code>
+Для отрисовки собственных … фигур в этом классе разработчик должен перегрузить метод <code>DrawVisualization</code>.</p>
+<p><a class="glightbox" href="../images/26a275dc1771d06aa19828dec19bd311.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="26a275dc1771d06aa19828dec19bd311.png" auto_="auto;" display="block;" margin:="margin:" src="../images/26a275dc1771d06aa19828dec19bd311.png" /></a></p>
+<p>Давайте посмотрим как выглядит отрисовка сферы в компоненте <code>RadialForceComponentVisualizer</code>.</p>
+<p><a class="glightbox" href="../images/93f0d87bea74dd3bc491ec499785d73d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="93f0d87bea74dd3bc491ec499785d73d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/93f0d87bea74dd3bc491ec499785d73d.png" /></a></p>
+<p>Как вы видите движок просто вызывает метод <code>DrawWireSphereAutoSides</code> для отрисовки сферы заданного радиуса. Скриншот этой сферы приведен выше.</p>
+<p>А так выглядит <code>Vizualizer</code> для компонента <code>SpotLight</code>:</p>
+<p><a class="glightbox" href="../images/a37bf2d40a4c6b2716feaee632a86a6d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a37bf2d40a4c6b2716feaee632a86a6d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a37bf2d40a4c6b2716feaee632a86a6d.png" /></a></p>
+<p>Мы можем сделать примитивную визуализацию для нашего собственного класса <code>TestSceneComponent</code> аналогичным образом.</p>
+<p>Однако этот процесс будет осложнен необходимостью создания дополнительного модуля. Потому что наш имеющийся <code>TestModule</code> загружается в <code>Runtime</code>. А <code>ComponentVisualizer</code> это часть логики <code>Editor</code>.</p>
+<h3 id="_12">Создаем модуль</h3>
+<p>Создаем новый модуль с названием <code>TestModuleEditor</code>.
+Логика названия тут такова. У нас уже есть <code>TestModule</code> и добавляя второй модуль с постфиксом <code>Editor</code> я подчеркиваю зависимость обоих модулей друг от друга.</p>
+<p><a class="glightbox" href="../images/9bf51e4d80cc849995be34339a8a21a4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9bf51e4d80cc849995be34339a8a21a4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9bf51e4d80cc849995be34339a8a21a4.png" /></a></p>
+<p>(Я этот модуль уже создал, поэтому отображается предупреждение)</p>
+<p><a class="glightbox" href="../images/aa4af0ceffcb488bd65ff8c3773ddba1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="aa4af0ceffcb488bd65ff8c3773ddba1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/aa4af0ceffcb488bd65ff8c3773ddba1.png" /></a></p>
+<h3 id="_13">Дополняем файлы сборки</h3>
+<p>После создания модуля откройте его файл сборки <code>TestModuleEditor.build.cs</code> ибо туда надо добавить два новых модуля.</p>
+<p>Первый необходимый модуль - это <code>EditorFramework</code>, это позволит нам делать <code>#include "ComponentVisualizer.h"</code>.
+Второй необходимый модуль, это, разумеется <code>TestModule</code> как <code>public dependency</code>.
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">UnrealBuildTool</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TestModuleEditor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ModuleRules</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">TestModuleEditor</span><span class="p">(</span><span class="n">ReadOnlyTargetRules</span><span class="w"> </span><span class="n">Target</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">base</span><span class="p">(</span><span class="n">Target</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PCHUsage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCHUsageMode</span><span class="p">.</span><span class="n">UseExplicitOrSharedPCHs</span><span class="p">;</span>
+<span class="w">        </span><span class="n">PublicDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Core&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CoreUObject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Engine&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;UnrealEd&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TestModule&quot;</span><span class="p">});</span>
+<span class="w">        </span><span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;EditorFramework&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="n">PublicIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;TestModuleEditor/Public&quot;</span><span class="p">});</span>
+<span class="w">        </span><span class="n">PrivateIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;TestModuleEditor/Private&quot;</span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="componentvisualizer_1">Создаем класс для <code>ComponentVisualizer</code></h3>
+<p>Теперь необходимо создать класс, который будет работать как <code>ComponentVisualizer</code>.
+Выбираем <code>None</code>, чтобы сгенерировать пустую заготовку.</p>
+<p><a class="glightbox" href="../images/e901bde211a715bc47320322799687d9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e901bde211a715bc47320322799687d9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e901bde211a715bc47320322799687d9.png" /></a></p>
+<p>Называем файл <code>TestSceneComponentVisualizer</code> и добавляем его в <code>TestModuleEditor</code>.</p>
+<p><a class="glightbox" href="../images/57e034474aa1ae2055470ea4e6f2d2cf.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="57e034474aa1ae2055470ea4e6f2d2cf.png" auto_="auto;" display="block;" margin:="margin:" src="../images/57e034474aa1ae2055470ea4e6f2d2cf.png" /></a></p>
+<p>В итоге будет сгенерирован пустой класс с конструктором и деструктором.</p>
+<p><a class="glightbox" href="../images/cccf58e441a8342271b43e42d055b0cc.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="cccf58e441a8342271b43e42d055b0cc.png" auto_="auto;" display="block;" margin:="margin:" src="../images/cccf58e441a8342271b43e42d055b0cc.png" /></a></p>
+<p>Добавляем код.</p>
+<h4 id="testscenecomponentvisualizerh">Файл <code>TestSceneComponentVisualizer.h</code></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ComponentVisualizer.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;SceneManagement.h&quot;</span>
+<span class="cm">/**</span>
+<span class="cm"> * ComponentVisualizer for TestSceneComponent</span>
+<span class="cm"> */</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TESTMODULEEDITOR_API</span><span class="w"> </span><span class="n">FTestSceneComponentVisualizer</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">FComponentVisualizer</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">//~ Begin FComponentVisualizer Interface</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">DrawVisualization</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UActorComponent</span><span class="o">*</span><span class="w"> </span><span class="n">Component</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FSceneView</span><span class="o">*</span><span class="w"> </span><span class="n">View</span><span class="p">,</span><span class="w"> </span><span class="n">FPrimitiveDrawInterface</span><span class="o">*</span><span class="w"> </span><span class="n">PDI</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//~ End FComponentVisualizer Interface</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="testscenecomponentvisualizercpp">Файл <code>TestSceneComponentVisualizer.cpp</code></h4>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TestSceneComponentVisualizer.h&quot;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">FTestSceneComponentVisualizer::DrawVisualization</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UActorComponent</span><span class="o">*</span><span class="w"> </span><span class="n">Component</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FSceneView</span><span class="o">*</span><span class="w"> </span><span class="n">View</span><span class="p">,</span><span class="w"> </span><span class="n">FPrimitiveDrawInterface</span><span class="o">*</span><span class="w"> </span><span class="n">PDI</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">USceneComponent</span><span class="o">*</span><span class="w"> </span><span class="n">pTestComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">USceneComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Component</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pTestComponent</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">FTransform</span><span class="w"> </span><span class="n">TM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pTestComponent</span><span class="o">-&gt;</span><span class="n">GetComponentTransform</span><span class="p">();</span>
+<span class="w">        </span><span class="n">TM</span><span class="p">.</span><span class="n">RemoveScaling</span><span class="p">();</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">Radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200.0f</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// Draw light radius</span>
+<span class="w">        </span><span class="n">DrawWireSphereAutoSides</span><span class="p">(</span><span class="n">PDI</span><span class="p">,</span><span class="w"> </span><span class="n">TM</span><span class="p">,</span><span class="w"> </span><span class="n">FColor</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">),</span><span class="w"> </span><span class="n">Radius</span><span class="p">,</span><span class="w"> </span><span class="n">SDPG_World</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+В коде класса я переопределил метод <code>DrawVisualization</code>, именно тут идет отрисовка тестовой сферы.</p>
+<p>В коде была использована константа приоритета глубины отрисовки: <code>SDPG_World</code></p>
+<p><a class="glightbox" href="../images/3bfde342279e48518aac4c81fcb492cf.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3bfde342279e48518aac4c81fcb492cf.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3bfde342279e48518aac4c81fcb492cf.png" /></a></p>
+<p>Что она делает? Она отвечает за видимость линий в нашей <code>CV</code> сфере. Если выбрать значение <code>SDPG_Foreground</code> то линии сферы будет видно сквозь другие объекты. По умолчанию выставлен параметр <code>SDPG_World</code>, который запрещает рендер линий сквозь другие объекты.</p>
+<p>Созданный класс <code>CV</code> необходимо зарегистрировать используя конструктор модуля.</p>
+<h3 id="componentvisualizer_2">Регистрируем <code>ComponentVisualizer</code></h3>
+<p>Открываем файл модуля <code>TestModuleEditor.h</code>, добавляем туда новые строки в <code>#include</code>.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Modules/ModuleManager.h&quot;</span>
+<span class="c1">// Unreal Editor</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UnrealEd.h&quot;</span>
+<span class="c1">// Custom classes</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TestSceneComponent.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TestSceneComponentVisualizer.h&quot;</span>
+<span class="n">DECLARE_LOG_CATEGORY_EXTERN</span><span class="p">(</span><span class="n">TestModuleEditor</span><span class="p">,</span><span class="w"> </span><span class="n">All</span><span class="p">,</span><span class="w"> </span><span class="n">All</span><span class="p">);</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FTestModuleEditor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IModuleInterface</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="cm">/* Called when the module is loaded */</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">StartupModule</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/* Called when the module is unloaded */</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ShutdownModule</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<code>#include "UnrealEd.h"</code> отвечает за доступ к синглтону <code>GUnrealEd</code>. А <code>TestSceneComponent.h</code> и <code>TestSceneComponentVisualizer.h</code> являются заголовками, которые необходимо привязать.</p>
+<p>Теперь в файле <code>TestModuleEditor.cpp</code> просто проверяем, открыт модуль в редакторе или нет (если он находится в редакторе, то <code>GUnrealEd != nullptr</code>).
+Если модуль открыт в редакторе, то вызываем метод <code>RegisterComponentVisualizer</code>.
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">FTestModuleEditor::StartupModule</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">TestModuleEditor</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;TestModuleEditor module has been loaded&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// Register custom visualizer</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GUnrealEd</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GUnrealEd</span><span class="o">-&gt;</span><span class="n">RegisterComponentVisualizer</span><span class="p">(</span><span class="n">UTestSceneComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetFName</span><span class="p">(),</span><span class="w"> </span><span class="n">MakeShareable</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FTestSceneComponentVisualizer</span><span class="p">()));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">FTestModuleEditor::ShutdownModule</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">TestModuleEditor</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;TestModuleEditor module has been unloaded&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// Unregister custom visualizer</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GUnrealEd</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">GUnrealEd</span><span class="o">-&gt;</span><span class="n">UnregisterComponentVisualizer</span><span class="p">(</span><span class="n">UTestSceneComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetFName</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+После компиляции - перезапустите движок.</p>
+<h3 id="_14">Итоговый вид</h3>
+<p>Если добавить тестовый компонент к любому <code>Actor blueprint</code>, мы увидим сферу - она и есть наш <code>ComponentVisualizer</code>.</p>
+<p><a class="glightbox" href="../images/acddf94a0b92d340875f156f49dfc2b4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="acddf94a0b92d340875f156f49dfc2b4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/acddf94a0b92d340875f156f49dfc2b4.png" /></a></p>
+<h3 id="cv">Усложняем логику <code>CV</code></h3>
+<p>Врятли наш пример со сферой смог достаточно точно объяснить, что же такое <code>CV</code>. Давайте немного подправим нашу логику, чтобы создать нечто более комплексное.</p>
+<p>Например можно провести линии от нашего компонента к другим компонентам внутри того-же <code>Actor'а</code>.
+Получим список <code>Scene</code> компонентов у текущего <code>Owner'а</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">// Getting all child components</span>
+<span class="k">const</span><span class="w"> </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">OwnerActor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pTestComponent</span><span class="o">-&gt;</span><span class="n">GetOwner</span><span class="p">();</span>
+<span class="k">const</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">UActorComponent</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">ChildComponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OwnerActor</span><span class="o">-&gt;</span><span class="n">GetComponentsByClass</span><span class="p">(</span><span class="n">USceneComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">());</span>
+</code></pre></div>
+Пройдемся в цикле и начертим линию до каждого найденного компонента.</p>
+<p>Общий код будет теперь таким.
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">FTestSceneComponentVisualizer::DrawVisualization</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UActorComponent</span><span class="o">*</span><span class="w"> </span><span class="n">Component</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FSceneView</span><span class="o">*</span><span class="w"> </span><span class="n">View</span><span class="p">,</span><span class="w"> </span><span class="n">FPrimitiveDrawInterface</span><span class="o">*</span><span class="w"> </span><span class="n">PDI</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">UTestSceneComponent</span><span class="o">*</span><span class="w"> </span><span class="n">pTestComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UTestSceneComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Component</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pTestComponent</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">FTransform</span><span class="w"> </span><span class="n">TM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pTestComponent</span><span class="o">-&gt;</span><span class="n">GetComponentTransform</span><span class="p">();</span>
+<span class="w">        </span><span class="n">TM</span><span class="p">.</span><span class="n">RemoveScaling</span><span class="p">();</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">Radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">150.0f</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// Draw light radius</span>
+<span class="w">        </span><span class="n">DrawWireSphereAutoSides</span><span class="p">(</span><span class="n">PDI</span><span class="p">,</span><span class="w"> </span><span class="n">TM</span><span class="p">,</span><span class="w"> </span><span class="n">FColor</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">),</span><span class="w"> </span><span class="n">Radius</span><span class="p">,</span><span class="w"> </span><span class="n">SDPG_World</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Getting all child components</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">OwnerActor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pTestComponent</span><span class="o">-&gt;</span><span class="n">GetOwner</span><span class="p">();</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">UActorComponent</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">ChildComponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OwnerActor</span><span class="o">-&gt;</span><span class="n">GetComponentsByClass</span><span class="p">(</span><span class="n">USceneComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">());</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">CompCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChildComponents</span><span class="p">.</span><span class="n">Num</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CompCount</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Cast each component to USceneComponent since only SceneComponents can have Transform.</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">USceneComponent</span><span class="o">*</span><span class="w"> </span><span class="n">pConnectedComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">USceneComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ChildComponents</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pConnectedComponent</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">FTransform</span><span class="w"> </span><span class="n">ConnectedTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pConnectedComponent</span><span class="o">-&gt;</span><span class="n">GetComponentTransform</span><span class="p">();</span>
+<span class="w">                </span><span class="n">ConnectedTarget</span><span class="p">.</span><span class="n">RemoveScaling</span><span class="p">();</span>
+<span class="w">                </span><span class="n">PDI</span><span class="o">-&gt;</span><span class="n">DrawLine</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">TM</span><span class="p">.</span><span class="n">GetLocation</span><span class="p">(),</span>
+<span class="w">                    </span><span class="n">ConnectedTarget</span><span class="p">.</span><span class="n">GetLocation</span><span class="p">(),</span>
+<span class="w">                    </span><span class="n">FColor</span><span class="p">(</span><span class="mf">255.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">),</span><span class="w"> </span><span class="c1">// Red color</span>
+<span class="w">                    </span><span class="n">SDPG_Foreground</span><span class="p">,</span><span class="w"> </span><span class="c1">//SDPG_World,  // Will not render over other things</span>
+<span class="w">                    </span><span class="mf">2.0f</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+Для отрисовки линий используется метод <code>DrawLine</code>.
+Результат:</p>
+<p><a class="glightbox" href="../images/5b0ceb1f88aaac065d789fd370b45d0c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5b0ceb1f88aaac065d789fd370b45d0c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5b0ceb1f88aaac065d789fd370b45d0c.png" /></a></p>
+<p>Обратите внимание, линии проходят сквозь объекты, при выставленном <code>SDPG_Foreground</code>. Давайте заменим его на <code>SDPG_Max</code> и посмотрим что будет.</p>
+<p>При <code>SDPG_Max</code> ничего не изменилось.</p>
+<p><a class="glightbox" href="../images/482e267547934448b415e107bcd6ab70.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="482e267547934448b415e107bcd6ab70.png" auto_="auto;" display="block;" margin:="margin:" src="../images/482e267547934448b415e107bcd6ab70.png" /></a></p>
+<p>Выставим значение "по умолчанию" - <code>SDPG_World</code>.
+Теперь линии не видны за объектами, как и ожидалось.</p>
+<p><a class="glightbox" href="../images/5493b7d9b6d99df99984d6a4506f2801.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5493b7d9b6d99df99984d6a4506f2801.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5493b7d9b6d99df99984d6a4506f2801.png" /></a></p>
+<h2 id="links">Links</h2>
+<p>https://unrealcommunity.wiki/component-visualizers-xaa1qsng</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            К началу
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      aftamat4ik
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

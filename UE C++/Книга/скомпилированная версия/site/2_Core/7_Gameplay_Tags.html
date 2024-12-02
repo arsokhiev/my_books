@@ -1,0 +1,2849 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Справочник Unreal Engine">
+      
+      
+        <meta name="author" content="aftamat4ik">
+      
+      
+      
+        <link rel="prev" href="6_Latent_And_Async_Actions.html">
+      
+      
+        <link rel="next" href="8_DataAssets_AssetManager.html">
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
+    
+    
+      
+        <title>Gameplay Tags - Справочник Unreal Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gameplay-tags" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-header__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Справочник Unreal Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Gameplay Tags
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1_Basics/1_First_Project.html" class="md-tabs__link">
+          
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="1_Delegates.html" class="md-tabs__link">
+          
+  
+  Ключевые системы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../3_Advanced/1_HUD.html" class="md-tabs__link">
+          
+  
+  Продвинутая разработка
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-tabs__link">
+          
+  
+  Решение проблем
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../5_Tips/Change_Asset_Icons.html" class="md-tabs__link">
+          
+  
+  Советы
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-nav__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    Справочник Unreal Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Основы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Основы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/1_First_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/2_Engine_Introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/3_CPP_Recommendations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Рекомендации по написанию кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/4_SimplePlugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создание простейшего плагина для Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/5_Macroses_Reflection_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Макросы Reflection System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/6_Logging.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Печать информации в лог
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/7_Pointers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Указатели
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/8_ModernCpp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возможности современного c++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/9_Working_With_Strings.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа со строками
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/10_Timers_In_%D0%A1%2B%2B.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Таймеры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/11_Instances_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Доступ к различным сущностям
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Asserts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Asserts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Console Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ключевые системы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ключевые системы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Delegates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Components.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_SubObjects.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Multithreading.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Многопоточность
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Function_Libraries.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Библиотеки Функций для Blueprint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Latent_And_Async_Actions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latent и Async Action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="7_Gameplay_Tags.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Принципы системы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Подготовка к работе
+  </a>
+  
+    <nav class="md-nav" aria-label="Подготовка к работе">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Создаем модуль
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Создаем компонент тегов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Создаем библиотеку функций
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Дополняем список зависимостей у модуля
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Пишем компонент тегов
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Упрощем доступ к методам компонента используя библиотеку функций
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#async-action" class="md-nav__link">
+    Привязываем Async Action к событиям компонента
+  </a>
+  
+    <nav class="md-nav" aria-label="Привязываем Async Action к событиям компонента">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ontagremoved-asyncaction" class="md-nav__link">
+    OnTagRemoved AsyncAction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ontagadded-asyncaction" class="md-nav__link">
+    OnTagAdded AsyncAction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Тестирование
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    Добавление тегов из c++
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавление тегов из c++">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requestgameplaytag" class="md-nav__link">
+    RequestGameplayTag
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macro-tags" class="md-nav__link">
+    Macro Tags
+  </a>
+  
+    <nav class="md-nav" aria-label="Macro Tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ue_define_gameplay_tag_static" class="md-nav__link">
+    UE_DEFINE_GAMEPLAY_TAG_STATIC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ue_declare_gameplay_tag_extern-ue_define_gameplay_tag" class="md-nav__link">
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN и UE_DEFINE_GAMEPLAY_TAG
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meta-categories" class="md-nav__link">
+    Meta Categories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ugameplaytagsmanager" class="md-nav__link">
+    Получение списка "суб тегов", UGameplayTagsManager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_DataAssets_AssetManager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с ассетами и данными
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_FileSystem.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_Anim_Instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anim Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_SubSystems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Подсистемы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12.%20UObject%20Interface.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Interface или UInterface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Продвинутая разработка
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Продвинутая разработка
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/1_HUD.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HUD или Heads-up Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/2_UFUNCTION_Wildcard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/3_Slate%20Runtime.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slate Runtimе, введение в Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/4_UMG.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/5_K2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/6_Registe_New_Asset_Type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/7_ACharacter_And_Enhanced%20Input.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACharacter и Enhanced Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/8_Gameplay_Ability_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Ability System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/9_Global_Data_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальнный доступ к данным
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/10_Global_Event_Bus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальная шина событий
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Решение проблем
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Решение проблем
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с кодировкой в LiveCoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/Reset_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Сброс (Reset) проекта
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/generatedh_Problems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с файлом .generated.h
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Советы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Советы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Change_Asset_Icons.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Asset Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Character_And_EnhancedInput.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character Boilerplate with Enhanced Input Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/DefaultToSelf_WorldContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DefaultToSelf WorldContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Different_UPROPERTY.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/GameInputMode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Изменение GameInputMode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Get_UScriptStruct_FromStruct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ::UScriptStruct из встроенной структуры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Input_Binding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События ввода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Iterate_TMap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterate TMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Read_Blueprint_Properties.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Чтение параметров Blueprint класса
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Return_UObject.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возвращение UObject по ссылке из функции
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Run_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Запуск консольных команд
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Screen_Size.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Размер экрана
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Slate_Snippets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Полезные сниппеты Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Spawn_Actors.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawn, призыв объектов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Time_Measuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Замер времени исполнения кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Trace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UEnum_To_String.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UEnum to FString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UObject_Base_Class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Base Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Variable_Type_Print_Template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Шаблон для печати типа переменной
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/struct_operator%3D%3D.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    struct и оператор ==
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Принципы системы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Подготовка к работе
+  </a>
+  
+    <nav class="md-nav" aria-label="Подготовка к работе">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Создаем модуль
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Создаем компонент тегов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Создаем библиотеку функций
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Дополняем список зависимостей у модуля
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Пишем компонент тегов
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Упрощем доступ к методам компонента используя библиотеку функций
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#async-action" class="md-nav__link">
+    Привязываем Async Action к событиям компонента
+  </a>
+  
+    <nav class="md-nav" aria-label="Привязываем Async Action к событиям компонента">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ontagremoved-asyncaction" class="md-nav__link">
+    OnTagRemoved AsyncAction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ontagadded-asyncaction" class="md-nav__link">
+    OnTagAdded AsyncAction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Тестирование
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    Добавление тегов из c++
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавление тегов из c++">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requestgameplaytag" class="md-nav__link">
+    RequestGameplayTag
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macro-tags" class="md-nav__link">
+    Macro Tags
+  </a>
+  
+    <nav class="md-nav" aria-label="Macro Tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ue_define_gameplay_tag_static" class="md-nav__link">
+    UE_DEFINE_GAMEPLAY_TAG_STATIC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ue_declare_gameplay_tag_extern-ue_define_gameplay_tag" class="md-nav__link">
+    UE_DECLARE_GAMEPLAY_TAG_EXTERN и UE_DEFINE_GAMEPLAY_TAG
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meta-categories" class="md-nav__link">
+    Meta Categories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ugameplaytagsmanager" class="md-nav__link">
+    Получение списка "суб тегов", UGameplayTagsManager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="gameplay-tags">Gameplay Tags</h1>
+<p><code>Gameplay Tags</code> представляют собой иерархические текстовые метки, разделяемые символом <code>.</code> точки в формате <code>SuperTag.SubTag.Tag</code>. Теги являются очень удобным инструментом классификации и разделения игровой логики.</p>
+<p>Используя <code>Gameplay Tags</code> можно создавать гибкие системы искусственного интеллекта, управлять объектами на уровне, обмениваться переменными и событиями. Часть подобных механик будет реализована в этой книге.</p>
+<p>С использованием <code>Gameplay Tags</code> построен ключевой фреймворк <code>Unreal Engine</code>, а именно - <code>Gameplay Ability System</code>.
+Давайте изучим как теги работают и как их использовать в собственном проекте.</p>
+<h2 id="_1">Принципы системы</h2>
+<p>Формат тега - <code>TagCategody.TagName</code>.
+Например:
+<div class="highlight"><pre><span></span><code><span class="n">Combat</span>
+<span class="n">Combat</span><span class="p">.</span><span class="n">InCombatMode</span>
+<span class="n">Combat</span><span class="p">.</span><span class="n">hasTargeting</span>
+<span class="n">Locomotion</span>
+<span class="n">Locomotion</span><span class="p">.</span><span class="n">isCrouching</span>
+<span class="n">Locomotion</span><span class="p">.</span><span class="n">isInWater</span>
+<span class="n">Locomotion</span><span class="p">.</span><span class="n">isRun</span>
+<span class="n">Locomotion</span><span class="p">.</span><span class="n">isRun</span><span class="p">.</span><span class="n">Fast</span>
+<span class="n">Locomotion</span><span class="p">.</span><span class="n">isRun</span><span class="p">.</span><span class="n">Injured</span>
+</code></pre></div>
+Каждый тег разделяется символом точки <code>.</code>. Система сама генерирует из тегов, разбитых точками, древовидные структуры.</p>
+<p>Все теги, используемые в проекте, можно найти на соответствующей странице параметров проекта <code>Edit -&gt; Project Settings -&gt; Gameplay Tags</code>. По умолчанию там пусто.</p>
+<p><a class="glightbox" href="../images/ad419d5545b95facc5de2ab94db2b437.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ad419d5545b95facc5de2ab94db2b437.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ad419d5545b95facc5de2ab94db2b437.png" /></a></p>
+<p>Нажав <code>Add New Gameplay Tag</code> можно добавить собственные теги.</p>
+<p><a class="glightbox" href="../images/42751468920beeb14458bbba15278534.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="42751468920beeb14458bbba15278534.png" auto_="auto;" display="block;" margin:="margin:" src="../images/42751468920beeb14458bbba15278534.png" /></a></p>
+<p><a class="glightbox" href="../images/56bdba559f21f5a17c3b3c6e60dd1695.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="56bdba559f21f5a17c3b3c6e60dd1695.png" auto_="auto;" display="block;" margin:="margin:" src="../images/56bdba559f21f5a17c3b3c6e60dd1695.png" /></a></p>
+<p>Хотя я не рекомендую использовать страницу настроек для ручного задания тегов.</p>
+<p>Лучше всего использовать вынос тегов в отдельные таблицы <code>Data Table</code> или жестко задавать их через <code>с++ код</code>. Если добавлять теги "вручную", то они просто слетят, когда вы будете мигрировать проект. А это может привести к выходу из строя кучи игровых систем.</p>
+<p>Чтобы использовать <code>Gameplay Tags</code> из <code>blueprint</code> кода надо создать переменную с типом <code>Gameplay Tag</code>.</p>
+<p><a class="glightbox" href="../images/fc0d25953a019e4c51296db330de218a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fc0d25953a019e4c51296db330de218a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fc0d25953a019e4c51296db330de218a.png" /></a></p>
+<p><a class="glightbox" href="../images/59c2c2dbf135bb12b38b3e7d78ce5f51.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="59c2c2dbf135bb12b38b3e7d78ce5f51.png" auto_="auto;" display="block;" margin:="margin:" src="../images/59c2c2dbf135bb12b38b3e7d78ce5f51.png" /></a></p>
+<p>Так-же нужен контейнер, в котором с тегами предполагается работать. Он реализован в виде типа <code>Gameplay Tag Container</code>. Контейнер позволяет хранить в  себе теги, а так-же добавлять или удалять их.</p>
+<p><a class="glightbox" href="../images/e67d2b341cda4a97b092c9fe38c698c9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e67d2b341cda4a97b092c9fe38c698c9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e67d2b341cda4a97b092c9fe38c698c9.png" /></a></p>
+<p 0="0" align="center;" auto_="auto;" display="block;" margin:="margin:"><a class="glightbox" href="../images/8bbf36238ec7166c2e9ffd67798eea60.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="8bbf36238ec7166c2e9ffd67798eea60.png" auto_="auto;" display="block;" margin:="margin:" src="../images/8bbf36238ec7166c2e9ffd67798eea60.png" /></a></p>
+<p>Используя эти два типа, тег и контейнер, можно проверять те или иные состояния персонажей, объектов на уровне или распределять задачи искусственного интеллекта.
+* Пример из моей практики
+Используя систему <code>Gameplay Tags</code> я сделал два своих предыдущих проекта. Давайте рассмотрим один из них - <code>Ultimative Locomotion</code>.</p>
+<p><a class="glightbox" href="../images/d2faf425cf4c7017caffb415e60684a8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d2faf425cf4c7017caffb415e60684a8.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d2faf425cf4c7017caffb415e60684a8.png" /></a></p>
+<p>Все теги системы я поместил в отдельные таблицы, реализующие структуру <code>GameplayTagsTableRow</code>.</p>
+<p><a class="glightbox" href="../images/03ec050af28675e141b6a3e404e825db.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="03ec050af28675e141b6a3e404e825db.png" auto_="auto;" display="block;" margin:="margin:" src="../images/03ec050af28675e141b6a3e404e825db.png" /></a></p>
+<p>В самом проекте я создал компонент, это <code>blueprint</code> компонент - <code>Tags Component</code>.</p>
+<p><a class="glightbox" href="../images/2b13843b984050e068ed3ceb04584046.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2b13843b984050e068ed3ceb04584046.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2b13843b984050e068ed3ceb04584046.png" /></a></p>
+<p>Данный компонент содержит в себе контейнер тегов, а так-же функции, которые позволяют добавлять и удалять теги из контейнера. Эти функции, затем, были вынесены в библиотеку макросов, для более удобного доступа.</p>
+<p><a class="glightbox" href="../images/2ca51f6c6f20b52ab6e8fd4f0deb1a34.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2ca51f6c6f20b52ab6e8fd4f0deb1a34.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2ca51f6c6f20b52ab6e8fd4f0deb1a34.png" /></a></p>
+<p>Так-же в компоненте есть диспетчер событий, генерирующий событие всякий раз, как тег добавляется или удаляется из контейнера.</p>
+<p>с++ открывает нам куда более широкие возможности по работе с тегами, нежели <code>blueprint</code>, например пресловутые <code>latent action</code>. Поэтому - давайте реализуем этот компонент тегов на<code>c++</code> За одно это ознакомит нас системой (да и мне полезно будет, давно хотел это сделать).</p>
+<h2 id="_2">Подготовка к работе</h2>
+<p>По умолчанию классы <code>AActor</code> не поддерживают <code>gameplay tags</code>. Поддержку системы надо добавлять самостоятельно и чаще всего это делают через компоненты.</p>
+<p>У компонентов есть одно несравненное преимущество - у любого объекта типа <code>AActor</code> можно получить компонент, методом <code>FindComponentByClass</code>. Это значит, что если мы реализуем контейнер тегов внутри компонента, то доступ к этому контейнеру легко будет получить из любого объекта на уровне.</p>
+<h3 id="_3">Создаем модуль</h3>
+<p>Создадим наши задачи отдельный модуль. Я назвал модуль <code>Tags Module</code>.</p>
+<p><a class="glightbox" href="../images/9889c1f076039e8e63f9115149f212f9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9889c1f076039e8e63f9115149f212f9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9889c1f076039e8e63f9115149f212f9.png" /></a></p>
+<h3 id="_4">Создаем компонент тегов</h3>
+<p>Добавим новый <code>с++</code> класс, унаследованный от <code>ActorComponent</code>.</p>
+<p><a class="glightbox" href="../images/24b4a98c39d2f2fda04e71aeac4e8b26.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="24b4a98c39d2f2fda04e71aeac4e8b26.png" auto_="auto;" display="block;" margin:="margin:" src="../images/24b4a98c39d2f2fda04e71aeac4e8b26.png" /></a></p>
+<p><a class="glightbox" href="../images/03daa4c62a9dc4af295c26561bf9b8a4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="03daa4c62a9dc4af295c26561bf9b8a4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/03daa4c62a9dc4af295c26561bf9b8a4.png" /></a></p>
+<h3 id="_5">Создаем библиотеку функций</h3>
+<p>А так-же библиотеку функций - <code>TagsLibrary</code>.</p>
+<p><a class="glightbox" href="../images/990c2d46c62882185130e876b1a15ea6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="990c2d46c62882185130e876b1a15ea6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/990c2d46c62882185130e876b1a15ea6.png" /></a></p>
+<p><a class="glightbox" href="../images/34a264779bc630926508dca927504d5d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="34a264779bc630926508dca927504d5d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/34a264779bc630926508dca927504d5d.png" /></a></p>
+<p>Не забудьте выполнить <code>Tools-&gt;Refresh Visual Studio 2022 Project</code>, чтобы файлы появились в <code>Solution Explorer</code>.</p>
+<p><a class="glightbox" href="../images/4c924149a9c52e6a3a8b4cd52c76881e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4c924149a9c52e6a3a8b4cd52c76881e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4c924149a9c52e6a3a8b4cd52c76881e.png" /></a></p>
+<h3 id="_6">Дополняем список зависимостей у модуля</h3>
+<p>Теперь надо добавить модуль <code>GameplayTags</code> в зависимости. Для этого откройте файл <code>TagsModule.build.cs</code> и добавьте туда строчку:
+<div class="highlight"><pre><span></span><code><span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;GameplayTags&quot;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+Полный код файла <code>TagsModule.build.cs</code>.
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">UnrealBuildTool</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TagsModule</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ModuleRules</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">TagsModule</span><span class="p">(</span><span class="n">ReadOnlyTargetRules</span><span class="w"> </span><span class="n">Target</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">base</span><span class="p">(</span><span class="n">Target</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PCHUsage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCHUsageMode</span><span class="p">.</span><span class="n">UseExplicitOrSharedPCHs</span><span class="p">;</span>
+<span class="w">        </span><span class="n">PublicDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Core&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CoreUObject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Engine&quot;</span><span class="p">});</span>
+<span class="w">        </span><span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;GameplayTags&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="n">PublicIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;TagsModule/Public&quot;</span><span class="p">});</span>
+<span class="w">        </span><span class="n">PrivateIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;TagsModule/Private&quot;</span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="_7">Пишем компонент тегов</h2>
+<p>Одной из ключевых особенностей системы <code>Gameplay Tags</code> является их привязка к контейнерам. Контейнеры тегов наследуются от класса <code>FGameplayTagContainer</code>.</p>
+<p 0="0" align="center;" auto_="auto;" display="block;" margin:="margin:"><a class="glightbox" href="../images/8bbf36238ec7166c2e9ffd67798eea60.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="8bbf36238ec7166c2e9ffd67798eea60.png" auto_="auto;" display="block;" margin:="margin:" src="../images/8bbf36238ec7166c2e9ffd67798eea60.png" /></a></p>
+<p>При этом по умолчанию ни у класса персонажа, ни у любого другого класса нет контейнера тегов. Его надо добавлять вручную. Можно использовать обычную переменную.</p>
+<p><a class="glightbox" href="../images/f039a4e757ed7d0de415ef10825cff35.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f039a4e757ed7d0de415ef10825cff35.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f039a4e757ed7d0de415ef10825cff35.png" /></a></p>
+<p>Но такой подход имеет недостаток - для каждого класса, в котором мы захотим использовать теги - придется писать отдельное API.
+Поэтому, куда выгоднее создать унифицированный компонент тегов, который с легкостью добавляется к любому классу <code>AActor</code> через удобное меню.</p>
+<p>Мы уже сгенерировали класс компонента, так что добавим его к <code>BP_ThirdPersonCharacter</code>, для тестов.</p>
+<p><a class="glightbox" href="../images/414d91ac21f8cbd6a63a9b8a8a1fad6e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="414d91ac21f8cbd6a63a9b8a8a1fad6e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/414d91ac21f8cbd6a63a9b8a8a1fad6e.png" /></a></p>
+<p>Теперь добавим контейнер тегов в наш компонент. Это будет обычная переменная.
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameplayTagContainer.h&quot;</span><span class="c1"> // Gameplay Tags</span>
+<span class="c1">// UActorComponent</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Default&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Container&quot;</span><span class="p">))</span>
+<span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">TagsContainer</span><span class="p">;</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/e3c6e4f92152373642f9d7fbc818d57d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e3c6e4f92152373642f9d7fbc818d57d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e3c6e4f92152373642f9d7fbc818d57d.png" /></a></p>
+<p>После компиляции переменная контейнера тегов <code>TagsContainer</code> будет доступна в <code>bluerpint</code> коде.</p>
+<p>Доступность контейнера для чтения и записи через редактор откроет в будущем прекрасные возможности для отладки. Ведь мы в любой момент сможем посмотреть - какие состояния и значения записаны в компонент тегов, просто открыв этот компонент в редакторе. Это можно делать прямо во время отладки запущенного проекта.</p>
+<p><a class="glightbox" href="../images/2e53ea016a948dc77e019bee47490f3c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2e53ea016a948dc77e019bee47490f3c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2e53ea016a948dc77e019bee47490f3c.png" /></a></p>
+<p>Теперь требуется создать функционал по добавлению и удалению тегов из компонента, а так-же по генерации соответствующих событий.</p>
+<p>Итоговый компонент выглядит так:
+<div class="highlight"><pre><span></span><code><span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</span><span class="p">(</span><span class="n">FTagAddedDelegate</span><span class="p">,</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="n">Tag</span><span class="p">);</span>
+<span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</span><span class="p">(</span><span class="n">FTagRemovedDelegate</span><span class="p">,</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="n">Tag</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">bIsRemoved</span><span class="p">);</span>
+<span class="n">UCLASS</span><span class="p">(</span><span class="w"> </span><span class="n">ClassGroup</span><span class="o">=</span><span class="p">(</span><span class="n">Custom</span><span class="p">),</span><span class="w"> </span><span class="n">meta</span><span class="o">=</span><span class="p">(</span><span class="n">BlueprintSpawnableComponent</span><span class="p">,</span><span class="w"> </span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">))</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TAGSMODULE_API</span><span class="w"> </span><span class="n">UTagsComponent</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UActorComponent</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Sets default values for this component&#39;s properties</span>
+<span class="w">    </span><span class="n">UTagsComponent</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// Getter for Tags Container</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintPure</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component|Container&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">GetTagsContainer</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TagsContainer</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Adding Tag To Container</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">AddTagToContainer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ContainerHasTag</span><span class="p">(</span><span class="n">Tag</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// add only non-existing</span>
+<span class="w">            </span><span class="n">TagsContainer</span><span class="p">.</span><span class="n">AddTag</span><span class="p">(</span><span class="n">Tag</span><span class="p">);</span>
+<span class="w">            </span><span class="n">OnTagAdded</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="n">Tag</span><span class="p">);</span><span class="w"> </span><span class="c1">// Call tag added Event</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Merge two Containers</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">MergeContainers</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inTagsContainer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">inTagsContainer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">AddTagToContainer</span><span class="p">(</span><span class="n">Tag</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Remove Tag from Container</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">RemoveTagFromContainer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">bRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TagsContainer</span><span class="p">.</span><span class="n">RemoveTag</span><span class="p">(</span><span class="n">Tag</span><span class="p">);</span>
+<span class="w">        </span><span class="n">OnTagRemoved</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="n">Tag</span><span class="p">,</span><span class="w"> </span><span class="n">bRes</span><span class="p">);</span><span class="w"> </span><span class="c1">// Call tag removed Event</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">bRes</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Remove Tags from Container</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">RemoveTagsFromContainer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inTagsContainer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//TagsContainer.RemoveTags(inTagsContainer);</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">inTagsContainer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// since we use delegates, go thru loop</span>
+<span class="w">            </span><span class="n">RemoveTagFromContainer</span><span class="p">(</span><span class="n">Tag</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Returns true if component container has any tags that match specified container</span>
+<span class="w">    </span><span class="c1">// if Exact = true will also compare tag sizes e.g: this.tag == this.tag =&gt; true and this.tag == this =&gt; false</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintPure</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component|Container&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">ContainerHasAnyTags</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inTagsContainer</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Exact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Exact</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TagsContainer</span><span class="p">.</span><span class="n">HasAnyExact</span><span class="p">(</span><span class="n">inTagsContainer</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TagsContainer</span><span class="p">.</span><span class="n">HasAny</span><span class="p">(</span><span class="n">inTagsContainer</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Returns true if component container has all tags from specified container</span>
+<span class="w">    </span><span class="c1">// if Exact = true will also compare tag sizes e.g: this.tag == this.tag =&gt; true and this.tag == this =&gt; false</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintPure</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component|Container&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">ContainerHasAllTags</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inTagsContainer</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Exact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Exact</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TagsContainer</span><span class="p">.</span><span class="n">HasAllExact</span><span class="p">(</span><span class="n">inTagsContainer</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TagsContainer</span><span class="p">.</span><span class="n">HasAll</span><span class="p">(</span><span class="n">inTagsContainer</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Search in container for tag</span>
+<span class="w">    </span><span class="c1">// if Exact = true will also compare tag sizes e.g: this.tag == this.tag =&gt; true and this.tag == this =&gt; false</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintPure</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component|Container&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">ContainerHasTag</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tag</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Exact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Exact</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TagsContainer</span><span class="p">.</span><span class="n">HasTagExact</span><span class="p">(</span><span class="n">Tag</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TagsContainer</span><span class="p">.</span><span class="n">HasTag</span><span class="p">(</span><span class="n">Tag</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// On Tag Added Event</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintAssignable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Delegates&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FTagAddedDelegate</span><span class="w"> </span><span class="n">OnTagAdded</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// On Tag Removed Event</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintAssignable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Delegates&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FTagRemovedDelegate</span><span class="w"> </span><span class="n">OnTagRemoved</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Core Tags Container</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Default&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Container&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">TagsContainer</span><span class="p">;</span>
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Called when the game starts</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">BeginPlay</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Called every frame</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">TickComponent</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">,</span><span class="w"> </span><span class="n">ELevelTick</span><span class="w"> </span><span class="n">TickType</span><span class="p">,</span><span class="w"> </span><span class="n">FActorComponentTickFunction</span><span class="o">*</span><span class="w"> </span><span class="n">ThisTickFunction</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+Данный компонент выводит в <code>blueprint</code> пространство целый набор интерфейсов для взаимодействия с вложенном контейнером тегов <code>TagsContainer</code>. Так-же тут происходит генерация событий через два делегата. Одно событие для удаления тега, второе для добавления.</p>
+<p><a class="glightbox" href="../images/8c2ebb09b73a25147d432cd513153c4d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="8c2ebb09b73a25147d432cd513153c4d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/8c2ebb09b73a25147d432cd513153c4d.png" /></a></p>
+<p><a class="glightbox" href="../images/f2cb288a5d8889cac8ee5cd22a6f990d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f2cb288a5d8889cac8ee5cd22a6f990d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f2cb288a5d8889cac8ee5cd22a6f990d.png" /></a></p>
+<h2 id="_8">Упрощем доступ к методам компонента используя библиотеку функций</h2>
+<p>Для использования методов компонента, очевидно, всегда придется брать ссылку на сам компонент.</p>
+<p><a class="glightbox" href="../images/fa0e84bee94cc3a2490f1a6a7df4cb7d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fa0e84bee94cc3a2490f1a6a7df4cb7d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fa0e84bee94cc3a2490f1a6a7df4cb7d.png" /></a></p>
+<p>Это не всегда удобно, было бы не плохо вывести эти функции в библиотеку функций, которая автоматизировала бы за нас всю работу.</p>
+<p>Используя <code>WorldContext</code> можно провернуть весьма любопытный трюк, который откроет прямой доступ к компоненту тегов(если он добавлен) как из классов <code>AActor</code> так и из классов <code>UActorComponent</code>.
+Для начала я написал функцию получения "владельца" из <code>WorldContext</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">// helper functions</span>
+<span class="c1">// search for owner that contains components</span>
+<span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="nf">GetOwner</span><span class="p">(</span><span class="n">UObject</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Context</span><span class="p">){</span>
+<span class="w">    </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Context</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Owner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UActorComponent</span><span class="o">*</span><span class="w"> </span><span class="n">OwningComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UActorComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Context</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">OwningComponent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// node called not in actor and not in actor component</span>
+<span class="w">        </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OwningComponent</span><span class="o">-&gt;</span><span class="n">GetOwner</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Owner</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+Далее в каждой из функций библиотеки я использовал <code>meta = (WorldContext = "WorldContextObject")</code>. Что такое <code>WorldContext</code>? Это ссылка на объект, который вызывает <code>blueprint</code> ноду функции. Если мы вызываем функцию библиотеки из, например, персонажа то <code>WorldContext</code> будет ссылаться на персонажа. Если мы вызывам функцию из компонента, то <code>WorldContext</code> будет ссылаться на компонент.
+<div class="highlight"><pre><span></span><code><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintPure</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Library&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="k">static</span><span class="w"> </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">GetTagsComponent</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="o">::</span><span class="n">GetOwner</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">Owner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Owner</span><span class="o">-&gt;</span><span class="n">FindComponentByClass</span><span class="o">&lt;</span><span class="n">UTagsComponent</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="c1">// Getter for Tags Container</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintPure</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Library&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="k">static</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">GetTagsContainer</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">){</span>
+<span class="w">    </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="o">::</span><span class="n">GetTagsComponent</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TC</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TC</span><span class="o">-&gt;</span><span class="n">GetTagsContainer</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+Я использовал этот подход для начала написав функцию <code>GetTagsComponent</code> которая ищет компонент тегов в <code>WorldContextObject</code>. А потом функцию, которая ищет контейнер тегов в компоненте тегов, который находится в <code>WorldContextObject</code>.</p>
+<p><a class="glightbox" href="../images/7d33044e70c9952b46910ad00ed081ee.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7d33044e70c9952b46910ad00ed081ee.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7d33044e70c9952b46910ad00ed081ee.png" /></a></p>
+<p>Обратите внимание на то, какие чистые получились ноды у функций. При этом результат они возвращают корректный.</p>
+<p><a class="glightbox" href="../images/d8e85c3ff415061749a77a7e1a2fbaf3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d8e85c3ff415061749a77a7e1a2fbaf3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d8e85c3ff415061749a77a7e1a2fbaf3.png" /></a></p>
+<p>Этот-же код будет работать и внутри компонентов.</p>
+<p><a class="glightbox" href="../images/33895ba52ca7386017264482bc3fcaaf.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="33895ba52ca7386017264482bc3fcaaf.png" auto_="auto;" display="block;" margin:="margin:" src="../images/33895ba52ca7386017264482bc3fcaaf.png" /></a></p>
+<p><a class="glightbox" href="../images/a8c1653c246d5e828e74dcf2554af112.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a8c1653c246d5e828e74dcf2554af112.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a8c1653c246d5e828e74dcf2554af112.png" /></a></p>
+<p><a class="glightbox" href="../images/30f536fcaff991b4502c6cbe54f6d9ab.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="30f536fcaff991b4502c6cbe54f6d9ab.png" auto_="auto;" display="block;" margin:="margin:" src="../images/30f536fcaff991b4502c6cbe54f6d9ab.png" /></a></p>
+<p><a class="glightbox" href="../images/0e5ef932cdeedc08992d2bfa68799fe2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0e5ef932cdeedc08992d2bfa68799fe2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0e5ef932cdeedc08992d2bfa68799fe2.png" /></a></p>
+<p>Используя этот подход перенесем все функции из компонента в библиотеку функций.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Kismet/BlueprintFunctionLibrary.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameplayTagContainer.h&quot;</span><span class="c1"> // Gameplay Tags</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TagsComponent.h&quot;</span><span class="c1"> // Tags Component</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TagsLibrary.generated.h&quot;</span>
+<span class="cm">/**</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="n">UCLASS</span><span class="p">()</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TAGSMODULE_API</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UBlueprintFunctionLibrary</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Getter for Tags Component</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintPure</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Library&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">GetTagsComponent</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="o">::</span><span class="n">GetOwner</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">Owner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Owner</span><span class="o">-&gt;</span><span class="n">FindComponentByClass</span><span class="o">&lt;</span><span class="n">UTagsComponent</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Getter for Tags Container</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintPure</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Library&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">GetTagsContainer</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">){</span>
+<span class="w">        </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="o">::</span><span class="n">GetTagsComponent</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TC</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TC</span><span class="o">-&gt;</span><span class="n">GetTagsContainer</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Adding Tag To Container</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">AddTagToContainer</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="o">::</span><span class="n">GetTagsComponent</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TC</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TC</span><span class="o">-&gt;</span><span class="n">AddTagToContainer</span><span class="p">(</span><span class="n">Tag</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Merge tags container with tag component container</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">MergeContainers</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inTagsContainer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="o">::</span><span class="n">GetTagsComponent</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TC</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">TC</span><span class="o">-&gt;</span><span class="n">MergeContainers</span><span class="p">(</span><span class="n">inTagsContainer</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// remove tag from component container</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">RemoveTagFromContainer</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="o">::</span><span class="n">GetTagsComponent</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TC</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TC</span><span class="o">-&gt;</span><span class="n">RemoveTagFromContainer</span><span class="p">(</span><span class="n">Tag</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// remove tags sequence from tags container in tags component</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">RemoveTagsFromContainer</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">,</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inTagsContainer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="o">::</span><span class="n">GetTagsComponent</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TC</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">TC</span><span class="o">-&gt;</span><span class="n">RemoveTagsFromContainer</span><span class="p">(</span><span class="n">inTagsContainer</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Returns true if component tag container has any tags that match specified container</span>
+<span class="w">    </span><span class="c1">// if Exact = true will also compare tag sizes e.g: this.tag == this.tag =&gt; true and this.tag == this =&gt; false</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">TagsContainerHasAny</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inTagsContainer</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Exact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="o">::</span><span class="n">GetTagsComponent</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TC</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TC</span><span class="o">-&gt;</span><span class="n">ContainerHasAnyTags</span><span class="p">(</span><span class="n">inTagsContainer</span><span class="p">,</span><span class="w"> </span><span class="n">Exact</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Returns true if component container has all tags from specified container</span>
+<span class="w">    </span><span class="c1">// if Exact = true will also compare tag sizes e.g: this.tag == this.tag =&gt; true and this.tag == this =&gt; false</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">TagsContainerHasAll</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inTagsContainer</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Exact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="o">::</span><span class="n">GetTagsComponent</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TC</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TC</span><span class="o">-&gt;</span><span class="n">ContainerHasAllTags</span><span class="p">(</span><span class="n">inTagsContainer</span><span class="p">,</span><span class="w"> </span><span class="n">Exact</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Search in container for tag</span>
+<span class="w">    </span><span class="c1">// if Exact = true will also compare tag sizes e.g: this.tag == this.tag =&gt; true and this.tag == this =&gt; false</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">TagsContainerHas</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tag</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Exact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UTagsLibrary</span><span class="o">::</span><span class="n">GetTagsComponent</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TC</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TC</span><span class="o">-&gt;</span><span class="n">ContainerHasTag</span><span class="p">(</span><span class="n">Tag</span><span class="p">,</span><span class="w"> </span><span class="n">Exact</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// helper functions</span>
+<span class="w">    </span><span class="c1">// search for owner that contains components</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">GetOwner</span><span class="p">(</span><span class="n">UObject</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Context</span><span class="p">){</span>
+<span class="w">        </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Context</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Owner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UActorComponent</span><span class="o">*</span><span class="w"> </span><span class="n">OwningComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UActorComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Context</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">OwningComponent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// node called not in actor and not in actor component</span>
+<span class="w">            </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OwningComponent</span><span class="o">-&gt;</span><span class="n">GetOwner</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Owner</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/7e4abe9a097dd1d57fdd1cb82ec963c9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7e4abe9a097dd1d57fdd1cb82ec963c9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7e4abe9a097dd1d57fdd1cb82ec963c9.png" /></a></p>
+<p><a class="glightbox" href="../images/5cf36499b5d45493344c60143e2f871d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5cf36499b5d45493344c60143e2f871d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5cf36499b5d45493344c60143e2f871d.png" /></a></p>
+<p><a class="glightbox" href="../images/0c1ce6a6740f566e982b13e29543c114.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0c1ce6a6740f566e982b13e29543c114.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0c1ce6a6740f566e982b13e29543c114.png" /></a></p>
+<h2 id="async-action">Привязываем <code>Async Action</code> к событиям компонента</h2>
+<p>Как узнать что тег был добавлен или удален? Через подключение к событиям. В примитивном виде это выглядит так:</p>
+<p><a class="glightbox" href="../images/cf92fa00c08188fbfe485bcff1d49955.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="cf92fa00c08188fbfe485bcff1d49955.png" auto_="auto;" display="block;" margin:="margin:" src="../images/cf92fa00c08188fbfe485bcff1d49955.png" /></a></p>
+<p><a class="glightbox" href="../images/717aad22bca00486690535781ed27d26.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="717aad22bca00486690535781ed27d26.png" auto_="auto;" display="block;" margin:="margin:" src="../images/717aad22bca00486690535781ed27d26.png" /></a></p>
+<p>Однако, такой набор <code>blueprint</code> узлов очень неудобен. К тому-же подобные привязки крайне тяжело встраивать в сложную логику.</p>
+<p>Создадим для действий <code>OnTagRemoved</code> и <code>OnTagAdded</code> ожидающие действия <code>Async Action</code>.
+Это сильно упростит работу с компонентом и по сути поднимет его до уровня полноценной игровой системы. Поскольку мы планируем подключаться к диспетчерам событий - использовать <code>Latent Action</code> не получится. Нужен <code>Async Action</code>, то есть ожидающее действие, которое будет отслеживать вызов делегата.</p>
+<p>Идем <code>Tools -&gt; New C++ Class</code> и ищем <code>Cancellable Async Action</code>.</p>
+<p><a class="glightbox" href="../images/746ef29e4b9a19540c092a31ba380d0e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="746ef29e4b9a19540c092a31ba380d0e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/746ef29e4b9a19540c092a31ba380d0e.png" /></a></p>
+<p>Называем <code>TagsCompCancellableAsyncAction</code>.</p>
+<p><a class="glightbox" href="../images/7a3b81f4e3f5a2e2a41621d068478208.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7a3b81f4e3f5a2e2a41621d068478208.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7a3b81f4e3f5a2e2a41621d068478208.png" /></a></p>
+<p>После добавления файла не забудьте выполнить команду <code>Tools -&gt; Refresh Visual Studio 2022 Project</code>.</p>
+<p><a class="glightbox" href="../images/93030711e8a4cd41322e898faa962cb1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="93030711e8a4cd41322e898faa962cb1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/93030711e8a4cd41322e898faa962cb1.png" /></a></p>
+<p>Реализация действий будет тривиальна. Нам даже не придется переопределять метод <code>Cancel</code>, потому что он и так делает по умолчанию то, что от него требуется - отвязывает события.</p>
+<h3 id="ontagremoved-asyncaction"><code>OnTagRemoved AsyncAction</code></h3>
+<p>Реализация асинхронного действия для события <code>OnTagRemoved</code> выглядит так:
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Engine/CancellableAsyncAction.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameplayTagContainer.h&quot;</span><span class="c1"> // Gameplay Tags</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TagsComponent.h&quot;</span><span class="c1"> // Tags Component</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TagsLibrary.h&quot;</span><span class="c1"> // Tags Function Library</span>
+<span class="c1">// generated.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TagsCompCancellableAsyncAction.generated.h&quot;</span>
+<span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</span><span class="p">(</span><span class="n">FTagRemovedPin</span><span class="p">,</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="n">Tag</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">bIsRemoved</span><span class="p">);</span>
+<span class="cm">/**</span>
+<span class="cm"> * Tags Component Tag Remove binding</span>
+<span class="cm"> */</span>
+<span class="n">UCLASS</span><span class="p">()</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TAGSMODULE_API</span><span class="w"> </span><span class="n">UTagRemovedCancellableAsyncAction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UCancellableAsyncAction</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">// world context</span>
+<span class="w">    </span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// search for owner that contains components</span>
+<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="nf">GetNodeOwner</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Owner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UActorComponent</span><span class="o">*</span><span class="w"> </span><span class="n">OwningComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UActorComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">OwningComponent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// node called not in actor and not in actor component</span>
+<span class="w">            </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OwningComponent</span><span class="o">-&gt;</span><span class="n">GetOwner</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Owner</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintAssignable</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FTagRemovedPin</span><span class="w"> </span><span class="n">TagRemoved</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Main Logics go here</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Activate</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetNodeOwner</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Owner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Owner</span><span class="o">-&gt;</span><span class="n">FindComponentByClass</span><span class="o">&lt;</span><span class="n">UTagsComponent</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">//ensure(TC != nullptr);</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">TC</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="n">FScriptDelegate</span><span class="w"> </span><span class="n">Delegate</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Delegate</span><span class="p">.</span><span class="n">BindUFunction</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;OnRemovedCallback&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">TC</span><span class="o">-&gt;</span><span class="n">OnTagRemoved</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">Delegate</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Callback for delegate</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">OnRemovedCallback</span><span class="p">(</span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">Tag</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">bIsRemoved</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TagRemoved</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="n">Tag</span><span class="p">,</span><span class="w"> </span><span class="n">bIsRemoved</span><span class="p">);</span><span class="w"> </span><span class="c1">// Activate pin</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Node with pin that activates once tag is removed from component</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BlueprintInternalUseOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">UTagRemovedCancellableAsyncAction</span><span class="o">*</span><span class="w"> </span><span class="n">OnceTagRemoved</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UTagRemovedCancellableAsyncAction</span><span class="o">*</span><span class="w"> </span><span class="n">BlueprintNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UTagRemovedCancellableAsyncAction</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// construct async action</span>
+<span class="w">        </span><span class="c1">// Set internal class variables. Can&#39;t be done otherwise since function is static.</span>
+<span class="w">        </span><span class="n">BlueprintNode</span><span class="o">-&gt;</span><span class="n">WorldContextObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">BlueprintNode</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/56d3039fc11c91973c81193d74181bb1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="56d3039fc11c91973c81193d74181bb1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/56d3039fc11c91973c81193d74181bb1.png" /></a></p>
+<p><a class="glightbox" href="../images/1220571f3e1bc721068ad8ebe7e69111.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1220571f3e1bc721068ad8ebe7e69111.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1220571f3e1bc721068ad8ebe7e69111.png" /></a></p>
+<h3 id="ontagadded-asyncaction"><code>OnTagAdded AsyncAction</code></h3>
+<p>Сделаем аналогичное действие для <code>OnTagAdded</code>.
+Поскольку у действий разное количество аргументов - необходимо создать класс асинхронного действия. Я не буду делать для этого отдельный файл, использую этот-же.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Engine/CancellableAsyncAction.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameplayTagContainer.h&quot;</span><span class="c1"> // Gameplay Tags</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TagsComponent.h&quot;</span><span class="c1"> // Tags Component</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TagsLibrary.h&quot;</span><span class="c1"> // Tags Function Library</span>
+<span class="c1">// generated.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TagsCompCancellableAsyncAction.generated.h&quot;</span>
+<span class="c1">// On Tag Added pin</span>
+<span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</span><span class="p">(</span><span class="n">FTagAddedPin</span><span class="p">,</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="n">Tag</span><span class="p">);</span>
+<span class="cm">/**</span>
+<span class="cm"> * Tags Component Tag Add binding</span>
+<span class="cm"> */</span>
+<span class="n">UCLASS</span><span class="p">()</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TAGSMODULE_API</span><span class="w"> </span><span class="n">UTagAddedCancellableAsyncAction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UCancellableAsyncAction</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="w">        </span><span class="c1">// world context</span>
+<span class="w">        </span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// search for owner that contains components</span>
+<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="nf">GetNodeOwner</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Owner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UActorComponent</span><span class="o">*</span><span class="w"> </span><span class="n">OwningComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UActorComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">OwningComponent</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// node called not in actor and not in actor component</span>
+<span class="w">            </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OwningComponent</span><span class="o">-&gt;</span><span class="n">GetOwner</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Owner</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintAssignable</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FTagAddedPin</span><span class="w"> </span><span class="n">TagAdded</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Main Logics go here</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Activate</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetNodeOwner</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Owner</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">){</span>
+<span class="w">            </span><span class="c1">//UE_LOG(LogTemp, Warning, TEXT(&quot;[tags] Onwer is NULL! &quot;))</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">UTagsComponent</span><span class="o">*</span><span class="w"> </span><span class="n">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Owner</span><span class="o">-&gt;</span><span class="n">FindComponentByClass</span><span class="o">&lt;</span><span class="n">UTagsComponent</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">//ensure(TC != nullptr);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TC</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">){</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">FScriptDelegate</span><span class="w"> </span><span class="n">Delegate</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Delegate</span><span class="p">.</span><span class="n">BindUFunction</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;OnTagAddedCallback&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">TC</span><span class="o">-&gt;</span><span class="n">OnTagAdded</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">Delegate</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Callback for delegate</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">OnTagAddedCallback</span><span class="p">(</span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">Tag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//UE_LOG(LogTemp, Warning, TEXT(&quot;[tags] Tag Added&quot;))</span>
+<span class="w">        </span><span class="n">TagAdded</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="n">Tag</span><span class="p">);</span><span class="w"> </span><span class="c1">// Activate pin</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Node with pin that activates once tag is removed from component</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags Component&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BlueprintInternalUseOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WorldContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WorldContextObject&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">UTagAddedCancellableAsyncAction</span><span class="o">*</span><span class="w"> </span><span class="n">OnceTagAdded</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UTagAddedCancellableAsyncAction</span><span class="o">*</span><span class="w"> </span><span class="n">BlueprintNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UTagAddedCancellableAsyncAction</span><span class="o">&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// construct async action</span>
+<span class="w">        </span><span class="c1">// Set internal class variables. Can&#39;t be done otherwise since function is static.</span>
+<span class="w">        </span><span class="n">BlueprintNode</span><span class="o">-&gt;</span><span class="n">WorldContextObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">BlueprintNode</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/ee78654f913f1309f201877c13b3e423.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ee78654f913f1309f201877c13b3e423.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ee78654f913f1309f201877c13b3e423.png" /></a></p>
+<p><a class="glightbox" href="../images/bbc3cf4c577279a022ac72356a2878f5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="bbc3cf4c577279a022ac72356a2878f5.png" auto_="auto;" display="block;" margin:="margin:" src="../images/bbc3cf4c577279a022ac72356a2878f5.png" /></a></p>
+<h3 id="_9">Тестирование</h3>
+<p>Использовать ноды <code>OnceTagAdded</code> и <code>OnceTagRemoved</code> можно как из класса персонажа или любого <code>AActor'а</code>, так и из классов <code>UActorComponent</code>, которые подключены к персонажу. При этом достаточным условием, чтобы эти ноды работали, является наличие компонента тегов.</p>
+<p><a class="glightbox" href="../images/6e2e6e6d8e45c0945a1ba0b2c83205ba.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6e2e6e6d8e45c0945a1ba0b2c83205ba.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6e2e6e6d8e45c0945a1ba0b2c83205ba.png" /></a></p>
+<p><a class="glightbox" href="../images/e4dc7011c78b11691172190f4e62e1ff.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e4dc7011c78b11691172190f4e62e1ff.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e4dc7011c78b11691172190f4e62e1ff.png" /></a></p>
+<h2 id="c">Добавление тегов из <code>c++</code></h2>
+<p>Предположим вы делаете модуль с системой передвижения. При этом вы бы хотели, чтобы теги, используемые в этом модуле, сразу активировались на стороне <code>blueprint</code> редактора, без ручного добавления их через меню настроек. О том, как это сделать - поговорим в этой главе.</p>
+<h3 id="requestgameplaytag"><code>RequestGameplayTag</code></h3>
+<p>Самый простой способ заставить тег появиться в проекте - это использовать <code>FGameplayTag::RequestGameplayTag</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Gameplay tag</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GameplayTags&quot;</span><span class="p">)</span>
+<span class="n">FGameplayTag</span><span class="w"> </span><span class="n">TagTest</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// in constructor</span>
+<span class="n">TagTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">::</span><span class="n">RequestGameplayTag</span><span class="p">(</span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;Locomotion.Grounded.Jog&quot;</span><span class="p">));</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/daafd338ef4c06f29e32be53420deb91.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="daafd338ef4c06f29e32be53420deb91.png" auto_="auto;" display="block;" margin:="margin:" src="../images/daafd338ef4c06f29e32be53420deb91.png" /></a></p>
+<p>Этим способом можно создавать теги как в теле класса, так и внутри функций.</p>
+<p>Недостаток у этой функции один - она обязательно должна быть вызвана или в теле класса или в конструкторе. Если этого не произойдет - тег не добавится.</p>
+<h3 id="macro-tags">Macro Tags</h3>
+<p>Если нужны перманентно присутствующие теги, то есть макросы.</p>
+<p>Макросы, отвечающие за теги, можно найти в файле <code>NativeGameplayTags.h</code> по пути <code>\Runtime\GameplayTags\Public\NativeGameplayTags.h</code>.</p>
+<p><a class="glightbox" href="../images/431969a3399ccfbe681a4c81bb9a1cf8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="431969a3399ccfbe681a4c81bb9a1cf8.png" auto_="auto;" display="block;" margin:="margin:" src="../images/431969a3399ccfbe681a4c81bb9a1cf8.png" /></a></p>
+<p>Давайте рассмотрим их код.
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Declares a native gameplay tag that is defined in a cpp with UE_DEFINE_GAMEPLAY_TAG to allow other modules or code to use the created tag variable.</span>
+<span class="cm"> */</span>
+<span class="cp">#define UE_DECLARE_GAMEPLAY_TAG_EXTERN(TagName) extern FNativeGameplayTag TagName;</span>
+<span class="cm">/**</span>
+<span class="cm"> * Defines a native gameplay tag that is externally declared in a header to allow other modules or code to use the created tag variable.</span>
+<span class="cm"> */</span>
+<span class="cp">#define UE_DEFINE_GAMEPLAY_TAG(TagName, Tag) FNativeGameplayTag TagName(UE_PLUGIN_NAME, UE_MODULE_NAME, Tag, TEXT(&quot;&quot;), ENativeGameplayTagToken::PRIVATE_USE_MACRO_INSTEAD); static_assert(UE::GameplayTags::Private::HasFileExtension(__FILE__, &quot;.cpp&quot;), &quot;UE_DEFINE_GAMEPLAY_TAG can only be used in .cpp files, if you&#39;re trying to share tags across modules, use UE_DECLARE_GAMEPLAY_TAG_EXTERN in the public header, and UE_DEFINE_GAMEPLAY_TAG in the private .cpp&quot;);</span>
+<span class="cm">/**</span>
+<span class="cm"> * Defines a native gameplay tag such that it&#39;s only available to the cpp file you define it in.</span>
+<span class="cm"> */</span>
+<span class="cp">#define UE_DEFINE_GAMEPLAY_TAG_STATIC(TagName, Tag) static FNativeGameplayTag TagName(UE_PLUGIN_NAME, UE_MODULE_NAME, Tag, TEXT(&quot;&quot;), ENativeGameplayTagToken::PRIVATE_USE_MACRO_INSTEAD); static_assert(UE::GameplayTags::Private::HasFileExtension(__FILE__, &quot;.cpp&quot;), &quot;UE_DEFINE_GAMEPLAY_TAG_STATIC can only be used in .cpp files, if you&#39;re trying to share tags across modules, use UE_DECLARE_GAMEPLAY_TAG_EXTERN in the public header, and UE_DEFINE_GAMEPLAY_TAG in the private .cpp&quot;);</span>
+</code></pre></div></p>
+<h4 id="ue_define_gameplay_tag_static"><code>UE_DEFINE_GAMEPLAY_TAG_STATIC</code></h4>
+<p>Рассмотрим для начала самый простой макрос - <code>UE_DEFINE_GAMEPLAY_TAG_STATIC</code>.
+Он используется только в <code>.cpp</code> файле и позволяет на ходу задавать и использовать макросы тегов.
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Gameplay Tags</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameplayTagContainer.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;BlueprintGameplayTagLibrary.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;NativeGameplayTags.h&quot;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// gameplay tags</span>
+<span class="n">UE_DEFINE_GAMEPLAY_TAG_STATIC</span><span class="p">(</span><span class="n">TAG_FROZEN</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;State.Frozen&quot;</span><span class="p">);</span>
+<span class="n">UE_DEFINE_GAMEPLAY_TAG_STATIC</span><span class="p">(</span><span class="n">TAG_STUN</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;State.Stun&quot;</span><span class="p">);</span>
+<span class="c1">// will add gen.cpp</span>
+<span class="cp">#include UE_INLINE_GENERATED_CPP_BY_NAME(K2Node_Test)</span>
+<span class="c1">// now we can use TAG_FROZEN and TAG_STUN within this .cpp file</span>
+</code></pre></div></p>
+<h4 id="ue_declare_gameplay_tag_extern-ue_define_gameplay_tag"><code>UE_DECLARE_GAMEPLAY_TAG_EXTERN</code> и <code>UE_DEFINE_GAMEPLAY_TAG</code></h4>
+<p>Следующие макросы служат для добавления глобально доступных игровых тегов, это: <code>UE_DECLARE_GAMEPLAY_TAG_EXTERN</code> и <code>UE_DEFINE_GAMEPLAY_TAG</code>.
+Макрос <code>UE_DECLARE_GAMEPLAY_TAG_EXTERN</code> должен быть указан в заголовочном файле (<code>.h</code>), например, библиотеки функций.
+<div class="highlight"><pre><span></span><code><span class="c1">//.h file NativeTags/Tags.h</span>
+<span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;NativeGameplayTags.h&quot;</span><span class="c1"> // Gameplay Tags Native Macros</span>
+<span class="n">UE_DECLARE_GAMEPLAY_TAG_EXTERN</span><span class="p">(</span><span class="n">TAG_IS_ARMED</span><span class="p">)</span>
+<span class="n">UE_DECLARE_GAMEPLAY_TAG_EXTERN</span><span class="p">(</span><span class="n">TAG_WEARING_SWORD</span><span class="p">)</span>
+<span class="n">UE_DECLARE_GAMEPLAY_TAG_EXTERN</span><span class="p">(</span><span class="n">TAG_WEARING_BOW</span><span class="p">)</span>
+</code></pre></div>
+Макрос <code>UE_DEFINE_GAMEPLAY_TAG</code> должен быть указан в файле реализации (<code>.cpp</code>).
+<div class="highlight"><pre><span></span><code><span class="c1">//.cpp file NativeTags/Tags.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;NativeTags/Tags.h&quot;</span>
+<span class="n">UE_DEFINE_GAMEPLAY_TAG</span><span class="p">(</span><span class="n">TAG_IS_ARMED</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Combat.IsArmed&quot;</span><span class="p">);</span>
+<span class="n">UE_DEFINE_GAMEPLAY_TAG</span><span class="p">(</span><span class="n">TAG_WEARING_SWORD</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Equipment.Wearing.Sword&quot;</span><span class="p">);</span>
+<span class="n">UE_DEFINE_GAMEPLAY_TAG</span><span class="p">(</span><span class="n">TAG_WEARING_BOW</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Equipment.Wearing.Bow&quot;</span><span class="p">);</span>
+</code></pre></div>
+Давайте создадим отдельный набор файлов под макросы тегов. Чтобы идентификаторы тегов легко можно было подключить в любом проекте.</p>
+<p>Добавляем в модуль <code>TagsModule/Public</code> подпапку <code>NativeTags</code>.</p>
+<p><a class="glightbox" href="../images/6af47defaed0608893ac2d0db037fff7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6af47defaed0608893ac2d0db037fff7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6af47defaed0608893ac2d0db037fff7.png" /></a></p>
+<p>В эту папку добавляем файл - <code>Tags.h</code>.</p>
+<p><a class="glightbox" href="../images/22175aed7a4f1de9249fc7ef49c9d92f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="22175aed7a4f1de9249fc7ef49c9d92f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/22175aed7a4f1de9249fc7ef49c9d92f.png" /></a></p>
+<p>Теперь идем в папку <code>TagsModule/Private</code> и добавляем туда подпапку <code>NativeTags</code>.</p>
+<p><a class="glightbox" href="../images/3d9a6cd478e1b0ef86f973d22229e708.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3d9a6cd478e1b0ef86f973d22229e708.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3d9a6cd478e1b0ef86f973d22229e708.png" /></a></p>
+<p>И добавляем туда файл -  <code>Tags.cpp</code>.</p>
+<p><a class="glightbox" href="../images/f80c64eb19bc5f552d53e4f2d85de2bb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f80c64eb19bc5f552d53e4f2d85de2bb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f80c64eb19bc5f552d53e4f2d85de2bb.png" /></a></p>
+<p>Теперь нам надо, чтобы эти файлы появились в проекте. Идем в Unreal Engine - <code>Tools / Refresh Visual Studio 2022 Project</code>.</p>
+<p><a class="glightbox" href="../images/933218517c0e744d6204fef1f60b133d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="933218517c0e744d6204fef1f60b133d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/933218517c0e744d6204fef1f60b133d.png" /></a></p>
+<p>Теперь добавляем туда приведенный выше код.</p>
+<p><a class="glightbox" href="../images/115434a61b16d6351f93dae6ff0d2d58.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="115434a61b16d6351f93dae6ff0d2d58.png" auto_="auto;" display="block;" margin:="margin:" src="../images/115434a61b16d6351f93dae6ff0d2d58.png" /></a></p>
+<p><a class="glightbox" href="../images/4e2b932a2621193a3ee9a02701cebf59.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4e2b932a2621193a3ee9a02701cebf59.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4e2b932a2621193a3ee9a02701cebf59.png" /></a></p>
+<p>Если теперь просто скомпилировать проект - в нем появятся указанные теги. Переходим в <code>Tools -&gt; Project Settings -&gt; Gameplay Tags</code>.</p>
+<blockquote>
+<p><em>Если теги  не появились - перезапустите движок.</em></p>
+</blockquote>
+<p><a class="glightbox" href="../images/3b9782053edbab573b86152a132bf273.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3b9782053edbab573b86152a132bf273.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3b9782053edbab573b86152a132bf273.png" /></a></p>
+<p>К тому-же, теперь, просто подключив исполняемый файл <code>NativeTags/Tags.h</code> мы сможем использовать макросы тегов, заданные там, для программирования  собственной системы.</p>
+<p>Важно помнить, что теги будут удалены из системы, если из нее будет удален модуль, который эти теги добавляет (особенно это актуально, если модуль находится в плагине).</p>
+<h2 id="meta-categories">Meta <code>Categories</code></h2>
+<p>Для системы <code>GameplayTags</code> существует собственный <code>meta</code> параметр, который работает только с параметрами типа <code>FGameplayTag</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">// use &quot;GameplayTags&quot; in PublicDependencyModuleNames</span>
+<span class="c1">// Gameplay Tags</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;NativeGameplayTags.h&gt;</span>
+<span class="c1">//...</span>
+<span class="c1">// Gameplay tag locked category</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GameplayTags&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Locomotion.Grounded&quot;</span><span class="p">))</span>
+<span class="n">FGameplayTag</span><span class="w"> </span><span class="n">GroundedLocomotionMode</span><span class="p">;</span>
+<span class="c1">// Gameplay tag</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GameplayTags&quot;</span><span class="p">)</span>
+<span class="n">FGameplayTag</span><span class="w"> </span><span class="n">TagTest</span><span class="p">;</span>
+<span class="c1">// also can be used with function parameters like so:</span>
+<span class="c1">// this will broadcast given tag to all listeners</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Operations&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Meta</span><span class="o">=</span><span class="p">(</span><span class="n">EventTag</span><span class="o">=</span><span class="s">&quot;Events.All&quot;</span><span class="p">))</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">CallEvent</span><span class="p">(</span><span class="n">UPARAM</span><span class="p">(</span><span class="n">meta</span><span class="o">=</span><span class="p">(</span><span class="n">Categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Events&quot;</span><span class="p">))</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">EventTag</span><span class="p">);</span>
+</code></pre></div>
+Используя такой параметр можно конкретизировать категорию тегов, которая будет доступна для устанвоки значений в переменной.</p>
+<p>Переменная <code>GroundedLocomotionMode</code> у которой есть параметр <code>Category</code> выглядит так:</p>
+<p><a class="glightbox" href="../images/d5c0ab67e6514e819941ee723669b8a2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d5c0ab67e6514e819941ee723669b8a2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d5c0ab67e6514e819941ee723669b8a2.png" /></a></p>
+<p>Переменная <code>TagTest</code> у которой нет параметра <code>Category</code> выглядит так:</p>
+<p><a class="glightbox" href="../images/df2b9260f1a9af5fdd4014604bb6036f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="df2b9260f1a9af5fdd4014604bb6036f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/df2b9260f1a9af5fdd4014604bb6036f.png" /></a></p>
+<h2 id="ugameplaytagsmanager">Получение списка "суб тегов", <code>UGameplayTagsManager</code></h2>
+<p>В <code>blueprint</code> менеджер тегов <code>UGameplayTagsManager</code> не доступен. Но из <code>с++</code> обращаться к нему можно, например, для получения списка "под тегов", от заданного тега.
+<div class="highlight"><pre><span></span><code><span class="c1">// in function library</span>
+<span class="c1">// list of child tags, wrapped to container</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags&quot;</span><span class="p">)</span>
+<span class="k">static</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">GetChildTags</span><span class="p">(</span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">BaseTag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">UGameplayTagsManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Manager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UGameplayTagsManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">Children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="p">.</span><span class="n">RequestGameplayTagChildren</span><span class="p">(</span><span class="n">BaseTag</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Children</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// array of child tags</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Tags&quot;</span><span class="p">)</span>
+<span class="k">static</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FGameplayTag</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetChildTagsArray</span><span class="p">(</span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">BaseTag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">UGameplayTagsManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Manager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UGameplayTagsManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">Children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="p">.</span><span class="n">RequestGameplayTagChildren</span><span class="p">(</span><span class="n">BaseTag</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FGameplayTag</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Tags</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Children</span><span class="p">.</span><span class="n">GetGameplayTagArray</span><span class="p">(</span><span class="n">Tags</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Tags</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+Вызывать так:
+<a class="glightbox" href="../images/1231233wrwer435.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1231233wrwer435" auto_="auto;" display="block;" margin:="margin:" src="../images/1231233wrwer435.png" /></a></p>
+<h2 id="links">Links</h2>
+<p>https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/Tags/
+https://www.tomlooman.com/unreal-engine-gameplaytags-data-driven-design/
+https://www.unrealdirective.com/tip/declare-define-native-gameplay-tags</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            К началу
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      aftamat4ik
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

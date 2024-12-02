@@ -1,0 +1,2436 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Справочник Unreal Engine">
+      
+      
+        <meta name="author" content="aftamat4ik">
+      
+      
+      
+        <link rel="prev" href="../index.html">
+      
+      
+        <link rel="next" href="2_Engine_Introduction.html">
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
+    
+    
+      
+        <title>Создаем первый проект в Unreal Engine - Справочник Unreal Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unreal-engine" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-header__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Справочник Unreal Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Создаем первый проект в Unreal Engine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="1_First_Project.html" class="md-tabs__link">
+          
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../2_Core/1_Delegates.html" class="md-tabs__link">
+          
+  
+  Ключевые системы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../3_Advanced/1_HUD.html" class="md-tabs__link">
+          
+  
+  Продвинутая разработка
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-tabs__link">
+          
+  
+  Решение проблем
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../5_Tips/Change_Asset_Icons.html" class="md-tabs__link">
+          
+  
+  Советы
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-nav__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    Справочник Unreal Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Основы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Основы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="1_First_Project.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Что потребуется для работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Создание проекта
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-studio-integration-tools" class="md-nav__link">
+    Включаем плагин Visual Studio Integration Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Включение с++ в проекте
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-studio" class="md-nav__link">
+    Настройка Visual Studio
+  </a>
+  
+    <nav class="md-nav" aria-label="Настройка Visual Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hot-reloading" class="md-nav__link">
+    Выключаем Hot Reloading
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intellisense" class="md-nav__link">
+    Настройка Intellisense
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#track-active-item-solution-explorer" class="md-nav__link">
+    Track Active Item в Solution Explorer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-explorer" class="md-nav__link">
+    Включаем предпросмотр файлов в Solution Explorer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Сборка проекта
+  </a>
+  
+    <nav class="md-nav" aria-label="Сборка проекта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio_1" class="md-nav__link">
+    Сборка из Visual Studio
+  </a>
+  
+    <nav class="md-nav" aria-label="Сборка из Visual Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Рассмотрим основные опции сборки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Заключение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#live-conding" class="md-nav__link">
+    Сборка через Live Conding.
+  </a>
+  
+    <nav class="md-nav" aria-label="Сборка через Live Conding.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#live-coding" class="md-nav__link">
+    Включение Live Coding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Запуск компиляции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#livecoding" class="md-nav__link">
+    Отладка LiveCoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#livecoding-visual-studio" class="md-nav__link">
+    Отладка LiveCoding кода в Visual Studio
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Добавляем код печати текста на экран
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Проверка кода
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Engine_Introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_CPP_Recommendations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Рекомендации по написанию кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_SimplePlugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создание простейшего плагина для Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Macroses_Reflection_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Макросы Reflection System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Logging.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Печать информации в лог
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Pointers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Указатели
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_ModernCpp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возможности современного c++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_Working_With_Strings.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа со строками
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_Timers_In_%D0%A1%2B%2B.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Таймеры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_Instances_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Доступ к различным сущностям
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Debug/Debug_Asserts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Asserts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Debug/Debug_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Console Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ключевые системы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ключевые системы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/1_Delegates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/2_Components.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/3_SubObjects.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/4_Multithreading.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Многопоточность
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/5_Function_Libraries.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Библиотеки Функций для Blueprint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/6_Latent_And_Async_Actions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latent и Async Action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/7_Gameplay_Tags.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/8_DataAssets_AssetManager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с ассетами и данными
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/9_FileSystem.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/10_Anim_Instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anim Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/11_SubSystems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Подсистемы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/12.%20UObject%20Interface.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Interface или UInterface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Продвинутая разработка
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Продвинутая разработка
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/1_HUD.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HUD или Heads-up Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/2_UFUNCTION_Wildcard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/3_Slate%20Runtime.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slate Runtimе, введение в Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/4_UMG.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/5_K2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/6_Registe_New_Asset_Type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/7_ACharacter_And_Enhanced%20Input.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACharacter и Enhanced Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/8_Gameplay_Ability_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Ability System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/9_Global_Data_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальнный доступ к данным
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/10_Global_Event_Bus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальная шина событий
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Решение проблем
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Решение проблем
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с кодировкой в LiveCoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/Reset_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Сброс (Reset) проекта
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/generatedh_Problems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с файлом .generated.h
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Советы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Советы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Change_Asset_Icons.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Asset Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Character_And_EnhancedInput.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character Boilerplate with Enhanced Input Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/DefaultToSelf_WorldContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DefaultToSelf WorldContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Different_UPROPERTY.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/GameInputMode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Изменение GameInputMode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Get_UScriptStruct_FromStruct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ::UScriptStruct из встроенной структуры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Input_Binding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События ввода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Iterate_TMap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterate TMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Read_Blueprint_Properties.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Чтение параметров Blueprint класса
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Return_UObject.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возвращение UObject по ссылке из функции
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Run_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Запуск консольных команд
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Screen_Size.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Размер экрана
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Slate_Snippets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Полезные сниппеты Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Spawn_Actors.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawn, призыв объектов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Time_Measuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Замер времени исполнения кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Trace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UEnum_To_String.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UEnum to FString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UObject_Base_Class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Base Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Variable_Type_Print_Template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Шаблон для печати типа переменной
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/struct_operator%3D%3D.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    struct и оператор ==
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Что потребуется для работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Создание проекта
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-studio-integration-tools" class="md-nav__link">
+    Включаем плагин Visual Studio Integration Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Включение с++ в проекте
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-studio" class="md-nav__link">
+    Настройка Visual Studio
+  </a>
+  
+    <nav class="md-nav" aria-label="Настройка Visual Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hot-reloading" class="md-nav__link">
+    Выключаем Hot Reloading
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intellisense" class="md-nav__link">
+    Настройка Intellisense
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#track-active-item-solution-explorer" class="md-nav__link">
+    Track Active Item в Solution Explorer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-explorer" class="md-nav__link">
+    Включаем предпросмотр файлов в Solution Explorer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Сборка проекта
+  </a>
+  
+    <nav class="md-nav" aria-label="Сборка проекта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio_1" class="md-nav__link">
+    Сборка из Visual Studio
+  </a>
+  
+    <nav class="md-nav" aria-label="Сборка из Visual Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Рассмотрим основные опции сборки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Заключение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#live-conding" class="md-nav__link">
+    Сборка через Live Conding.
+  </a>
+  
+    <nav class="md-nav" aria-label="Сборка через Live Conding.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#live-coding" class="md-nav__link">
+    Включение Live Coding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Запуск компиляции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#livecoding" class="md-nav__link">
+    Отладка LiveCoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#livecoding-visual-studio" class="md-nav__link">
+    Отладка LiveCoding кода в Visual Studio
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Добавляем код печати текста на экран
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Проверка кода
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="unreal-engine">Создаем первый проект в <code>Unreal Engine</code></h1>
+<p>Движок <code>Unreal Engine</code> имеет очень высокий порог входа для желающих разрабатывать под него на <code>с++</code>.
+Даже если у вас уже есть опыт разработки на <code>blueprint</code>, движок найдет миллионы способов поставить вас в тупик.</p>
+<p>Вот с чем пришлось столкнуться лично мне:</p>
+<ol>
+<li>У меня постоянно сбоил <code>Visual Studio 2019</code> и не работал <code>Intellisense</code>.</li>
+<li>В логе компиляции, вместо читаемых букв, выдавался текст с поломанной кодировкой.</li>
+<li>Я не понимал как надо собирать проект и в чем отличия между сборкой в <code>Visual Studio</code> и сборкой через <code>Live Coding</code>.
+И это не считая проблем с восприятием кода в движке.</li>
+</ol>
+<p>Исходный код движка <code>Unreal Engine</code> найдет миллион способов поставить в тупик даже самых опытных разработчиков. Движок использует собственную систему сборки <code>Unreal Build Tool</code>, собственный препроцессор <code>Unreal Header Tool</code>, собственные библиотеки умных указателей и многопоточности.</p>
+<p>Когда я начинал свое знакомство с движком, мне были непонятны подключаемые файлы <code>.generated.h</code>. Я абсолютно не понимал, как работает система сборки и как добавлять в нее новые модули. С трудом разобравшись, я решил сохранить результаты своих открытий в виде нескольких материалов. Так, постепенно, появилась эта книга.</p>
+<h2 id="_1">Что потребуется для работы</h2>
+<p>Среда разработки - <code>Visual Studio 2022</code> или последующие версии. (<code>VS2019</code> не годится из-за несовместимости с плагином <code>Visual Studio Integration Tool</code>, а так-же проблем с производительностью <code>Intellisense</code>).</p>
+<p>Игровой движок - <code>Unreal Engine 5.1</code> или последующие версии.</p>
+<h2 id="_2">Создание проекта</h2>
+<p>Запускаете движок.</p>
+<p><a class="glightbox" href="../images/ZapuskDvizhka.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Запуск Движка.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ZapuskDvizhka.png" /></a></p>
+<p>В движке идем <code>Games -&gt; ThirdPerson</code>, убираем галочку с пункта StarterContent, чтобы проект по меньше весил.</p>
+<p>Берем <code>Blueprint</code> версию, потому что куда лучше совмещать <code>c++</code> и <code>blueprint</code> подходы. Причина такого решения проста - оно дает куда больше возможностей для маневра, потому что <code>blueprint</code> можно в любой момент отредактировать, не компилируя весь проект. Тем более, что по ходу серьезной разработки размер проекта будет увеличиваться, как и количество <code>с++</code> кода в нем. А потому имеет смысл большую часть разработки делать на быстро компилирующихся блюпринтах.</p>
+<p>Для компиляции <code>с++</code> кода мы будем использовать технологию - <code>Live Coding</code>, позволяющую собирать проект прямо в движке, а код писать в каком угодно редакторе, хоть в блокноте. Однако, конкретно я буду писать код в <code>Visual Studio 2022</code> из-за системы <code>Intellisense</code>, которая туда встроена. И вам я тоже рекомендую использовать <code>Visual Studio 2022</code>.
+Если у вас установлена <code>Vs 2019</code> - удалите ее и замените на <code>2022</code>, как это сделал я, ничего страшного не случилось, хотя я боялся, что потрутся важные библиотеки. Почему я акцентирую на этом внимание? Потому что только <code>VS2022</code> корректно работает с <code>Unreal Engine 5</code>.</p>
+<p><a class="glightbox" href="../images/SozdanieproektaSubsystemTest.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Создание проекта SubsystemTest.png" auto_="auto;" display="block;" margin:="margin:" src="../images/SozdanieproektaSubsystemTest.png" /></a></p>
+<p>Проект я назвал <code>SubsystemTest</code>, с этим придется мириться на протяжении всех статей. Логичнее было бы назвать проект <code>Unreal Experiments</code>, но уже поздно.</p>
+<h2 id="visual-studio-integration-tools">Включаем плагин <code>Visual Studio Integration Tools</code></h2>
+<p>Установите на движок плагин - <a href="https://www.unrealengine.com/marketplace/en-US/product/362651520df94e4fa65492dbcba44ae2">Visual Studio Integration Tool</a>, он бесплатный. Переходите по ссылке, добавляете его в библиотеку, потом загружаете в из <code>EpicGames</code> лаунчера.</p>
+<p><a class="glightbox" href="../images/VSIntegrationTool.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="VSIntegrationTool.png" auto_="auto;" display="block;" margin:="margin:" src="../images/VSIntegrationTool.png" /></a></p>
+<p>После загрузки плагина открываем наш проект в движке. Переходим <code>Edit -&gt; Plugins</code>.</p>
+<p><a class="glightbox" href="../images/85dd801604b3263613f783e547a5e8b2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="85dd801604b3263613f783e547a5e8b2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/85dd801604b3263613f783e547a5e8b2.png" /></a></p>
+<p>Ищем в списке плагин <code>Visual Studio Integration Tools</code></p>
+<p><a class="glightbox" href="../images/VklyuchenieVSIntegrationTool.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Включение VS Integration Tool.png" auto_="auto;" display="block;" margin:="margin:" src="../images/VklyuchenieVSIntegrationTool.png" /></a></p>
+<p>Учтите, что сам плагин не находится ни в одной из подкатегорий, а потому его сложно найти. Нажмите на пункт <code>Installed</code> и промотайте вниз по списку до нужного пункта.</p>
+<p>После включения плагина система попросит вас перезапустить движок. Не делайте этого. Пока что.</p>
+<h2 id="_3">Включение <code>с++</code> в проекте</h2>
+<p>Теперь необходимо сгенерировать проект для <code>Visual Studio</code>, который будет содержать все необходимые настройки.</p>
+<p>Переходим <code>Edit -&gt; Editor Preferences -&gt; Source Code</code>. Выберите в пункте <code>Source Code Editor</code> в качестве редактора - <code>Visual Studio 2022</code>.</p>
+<p><a class="glightbox" href="../images/Vybortselevogoredaktora.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Выбор целевого редактора.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Vybortselevogoredaktora.png" /></a></p>
+<p>Теперь надо сгенерировать <code>Solution</code> файл для <code>visual studio</code>.</p>
+<p><a class="glightbox" href="../images/6021805b63c9d7bb52a72eacb744155f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6021805b63c9d7bb52a72eacb744155f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6021805b63c9d7bb52a72eacb744155f.png" /></a></p>
+<p>Чтобы сгенерировать <code>solution</code> необходим хотя-бы одинкласс. Без добавления <code>c++</code> класса(хотя-бы одного) - <code>Solution</code> для <code>Visual Studio</code> в проекте появится.</p>
+<p>Предлагаю добавить <code>c++</code> класс, унаследованный от <code>Actor</code>.
+Идем <code>Tools -&gt; New C++ Class</code> и ищем заготовку класса - <code>Actor</code>.</p>
+<p><a class="glightbox" href="../images/Sozdaniepervogoklassa.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Создание первого с++ класса" auto_="auto;" display="block;" margin:="margin:" src="../images/Sozdaniepervogoklassa.png" /></a></p>
+<p>Нажимаем <code>Next</code> и называем наш класс <code>TestActor</code>. У меня он уже создан, так что будет <code>TestActor1</code>.</p>
+<p><a class="glightbox" href="../images/Vybornazvaniyadlyanovogoklassa.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Выбор названия для нового класса.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Vybornazvaniyadlyanovogoklassa.png" /></a></p>
+<p>Выставляем <code>ClassType</code> на <code>Public</code>, чтобы наш проект был более-менее структурирован. Это позволит разместить заголовочный файл <code>.h</code>в подпапке <code>/public</code>, а файл реализации <code>.cpp</code> в подпапке <code>/private</code>.
+Теперь необходимо выбрать модуль, в котором будет сгенерирован будущий класс. В нашем проекте пока всего один модуль, это модуль самого проекта (в моем случае проект называется <code>Subsystem Test</code>, в вашем как-то иначе).</p>
+<p><a class="glightbox" href="../images/Vybormodulya.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Выбор модуля.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Vybormodulya.png" /></a></p>
+<p>Нажимаем <code>Create Class</code>. Это запустит операцию по созданию файла, а так-же <code>Visual Studio Solution</code> для вашего проекта.</p>
+<p><a class="glightbox" href="../images/8cb16f8ebd14294750f7a2afa9aa02e2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="8cb16f8ebd14294750f7a2afa9aa02e2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/8cb16f8ebd14294750f7a2afa9aa02e2.png" /></a></p>
+<h2 id="visual-studio">Настройка <code>Visual Studio</code></h2>
+<p>Редактор <code>Visual Studio</code> может быть запущен из движка через меню <code>Tools -&gt; Open Visual Studio 2022</code>.</p>
+<p><a class="glightbox" href="../images/ZapuskVisualStudio2022.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Запуск Visual Studio 2022.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ZapuskVisualStudio2022.png" /></a></p>
+<p><a class="glightbox" href="../images/VisualStudio2022.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Visual Studio 2022.png" auto_="auto;" display="block;" margin:="margin:" src="../images/VisualStudio2022.png" /></a></p>
+<p>Предлагаю настроить <code>Visual Studio</code> для разработки под <code>Unreal Engine</code>.</p>
+<h3 id="hot-reloading">Выключаем <code>Hot Reloading</code></h3>
+<p>Система <code>Hot Reloading</code> запросто может поломать ваш проект прямо во время работы, как это случилось у меня. Поэтому лучше ее выключить.</p>
+<p>В <code>Visual Stuidio</code> переходим в пункт меню <code>Tools -&gt; Options</code>.</p>
+<p><a class="glightbox" href="../images/VsOptions.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Vs Options.png" auto_="auto;" display="block;" margin:="margin:" src="../images/VsOptions.png" /></a></p>
+<p>После чего <code>Debugging -&gt; General</code>. В появившемся окне ищите пункт: <code>Enable Edit and Continue and Hot Reload</code>. Убирайте галочку с этого пункта.</p>
+<p><a class="glightbox" href="../images/OtklyuchenieHotReloading.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Отключение Hot Reloading.png" auto_="auto;" display="block;" margin:="margin:" src="../images/OtklyuchenieHotReloading.png" /></a></p>
+<h3 id="intellisense">Настройка <code>Intellisense</code></h3>
+<p><code>Intellisense</code> подсвеичвает код, но что важнее - добавляет возможность навигации по заголовочным файлам. Не зная <code>API</code> движка на зубок, вам будет очень тяжело работать без этой системы.</p>
+<p>В версии <code>Visual Studio 2022</code> инструмент <code>Intellisense</code> очень сильно ускорили.</p>
+<p>Принцип работы системы таков: <code>Intellisense</code> анализирует код вашего проекта и собирает его в "базу данных", которая, затем, потом используется для генерации контекстных подсказок. База данных <code>Intellisense</code> по размерам может запросто достигать <code>5GB</code> и более. Поэтому полезно ее, время от времени, удалять.</p>
+<p><a class="glightbox" href="../images/RaspolozheniekeshaIntellisense.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Расположение кеша Intellisense.png" auto_="auto;" display="block;" margin:="margin:" src="../images/RaspolozheniekeshaIntellisense.png" /></a></p>
+<p>Настраиваем систему.</p>
+<p>В меню <code>Options</code> переходим по пунктам <code>Options -&gt; Text Editor -&gt; C / C++</code>. Ищем подкатегорию <code>Advanced</code> и выставляем параметр <code>Disable External Dependencies Folder</code> в <code>True</code></p>
+<p><a class="glightbox" href="../images/DisableExternalDependencies.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Disable External Dependencies.png" auto_="auto;" display="block;" margin:="margin:" src="../images/DisableExternalDependencies.png" /></a></p>
+<p>В том-же меню выставляем пункт <code>Disable Intellisense</code> в <code>False</code>.</p>
+<p><a class="glightbox" href="../images/DisableIntellisense-False.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Disable Intellisense - False.png" auto_="auto;" display="block;" margin:="margin:" src="../images/DisableIntellisense-False.png" /></a></p>
+<p>Переходит в подпункт <code>View</code> и выставляем параметр <code>Show Inactive Blocks</code> в <code>False</code>.</p>
+<p><a class="glightbox" href="../images/ShowInactiveBlocks--False.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Show Inactive Blocks -- False.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ShowInactiveBlocks--False.png" /></a></p>
+<p>Далее, идем в секцию <code>Projects And Solutions</code>. В подпункте <code>General</code> выставляем параметр <code>Alvays show error list in build finishes with errors</code> в <code>False</code>.</p>
+<p><a class="glightbox" href="../images/AlwaysShowErrorList.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Always Show Error List.png" auto_="auto;" display="block;" margin:="margin:" src="../images/AlwaysShowErrorList.png" /></a></p>
+<h3 id="track-active-item-solution-explorer"><code>Track Active Item</code> в <code>Solution Explorer</code></h3>
+<p><code>Visual Studio</code>, по умолчанию, не умеет показывать, в какой конкретно папке находится текущий файл проекта. Постоянно вручную искать активный файл в <code>Solution Explorer</code> - не вариант.</p>
+<p>Рассмотрим проблему в подробностях.</p>
+<p><a class="glightbox" href="../images/3d22b870e355b52f8f26aafa125306e7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3d22b870e355b52f8f26aafa125306e7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3d22b870e355b52f8f26aafa125306e7.png" /></a></p>
+<p>В данный момент у меня открыт файл<code>Character.cpp</code>, я даже могу узнать по какому пути он находится используя опцию <code>Copy Full Path</code>. Но опции для поиска этого файла в <code>Solution Explorer</code> - нет.</p>
+<p>Как быстро найти в проекте файл, который вы открыли?
+Для этого есть специальная опция. Именно ее мы и включим в этой главе.</p>
+<p>Переходим в меню настроек: <code>Tools -&gt; Options -&gt; Projects And Solutions</code>. Здесь есть параметр <code>Track Active Item in Solution Explorer</code>.</p>
+<p><a class="glightbox" href="../images/f48c8878cfac18bdb7e78d2e24767c2a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f48c8878cfac18bdb7e78d2e24767c2a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f48c8878cfac18bdb7e78d2e24767c2a.png" /></a></p>
+<p>По умолчанию этот параметр отключен. Если его включить, то каждый открытый файл проекта будет автоматически перематывать <code>Solution Explorer</code> к его расположению.</p>
+<p>Это не очень удобно для практической работы, а проект при таком использовании опции, из упорядоченного набора каталогов, рискует превратиться в бессвязную кашу.</p>
+<p>Куда лучше будет сделать собственное сочетание клавиш, по которому эту настройку можно будет включать и отключать по желанию.</p>
+<p>Идем в <code>Tools -&gt; Options -&gt; Environment -&gt; Keyboard</code>.</p>
+<p><a class="glightbox" href="../images/d2226fcbc931127502fda08a6332b819.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d2226fcbc931127502fda08a6332b819.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d2226fcbc931127502fda08a6332b819.png" /></a></p>
+<p>Тут можно добавлять сочетания клавиш для разных команд.</p>
+<p>Ищем там команду следующего вида - <code>View.TrackActivityinSolutionExplorer</code>.</p>
+<p><a class="glightbox" href="../images/0abbe0b7766b6fd190ee0af66559a007.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0abbe0b7766b6fd190ee0af66559a007.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0abbe0b7766b6fd190ee0af66559a007.png" /></a></p>
+<p>Выбираем поле <code>Press shortcut keys</code> и вбиваем желаемое сочетание для включения - отключения этой опции. В моем случае это <code>Ctrl + Alt + ;</code>.</p>
+<p><a class="glightbox" href="../images/4f4c96ed8d9e83d0b6fe9b3a7237ee99.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4f4c96ed8d9e83d0b6fe9b3a7237ee99.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4f4c96ed8d9e83d0b6fe9b3a7237ee99.png" /></a></p>
+<p>Жмем <code>Assign</code>.
+Теперь, если нажать это сочетание клавиш, открытый файл будет показан по полному своему пути в SE.</p>
+<p><a class="glightbox" href="../images/c2ff9632e1c0056f0cdffb3445bcbf8c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c2ff9632e1c0056f0cdffb3445bcbf8c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c2ff9632e1c0056f0cdffb3445bcbf8c.png" /></a></p>
+<p>Есть и еще один вариант использования этой команды.</p>
+<p>Щелкаем на тулбаре правой кнопкой мыши.</p>
+<p><a class="glightbox" href="../images/679306c5570eceeee239f59c33149c0b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="679306c5570eceeee239f59c33149c0b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/679306c5570eceeee239f59c33149c0b.png" /></a></p>
+<p>Далее идем по пути <code>Customize -&gt; Commands -&gt; MenuBar -&gt; View</code>.</p>
+<p><a class="glightbox" href="../images/755918b716aa518756c31619e73590ea.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="755918b716aa518756c31619e73590ea.png" auto_="auto;" display="block;" margin:="margin:" src="../images/755918b716aa518756c31619e73590ea.png" /></a></p>
+<p>Тут мы можем добавить новый пункт в меню View.
+Жмем <code>AddCommand</code> ищем там секцию <code>View</code> и подсекцию - <code>Track Activity in Solution Explorer</code>.</p>
+<p><a class="glightbox" href="../images/6243aff6e099e992749f4d08a6c1c49d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6243aff6e099e992749f4d08a6c1c49d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6243aff6e099e992749f4d08a6c1c49d.png" /></a></p>
+<p>Нажимаем <code>OK</code>.
+Можете поместить добавленный пункт на нужное место двигая его кнопками <code>Move Up</code> и <code>Move Down</code>.</p>
+<p><a class="glightbox" href="../images/2358eeaf79f54d097608e68f922da67a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2358eeaf79f54d097608e68f922da67a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2358eeaf79f54d097608e68f922da67a.png" /></a></p>
+<p>Теперь этот пункт меню будет находиться в подменю <code>View</code>.</p>
+<p><a class="glightbox" href="../images/0534dbd477f344fa95d20c83110b60f8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0534dbd477f344fa95d20c83110b60f8.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0534dbd477f344fa95d20c83110b60f8.png" /></a></p>
+<p>И вы всегда сможете найти открытый файл в Solution Explorer, просто включив его. А когда эта опция не нужна - отключив. Это колоссально поможет вам в работе.</p>
+<h3 id="solution-explorer">Включаем предпросмотр файлов в <code>Solution Explorer</code></h3>
+<p>Опция <code>Preview Selected Files in Solution Explorer</code> позволяет просматривать содержимое файлов проекта, не открывая их для редактирования.</p>
+<p><a class="glightbox" href="../images/ea5dc67b417a85511f07854a0e37ddb7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ea5dc67b417a85511f07854a0e37ddb7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ea5dc67b417a85511f07854a0e37ddb7.png" /></a></p>
+<p>У большинства разработчиков эта настройка включена по умолчанию. Но если, по какой-то причине, у вас она отключилась (у меня такое произошло прямо в ходе работы), включить эту настройку можно, перейдя по пути <code>Options-&gt; Environment -&gt; Tabs And Wndows</code>.
+На вкладке вы найдете соответствующие параметры - <code>Preview Selected Files...</code> включите их все.</p>
+<p><a class="glightbox" href="../images/9620bb71394b2b8b60f4d24f8f174aa4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9620bb71394b2b8b60f4d24f8f174aa4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9620bb71394b2b8b60f4d24f8f174aa4.png" /></a></p>
+<p>Поздравляю, мы настроили <code>Visual Studio</code>.
+Для лучшей работы, советую перезапустить ее и открыть заново через <code>Unreal Engine -&gt; Tools -&gt; Open Visual Studio 2022</code>.</p>
+<h2 id="_4">Сборка проекта</h2>
+<p>Рассмотрим способы, которыми разработчик может компилировать и запускать свой проект.</p>
+<h3 id="visual-studio_1">Сборка из <code>Visual Studio</code></h3>
+<ul>
+<li>Плюсы - очень удобная отладка, прямо из <code>Visual Studio</code>. Точки останова будут работать как надо. Можно отслеживать работу памяти и загруженность игровых систем.</li>
+<li>Минусы - требуется установка "символов отладки", которые занимают от <code>40Gb</code> до <code>60Gb</code> памяти. Это серьезный минус, лично для меня, поэтому я не буду пользоваться этим методом сборки (и вам не советую).</li>
+</ul>
+<p>Прочитать подробнее про процесс сборки можно на странице <a href="https://docs.unrealengine.com/5.1/en-US/building-unreal-engine-from-source/">официальной документации</a>.</p>
+<h4 id="_5">Рассмотрим основные опции сборки</h4>
+<p>При открытии проекта в <code>Visual Studio</code> у вас будет масса опций для сборки проекта.</p>
+<p><a class="glightbox" href="../images/31a40fd4a0f99db1d80dfa130afd0f3f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="31a40fd4a0f99db1d80dfa130afd0f3f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/31a40fd4a0f99db1d80dfa130afd0f3f.png" /></a></p>
+<p>В зависимости от установленных пакетов, список опций для сборки будет отличаться. Например, если у вас установлены файлы для сборки под линукс - тут появятся дополнительные пункты.</p>
+<p><code>Degub Game</code> и <code>Debug Editor</code> - полностью пересобирают исходники движка и игрового проекта, соответственно, с созданием символов отладки. Что это значит? Это значит, что символы отладки качать не обязательно, если вам не жалко систему. Вы можете собрать проект отсюда и символы отладки сгенерируются автоматически. Через пару часов компиляции и после того, как место на вашем драгоценном жестком диске закончится окончательно. НЕ ИСПОЛЬЗУЙТЕ ЦЕЛИ СБОРКИ <code>Debug Game</code> и <code>Debug Editor</code>. Забудьте про них.
+<code>Development</code> и <code>Development Editor</code> - эти цели сборки будут использовать предустановленные символы отладки для <code>Unreal Engine</code>. Установить эти символы отладки можно вручную из меню движка.</p>
+<p><a class="glightbox" href="../images/c6ec08eb4ad56cb7d6c01ee3bf15bad7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c6ec08eb4ad56cb7d6c01ee3bf15bad7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c6ec08eb4ad56cb7d6c01ee3bf15bad7.png" /></a></p>
+<p>Размер символов отладки крайне большой, качать их или нет - дело ваше.</p>
+<p>Опция <code>Development Editor</code> запустит сборку как движка, так и вашего проекта в нем. Опция <code>Development</code> запустит сборку только вашего проекта, который будет запущен как отдельное от движка приложение. Но! Эта опция из "коробки" работать не будет.</p>
+<p>Чтобы запустить проект без сборки редактора - придется запечь контент для целевой платформы. Эта операция может запросто длиться несколько часов даже со среднего размера проектом.</p>
+<p>Делается это из меню <code>Platforms -&gt; Windows -&gt; Cook Content</code>.</p>
+<p><a class="glightbox" href="../images/6417a40557a187b5d63c4238e02e02d3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6417a40557a187b5d63c4238e02e02d3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6417a40557a187b5d63c4238e02e02d3.png" /></a></p>
+<h4 id="_6">Заключение</h4>
+<p>Если вы собираете проект из <code>Visual Studio</code>, значит вы знаете, что вы делаете и мои советы вам не нужны. В противном случае - просто забудьте про эту возможность.</p>
+<p>Все варианты сборки проекта из под <code>Visual Studio</code> крайне не привлекательны из-за требований к памяти на жестком диске, а так-же высокой нагрузки на систему. Поэтому пользоваться этим подходом в своей работе я не буду вообще (и вам не советую, если вы не знаете, что делаете).</p>
+<h3 id="live-conding">Сборка через Live Conding.</h3>
+<p>Этот способ сборки наиболее простой, удобный и эффективный, потому что встроен в движок.</p>
+<p><a class="glightbox" href="../images/3b97fa6270132f30a53b24a076be964d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3b97fa6270132f30a53b24a076be964d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3b97fa6270132f30a53b24a076be964d.png" /></a></p>
+<p>Плюсы - быстрая сборка, не надо запекать контент для платформы, собранный проект не расходует слишком много памяти на диске.</p>
+<p>Минусы - отладку вести сложнее, точки останова - не работают.</p>
+<h4 id="live-coding">Включение <code>Live Coding</code></h4>
+<p>По умолчанию в <code>Unreal Engine</code> уже включен <code>LiveCoding</code>, убедиться в этом  можно перейдя в <code>Edit -&gt; Editor Preferences -&gt; Live Coding</code>.</p>
+<p><a class="glightbox" href="../images/LiveCodingvUnrealEngine.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Live Coding в Unreal Engine.png" auto_="auto;" display="block;" margin:="margin:" src="../images/LiveCodingvUnrealEngine.png" /></a></p>
+<p>Вызвать окно настроек <code>Live Coding</code> можно из правого нижнего угла движка, нажав по иконке.</p>
+<p><a class="glightbox" href="../images/191b75bc61848f6520499c9f10d28f04.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="191b75bc61848f6520499c9f10d28f04.png" auto_="auto;" display="block;" margin:="margin:" src="../images/191b75bc61848f6520499c9f10d28f04.png" /></a></p>
+<p><a class="glightbox" href="../images/799fcc99e3f5d58f10c56ccda88669bd.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="799fcc99e3f5d58f10c56ccda88669bd.png" auto_="auto;" display="block;" margin:="margin:" src="../images/799fcc99e3f5d58f10c56ccda88669bd.png" /></a></p>
+<p>Если, по какой-то причине, в вашем проекте <code>LiveCoding</code> отключен и его не получается включить из настроек (а такое бывает) - закройте проект в <code>Unreal Engine</code> и <code>Visual Studio</code>, а затем удалите папки <code>Build</code> и <code>Intermediate</code> и каталога проекта.</p>
+<p><a class="glightbox" href="../images/e39c3fadbe910f9b525b62cf3dbff5ea.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e39c3fadbe910f9b525b62cf3dbff5ea.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e39c3fadbe910f9b525b62cf3dbff5ea.png" /></a></p>
+<p>Запустите проект с перекомпиляцией всех модулей. Когда движок откроется, активируйте обновление проекта соответствующей опцией из меню <code>Tools -&gt; Refresh visual Studio 2022 Project</code>.</p>
+<p><a class="glightbox" href="../images/90bb4576a9fe0d6562c34bf24e6582ed.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="90bb4576a9fe0d6562c34bf24e6582ed.png" auto_="auto;" display="block;" margin:="margin:" src="../images/90bb4576a9fe0d6562c34bf24e6582ed.png" /></a></p>
+<p>После этого <code>LiveCoding</code> должен включиться.</p>
+<h4 id="_7">Запуск компиляции</h4>
+<p>Чтобы собрать проект в LiveCoding нажмите на кнопку сборки в левом нижнем углу движка.</p>
+<p><a class="glightbox" href="../images/3e1272ee9b39fe89dd117248987618b6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3e1272ee9b39fe89dd117248987618b6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3e1272ee9b39fe89dd117248987618b6.png" /></a></p>
+<p>Поскольку постоянно открывать движок и нажимать на эту кнопку крайне неудобно, я советую вызвать <code>LiveCoding</code> сочетанием клавиш: <code>Ctrl + Alt + F11</code>.</p>
+<p><a class="glightbox" href="../images/fdd29f6eb46dd878eda60da6516d7ea8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fdd29f6eb46dd878eda60da6516d7ea8.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fdd29f6eb46dd878eda60da6516d7ea8.png" /></a></p>
+<h4 id="livecoding">Отладка <code>LiveCoding</code></h4>
+<p>Единственный вменяемый способ отладки кода, при работе с <code>LiveCoding</code> сводится к использованию макроса <code>UE_LOG</code>, который печатает информацию в лог движка.</p>
+<p>Этот макрос стоит использовать вместо "точек останова" там, где хочется увидеть результаты тех или иных вычислений.
+<div class="highlight"><pre><span></span><code><span class="kt">float</span><span class="w"> </span><span class="n">to_print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FirstNum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SecondNum</span><span class="p">;</span>
+<span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;val = %f&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">to_print</span><span class="p">)</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/fb845fcf51e45edd0ae2e79c006a9f36.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fb845fcf51e45edd0ae2e79c006a9f36.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fb845fcf51e45edd0ae2e79c006a9f36.png" /></a></p>
+<p>Помимо <code>UE_LOG</code> в движке есть операторы прерывания - <code>Asserts</code>, которые выступают как альтернатива "точкам останова". Их используют, чтобы останавливать работу приложения, с выводом текста ошибки в лог <code>LiveCoding</code>. Я рассмотрю эти операции в отдельной статье.</p>
+<h4 id="livecoding-visual-studio">Отладка <code>LiveCoding</code> кода в <code>Visual Studio</code></h4>
+<p>К сожалению, при использовании <code>LiveCoding</code> нормальная отладка с точками останова возможна лишь при соблюдении ряда условий.</p>
+<p>Для начала придется установить <code>Debug Symbols</code>, то есть символы отладки для <code>Unreal</code>.
+Идем в <code>Epic Games Laucher</code> и находим установленный движок.</p>
+<p>Жмем <code>Настройки</code>.</p>
+<p><a class="glightbox" href="../images/1b0f3eff67d54e60d86a31e4d7763a4b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1b0f3eff67d54e60d86a31e4d7763a4b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1b0f3eff67d54e60d86a31e4d7763a4b.png" /></a></p>
+<p>Тут будет пункт <code>Символы для редактора отладки</code>. И объем загружаемых данных.</p>
+<p><a class="glightbox" href="../images/aa4cffb7799e8ba0bc441dff29f03f4a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="aa4cffb7799e8ba0bc441dff29f03f4a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/aa4cffb7799e8ba0bc441dff29f03f4a.png" /></a></p>
+<p>Как вы видите объем значительный.</p>
+<p>После загрузки мы сможем, через отладчик <code>Visual Studio</code>, подключиться к процессу движка и вести отладку.</p>
+<p>Чтобы подключиться отладчиком надо перейти в <code>Debug -&gt; Attach To Process</code>.</p>
+<p><a class="glightbox" href="../images/cbebbe2a4fbdcc7f27d37c90816291ad.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="cbebbe2a4fbdcc7f27d37c90816291ad.png" auto_="auto;" display="block;" margin:="margin:" src="../images/cbebbe2a4fbdcc7f27d37c90816291ad.png" /></a></p>
+<p>После чего запустится отладка вместе с вашими точками останова.</p>
+<h2 id="_8">Добавляем код печати текста на экран</h2>
+<p>Теперь, когда мы ознакомились с доступными способами сборки проекта, давайте напишем всего одну строчку кода. 
+В главе про "включение с++ в проекте" мы уже создали первый класс - <code>TestActor</code>.</p>
+<p><a class="glightbox" href="../images/Faylyproekta.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Файлы проекта.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Faylyproekta.png" /></a></p>
+<p>Данный класс состоит из заголовочного файла <code>.h</code>, содержащего описание класса, а так-же из реализации этого класса в файле <code>.cpp</code>. 
+Оба файла находятся в соответствующих папках - <code>Public</code> и <code>Private</code>.</p>
+<p>Откройте файл заголовка <code>TestActor.h</code>.
+Мы создали класс из самого Unreal Engine, так что в файле уже будет заготовка в виде кода.</p>
+<p><a class="glightbox" href="../images/TestActor.hkod.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="TestActor.h код.png" auto_="auto;" display="block;" margin:="margin:" src="../images/TestActor.hkod.png" /></a></p>
+<p>Как вы видите тут уже представлены перегрузки для <code>BeginPlay</code> и <code>Tick</code> функций.</p>
+<p>Если вы знакомы с <code>blueprint</code> версией класса <code>Actor</code>, то эти функции будут вам знакомы.</p>
+<p>Так-же тут имеется конструктор - <code>ATestActor()</code>.
+Теперь давайте откроем файл реализации - <code>TestActor.cpp</code>.</p>
+<p><a class="glightbox" href="../images/TestActor.cpp.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="TestActor.cpp.png" auto_="auto;" display="block;" margin:="margin:" src="../images/TestActor.cpp.png" /></a></p>
+<p>Тут мы видим реализацию методов, описанных в заголовке.</p>
+<p>Давайте добавим тестовый код, чтобы убедиться, что все работает. В нашем случае для теста будет использоваться вывод строки на экран.</p>
+<p>Делается это через команду:
+<div class="highlight"><pre><span></span><code><span class="n">GEngine</span><span class="o">-&gt;</span><span class="n">AddOnScreenDebugMessage</span><span class="p">(</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">,</span><span class="w"> </span><span class="n">FColor</span><span class="o">::</span><span class="n">Cyan</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;TEST&quot;</span><span class="p">));</span>
+</code></pre></div>
+Добавьте этот текст в файл <code>TestActor.cpp</code>, внутрь метода <code>Tick</code>.</p>
+<p><a class="glightbox" href="../images/Razmescheniekoda.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Размещение кода.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Razmescheniekoda.png" /></a></p>
+<p>Сохраните файл <code>Ctrl + S</code>.
+Теперь нам надо собрать наш проект. По скольку выше я уже указывал, что собирать его мы будем используя <code>LiveCoding</code>, то откройте движок.</p>
+<p>В нижнем правом углу вы обнаружите иконку компиляции.</p>
+<p><a class="glightbox" href="../images/Ikonkakompilyatsii.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Иконка компиляции.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Ikonkakompilyatsii.png" /></a></p>
+<p>Нажмите ее. Это автоматически  запустит компиляцию.</p>
+<p><a class="glightbox" href="../images/Kompilyatsiya.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Компиляция.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Kompilyatsiya.png" /></a></p>
+<p>Вам не обязательно всякий раз открывать движок и вызывать <code>LiveCoding</code> оттуда. Можно нажать сочетание клавиш <code>Ctrl + Alt + F11</code> и это откроет окно <code>LiveConding</code> в любом месте.</p>
+<p><a class="glightbox" href="../images/Vyzovoknakompilyatsii.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Вызов окна компиляции.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Vyzovoknakompilyatsii.png" /></a></p>
+<p>Таким образом вы можете писать код под <code>Unreal Engine</code> почти в любом редакторе. Но <code>VisualStudio</code> удобнее из-за его <code>Intellisense</code>, то есть контекстуальных подсказок.</p>
+<h2 id="_9">Проверка кода</h2>
+<p>Как проверить работоспособность только что скомпилированного кода? Просто найдите созданный класс Actor'а и добавьте его на тестовую  сцену, после чего запустите симуляцию.</p>
+<p>Класс <code>Actor'а</code> находится в подпункте C++ Classes проводника Unreal.</p>
+<p><a class="glightbox" href="../images/Gdenaytisozdannyyklass.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Где найти созданный класс.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Gdenaytisozdannyyklass.png" /></a></p>
+<p>Перетащите его оттуда прямо на сцену.</p>
+<p><a class="glightbox" href="../images/Actornastsene.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Actor на сцене.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Actornastsene.png" /></a></p>
+<p>Теперь, если мы запустим проект, то увидим следующее:</p>
+<p><a class="glightbox" href="../images/Rezultat.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="Результат.png" auto_="auto;" display="block;" margin:="margin:" src="../images/Rezultat.png" /></a></p>
+<p>Поздравляю, мы изучили способ добавления собственных классов в Unreal Engine, а так-же настроили <code>Visual Studio</code>. </p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            К началу
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      aftamat4ik
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

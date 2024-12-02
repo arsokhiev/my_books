@@ -1,0 +1,2944 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Справочник Unreal Engine">
+      
+      
+        <meta name="author" content="aftamat4ik">
+      
+      
+      
+        <link rel="prev" href="../1_Basics/Debug/Debug_Console_Commands.html">
+      
+      
+        <link rel="next" href="2_Components.html">
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
+    
+    
+      
+        <title>События и Делегаты - Справочник Unreal Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-header__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Справочник Unreal Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              События и Делегаты
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1_Basics/1_First_Project.html" class="md-tabs__link">
+          
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="1_Delegates.html" class="md-tabs__link">
+          
+  
+  Ключевые системы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../3_Advanced/1_HUD.html" class="md-tabs__link">
+          
+  
+  Продвинутая разработка
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-tabs__link">
+          
+  
+  Решение проблем
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../5_Tips/Change_Asset_Icons.html" class="md-tabs__link">
+          
+  
+  Советы
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-nav__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    Справочник Unreal Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Основы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Основы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/1_First_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/2_Engine_Introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/3_CPP_Recommendations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Рекомендации по написанию кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/4_SimplePlugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создание простейшего плагина для Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/5_Macroses_Reflection_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Макросы Reflection System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/6_Logging.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Печать информации в лог
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/7_Pointers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Указатели
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/8_ModernCpp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возможности современного c++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/9_Working_With_Strings.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа со строками
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/10_Timers_In_%D0%A1%2B%2B.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Таймеры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/11_Instances_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Доступ к различным сущностям
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Asserts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Asserts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Console Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ключевые системы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ключевые системы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="1_Delegates.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Структура делегата
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Подготовка к работе
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Зависимости
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic" class="md-nav__link">
+    Динамические Делегаты DYNAMIC
+  </a>
+  
+    <nav class="md-nav" aria-label="Динамические Делегаты DYNAMIC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-multicast" class="md-nav__link">
+    Динамические многоканальные делегаты DYNAMIC MULTICAST
+  </a>
+  
+    <nav class="md-nav" aria-label="Динамические многоканальные делегаты DYNAMIC MULTICAST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Запуск делегата по таймеру
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Возвращаемые значения в динамическом делегате
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Использование динамических делегатов в с++
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Динамические одноканальные делегаты как аргументы функций
+  </a>
+  
+    <nav class="md-nav" aria-label="Динамические одноканальные делегаты как аргументы функций">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-tarraytsoftobjectptraactor" class="md-nav__link">
+    Сортировка массива вида -TArray&lt;TSoftObjectPtr&lt;AActor&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-tarrayaactor" class="md-nav__link">
+    Сортировка массива вида - TArray&lt;AActor*&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tsoftobjectptr-aactor" class="md-nav__link">
+    Конверсия массива TSoftObjectPtr в массив AActor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Проверка работы
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tmap" class="md-nav__link">
+    Делегаты и TMap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Обычные делегаты
+  </a>
+  
+    <nav class="md-nav" aria-label="Обычные делегаты">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blueprint" class="md-nav__link">
+    Проверка вывода обычного делегата в blueprint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Способы привязки обычных делегатов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-raw" class="md-nav__link">
+    Binding Raw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-lambda" class="md-nav__link">
+    Binding Lambda
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-uobject" class="md-nav__link">
+    Binding UObject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-static" class="md-nav__link">
+    Binding Static
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-sp" class="md-nav__link">
+    Binding SP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Передача делегата в лямбда - выражение
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Предзаданные делегаты
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsimpledelegate" class="md-nav__link">
+    FSimpleDelegate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftssimplemulticastdelegate" class="md-nav__link">
+    FTSSimpleMulticastDelegate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Components.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_SubObjects.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Multithreading.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Многопоточность
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Function_Libraries.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Библиотеки Функций для Blueprint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Latent_And_Async_Actions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latent и Async Action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Gameplay_Tags.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_DataAssets_AssetManager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с ассетами и данными
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_FileSystem.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_Anim_Instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anim Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_SubSystems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Подсистемы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12.%20UObject%20Interface.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Interface или UInterface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Продвинутая разработка
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Продвинутая разработка
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/1_HUD.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HUD или Heads-up Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/2_UFUNCTION_Wildcard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/3_Slate%20Runtime.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slate Runtimе, введение в Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/4_UMG.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/5_K2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/6_Registe_New_Asset_Type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/7_ACharacter_And_Enhanced%20Input.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACharacter и Enhanced Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/8_Gameplay_Ability_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Ability System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/9_Global_Data_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальнный доступ к данным
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/10_Global_Event_Bus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальная шина событий
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Решение проблем
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Решение проблем
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с кодировкой в LiveCoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/Reset_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Сброс (Reset) проекта
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/generatedh_Problems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с файлом .generated.h
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Советы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Советы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Change_Asset_Icons.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Asset Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Character_And_EnhancedInput.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character Boilerplate with Enhanced Input Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/DefaultToSelf_WorldContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DefaultToSelf WorldContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Different_UPROPERTY.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/GameInputMode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Изменение GameInputMode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Get_UScriptStruct_FromStruct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ::UScriptStruct из встроенной структуры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Input_Binding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События ввода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Iterate_TMap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterate TMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Read_Blueprint_Properties.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Чтение параметров Blueprint класса
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Return_UObject.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возвращение UObject по ссылке из функции
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Run_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Запуск консольных команд
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Screen_Size.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Размер экрана
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Slate_Snippets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Полезные сниппеты Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Spawn_Actors.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawn, призыв объектов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Time_Measuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Замер времени исполнения кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Trace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UEnum_To_String.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UEnum to FString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UObject_Base_Class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Base Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Variable_Type_Print_Template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Шаблон для печати типа переменной
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/struct_operator%3D%3D.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    struct и оператор ==
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Структура делегата
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Подготовка к работе
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Зависимости
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic" class="md-nav__link">
+    Динамические Делегаты DYNAMIC
+  </a>
+  
+    <nav class="md-nav" aria-label="Динамические Делегаты DYNAMIC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-multicast" class="md-nav__link">
+    Динамические многоканальные делегаты DYNAMIC MULTICAST
+  </a>
+  
+    <nav class="md-nav" aria-label="Динамические многоканальные делегаты DYNAMIC MULTICAST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Запуск делегата по таймеру
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Возвращаемые значения в динамическом делегате
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Использование динамических делегатов в с++
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Динамические одноканальные делегаты как аргументы функций
+  </a>
+  
+    <nav class="md-nav" aria-label="Динамические одноканальные делегаты как аргументы функций">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-tarraytsoftobjectptraactor" class="md-nav__link">
+    Сортировка массива вида -TArray&lt;TSoftObjectPtr&lt;AActor&gt;&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-tarrayaactor" class="md-nav__link">
+    Сортировка массива вида - TArray&lt;AActor*&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tsoftobjectptr-aactor" class="md-nav__link">
+    Конверсия массива TSoftObjectPtr в массив AActor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Проверка работы
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tmap" class="md-nav__link">
+    Делегаты и TMap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Обычные делегаты
+  </a>
+  
+    <nav class="md-nav" aria-label="Обычные делегаты">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blueprint" class="md-nav__link">
+    Проверка вывода обычного делегата в blueprint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Способы привязки обычных делегатов
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-raw" class="md-nav__link">
+    Binding Raw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-lambda" class="md-nav__link">
+    Binding Lambda
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-uobject" class="md-nav__link">
+    Binding UObject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-static" class="md-nav__link">
+    Binding Static
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding-sp" class="md-nav__link">
+    Binding SP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Передача делегата в лямбда - выражение
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Предзаданные делегаты
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsimpledelegate" class="md-nav__link">
+    FSimpleDelegate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ftssimplemulticastdelegate" class="md-nav__link">
+    FTSSimpleMulticastDelegate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">События и Делегаты</h1>
+<p>За обработку событий в <code>Unreal Engine</code> отвечают особые объекты - т.н. делегаты. Они хранят в себе указатели на обработчики событий (функции) и отвечают за вызов этих обработчиков.</p>
+<p>Объекты делегатов генерируются системой <code>Unreal Header Tool</code> на основе макроса.</p>
+<h2 id="_2">Структура делегата</h2>
+<p>Делегаты объявляются в виде макроса такой структуры:
+<div class="highlight"><pre><span></span><code><span class="n">DECLARE_</span><span class="p">[</span><span class="n">usable_in_blueprint</span><span class="p">]</span><span class="n">_</span><span class="p">[</span><span class="n">events_count</span><span class="p">]</span><span class="n">_DELEGATE_</span><span class="p">[</span><span class="n">parameters_count</span><span class="p">]([</span><span class="n">delegate_type_name</span><span class="p">],</span><span class="w"> </span><span class="n">param1_type</span><span class="p">,</span><span class="w"> </span><span class="n">param1_value</span><span class="p">,</span><span class="w"> </span><span class="n">param2_type</span><span class="p">,</span><span class="w"> </span><span class="n">param2_value</span><span class="p">);</span>
+</code></pre></div>
+Разберем аргументы:</p>
+<ul>
+<li>
+<p><code>usable_in_blueprint</code> заменяется на <code>DYNAMIC</code> если тип делегата должен быть доступен в <code>blueprin'ах</code>: <code>DECLARE_DYNAMIC_DELEGATE_OneParam</code>
+Если же делегат планируется использовать исключительно из с++ кода, то этот аргумент пропускается, например так: <code>DECLARE_DELEGATE_OneParam</code>
+Только динамические делегаты можно использовать в <code>blueprint</code>, это на будущее.</p>
+</li>
+<li>
+<p><code>events_count</code> - заменяется на <code>MULTICAST</code> - указывает на число доступных для подключения обработчиков (каналов) - если планируется привязка нескольких обработчиков: <code>DECLARE_MULTICAST_DELEGATE_OneParam</code>
+в противном случае этот аргумент пропускается: <code>DECLARE_DELEGATE_OneParam</code></p>
+</li>
+<li>
+<p><code>parameters_count</code> - число параметров, пишется в PascalCase. Может принимать значения вплоть до 9: <code>OneParam, TwoParams, ThreeParams, FourParams, FiveParams, SixParams, SevenParams, EightParams, NineParams</code>.</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Blueprint acessible delegate with two parameters</span>
+<span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</span><span class="p">(</span><span class="n">FDArrayTest</span><span class="p">,</span><span class="k">const</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">ArrayData</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">StringData</span><span class="p">);</span>
+<span class="c1">// Multicast Usual Delegate</span>
+<span class="n">DECLARE_MULTICAST_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">DFUsualMulticastSumm</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumB</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+</code></pre></div>
+Если кол-во параметров делегата равно 0, то данный аргумент пропускается.
+<div class="highlight"><pre><span></span><code><span class="c1">// Delegate with no params</span>
+<span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE</span><span class="p">(</span><span class="n">FTestSimpleDelegate</span><span class="p">);</span>
+</code></pre></div>
+<code>delegate_type_name</code> - название типа, которое будет использовано при генерации делегата. Поскольку сгенерированный UHT объект делегата является структурой <code>struct</code>, - название типа делегата должно начинаться с буквы <code>F</code>.</p>
+<p>Обратите внимание на <code>;</code> после макроса. Макросы делегатов надо закрывать символом <code>;</code>, в отличие от всех остальных макросов в движке. (Странно, что это не привели к единому  стилю, но, полагаю, сейчас это уже поздно исправлять из за риска потери совместимости.)
+Примеры:
+<div class="highlight"><pre><span></span><code><span class="c1">// Генерация типа FSimpleCallable, передающего один параметр: int:Number</span>
+<span class="c1">// Данный тип не будет доступен в blueprint (нет DYNAMIC)</span>
+<span class="c1">// К этому типу может быть подключен лишь один обработчик (нет MULTICAST)</span>
+<span class="n">DECLARE_DELEGATE_OneParam</span><span class="p">(</span><span class="n">FSimpleCallable</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="p">,</span><span class="w"> </span><span class="n">Number</span><span class="p">);</span>
+<span class="c1">// Генерация типа FOnScoreChanged, передающего два параметра типа int:NewScore и APlayerState*:OwningPlayer</span>
+<span class="c1">// Данный тип будет доступен в blueprint (DYNAMIC)</span>
+<span class="c1">// К этому типу можно добавить множество обработчиков (MULTICAST)</span>
+<span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</span><span class="p">(</span><span class="n">FOnScoreChanged</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="p">,</span><span class="w"> </span><span class="n">NewScore</span><span class="p">,</span><span class="w"> </span><span class="n">APlayerState</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">OwningPlayer</span><span class="p">);</span>
+<span class="c1">// Генерация типа FOnDataUpdated, передающего три параметра: Массив TArray&lt;int32&gt;:Data, TMap&lt;FName,float):ItemsMap и указатель AActor*:ActorPointer</span>
+<span class="c1">// Данный тип не будет доступен в blueprint (нет DYNAMIC)</span>
+<span class="c1">// К этому типу можно добавить множество обработчиков (MULTICAST)</span>
+<span class="n">DECLARE_MULTICAST_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">FOnDataUpdated</span><span class="p">,</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Data</span><span class="p">,</span><span class="w"> </span><span class="n">TMap</span><span class="o">&lt;</span><span class="n">FName</span><span class="p">,</span><span class="kt">float</span><span class="p">),</span><span class="w"> </span><span class="n">ItemsMap</span><span class="p">,</span><span class="w"> </span><span class="n">AActor</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">ActorPointer</span><span class="p">);</span>
+</code></pre></div></p>
+<h2 id="_3">Подготовка к работе</h2>
+<p>Для тестирования функционала делегатов - создадим новый компонент типа <code>UActorComponent</code>.</p>
+<p><a class="glightbox" href="../images/6372c1ce3397cfe9507b64f1aece3297.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6372c1ce3397cfe9507b64f1aece3297.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6372c1ce3397cfe9507b64f1aece3297.png" /></a></p>
+<p>Называем файл компонента - <code>DelegatesTest</code> добавляем его к <code>TestModule</code>.</p>
+<p><a class="glightbox" href="../images/97133b20a82a760b700ae03c368619e3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="97133b20a82a760b700ae03c368619e3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/97133b20a82a760b700ae03c368619e3.png" /></a></p>
+<h2 id="_4">Зависимости</h2>
+<p>Изменяем файл <code>TestModule.build.cs</code> следующим образом:
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">UnrealBuildTool</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TestModule</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ModuleRules</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">TestModule</span><span class="p">(</span><span class="n">ReadOnlyTargetRules</span><span class="w"> </span><span class="n">Target</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">base</span><span class="p">(</span><span class="n">Target</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PCHUsage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCHUsageMode</span><span class="p">.</span><span class="n">UseExplicitOrSharedPCHs</span><span class="p">;</span>
+<span class="w">        </span><span class="n">PublicDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;Core&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;CoreUObject&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Engine&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Slate&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;SlateCore&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;LocalizationCommandletExecution&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;GameplayTags&quot;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;InputCore&quot;</span>
+<span class="w">            </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EnhancedInput&quot;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="n">PublicIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;TestModule/Public&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TestModule/Public/Enums&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="n">PrivateIncludePaths</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">ModuleDirectory</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Private&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="dynamic">Динамические Делегаты <code>DYNAMIC</code></h2>
+<p>Как уже было выше сказано - динамические делегаты можно вызывать из <code>blueprint</code> кода.</p>
+<p>Обычный, одноканальный <code>DYNAMIC</code> делегат может работать лишь в качестве аргумента функции. Если-же нужен делегат внутри класса - то следует использовать <code>DYNAMIC_MULTICAST</code> (в противном случае код просто не скомпилируется).</p>
+<p>Рассмотрим оба случая.</p>
+<h3 id="dynamic-multicast">Динамические многоканальные делегаты <code>DYNAMIC MULTICAST</code></h3>
+<p>К <code>MULTICAST</code> делегату можно подключать несколько событий, которые вызываются в произвольном порядке. Подобный тип делегата чаще всего используется внутри классов.</p>
+<p>Зададим простейший тип динамического <code>MULTICAST</code> делегата:
+<div class="highlight"><pre><span></span><code><span class="c1">// Blueprint acessible delegate with two parameters</span>
+<span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</span><span class="p">(</span><span class="n">FTPDTest</span><span class="p">,</span><span class="k">const</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">ArrayData</span><span class="p">,</span><span class="w"> </span><span class="n">FString</span><span class="p">,</span><span class="w"> </span><span class="n">StringData</span><span class="p">);</span>
+</code></pre></div>
+Так-же теле класса <code>UDelegatesTest</code> надо создать переменную, которая будет использовать сгенерированный макросом тип делегата.</p>
+<p>При этом у переменной должен быть модификатор <code>BlueprintAssignable</code>. Этот модификатор позволит привязать функцию к делегату через <code>blueprint</code>.
+<div class="highlight"><pre><span></span><code><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintAssignable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Delegates&quot;</span><span class="p">)</span>
+<span class="n">FDArrayTest</span><span class="w"> </span><span class="n">ArrayTestDelegate</span><span class="p">;</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/323a2e69b6395ca43058bae0ee020f24.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="323a2e69b6395ca43058bae0ee020f24.png" auto_="auto;" display="block;" margin:="margin:" src="../images/323a2e69b6395ca43058bae0ee020f24.png" /></a></p>
+<p>Теперь можно скомпилировать код и проверить его доступность из <code>blueprint</code>. Для этого добавим компонент <code>UDelegatesTest</code> к персонажу <code>BP_ThirdPersonCharacter</code>.
+После чего поищем там наш <code>ArrayTestDelegate</code>.</p>
+<p><a class="glightbox" href="../images/732c301b7312e9a76a8ad63db157a429.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="732c301b7312e9a76a8ad63db157a429.png" auto_="auto;" display="block;" margin:="margin:" src="../images/732c301b7312e9a76a8ad63db157a429.png" /></a></p>
+<p><a class="glightbox" href="../images/999b4aa89a39f8537c4ee40a9497f92e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="999b4aa89a39f8537c4ee40a9497f92e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/999b4aa89a39f8537c4ee40a9497f92e.png" /></a></p>
+<h4 id="_5">Запуск делегата по таймеру</h4>
+<p>Разовьем идею делегата, настроив его вызов по таймеру.
+<div class="highlight"><pre><span></span><code><span class="n">GetWorld</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetTimerManager</span><span class="p">().</span><span class="n">SetTimer</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FTimerHandle</span><span class="p">()),</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="o">-&gt;</span><span class="kt">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ArrayTestDelegate</span><span class="p">.</span><span class="n">IsBound</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TArray</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="c1">// call delegate</span>
+<span class="w">        </span><span class="n">ArrayTestDelegate</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="n">Items</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Test&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2.1f</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/65fb06a903b55b4adb10fc21ada76a13.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="65fb06a903b55b4adb10fc21ada76a13.png" auto_="auto;" display="block;" margin:="margin:" src="../images/65fb06a903b55b4adb10fc21ada76a13.png" /></a></p>
+<p>Метод <code>Broadcast</code> в динамическом <code>MULTICAST</code> делегате позволяет вызвать каждую из привязанных функций, включая функции <code>blueprint</code>.
+Ну и сам <code>blueprint</code> код изменим, чтобы он выводил данные:</p>
+<p><a class="glightbox" href="../images/08df94c59f8a86f469cc9ee3bff2a325.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="08df94c59f8a86f469cc9ee3bff2a325.png" auto_="auto;" display="block;" margin:="margin:" src="../images/08df94c59f8a86f469cc9ee3bff2a325.png" /></a></p>
+<p><a class="glightbox" href="../images/69f2fec2de614b0402e27d9d472ba3fb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="69f2fec2de614b0402e27d9d472ba3fb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/69f2fec2de614b0402e27d9d472ba3fb.png" /></a></p>
+<p>Как вы видите - привязанный через делегат метод <code>blueprint</code> - вызывается.</p>
+<h3 id="_6">Возвращаемые значения в динамическом делегате</h3>
+<p>Помимо отправки значений в <code>blueprint</code>, динамические делегаты так-же поддерживают и получение значений оттуда.</p>
+<p>Для этого просто сделайте один из аргументов делегата - ссылкой <code>&amp;</code>. Без модификатора <code>const</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">// Delegate with Return Value</span>
+<span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">FDFloatSumm</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="c1">// ...</span>
+<span class="c1">// Delegate with Return Value</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintAssignable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Delegates&quot;</span><span class="p">)</span>
+<span class="n">FDFloatSumm</span><span class="w"> </span><span class="n">FloatSummDelegate</span><span class="p">;</span>
+</code></pre></div>
+В данном случае это параметр <code>c</code>.
+После компиляции, внутри <code>blueprint</code> у нас будет возможность задать два типа привязок к делегату: <code>Event</code> и <code>EventDispatcher</code>.</p>
+<p><a class="glightbox" href="../images/c775a73a7127316aeb5b6a6ff4a5b280.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c775a73a7127316aeb5b6a6ff4a5b280.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c775a73a7127316aeb5b6a6ff4a5b280.png" /></a></p>
+<p>Так вот. Если использовать <code>AddEvent</code> то параметров будет всего два и работать как надо метод не сможет.</p>
+<p><a class="glightbox" href="../images/2aa975d6552c593af36672440ce27b80.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2aa975d6552c593af36672440ce27b80.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2aa975d6552c593af36672440ce27b80.png" /></a></p>
+<p>Если мы попытамся скомпилировать <code>blueprint</code> с таким кодом, подключив его к <code>BeginPlay</code>, то увидим ошибку:</p>
+<p><a class="glightbox" href="../images/decbe619053a253ad6c0e8b99869e017.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="decbe619053a253ad6c0e8b99869e017.png" auto_="auto;" display="block;" margin:="margin:" src="../images/decbe619053a253ad6c0e8b99869e017.png" /></a></p>
+<p><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">Compiler</span><span class="p">]</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">returned</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">reference</span><span class="p">.</span><span class="w"> </span><span class="n">Parameter</span><span class="w"> </span><span class="sc">&#39;c&#39;</span><span class="p">.</span><span class="w"> </span><span class="n">Node</span><span class="o">:</span><span class="w">  </span><span class="n">Bind</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Float</span><span class="w"> </span><span class="n">Summ</span><span class="w"> </span><span class="n">Delegate</span>
+<span class="p">[</span><span class="n">Compiler</span><span class="p">]</span><span class="w"> </span><span class="n">CustomEvent</span><span class="w">  </span><span class="n">Signature</span><span class="w"> </span><span class="n">Error</span><span class="o">:</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">function</span><span class="o">/</span><span class="n">event</span><span class="w"> </span><span class="err">&#39;</span><span class="n">CustomEvent</span><span class="err">&#39;</span><span class="w"> </span><span class="n">does</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">match</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">necessary</span><span class="w"> </span><span class="n">signature</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">delegate</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">function</span><span class="o">/</span><span class="n">event</span><span class="w"> </span><span class="n">changed</span><span class="o">?</span>
+</code></pre></div>
+Движок прямо говорит нам, что сигнатура переданной функции не совпадает с тем, что запрашивает делегат.</p>
+<p>Для реализации делегатов с возвратом значения надо использовать <code>Event Dispatchers -&gt; Create Event</code>.</p>
+<p><a class="glightbox" href="../images/bc753b8e4aae28c35009c5c3131c3ffe.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="bc753b8e4aae28c35009c5c3131c3ffe.png" auto_="auto;" display="block;" margin:="margin:" src="../images/bc753b8e4aae28c35009c5c3131c3ffe.png" /></a></p>
+<p>Это действие создаст вам узел <code>CreateEvent</code>, в выпадающем списке которого надо выбрать пункт - <code>Create Matching Function</code>.</p>
+<p><a class="glightbox" href="../images/59063ce4cdcbda82e8932180150c9ae1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="59063ce4cdcbda82e8932180150c9ae1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/59063ce4cdcbda82e8932180150c9ae1.png" /></a></p>
+<p>Это позволит сгенерировать функцию, подходящую к делегату.</p>
+<p><a class="glightbox" href="../images/36d9bb2cc0cb2dadd3ae46ec912c56a1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="36d9bb2cc0cb2dadd3ae46ec912c56a1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/36d9bb2cc0cb2dadd3ae46ec912c56a1.png" /></a></p>
+<p><a class="glightbox" href="../images/f04a34274d3b0fde15d00a274e592e62.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f04a34274d3b0fde15d00a274e592e62.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f04a34274d3b0fde15d00a274e592e62.png" /></a></p>
+<p>В этой функции убдет узел <code>Return Node</code> с параметром <code>c</code>.
+По умолчанию имя такой сгенерированной функции будет представлять собой сущий хаос. Советую переименовать ее во что-то более читабельное. И заполнить вычисление суммы.</p>
+<p><a class="glightbox" href="../images/d31fa47418ce81d6aba74e887dbfd4c5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d31fa47418ce81d6aba74e887dbfd4c5.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d31fa47418ce81d6aba74e887dbfd4c5.png" /></a></p>
+<p>Как же получить значение параметра <code>c</code>, переданного из <code>blueprint</code> кода в<code>c++</code>
+Метод <code>Broadcast</code> позволяет возвращать значения по ссылке, так что это довольно просто:
+<div class="highlight"><pre><span></span><code><span class="n">GetWorld</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetTimerManager</span><span class="p">().</span><span class="n">SetTimer</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FTimerHandle</span><span class="p">()),</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="o">-&gt;</span><span class="kt">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Call Summ Delegate</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FloatSummDelegate</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="mf">2.3f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1f</span><span class="p">,</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Summ Delegate Result = %f&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Result</span><span class="p">)</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2.1f</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/b7b678e42750774d95ff8cbae675af4b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b7b678e42750774d95ff8cbae675af4b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b7b678e42750774d95ff8cbae675af4b.png" /></a></p>
+<p>В процессе у меня появился странный баг движка, который не пропал даже после перезапуска. <code>Warning: No value will be returned by reference. Parameter 'c'. Node:  Bind Event to Float Summ Delegate</code>. Несмотря на баг, код работал правильно. Советую не обращать на него внимания, с делегатами и диспетчерами такое часто случается даже в <code>blueprint</code>.</p>
+<p><a class="glightbox" href="../images/96d5c1d69879db7e6abcb36ed90ef9d8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="96d5c1d69879db7e6abcb36ed90ef9d8.png" auto_="auto;" display="block;" margin:="margin:" src="../images/96d5c1d69879db7e6abcb36ed90ef9d8.png" /></a></p>
+<h3 id="_7">Использование динамических делегатов в <code>с++</code></h3>
+<p>Хотя динамические делегаты рассчитаны на взаимодействие с <code>blueprint</code>, их так-же можно использовать и из <code>с++</code> кода.</p>
+<p>Для этого есть методы <code>AddDynamic</code> если делегат <code>MULTICAST</code> и <code>BindDynamic</code>, если не <code>MULTICAST</code>.
+Поскольку наш делегат позволяет подключение множества обработчиков,
+сделаем метод <code>Summ</code> внутри класса и добавим его к делегату.
+<div class="highlight"><pre><span></span><code><span class="c1">// .h</span>
+<span class="c1">// Delegate with Return Value</span>
+<span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">FDFloatSumm</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="c1">// This is default signature for Summ Delegate</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Summ&quot;</span><span class="p">)</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">Summ</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">){</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+<span class="c1">// .cpp constructor</span>
+<span class="c1">// Assign default value to FloatSummDelegate</span>
+<span class="n">FloatSummDelegate</span><span class="p">.</span><span class="n">AddDynamic</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UDelegatesTest</span><span class="o">::</span><span class="n">Summ</span><span class="p">);</span>
+</code></pre></div>
+В коде, к стати, не учтена одна важная особенность динамических делегатов - они поддерживают сериализацию. То есть могут быть сохранены вместе с объектом.</p>
+<p>Поэтому вполне возможна ситуация, когда метод <code>Summ</code> привяжется не один раз, как мы бы того хотели, а несколько раз, в зависимости от количества вызовов конструктора.</p>
+<p>Давайте посмотрим как это выглядит, потому что вышеуказанный код содержит этот баг.</p>
+<p>Добавим в функцию <code>Summ</code> вывод лога.
+<div class="highlight"><pre><span></span><code><span class="c1">// Summ Implementation</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">UDelegatesTest::Summ</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Summ Is = %f&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">c</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+И вызовем сам делегат в <code>BeginPlay</code>.
+<div class="highlight"><pre><span></span><code><span class="n">GetWorld</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetTimerManager</span><span class="p">().</span><span class="n">SetTimer</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FTimerHandle</span><span class="p">()),</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="o">-&gt;</span><span class="kt">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Call Summ Delegate</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FloatSummDelegate</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="mf">2.3f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1f</span><span class="p">,</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Summ Delegate Result = %f&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">Result</span><span class="p">)</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2.1f</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/95811b80ac14f5eb30c939d5e3267ef0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="95811b80ac14f5eb30c939d5e3267ef0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/95811b80ac14f5eb30c939d5e3267ef0.png" /></a></p>
+<p>При единовременном запуске игры мы видим следующее:</p>
+<p><a class="glightbox" href="../images/c5be343ead155dd41fb9ff34f5bd9bff.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c5be343ead155dd41fb9ff34f5bd9bff.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c5be343ead155dd41fb9ff34f5bd9bff.png" /></a></p>
+<p>При двойном - следующее:</p>
+<p><a class="glightbox" href="../images/b1742f97f5bf76483961287670fb145e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b1742f97f5bf76483961287670fb145e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b1742f97f5bf76483961287670fb145e.png" /></a></p>
+<p>А при тройном следующее:</p>
+<p><a class="glightbox" href="../images/96607da75f63d80fd012def3ba6b9e10.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="96607da75f63d80fd012def3ba6b9e10.png" auto_="auto;" display="block;" margin:="margin:" src="../images/96607da75f63d80fd012def3ba6b9e10.png" /></a></p>
+<p>И так далее, поскольку конструктор вызывается раз за разом, а делегат - сериализуется.</p>
+<p>Что делать? Для этого в делегате есть метод - <code>AddUniqueDynamic</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">// Assign default value to FloatSummDelegate</span>
+<span class="n">FloatSummDelegate</span><span class="p">.</span><span class="n">AddUniqueDynamic</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UDelegatesTest</span><span class="o">::</span><span class="n">Summ</span><span class="p">);</span>
+</code></pre></div>
+Или отвязывать предыдущие вызовы через <code>RemoveDynamic</code>:
+<div class="highlight"><pre><span></span><code><span class="c1">// Assign default value to FloatSummDelegate</span>
+<span class="n">FloatSummDelegate</span><span class="p">.</span><span class="n">RemoveDynamic</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UDelegatesTest</span><span class="o">::</span><span class="n">Summ</span><span class="p">);</span>
+<span class="n">FloatSummDelegate</span><span class="p">.</span><span class="n">AddDynamic</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UDelegatesTest</span><span class="o">::</span><span class="n">Summ</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/5aa480932d0a657de44a5aaca088d812.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5aa480932d0a657de44a5aaca088d812.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5aa480932d0a657de44a5aaca088d812.png" /></a></p>
+<h3 id="_8">Динамические одноканальные делегаты как аргументы функций</h3>
+<p>Выше я рассмотрел примеры делегатов, как части класса, но их можно, так-же, использовать с функциями.</p>
+<p>Правда с оговоркой:</p>
+<blockquote>
+<p><code>MULTICAST</code> делегаты аргументами функций быть не могут.</p>
+</blockquote>
+<p>Поэтому работать будем с обычным динамическим делегатом.</p>
+<h4 id="-tarraytsoftobjectptraactor">Сортировка массива вида -<code>TArray&lt;TSoftObjectPtr&lt;AActor&gt;&gt;</code></h4>
+<p>Давайте для примера реализуем умную сортировку <code>Actor'ов</code>. Точнее функцию умной сортировки, в которой компаратором(методом сравнения) будет выступать делегат, задаваемый из <code>blueprint</code>.</p>
+<p>Поскольку обычный массив указателей типа <code>Actor</code> задать из <code>blueprint</code> не получится - для начала реализуем сортировку массива вида <code>TArray&lt;TSoftObjectPtr&lt;AActor&gt;&gt;</code>. Если вы помните, <code>TSoftObjectPtr</code> может ссылаться на ассеты с любых уровней. И эти ассеты можно задать прямо из движка.</p>
+<p>Давайте зададим массив для  сортировки в <code>blueprint</code>. Для этого создайте переменную <code>ActorsList</code> типа <code>Actor -&gt; Soft Object Refrence</code>.</p>
+<p><a class="glightbox" href="../images/fad735123143d3741dd888c252e142ca.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fad735123143d3741dd888c252e142ca.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fad735123143d3741dd888c252e142ca.png" /></a></p>
+<p>Эта переменная должна быть массивом.</p>
+<p><a class="glightbox" href="../images/569579d82faca7070adf265b5e676fc7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="569579d82faca7070adf265b5e676fc7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/569579d82faca7070adf265b5e676fc7.png" /></a></p>
+<p>Поскольку это <code>Soft</code> указатель, мы можем указать внутри него объекты на открытом по умолчанию уровне. В нашем случае это уровень из <code>Third Person Shooter Template</code>.
+На уровне есть синие кубики, возьмите их и поставьте в ряд.</p>
+<p><a class="glightbox" href="../images/5cf2a81f2a39f022a5160734191cbebd.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5cf2a81f2a39f022a5160734191cbebd.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5cf2a81f2a39f022a5160734191cbebd.png" /></a></p>
+<p>Рекомендую так-же переименовать кубики следующим образом: <code>Cube1, Cube2, Cube3, Cube4</code>.</p>
+<p><a class="glightbox" href="../images/191bd2ca405323f7fd5a91b4f52632d3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="191bd2ca405323f7fd5a91b4f52632d3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/191bd2ca405323f7fd5a91b4f52632d3.png" /></a></p>
+<p>Теперь эти кубики надо поместить в массив <code>ActorsList</code>. Просто щелкаете на <code>+</code> и добавляете из выпадающего списка. Этот трюк не сработал бы, если бы наш массив - был массивом чистых указателей. Поскольку это <code>Soft</code> указатели, то так можно делать.</p>
+<p><a class="glightbox" href="../images/fa0d5b636955a878533d68294c0c0e12.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fa0d5b636955a878533d68294c0c0e12.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fa0d5b636955a878533d68294c0c0e12.png" /></a></p>
+<p>Теперь вернемся к коду и напишем делегат, которым будем сортировать кубики. Делегат должен быть одинарным, без модификатора <code>MULTICAST</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">// Delegate for SortActors()</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">FDActorsComparator</span><span class="p">,</span><span class="w"> </span><span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">FirstActor</span><span class="p">,</span><span class="w"> </span><span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">SecondActor</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+</code></pre></div>
+Поскольку последний параметр компаратора передается по ссылке, это <code>bool&amp; Result</code>, движок посчитает его - возвращаемым значением.</p>
+<p>Теперь нужна сама функция сортировки. Мы будем сортировать массив "по ссылке", то есть функция не будет возвращать значений. Причем передавать по ссылке мы будем массив вида: <code>TArray&lt;TSoftObjectPtr&lt;AActor&gt;&gt;&amp;</code>. (Не думал что сработает, но сработало.)
+<div class="highlight"><pre><span></span><code><span class="c1">// .h</span>
+<span class="c1">// Actor</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameFramework/Actor.h&quot;</span>
+<span class="c1">// ...</span>
+<span class="c1">// Array of Actors sorting by ref</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sort&quot;</span><span class="p">)</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">SortActors</span><span class="p">(</span><span class="n">UPARAM</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">ActorsList</span><span class="p">,</span><span class="w"> </span><span class="n">FDActorsComparator</span><span class="w"> </span><span class="n">ActorsComparator</span><span class="p">);</span>
+</code></pre></div>
+Реализация функции выглядит так:
+<div class="highlight"><pre><span></span><code><span class="c1">// .cpp</span>
+<span class="c1">// SortActors Implementation</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">UDelegatesTest::SortActors</span><span class="p">(</span><span class="n">UPARAM</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">ActorsList</span><span class="p">,</span><span class="w"> </span><span class="n">FDActorsComparator</span><span class="w"> </span><span class="n">ActorsComparator</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Call Array.Sort with lambda comparator in which call comparator delegate</span>
+<span class="w">    </span><span class="n">ActorsList</span><span class="p">.</span><span class="n">Sort</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">{</span>
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ActorsComparator</span><span class="p">.</span><span class="n">ExecuteIfBound</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Result</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+Тут я вызываю метод <code>TArray::Sort</code>, который встроен в класс массива и передаю ему лямбду.</p>
+<p>Внутри лямбды я просто вызываю делегат, если он к чему-либо  привязан. В функции вызова есть отличие с предыдущим делегатом.</p>
+<p>Обычные делегаты вызываются методом <code>Execute</code> или <code>ExecuteIfBound</code>, а делегаты типа <code>MULTICAST</code> вызываются методом <code>Broadcast</code>.
+Параметр <code>Result</code> передается по ссылке.</p>
+<p><a class="glightbox" href="../images/4be08fa5632220b3f17434e23ae2144f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4be08fa5632220b3f17434e23ae2144f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4be08fa5632220b3f17434e23ae2144f.png" /></a></p>
+<p><a class="glightbox" href="../images/8ef5d34ebaa86540c174978f1d8a5527.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="8ef5d34ebaa86540c174978f1d8a5527.png" auto_="auto;" display="block;" margin:="margin:" src="../images/8ef5d34ebaa86540c174978f1d8a5527.png" /></a></p>
+<p>После компиляции в <code>blueprint</code> появится возможность вызвать метод <code>SortActors</code>.</p>
+<p><a class="glightbox" href="../images/fd25cab9eef0c016f75a4b352e2fd0a2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fd25cab9eef0c016f75a4b352e2fd0a2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fd25cab9eef0c016f75a4b352e2fd0a2.png" /></a></p>
+<p>Его компаратор должен быть задан как <code>Event Dispatchers -&gt; Create Event</code>, потому что компаратор имеет возвращаемое значение.</p>
+<p><a class="glightbox" href="../images/7d05ab4af419fab2ad4404126544e392.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7d05ab4af419fab2ad4404126544e392.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7d05ab4af419fab2ad4404126544e392.png" /></a></p>
+<p><a class="glightbox" href="../images/a1db99c3215a6df0b1b8314f41c087b4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a1db99c3215a6df0b1b8314f41c087b4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a1db99c3215a6df0b1b8314f41c087b4.png" /></a></p>
+<p>Сгенерируйте функцию компаратора. Внутри функции необходимо добавить сравнение дистанций от каждого из акторов до нашего персонажа.</p>
+<p><a class="glightbox" href="../images/33f6def1817e5f27485d08bbf8584beb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="33f6def1817e5f27485d08bbf8584beb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/33f6def1817e5f27485d08bbf8584beb.png" /></a></p>
+<p>Если короче - мы будем сортировать кубики по дистанции до нашего игрового персонажа.</p>
+<p>Теперь в событии <code>tick</code> реализуйте такой набор узлов:</p>
+<p><a class="glightbox" href="../images/d169335ab0a3df3d19239e418489895c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d169335ab0a3df3d19239e418489895c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d169335ab0a3df3d19239e418489895c.png" /></a></p>
+<p>Если скомпилировать и запустить проект - в лог будет печататься список кубиков. Первым будет тот кубик, который ближе всего к нашему персонажу.</p>
+<p><a class="glightbox" href="../images/8ac161144c79d42923f18d045908d88d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="8ac161144c79d42923f18d045908d88d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/8ac161144c79d42923f18d045908d88d.png" /></a></p>
+<p><a class="glightbox" href="../images/469c2696640fa716bd5d1ce574161651.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="469c2696640fa716bd5d1ce574161651.png" auto_="auto;" display="block;" margin:="margin:" src="../images/469c2696640fa716bd5d1ce574161651.png" /></a></p>
+<p><a class="glightbox" href="../images/c776312f02208aefef77f69ca484ddb6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c776312f02208aefef77f69ca484ddb6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c776312f02208aefef77f69ca484ddb6.png" /></a></p>
+<h4 id="-tarrayaactor">Сортировка массива вида - <code>TArray&lt;AActor*&gt;</code></h4>
+<p>Давайте, за одно, напишем и функцию сортировки нормального массива <code>AActor'ов</code>. Без <code>Soft</code> указателей.
+<div class="highlight"><pre><span></span><code><span class="c1">// Delegate for SortActorsRaw()</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">FDActorsComparator</span><span class="p">,</span><span class="w"> </span><span class="n">AActor</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">FirstActor</span><span class="p">,</span><span class="w"> </span><span class="n">AActor</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">SecondActor</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+<span class="c1">// ..</span>
+<span class="c1">// Array of Actors sorting by raw ref</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sort&quot;</span><span class="p">)</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">SortActorsRaw</span><span class="p">(</span><span class="n">UPARAM</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">*&gt;&amp;</span><span class="w"> </span><span class="n">ActorsList</span><span class="p">,</span><span class="w"> </span><span class="n">FDActorsRawComparator</span><span class="w"> </span><span class="n">ActorsComparator</span><span class="p">);</span>
+</code></pre></div>
+И реализация функции <code>SortActorsRaw</code>:
+<div class="highlight"><pre><span></span><code><span class="c1">// SortActorsRaw Implementation</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">UDelegatesTest::SortActorsRaw</span><span class="p">(</span><span class="n">UPARAM</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">*&gt;&amp;</span><span class="w"> </span><span class="n">ActorsList</span><span class="p">,</span><span class="w"> </span><span class="n">FDActorsRawComparator</span><span class="w"> </span><span class="n">ActorsComparator</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Call Array.Sort with lambda comparator in which call comparator delegate</span>
+<span class="w">    </span><span class="n">ActorsList</span><span class="p">.</span><span class="n">Sort</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">AActor</span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">AActor</span><span class="o">&amp;</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ActorsComparator</span><span class="p">.</span><span class="n">ExecuteIfBound</span><span class="p">(</span><span class="o">&amp;</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Result</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/e51d915606a517e7894ec50d64cfd670.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e51d915606a517e7894ec50d64cfd670.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e51d915606a517e7894ec50d64cfd670.png" /></a></p>
+<p><a class="glightbox" href="../images/b61502acaaa6780dc1b6ab2c1d4dda0e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b61502acaaa6780dc1b6ab2c1d4dda0e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b61502acaaa6780dc1b6ab2c1d4dda0e.png" /></a></p>
+<p><a class="glightbox" href="../images/ff208167e48876b1e99b92324b59c983.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ff208167e48876b1e99b92324b59c983.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ff208167e48876b1e99b92324b59c983.png" /></a></p>
+<p>После компиляции в <code>blueprint</code> будет доступна функция <code>SortActorsRaw</code>, которая принимает массив указателей на <code>Actor</code>.</p>
+<p><a class="glightbox" href="../images/25cc8947036c5fe33644654fa4689ba7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="25cc8947036c5fe33644654fa4689ba7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/25cc8947036c5fe33644654fa4689ba7.png" /></a></p>
+<h4 id="tsoftobjectptr-aactor">Конверсия массива <code>TSoftObjectPtr</code> в массив <code>AActor</code></h4>
+<p>Давайте, для интереса, напишем функцию конверсии массива <code>TSoftObjectPtr</code> в массив <code>AActor</code>.
+Вообще, надо бы делать это как <code>Latent Action + Asset Manager</code>, но я этих тем еще не касался, поэтому используем грязный подход через <code>LoadSynchronous()</code>, у нас просто эксперименты.
+<div class="highlight"><pre><span></span><code><span class="c1">// .h</span>
+<span class="c1">// Resolving Soft PointersArray</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintPure</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Convert&quot;</span><span class="p">)</span>
+<span class="n">TArray</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">ResolveArray</span><span class="p">(</span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Actors</span><span class="p">);</span>
+<span class="c1">// ...</span>
+<span class="c1">// .cpp</span>
+<span class="c1">// Implementation of ResolveArray</span>
+<span class="n">TArray</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">UDelegatesTest</span><span class="o">::</span><span class="n">ResolveArray</span><span class="p">(</span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Actors</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Result</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">TSoftObjectPtr</span><span class="w"> </span><span class="n">Item</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Actors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Result</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">Item</span><span class="p">.</span><span class="n">LoadSynchronous</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+В результате у нас получится <code>Pure</code> функция, принимающая массив <code>Soft</code> указателей и  возвращающая его <code>Raw</code> версию.</p>
+<p><a class="glightbox" href="../images/7de9d1c17dbf277db5f26af18686c239.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7de9d1c17dbf277db5f26af18686c239.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7de9d1c17dbf277db5f26af18686c239.png" /></a></p>
+<p>Теперь, когда готова функция конвертирования - давайте проверим как будет работать сортировка <code>Raw</code> указателей.</p>
+<h4 id="_9">Проверка работы</h4>
+<p>Создаем компаратор как и до этого.</p>
+<p><a class="glightbox" href="../images/ed86b8ec5702b6fa422dffddf0aef9e3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ed86b8ec5702b6fa422dffddf0aef9e3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ed86b8ec5702b6fa422dffddf0aef9e3.png" /></a></p>
+<p>И в событии <code>tick</code> реализуем код тестирования.</p>
+<p><a class="glightbox" href="../images/45526dcabba6a9f8f16778e0c0d417c7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="45526dcabba6a9f8f16778e0c0d417c7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/45526dcabba6a9f8f16778e0c0d417c7.png" /></a></p>
+<p>Все работает.</p>
+<p><a class="glightbox" href="../images/e53e7e9d22287627cf9c8b04fd26e45d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e53e7e9d22287627cf9c8b04fd26e45d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e53e7e9d22287627cf9c8b04fd26e45d.png" /></a></p>
+<p><a class="glightbox" href="../images/4020da2607d2693ca8e27f2301ea28ec.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4020da2607d2693ca8e27f2301ea28ec.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4020da2607d2693ca8e27f2301ea28ec.png" /></a></p>
+<p><a class="glightbox" href="../images/8ad9a8b36d9ad55789d4dbe7b54d84fe.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="8ad9a8b36d9ad55789d4dbe7b54d84fe.png" auto_="auto;" display="block;" margin:="margin:" src="../images/8ad9a8b36d9ad55789d4dbe7b54d84fe.png" /></a></p>
+<h2 id="tmap">Делегаты и TMap</h2>
+<p>Давайте создадим еще один делегат, один из параметров которого будет иметь тип <code>TMap</code>.</p>
+<p><a class="glightbox" href="../images/7c965911fa7160b11a5c82da5dd500e9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7c965911fa7160b11a5c82da5dd500e9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7c965911fa7160b11a5c82da5dd500e9.png" /></a></p>
+<p>При попытке скомпилировать файл с таким делегатом выпадет ошибка:
+<div class="highlight"><pre><span></span><code>too many arguments for function-like macro invocation &#39;DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams&#39;
+</code></pre></div>
+Которая переводится как: "слишком много аргументов".</p>
+<p>Почему? Потому что в парсере Unreal Header Tool, который обрабатывает макрос делегата, не предусмотрено отдельное условие для типа <code>TMap</code>. И судя по всему никогда уже не будет предусмотрено.</p>
+<p>В декларации <code>TMap</code>, как вы видите, содержится запятая <code>TMap&lt;FName, int&gt;</code>, ведь это шаблонный тип . Запятыми же в макросе разделяются параметры. Вот и получается, что UHT определяет в моем коде 4 параметра, а не три.</p>
+<p>Как обойти эту проблему?
+В интернете пишут, что проблема решается через <code>typedef</code>, но это не так. Во всяком случае я не смог заставить код с <code>typedef</code> работать.</p>
+<p>Все-же приведу его вам.
+<div class="highlight"><pre><span></span><code><span class="c1">// Map Wrapped into typedef</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">TMap</span><span class="o">&lt;</span><span class="n">FName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">DelegateNameIntMap</span><span class="p">;</span>
+<span class="n">DECLARE_MULTICAST_DELEGATE_OneParam</span><span class="p">(</span><span class="n">FDNonDynamicDelegate</span><span class="p">,</span><span class="w"> </span><span class="n">DelegateNameIntMap</span><span class="p">,</span><span class="w"> </span><span class="n">MapData</span><span class="p">);</span>
+</code></pre></div>
+Объясняю, почему <code>typedef</code> не будет работать. Потому что макрос <code>DECLARE...DELEGATE</code> обрабатывается перед компиляцией через Unreal Header Tool. А он, этот самый UHT, понятия не имеет ни об каком <code>typedef</code>. Сама же команда <code>typedef</code> срабатывает лишь при компиляции.</p>
+<p>Как быть?
+Самое простое - это использовать два <code>TArray</code> вместо одного <code>TMap</code>. Один массив на ключи, второй на значения.</p>
+<p>Если вас не устраивает этот способ, то можно использовать структуры.</p>
+<p>Необходимо задать структуру с полем <code>TMap</code>, причем для нас важна не обычная структура, а <code>USTRUCT</code>, то есть такая, которую воспринимает UHT.
+После чего скормить эту структуру в макрос.</p>
+<p>Поскольку UHT обрабатывает и вполне воспринимает <code>USTRUCT</code>  и <code>UCLASS</code>, такой подход сработает.
+<div class="highlight"><pre><span></span><code><span class="c1">// Map wrapped into struct</span>
+<span class="n">USTRUCT</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">FMapContainer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_USTRUCT_BODY</span><span class="p">()</span>
+<span class="w">    </span><span class="n">FMapContainer</span><span class="p">(){};</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">)</span>
+<span class="w">    </span><span class="n">TMap</span><span class="o">&lt;</span><span class="n">FName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MapField</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="c1">// Blueprint accessible delegate with TMap parameter</span>
+<span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">FDMapTest</span><span class="p">,</span><span class="k">const</span><span class="w"> </span><span class="n">TArray</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">ArrayData</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">StringData</span><span class="p">,</span><span class="w"> </span><span class="n">FMapContainer</span><span class="p">,</span><span class="w"> </span><span class="n">MapData</span><span class="p">);</span>
+</code></pre></div>
+Обратите внимание, что и сам параметр <code>TMap</code> должен быть <code>UPROPERTY(BlueprintReadWrite, EditAnywhere)</code>.</p>
+<p><a class="glightbox" href="../images/b5f0f80354a37f48f917d84324aec408.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b5f0f80354a37f48f917d84324aec408.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b5f0f80354a37f48f917d84324aec408.png" /></a></p>
+<p><a class="glightbox" href="../images/0ea6d2d7532fd1d7de1f4946f46b9869.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0ea6d2d7532fd1d7de1f4946f46b9869.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0ea6d2d7532fd1d7de1f4946f46b9869.png" /></a></p>
+<h2 id="_10">Обычные делегаты</h2>
+<p>Под "обычными" делегатами я имею в виду не <code>DYNAMIC</code> делегаты.</p>
+<p>Синтаксис их определения немного отличается. К тому-же о использовании обычных делегатов статей в интернете почти нет(их нет). Между тем их очень часто используют вместе с системой <code>Sltate</code> для программирования элементов интерфейса.</p>
+<p>Работать с обычными делегатами можно лишь из <code>с++</code>, в <code>blueprnt'ах</code> они не доступны. Однако взамен они предоставляют множество способов подключения сигналов от самых разных объектов.</p>
+<p>В частности к таким делегатам можно привязывать лямбды и указатели на функции, что используется довольно часто.</p>
+<p>Давайте создадим такой "обычный" делегат или даже пару делегатов.
+<div class="highlight"><pre><span></span><code><span class="c1">// .h</span>
+<span class="c1">// Usual Delegates</span>
+<span class="c1">// Multicast Usual Delegate</span>
+<span class="n">DECLARE_MULTICAST_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">DFUsualMulticastSumm</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumB</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+<span class="c1">// Single Usual Delegate</span>
+<span class="n">DECLARE_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">DFUsualSumm</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumB</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+</code></pre></div>
+Обратите внимание на список аргументов - <code>int NumA, int NumB, int&amp; Result</code>.</p>
+<blockquote>
+<p>В обычных делегатах тип аргумента не отделяется от его названия символом запятой <code>,</code>.
+Для сравнения, если вы вдруг забыли, вот как определяется динамический делегат:
+<div class="highlight"><pre><span></span><code><span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">FDFloatSumm</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+</code></pre></div>
+Обычные делегаты, в отличие от динамических, нельзя вывести в <code>blueprint</code>.
+Давайте проверим.</p>
+</blockquote>
+<h4 id="blueprint">Проверка вывода обычного делегата в <code>blueprint</code></h4>
+<p>Создадим в коде две переменные для наших делегатов <code>DFUsualMulticastSumm</code> и <code>DFUsualSumm</code>.</p>
+<p><a class="glightbox" href="../images/fc9289541064dd01eee0ec956d51e4d8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fc9289541064dd01eee0ec956d51e4d8.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fc9289541064dd01eee0ec956d51e4d8.png" /></a></p>
+<p>Ради интереса, давайте пропишем одному из обычных делегатов <code>UPROPERTY</code>. Попытаемся разрешить его использование в <code>blueprint</code>.</p>
+<p><a class="glightbox" href="../images/205d415bf0cab1da9676dfe93aeeecfa.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="205d415bf0cab1da9676dfe93aeeecfa.png" auto_="auto;" display="block;" margin:="margin:" src="../images/205d415bf0cab1da9676dfe93aeeecfa.png" /></a></p>
+<p>Ожидаемо, при попытке компиляции такой код выдал ошибку:
+<div class="highlight"><pre><span></span><code><span class="nl">Error</span><span class="p">:</span><span class="w"> </span><span class="n">Unable</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">find</span><span class="w"> </span><span class="err">&#39;</span><span class="k">class</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="n">delegate</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="k">enum</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="err">&#39;</span><span class="k">struct</span><span class="err">&#39;</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="err">&#39;</span><span class="n">DFUsualSumm</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="n">Total</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">written</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/d7683bc7571061145a5daa5a3aac756a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d7683bc7571061145a5daa5a3aac756a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d7683bc7571061145a5daa5a3aac756a.png" /></a></p>
+<h3 id="_11">Способы привязки обычных делегатов</h3>
+<p>Давайте рассмотрим способы привязки обычных делегатов.
+<code>MULTICAST</code> делегат использует методы начинающиеся на <code>Add*</code>.</p>
+<p><a class="glightbox" href="../images/1c3c2e4d85f22432d663c0fe4b31f947.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1c3c2e4d85f22432d663c0fe4b31f947.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1c3c2e4d85f22432d663c0fe4b31f947.png" /></a></p>
+<p>Не <code>MULTICAST</code> делегат использует методы начинающиеся на <code>Bind*</code>.</p>
+<p><a class="glightbox" href="../images/a69e12c1d732579c28a94f4f2d16fce5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a69e12c1d732579c28a94f4f2d16fce5.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a69e12c1d732579c28a94f4f2d16fce5.png" /></a></p>
+<h3 id="binding-raw">Binding Raw</h3>
+<p><code>*Raw</code> - привязка к неуправляемым сборщиком мусора классам. То есть к не <code>UOBJECT</code> классам.</p>
+<p>Давайте создадим неуправляемый класс и привяжем его метод к <code>MULTICAST</code> делегату.
+<div class="highlight"><pre><span></span><code><span class="c1">// .h</span>
+<span class="c1">// simple class for binding</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SimpleRawClass</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Summ</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">//...</span>
+<span class="c1">// Multicast Usual Delegate</span>
+<span class="n">DECLARE_MULTICAST_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">DFUsualMulticastSumm</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumB</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="c1">// Usual Multicast Delegate</span>
+<span class="n">DFUsualMulticastSumm</span><span class="w"> </span><span class="n">UsualMulticastSumm</span><span class="p">;</span>
+<span class="c1">// ...</span>
+<span class="c1">// .cpp</span>
+<span class="c1">// Constructor</span>
+<span class="c1">// Usual Multicast delegate test</span>
+<span class="n">TUniquePtr</span><span class="o">&lt;</span><span class="n">SimpleRawClass</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Raw</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SimpleRawClass</span><span class="p">());</span>
+<span class="n">UsualMulticastSumm</span><span class="p">.</span><span class="n">AddRaw</span><span class="p">(</span><span class="n">Raw</span><span class="p">.</span><span class="n">Get</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">SimpleRawClass</span><span class="o">::</span><span class="n">Summ</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/7ce679c743bc8ddc32fdd216bfcd7dc0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7ce679c743bc8ddc32fdd216bfcd7dc0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7ce679c743bc8ddc32fdd216bfcd7dc0.png" /></a></p>
+<p>Тестировать будем как и в прошый раз - внутри таймера:
+<div class="highlight"><pre><span></span><code><span class="n">GetWorld</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetTimerManager</span><span class="p">().</span><span class="n">SetTimer</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FTimerHandle</span><span class="p">()),</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="o">-&gt;</span><span class="kt">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Call Usual Delegates</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">UResult</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UsualMulticastSumm</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">UResult</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Result = %d&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">UResult</span><span class="p">)</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2.1f</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/bdcf410f880bd12a8dc9f73bd7b0e867.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="bdcf410f880bd12a8dc9f73bd7b0e867.png" auto_="auto;" display="block;" margin:="margin:" src="../images/bdcf410f880bd12a8dc9f73bd7b0e867.png" /></a></p>
+<p><a class="glightbox" href="../images/042ba536d5de263da421aea57d83a297.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="042ba536d5de263da421aea57d83a297.png" auto_="auto;" display="block;" margin:="margin:" src="../images/042ba536d5de263da421aea57d83a297.png" /></a></p>
+<h3 id="binding-lambda">Binding Lambda</h3>
+<p>На сей раз привяжем лямбду. Только не в <code>MULTICAST</code> делегату, а к самому обычному, одиночному, делегату.
+<div class="highlight"><pre><span></span><code><span class="c1">// .h</span>
+<span class="c1">//...</span>
+<span class="c1">// Single Usual Delegate</span>
+<span class="n">DECLARE_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">DFUsualSumm</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumB</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="c1">// Usual Delegate</span>
+<span class="n">DFUsualSumm</span><span class="w"> </span><span class="n">UsualSumm</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// Constructor</span>
+<span class="c1">// Lambda Binding Test</span>
+<span class="n">UsualSumm</span><span class="p">.</span><span class="n">BindLambda</span><span class="p">(</span>
+<span class="w">    </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="p">{</span>
+<span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/357f4debe85bf972c3f2781028a1e7a9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="357f4debe85bf972c3f2781028a1e7a9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/357f4debe85bf972c3f2781028a1e7a9.png" /></a></p>
+<p>Для тестирования делегат вызывается в таймере:
+<div class="highlight"><pre><span></span><code><span class="n">GetWorld</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetTimerManager</span><span class="p">().</span><span class="n">SetTimer</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FTimerHandle</span><span class="p">()),</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="o">-&gt;</span><span class="kt">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">UResult</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UsualSumm</span><span class="p">.</span><span class="n">ExecuteIfBound</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">UResult</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Result = %d&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">UResult</span><span class="p">)</span>
+
+<span class="p">},</span><span class="w"> </span><span class="mf">2.1f</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/167693959740ecfc926c5bd6e87d75c4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="167693959740ecfc926c5bd6e87d75c4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/167693959740ecfc926c5bd6e87d75c4.png" /></a></p>
+<h3 id="binding-uobject">Binding <code>UObject</code></h3>
+<p><code>*UObject</code>Если функция-обработчик находится внутри <code>UObject'а</code>, ее привязывают именно этим способом.</p>
+<p>Зададим функцию:
+<div class="highlight"><pre><span></span><code><span class="c1">// .h</span>
+<span class="c1">// Summ Int</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SummInt&quot;</span><span class="p">)</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">SummInt</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="c1">// ...</span>
+<span class="c1">// .cpp</span>
+<span class="c1">// SummInt Implementation</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">UDelegatesTest::SummInt</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+Привязывается она следующим образом:
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Multicast Usual Delegate</span>
+<span class="n">DECLARE_MULTICAST_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">DFUsualMulticastSumm</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumB</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="c1">// Usual Multicast Delegate</span>
+<span class="n">DFUsualMulticastSumm</span><span class="w"> </span><span class="n">UsualMulticastSumm</span><span class="p">;</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// constructor</span>
+<span class="c1">// bind UObject</span>
+<span class="n">UsualMulticastSumm</span><span class="p">.</span><span class="n">AddUObject</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UDelegatesTest</span><span class="o">::</span><span class="n">SummInt</span><span class="p">);</span>
+</code></pre></div>
+Для тестирования делегат вызывается в таймере.
+<div class="highlight"><pre><span></span><code><span class="n">GetWorld</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetTimerManager</span><span class="p">().</span><span class="n">SetTimer</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FTimerHandle</span><span class="p">()),</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="o">-&gt;</span><span class="kt">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">UResult</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UsualMulticastSumm</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">UResult</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Result = %d&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">UResult</span><span class="p">)</span>
+
+<span class="p">},</span><span class="w"> </span><span class="mf">2.1f</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/f80f99d5ec576589c72ee7163087fe4b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f80f99d5ec576589c72ee7163087fe4b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f80f99d5ec576589c72ee7163087fe4b.png" /></a></p>
+<h3 id="binding-static">Binding Static</h3>
+<p><code>BindStatic / AddStatic</code> - позволяет привязывать <code>static</code> методы классов к делегату.</p>
+<p>Зададим такой метод в нашем тестовом классе:
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">StaticSumm</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/714dbb709f0a942de0434211f5f25b4c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="714dbb709f0a942de0434211f5f25b4c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/714dbb709f0a942de0434211f5f25b4c.png" /></a></p>
+<p>Теперь его можно привязать к, например, обычному <code>MULTICAST</code> делегату.
+<div class="highlight"><pre><span></span><code><span class="c1">// .h</span>
+<span class="c1">// simple class for binding</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SimpleRawClass</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Summ</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">StaticSumm</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">//...</span>
+<span class="c1">// Multicast Usual Delegate</span>
+<span class="n">DECLARE_MULTICAST_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">DFUsualMulticastSumm</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumB</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="c1">// Usual Multicast Delegate</span>
+<span class="n">DFUsualMulticastSumm</span><span class="w"> </span><span class="n">UsualMulticastSumm</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// constructor</span>
+<span class="c1">// bind static method</span>
+<span class="n">UsualMulticastSumm</span><span class="p">.</span><span class="n">AddStatic</span><span class="p">(</span><span class="o">&amp;</span><span class="n">SimpleRawClass</span><span class="o">::</span><span class="n">StaticSumm</span><span class="p">);</span>
+</code></pre></div>
+Для теста все вызывается в том-же самом таймере.
+<div class="highlight"><pre><span></span><code><span class="n">GetWorld</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetTimerManager</span><span class="p">().</span><span class="n">SetTimer</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FTimerHandle</span><span class="p">()),</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="o">-&gt;</span><span class="kt">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">UResult</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UsualMulticastSumm</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">UResult</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Result = %d&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">UResult</span><span class="p">)</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2.1f</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/9e3b7e2d169d4d95c57ced14b0745322.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9e3b7e2d169d4d95c57ced14b0745322.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9e3b7e2d169d4d95c57ced14b0745322.png" /></a></p>
+<h3 id="binding-sp">Binding SP</h3>
+<p><code>AddSP / BindSP</code> - привязка ссылки на метод объекта как <code>TSharedPtr</code>.
+Используется с обычными <code>raw</code> указателями на объект.
+<div class="highlight"><pre><span></span><code><span class="c1">// .h</span>
+<span class="c1">// simple class for binding</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SimpleRawClass</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Summ</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">StaticSumm</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">//...</span>
+<span class="c1">// Multicast Usual Delegate</span>
+<span class="n">DECLARE_MULTICAST_DELEGATE_ThreeParams</span><span class="p">(</span><span class="n">DFUsualMulticastSumm</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumA</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NumB</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Result</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="c1">// Usual Multicast Delegate</span>
+<span class="n">DFUsualMulticastSumm</span><span class="w"> </span><span class="n">UsualMulticastSumm</span><span class="p">;</span>
+<span class="c1">// ...</span>
+<span class="c1">// .cpp</span>
+<span class="c1">// Constructor</span>
+<span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">SimpleRawClass</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Raw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MakeShareable</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SimpleRawClass</span><span class="p">());</span><span class="w"> </span><span class="c1">// create pointer to class</span>
+<span class="n">UsualMulticastSumm</span><span class="p">.</span><span class="n">AddSP</span><span class="p">(</span><span class="n">Raw</span><span class="p">.</span><span class="n">ToSharedRef</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">SimpleRawClass</span><span class="o">::</span><span class="n">Summ</span><span class="p">);</span><span class="w"> </span><span class="c1">// add class method Summ to delegate</span>
+</code></pre></div>
+Для тестирования привязки, делегат вызывается в том-же самом таймере.
+<div class="highlight"><pre><span></span><code><span class="n">GetWorld</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetTimerManager</span><span class="p">().</span><span class="n">SetTimer</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FTimerHandle</span><span class="p">()),</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="o">-&gt;</span><span class="kt">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">UResult</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UsualMulticastSumm</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">UResult</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Result = %d&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">UResult</span><span class="p">)</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2.1f</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/2ff9e0b6298d6344c20c09e2c85ff218.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2ff9e0b6298d6344c20c09e2c85ff218.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2ff9e0b6298d6344c20c09e2c85ff218.png" /></a></p>
+<h2 id="-">Передача делегата в лямбда - выражение</h2>
+<p>Иногда надо передать делегат в лямбду, чтобы вызвать его, например, из другого потока. Делается это с применением <code>Move</code> семантики.
+<div class="highlight"><pre><span></span><code><span class="n">DECLARE_DYNAMIC_DELEGATE_OneParam</span><span class="p">(</span><span class="n">FCallResultDelegate</span><span class="p">,</span><span class="w"> </span><span class="n">FString</span><span class="p">,</span><span class="w"> </span><span class="n">FinishMessage</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">MakeThreadedDelay</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DelayDuration</span><span class="p">,</span><span class="w"> </span><span class="n">FCallResultDelegate</span><span class="w"> </span><span class="n">ResultDelegate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// make async thread</span>
+<span class="w">    </span><span class="n">Async</span><span class="p">(</span><span class="n">EAsyncExecution</span><span class="o">::</span><span class="n">Thread</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="o">-&gt;</span><span class="n">FString</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">FPlatformProcess</span><span class="o">::</span><span class="n">Sleep</span><span class="p">(</span><span class="n">DelayDuration</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Thread Finished&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="c1">// call Then after thread is done.</span>
+<span class="w">    </span><span class="c1">// *note: Delegates can&#39;t be used in lambdas directly, we should Move them in lambda scope</span>
+<span class="w">    </span><span class="p">.</span><span class="n">Then</span><span class="p">([</span><span class="n">Delegate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MoveTemp</span><span class="p">(</span><span class="n">ResultDelegate</span><span class="p">)](</span><span class="n">TFuture</span><span class="o">&lt;</span><span class="n">FString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Result</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Result</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Make Sure result valid</span>
+<span class="w">            </span><span class="n">Delegate</span><span class="p">.</span><span class="n">ExecuteIfBound</span><span class="p">(</span><span class="n">Result</span><span class="p">.</span><span class="n">Get</span><span class="p">());</span><span class="w"> </span><span class="c1">// call bound event</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="_12">Предзаданные делегаты</h2>
+<p>В движке <code>Unreal Engine</code> есть ряд предзаданных делегатов, которые можно использовать, если хочется вызвать функцию или лямбду без аргументов, не заморачиваясь написанием длинного макроса <code>DECLARE_...</code>.</p>
+<h2 id="fsimpledelegate"><code>FSimpleDelegate</code></h2>
+<p><code>FSimpleDelegate</code> - самый простой одиночный делегат, к которому можно привязать лямбду или функцию. Не имеет никаких аргументов. Многие методы <code>Unreal Engine</code> запрашивают этот делегат в качестве одного из своих аргументов.
+<div class="highlight"><pre><span></span><code><span class="n">FSimpleDelegate</span><span class="w"> </span><span class="n">Delegate</span><span class="p">;</span>
+<span class="n">Delegate</span><span class="p">.</span><span class="n">BindLambda</span><span class="p">([]()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;SimpleDelegate Called!&quot;</span><span class="p">));</span>
+<span class="p">});</span>
+<span class="n">Delegate</span><span class="p">.</span><span class="n">Execute</span><span class="p">();</span><span class="w"> </span><span class="c1">// run</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/3afc13176da9d022809e724014ae3bd3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3afc13176da9d022809e724014ae3bd3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3afc13176da9d022809e724014ae3bd3.png" /></a></p>
+<p><code>FSimpleMulticastDelegate</code> - простой многоканальный делегат, к которому можно подключить несколько методов. Не имеет аргументов.
+<div class="highlight"><pre><span></span><code><span class="n">FSimpleMulticastDelegate</span><span class="w"> </span><span class="n">Delegate</span><span class="p">;</span>
+<span class="n">Delegate</span><span class="p">.</span><span class="n">AddLambda</span><span class="p">([]()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FSimpleMulticastDelegate Called 1&quot;</span><span class="p">));</span>
+<span class="p">});</span>
+<span class="n">Delegate</span><span class="p">.</span><span class="n">AddLambda</span><span class="p">([]()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;FSimpleMulticastDelegate Called 2&quot;</span><span class="p">));</span>
+<span class="p">});</span>
+<span class="n">Delegate</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">();</span><span class="w"> </span><span class="c1">// run</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/7035596609e8967468f5ceb85573491b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7035596609e8967468f5ceb85573491b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7035596609e8967468f5ceb85573491b.png" /></a></p>
+<h2 id="ftssimplemulticastdelegate"><code>FTSSimpleMulticastDelegate</code></h2>
+<p><code>FTSSimpleMulticastDelegate</code> - простой многоканальный делегат.</p>
+<p>Работает точно так-же как и <code>FSimpleMulticastDelegate</code>, в дополнение к его возможностям предоставляя возможность привязки нескольких обработчиков.</p>
+<h2 id="links">Links</h2>
+<p>https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/ProgrammingWithCPP/UnrealArchitecture/Delegates/
+https://benui.ca/unreal/delegates-advanced/</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            К началу
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      aftamat4ik
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

@@ -1,0 +1,2299 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Справочник Unreal Engine">
+      
+      
+        <meta name="author" content="aftamat4ik">
+      
+      
+      
+        <link rel="prev" href="2_Components.html">
+      
+      
+        <link rel="next" href="4_Multithreading.html">
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
+    
+    
+      
+        <title>Суб Объекты - Справочник Unreal Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-header__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Справочник Unreal Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Суб Объекты
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1_Basics/1_First_Project.html" class="md-tabs__link">
+          
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="1_Delegates.html" class="md-tabs__link">
+          
+  
+  Ключевые системы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../3_Advanced/1_HUD.html" class="md-tabs__link">
+          
+  
+  Продвинутая разработка
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-tabs__link">
+          
+  
+  Решение проблем
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../5_Tips/Change_Asset_Icons.html" class="md-tabs__link">
+          
+  
+  Советы
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-nav__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    Справочник Unreal Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Основы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Основы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/1_First_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/2_Engine_Introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/3_CPP_Recommendations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Рекомендации по написанию кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/4_SimplePlugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создание простейшего плагина для Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/5_Macroses_Reflection_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Макросы Reflection System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/6_Logging.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Печать информации в лог
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/7_Pointers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Указатели
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/8_ModernCpp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возможности современного c++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/9_Working_With_Strings.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа со строками
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/10_Timers_In_%D0%A1%2B%2B.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Таймеры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/11_Instances_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Доступ к различным сущностям
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Asserts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Asserts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Console Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ключевые системы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ключевые системы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Delegates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Components.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="3_SubObjects.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Способы добавления суб объектов
+  </a>
+  
+    <nav class="md-nav" aria-label="Способы добавления суб объектов">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createdefaultsubobject" class="md-nav__link">
+    CreateDefaultSubobject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createoptionaldefaultsubobject" class="md-nav__link">
+    CreateOptionalDefaultSubobject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Удаление унаследованного суб объекта
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createeditoronlydefaultsubobject" class="md-nav__link">
+    CreateEditorOnlyDefaultSubobject
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Получение списка всех суб объектов класса
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Получение ссылки на суб объект по имени
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Переопределение суб объектов
+  </a>
+  
+    <nav class="md-nav" aria-label="Переопределение суб объектов">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#charactermovementcomponent" class="md-nav__link">
+    Создаем класс CharacterMovementComponent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skeletalmeshcomponent" class="md-nav__link">
+    Создаем класс SkeletalMeshComponent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Замена
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Что будет, если не использовать инициализацию через конструктор?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uobject" class="md-nav__link">
+    Добавляем компонент к UObject
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Multithreading.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Многопоточность
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Function_Libraries.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Библиотеки Функций для Blueprint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Latent_And_Async_Actions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latent и Async Action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Gameplay_Tags.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_DataAssets_AssetManager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с ассетами и данными
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_FileSystem.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_Anim_Instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anim Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_SubSystems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Подсистемы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12.%20UObject%20Interface.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Interface или UInterface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Продвинутая разработка
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Продвинутая разработка
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/1_HUD.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HUD или Heads-up Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/2_UFUNCTION_Wildcard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/3_Slate%20Runtime.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slate Runtimе, введение в Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/4_UMG.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/5_K2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/6_Registe_New_Asset_Type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/7_ACharacter_And_Enhanced%20Input.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACharacter и Enhanced Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/8_Gameplay_Ability_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Ability System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/9_Global_Data_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальнный доступ к данным
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/10_Global_Event_Bus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальная шина событий
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Решение проблем
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Решение проблем
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с кодировкой в LiveCoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/Reset_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Сброс (Reset) проекта
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/generatedh_Problems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с файлом .generated.h
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Советы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Советы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Change_Asset_Icons.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Asset Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Character_And_EnhancedInput.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character Boilerplate with Enhanced Input Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/DefaultToSelf_WorldContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DefaultToSelf WorldContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Different_UPROPERTY.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/GameInputMode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Изменение GameInputMode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Get_UScriptStruct_FromStruct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ::UScriptStruct из встроенной структуры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Input_Binding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События ввода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Iterate_TMap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterate TMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Read_Blueprint_Properties.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Чтение параметров Blueprint класса
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Return_UObject.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возвращение UObject по ссылке из функции
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Run_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Запуск консольных команд
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Screen_Size.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Размер экрана
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Slate_Snippets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Полезные сниппеты Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Spawn_Actors.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawn, призыв объектов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Time_Measuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Замер времени исполнения кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Trace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UEnum_To_String.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UEnum to FString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UObject_Base_Class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Base Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Variable_Type_Print_Template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Шаблон для печати типа переменной
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/struct_operator%3D%3D.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    struct и оператор ==
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Способы добавления суб объектов
+  </a>
+  
+    <nav class="md-nav" aria-label="Способы добавления суб объектов">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createdefaultsubobject" class="md-nav__link">
+    CreateDefaultSubobject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createoptionaldefaultsubobject" class="md-nav__link">
+    CreateOptionalDefaultSubobject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Удаление унаследованного суб объекта
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createeditoronlydefaultsubobject" class="md-nav__link">
+    CreateEditorOnlyDefaultSubobject
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Получение списка всех суб объектов класса
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Получение ссылки на суб объект по имени
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Переопределение суб объектов
+  </a>
+  
+    <nav class="md-nav" aria-label="Переопределение суб объектов">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#charactermovementcomponent" class="md-nav__link">
+    Создаем класс CharacterMovementComponent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skeletalmeshcomponent" class="md-nav__link">
+    Создаем класс SkeletalMeshComponent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Замена
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Что будет, если не использовать инициализацию через конструктор?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uobject" class="md-nav__link">
+    Добавляем компонент к UObject
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">Суб Объекты</h1>
+<p>Суб объект - это инициализированный <code>UObject</code>, вложенный в другой <code>UObject</code>. Поскольку все основные классы <code>Unreal Engine</code> наследуются от <code>UObject</code>, используя механику суб объектов можно вкладывать одни компонеты в другие компоненты или вкладывать один <code>Actor</code> в другой <code>Actor</code>.
+Но чаще всего механику суб объектов используют для вложения компонентов в другие компоненты или классы <code>Actor</code>.
+Суб объекты, унаследованные от родительского класса, при необходимости, можно переопределять или удалять.</p>
+<p>В редакторе <code>Unreal</code> суб объекты компонентов можно увидеть в древе <code>blueprint</code> класса, например, <code>Character</code>. Cуб объектами класса <code>Character</code> являются <code>CapsuleComponent</code>, <code>ArrowComponent</code>, <code>MeshComponent</code> и <code>CharacterMovementComponent</code>.</p>
+<p><a class="glightbox" href="../images/d7ca29ed88659c30bc1c29c8de10d60d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d7ca29ed88659c30bc1c29c8de10d60d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d7ca29ed88659c30bc1c29c8de10d60d.png" /></a></p>
+<p>Если вы пишете игру на чистом <code>с++</code>, то именно через суб объекты вы будете конструировать собственные классы.</p>
+<p>Пример добавления суб объекта типа <code>UStaticMeshComponent</code> к классу <code>ACharacterTest</code>:
+<div class="highlight"><pre><span></span><code><span class="c1">// .h</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CHARACTERSMODULE_API</span><span class="w"> </span><span class="n">ACharacterTest</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ACharacter</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// Test StaticMeshComponent Subobject</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SubobjectTestCharacter</span><span class="p">,</span><span class="w"> </span><span class="n">VisibleAnywhere</span><span class="p">)</span>
+<span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UStaticMeshComponent</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TestMesh</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// .cpp</span>
+<span class="c1">// in constructor!</span>
+<span class="n">ACharacterTest</span><span class="o">::</span><span class="n">ACharacterTest</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span>
+<span class="w">    </span><span class="n">PrimaryActorTick</span><span class="p">.</span><span class="n">bCanEverTick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// initialise test mesh subobject</span>
+<span class="w">    </span><span class="n">TestMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateDefaultSubobject</span><span class="o">&lt;</span><span class="n">UStaticMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Test Mesh Component&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+В коде присутствует переменная <code>TestMesh</code> типа <code>UStaticMeshComponent</code>. Она и является суб объектом. Это не обязательно должен быть компонент, но основная практика применения <code>CreateDefaultSubobject</code> сводится именно к инициализации компонентов.</p>
+<p><em>(Хотя компоненты можно добавлять и другими способами, в том числе и в рунтайме.)</em></p>
+<p>Суб объект <code>TestMesh</code> внутри класса <code>ACharacterTest</code> выглядит так:</p>
+<p><a class="glightbox" href="../images/9ab430ebbfbe54fe52724abbdc64b192.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9ab430ebbfbe54fe52724abbdc64b192.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9ab430ebbfbe54fe52724abbdc64b192.png" /></a></p>
+<p>"По умолчанию" у класса <code>ACharacter</code> уже есть ряд суб объектов, в данном случае это <code>Capsule Component</code>, <code>Arrow Component</code>, <code>Mesh</code>, <code>Character Movement</code>. Приведенный выше код, добавил к списку этих суб объектов новый - <code>TestMesh</code>.</p>
+<h2 id="_2">Способы добавления суб объектов</h2>
+<p>Инициализация суб объекта всегда проводится в конструкторе класса. Вне конструктора класса вызов любой из функций, указанных ниже, в этой главе, приведет к сбою движка.</p>
+<p>Суб объекты компонентов можно добавлять к ЛЮБЫМ классам, не только к тем, которые наследуются от <code>AActor</code>, а вообще к любому <code>UObject</code>. Например используя суб объекты можно подключить компонент от <code>GameplayAbilitySystem</code> к классу <code>PlayerState</code>. В будущем это мы рассмотрим.</p>
+<p>Добавление суб объекта выполняется функциями:</p>
+<h3 id="createdefaultsubobject"><code>CreateDefaultSubobject</code></h3>
+<p><code>CreateDefaultSubobject</code> - создает переопределяемый суб объект
+<div class="highlight"><pre><span></span><code><span class="n">TestMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateDefaultSubobject</span><span class="o">&lt;</span><span class="n">UStaticMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Test Mesh Component&quot;</span><span class="p">));</span>
+</code></pre></div></p>
+<h3 id="createoptionaldefaultsubobject"><code>CreateOptionalDefaultSubobject</code></h3>
+<p><code>CreateOptionalDefaultSubobject</code> - создает переопределяемый суб объект, генерацию которого можно отменить, если в унаследованном классе указать внутри конструктора вызов <code>DoNotCreateDefaultSubobject</code>.
+<div class="highlight"><pre><span></span><code><span class="n">TestMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateOptionalDefaultSubobject</span><span class="o">&lt;</span><span class="n">UStaticMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Test Mesh Component&quot;</span><span class="p">));</span>
+</code></pre></div></p>
+<h3 id="_3">Удаление унаследованного суб объекта</h3>
+<p>Давайте отменим генерацию компонента для <code>CharacterMesh0</code> нашего персонажа.</p>
+<p><a class="glightbox" href="../images/1f2a913d508a44f7dfd3c52facb47f36.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1f2a913d508a44f7dfd3c52facb47f36.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1f2a913d508a44f7dfd3c52facb47f36.png" /></a></p>
+<p>Поскольку компонент <code>CharacterMesh0</code> внутри класса <code>ACharacter</code> создается следующим образом:
+<div class="highlight"><pre><span></span><code><span class="n">Mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateOptionalDefaultSubobject</span><span class="o">&lt;</span><span class="n">USkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ACharacter</span><span class="o">::</span><span class="n">MeshComponentName</span><span class="p">);</span>
+</code></pre></div>
+Мы можем отменить его генерацию.</p>
+<p><a class="glightbox" href="../images/9e82ae26d91f8876ded5ae6765bb1a7c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9e82ae26d91f8876ded5ae6765bb1a7c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9e82ae26d91f8876ded5ae6765bb1a7c.png" /></a></p>
+<p>Пишем в конструкторе такой код:
+<div class="highlight"><pre><span></span><code><span class="n">ACharacterTest</span><span class="o">::</span><span class="n">ACharacterTest</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span><span class="o">:</span><span class="n">Super</span><span class="p">(</span><span class="n">ObjectInitializer</span><span class="p">.</span><span class="n">DoNotCreateDefaultSubobject</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;CharacterMesh0&quot;</span><span class="p">)))</span>
+<span class="p">{}</span>
+</code></pre></div>
+После компиляции компонент <code>CharacterMesh0</code> пропадает.</p>
+<p><a class="glightbox" href="../images/1c37c1f5044d1bac466ed334a44f5aa4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1c37c1f5044d1bac466ed334a44f5aa4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1c37c1f5044d1bac466ed334a44f5aa4.png" /></a></p>
+<h3 id="createeditoronlydefaultsubobject"><code>CreateEditorOnlyDefaultSubobject</code></h3>
+<p><code>CreateEditorOnlyDefaultSubobject</code> - создает суб объект, доступный только внутри редактора <code>Unreal Engine</code>.
+<div class="highlight"><pre><span></span><code><span class="n">TestMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateEditorOnlyDefaultSubobject</span><span class="o">&lt;</span><span class="n">UStaticMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Test Mesh Component&quot;</span><span class="p">));</span>
+</code></pre></div></p>
+<h2 id="_4">Получение списка всех суб объектов класса</h2>
+<p>Чтобы получить список суб объектов класса, можно пройтись по ним в цикле:
+<div class="highlight"><pre><span></span><code><span class="n">TArray</span><span class="o">&lt;</span><span class="n">UObject</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">SubobjectsList</span><span class="p">;</span>
+<span class="n">GetDefaultSubobjects</span><span class="p">(</span><span class="n">SubobjectsList</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">SObj</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">SubobjectsList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Found SubObject FName = %s&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="n">SObj</span><span class="o">-&gt;</span><span class="n">GetFName</span><span class="p">().</span><span class="n">ToString</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></div>
+В лог вам выдаст что-то такое:
+<div class="highlight"><pre><span></span><code><span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">Found</span><span class="w"> </span><span class="n">SubObject</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CollisionCylinder</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">Found</span><span class="w"> </span><span class="n">SubObject</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrow</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">Found</span><span class="w"> </span><span class="n">SubObject</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CharMoveComp</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">Found</span><span class="w"> </span><span class="n">SubObject</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CharacterMesh0</span>
+<span class="nl">LogTemp</span><span class="p">:</span><span class="w"> </span><span class="n">Warning</span><span class="o">:</span><span class="w"> </span><span class="n">Found</span><span class="w"> </span><span class="n">SubObject</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Test</span><span class="w"> </span><span class="n">Mesh</span><span class="w"> </span><span class="n">Component</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/4280e0a742d0685f3e900e0714dbb6b9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4280e0a742d0685f3e900e0714dbb6b9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4280e0a742d0685f3e900e0714dbb6b9.png" /></a></p>
+<p>Обратите внимание, что <code>CharacterMovementComponent</code> имеет имя <code>CharMoveComp</code>, а <code>Mesh</code> - <code>CharacterMesh0</code>.</p>
+<h2 id="_5">Получение ссылки на суб объект по имени</h2>
+<p>Суб объект может быть найден по имени, методом <code>GetDefaultSubobjectByName</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">// .h</span>
+<span class="c1">// Character Movement Component</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameFramework/CharacterMovementComponent.h&quot;</span>
+<span class="c1">// .cpp</span>
+<span class="n">ACharacterTest</span><span class="o">::</span><span class="n">ACharacterTest</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Get Character Movement Component ref by it&#39;s FName</span>
+<span class="w">    </span><span class="n">UCharacterMovementComponent</span><span class="o">*</span><span class="w"> </span><span class="n">CharMov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UCharacterMovementComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="w"> </span><span class="n">GetDefaultSubobjectByName</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;CharMoveComp&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CharMov</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Character Movement Component has been Found!&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="_6">Переопределение суб объектов</h2>
+<p>Суб объекты можно переопределять в конструкторе класса.</p>
+<p>Заменять будем <code>CharacterMovementComponent</code> и <code>Mesh</code>.
+Но для начала не плохо бы иметь классы, которыми мы будем заменять оригиналы.</p>
+<h3 id="charactermovementcomponent">Создаем класс <code>CharacterMovementComponent</code></h3>
+<p>Чаще всего переопределяют <code>CharacterMovementComponent</code>. Его переопределение позволяет создать собственную логику движения персонажа (но я делать этого тут не буду, просто покажу на "вход").</p>
+<p>Идем в редактор <code>Tools -&gt; New C++ Class -&gt; All Classes</code>.</p>
+<p><a class="glightbox" href="../images/c5c832a4bcd626846d7d7e291a357c85.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c5c832a4bcd626846d7d7e291a357c85.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c5c832a4bcd626846d7d7e291a357c85.png" /></a></p>
+<p>Выбираем <code>CharacterMovementComponent</code>, создаем с именем <code>CMCharacterMovementComponent</code>.</p>
+<p><a class="glightbox" href="../images/5b690ff990ddbb24f0325cc9afe6aa68.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5b690ff990ddbb24f0325cc9afe6aa68.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5b690ff990ddbb24f0325cc9afe6aa68.png" /></a></p>
+<p>Движок сгенерирует пустую болванку, в которую мы добавим дополнительную переменную.
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Test</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">CustomFloatParam</span><span class="p">;</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/363a3e8ff933618b451da106a46f1720.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="363a3e8ff933618b451da106a46f1720.png" auto_="auto;" display="block;" margin:="margin:" src="../images/363a3e8ff933618b451da106a46f1720.png" /></a></p>
+<h3 id="skeletalmeshcomponent">Создаем класс <code>SkeletalMeshComponent</code></h3>
+<p>Тем-же самым способом создаем еще один класс. На сей раз наследуем от <code>SkeletalMeshComponent</code>. Этот класс переопределяют чаще всего с одной целью - чтобы сделать собственную систему экипировки, способную комбинировать несколько мешей воедино.</p>
+<p><a class="glightbox" href="../images/8399bfcc1e5dced1e1aa6ebc57d51955.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="8399bfcc1e5dced1e1aa6ebc57d51955.png" auto_="auto;" display="block;" margin:="margin:" src="../images/8399bfcc1e5dced1e1aa6ebc57d51955.png" /></a></p>
+<p>Называем новый компонент - <code>CMSkeletalMeshComponent</code>.</p>
+<p><a class="glightbox" href="../images/7a10c5195efc18a0a346effc82d1727f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7a10c5195efc18a0a346effc82d1727f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7a10c5195efc18a0a346effc82d1727f.png" /></a></p>
+<p>Внутрь добавим одну переменную, пусть это будет ссылка на массив <code>USkeletalMesh</code>.
+<div class="highlight"><pre><span></span><code><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">VisibleAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mesh</span><span class="p">)</span>
+<span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">USkeletalMesh</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">SkeletalMeshList</span><span class="p">;</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/41c313cd64b5f46cc18472990b1591bb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="41c313cd64b5f46cc18472990b1591bb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/41c313cd64b5f46cc18472990b1591bb.png" /></a></p>
+<h3 id="_7">Замена</h3>
+<p>Для замены обоих компонентов в классе <code>ACharacterTest</code> используется конструктор, содержащий <code>FObjectInitializer</code>.
+<div class="highlight"><pre><span></span><code><span class="n">ACharacterTest</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/37f46f71ba24cd19ace96b5fee569abb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="37f46f71ba24cd19ace96b5fee569abb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/37f46f71ba24cd19ace96b5fee569abb.png" /></a></p>
+<p>Этот конструктор присутствует во всех <code>UObject'ах</code>. Он дает доступ к переменной <code>FObjectInitializer</code>, используя которую можно переопределять суб объекты.</p>
+<p>Делается это так:
+<div class="highlight"><pre><span></span><code><span class="n">ACharacterTest</span><span class="o">::</span><span class="n">ACharacterTest</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span><span class="o">:</span><span class="n">Super</span><span class="p">(</span><span class="n">ObjectInitializer</span><span class="p">.</span><span class="n">SetDefaultSubobjectClass</span><span class="o">&lt;</span><span class="n">UCMSkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ACharacter</span><span class="o">::</span><span class="n">MeshComponentName</span><span class="p">))</span>
+<span class="p">{}</span>
+</code></pre></div>
+То есть к конструктору класса приписывается вызов родительского конструктора.
+<div class="highlight"><pre><span></span><code><span class="o">:</span><span class="n">Super</span><span class="p">(</span><span class="n">ObjectInitializer</span><span class="p">.</span><span class="n">SetDefaultSubobjectClass</span><span class="o">&lt;</span><span class="n">UCMSkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ACharacter</span><span class="o">::</span><span class="n">MeshComponentName</span><span class="p">))</span>
+</code></pre></div>
+Но у нас два компонента, а не один. Есть еще <code>UCMCharacterMovementComponent</code>.
+Чтобы добавить еще один компонент в строчку, пропишем еще один вызов функции <code>SetDefaultSubobjectClass</code> таким образом:
+<div class="highlight"><pre><span></span><code><span class="c1">// Sets default values</span>
+<span class="n">ACharacterTest</span><span class="o">::</span><span class="n">ACharacterTest</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="o">:</span><span class="n">Super</span><span class="p">(</span><span class="n">ObjectInitializer</span><span class="p">.</span><span class="n">SetDefaultSubobjectClass</span><span class="o">&lt;</span><span class="n">UCMSkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ACharacter</span><span class="o">::</span><span class="n">MeshComponentName</span><span class="p">).</span><span class="n">SetDefaultSubobjectClass</span><span class="o">&lt;</span><span class="n">UCMCharacterMovementComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ACharacter</span><span class="o">::</span><span class="n">CharacterMovementComponentName</span><span class="p">)</span>
+<span class="p">){}</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/cdcfefc92052c85358920a623f6e7f62.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="cdcfefc92052c85358920a623f6e7f62.png" auto_="auto;" display="block;" margin:="margin:" src="../images/cdcfefc92052c85358920a623f6e7f62.png" /></a></p>
+<p>Если скомпилировать этот код, то мы увидим, как оба компонента были заменены.</p>
+<p>В компоненте <code>CharacterMovement</code> теперь присутствует переменная <code>CustomFloatParam</code>.</p>
+<p><a class="glightbox" href="../images/f5cdcc530697fa1682509575aa3c553c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f5cdcc530697fa1682509575aa3c553c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f5cdcc530697fa1682509575aa3c553c.png" /></a></p>
+<p>А в компоненте <code>Mesh</code> присутствует переменная <code>SkeletalMeshList</code>.</p>
+<p><a class="glightbox" href="../images/19ff8bbbd93cd00d15085cfd5c678b13.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="19ff8bbbd93cd00d15085cfd5c678b13.png" auto_="auto;" display="block;" margin:="margin:" src="../images/19ff8bbbd93cd00d15085cfd5c678b13.png" /></a></p>
+<h3 id="_8">Что будет, если не использовать инициализацию через конструктор?</h3>
+<p>Подход, рекомендованный движком для переопределения компонентов, выглядит крайне неудобно. Но именно так делают абсолютно все.</p>
+<p>Что если все ошибаются?
+Не станете же вы считать эту мешанину из кода чем-то "хорошим?".
+<div class="highlight"><pre><span></span><code><span class="n">ACharacterTest</span><span class="o">::</span><span class="n">ACharacterTest</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="o">:</span><span class="n">Super</span><span class="p">(</span><span class="n">ObjectInitializer</span><span class="p">.</span><span class="n">SetDefaultSubobjectClass</span><span class="o">&lt;</span><span class="n">UCMSkeletalMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ACharacter</span><span class="o">::</span><span class="n">MeshComponentName</span><span class="p">).</span><span class="n">SetDefaultSubobjectClass</span><span class="o">&lt;</span><span class="n">UCMCharacterMovementComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ACharacter</span><span class="o">::</span><span class="n">CharacterMovementComponentName</span><span class="p">)</span>
+<span class="p">){}</span>
+</code></pre></div>
+Я решил попробовать вызвать метод <code>SetDefaultSubobjectClass</code> вне инициализации конструктора.</p>
+<p><a class="glightbox" href="../images/b044a922eff5b8448b18e08491d5d75c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b044a922eff5b8448b18e08491d5d75c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b044a922eff5b8448b18e08491d5d75c.png" /></a></p>
+<p>К сожалению ничего не вышло, в движке случился сбой с таким текстом ошибки:
+<div class="highlight"><pre><span></span><code><span class="n">CharacterTest</span><span class="w"> </span><span class="o">/</span><span class="n">Script</span><span class="o">/</span><span class="n">CharactersModule</span><span class="p">.</span><span class="n">Default__CharacterTest</span><span class="p">.</span><span class="n">CharacterMesh0</span><span class="o">:</span><span class="w"> </span><span class="n">Subobject</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">setup</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">allowed</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">constructor</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">initialization</span><span class="w"> </span><span class="n">list</span><span class="p">)</span>
+</code></pre></div>
+Из этого можно сделать вывод, что переопределение суб объектов возможно лишь в конструкторе через <code>:Super</code>.
+Ну а для более "читабельного" вида, советую организовывать код через сноски.</p>
+<p><a class="glightbox" href="../images/4d0b5f2a666c6a0155c692225ceb0dec.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4d0b5f2a666c6a0155c692225ceb0dec.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4d0b5f2a666c6a0155c692225ceb0dec.png" /></a></p>
+<h2 id="uobject">Добавляем компонент к <code>UObject</code></h2>
+<p>Редактор <code>Unreal</code> разрешает добавлять компоненты лишь к классам, унаследованным от типа <code>Actor</code>.</p>
+<p><a class="glightbox" href="../images/f9ac490f898cf689a9a295eccd6a1800.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f9ac490f898cf689a9a295eccd6a1800.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f9ac490f898cf689a9a295eccd6a1800.png" /></a></p>
+<p>Добавлять компоненты к классам типа <code>UObject</code> из <code>blueprint</code> разработчик не может.</p>
+<p>Добавить компонент к <code>UObject</code> можно только средствами <code>с++</code>, используя суб объекты.</p>
+<p>Давайте рассмотрим самый абсурдный из примеров - прикрепим компонент с визуальной составляющей, например <code>StaticMeshComponent</code> к классу без визуальной составляющей. Посмотрим как себя поведет система.</p>
+<p>Добавляем новый <code>UObject</code>. Идем <code>Tools -&gt; New C++ Class -&gt; All Classes -&gt; Object</code>.</p>
+<p><a class="glightbox" href="../images/be0ff12e3f04d3b1977315edff6ebed1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="be0ff12e3f04d3b1977315edff6ebed1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/be0ff12e3f04d3b1977315edff6ebed1.png" /></a></p>
+<p>Называем новый класс <code>ObjectSubObject</code> и добавляем в модуль <code>TestModule</code>.</p>
+<p><a class="glightbox" href="../images/2f87f892cf7ecbf44ba8e84fb6eea2da.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2f87f892cf7ecbf44ba8e84fb6eea2da.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2f87f892cf7ecbf44ba8e84fb6eea2da.png" /></a></p>
+<p>Добавляем в созданный класс новую переменную <code>UStaticMeshComponent</code> и конструктор с доступом к <code>FObjectInitializer</code>.
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UObject/NoExportTypes.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ObjectSubObject.generated.h&quot;</span>
+<span class="cm">/**</span>
+<span class="cm"> * UObject with Static Mesh Sub Object</span>
+<span class="cm"> */</span>
+<span class="n">UCLASS</span><span class="p">(</span><span class="n">Blueprintable</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintType</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TESTMODULE_API</span><span class="w"> </span><span class="n">UObjectSubObject</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UObject</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">UObjectSubObject</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Subobject Test</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SubObjectsTest&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UStaticMeshComponent</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SOStaticMeshComponent</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+Теперь идем в файл реализации и пишем логику добавления суб объекта.
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ObjectSubObject.h&quot;</span>
+<span class="n">UObjectSubObject</span><span class="o">::</span><span class="n">UObjectSubObject</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">SOStaticMeshComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateDefaultSubobject</span><span class="o">&lt;</span><span class="n">UStaticMeshComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Test SM SubComponent&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+Компилируем.</p>
+<p>Компонент добавится, несмотря на то, что у нашего класса <code>UObjectTestClass</code> нет никакого визуального представления.</p>
+<p>Создадим <code>blueprint</code> унаследованный от класса <code>UObjectSubObject</code> и посмотрим, на его содержимое.</p>
+<p><a class="glightbox" href="../images/abbb22cd0c2204b523759d85645c0890.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="abbb22cd0c2204b523759d85645c0890.png" auto_="auto;" display="block;" margin:="margin:" src="../images/abbb22cd0c2204b523759d85645c0890.png" /></a></p>
+<p><a class="glightbox" href="../images/f272136e7ae86f6113abc55b8424fc35.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f272136e7ae86f6113abc55b8424fc35.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f272136e7ae86f6113abc55b8424fc35.png" /></a></p>
+<p>Созданный класс пуст. Однако к переменной суб объекта можно обратиться и даже задать ей <code>StatcMesh</code>. Я задал туда цилиндр.</p>
+<p><a class="glightbox" href="../images/5fa62c8f0f994195c115eb5422bed5f2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5fa62c8f0f994195c115eb5422bed5f2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5fa62c8f0f994195c115eb5422bed5f2.png" /></a></p>
+<p><a class="glightbox" href="../images/bbf1c3958ae72651b93b77e932fc5089.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="bbf1c3958ae72651b93b77e932fc5089.png" auto_="auto;" display="block;" margin:="margin:" src="../images/bbf1c3958ae72651b93b77e932fc5089.png" /></a></p>
+<p>У хотя все устанавливается - меш в мире нигде не появляется. Так происходит, потому что у класса <code>UObject</code> нет визуального представления.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            К началу
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      aftamat4ik
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

@@ -1,0 +1,3080 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Справочник Unreal Engine">
+      
+      
+        <meta name="author" content="aftamat4ik">
+      
+      
+      
+        <link rel="prev" href="3_Slate%20Runtime.html">
+      
+      
+        <link rel="next" href="5_K2.html">
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
+    
+    
+      
+        <title>UMG - Справочник Unreal Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#umg" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-header__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Справочник Unreal Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UMG
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1_Basics/1_First_Project.html" class="md-tabs__link">
+          
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../2_Core/1_Delegates.html" class="md-tabs__link">
+          
+  
+  Ключевые системы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="1_HUD.html" class="md-tabs__link">
+          
+  
+  Продвинутая разработка
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-tabs__link">
+          
+  
+  Решение проблем
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../5_Tips/Change_Asset_Icons.html" class="md-tabs__link">
+          
+  
+  Советы
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-nav__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    Справочник Unreal Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Основы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Основы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/1_First_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/2_Engine_Introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/3_CPP_Recommendations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Рекомендации по написанию кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/4_SimplePlugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создание простейшего плагина для Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/5_Macroses_Reflection_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Макросы Reflection System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/6_Logging.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Печать информации в лог
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/7_Pointers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Указатели
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/8_ModernCpp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возможности современного c++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/9_Working_With_Strings.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа со строками
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/10_Timers_In_%D0%A1%2B%2B.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Таймеры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/11_Instances_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Доступ к различным сущностям
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Asserts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Asserts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Console Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ключевые системы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ключевые системы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/1_Delegates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/2_Components.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/3_SubObjects.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/4_Multithreading.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Многопоточность
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/5_Function_Libraries.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Библиотеки Функций для Blueprint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/6_Latent_And_Async_Actions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latent и Async Action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/7_Gameplay_Tags.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/8_DataAssets_AssetManager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с ассетами и данными
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/9_FileSystem.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/10_Anim_Instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anim Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/11_SubSystems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Подсистемы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/12.%20UObject%20Interface.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Interface или UInterface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Продвинутая разработка
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Продвинутая разработка
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_HUD.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HUD или Heads-up Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_UFUNCTION_Wildcard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_Slate%20Runtime.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slate Runtimе, введение в Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="4_UMG.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Вступление
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#umg_1" class="md-nav__link">
+    Добавление виджетов UMG на экран
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавление виджетов UMG на экран">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Подготовка к работе
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#umg_2" class="md-nav__link">
+    Совмещение с++ кода и UMG дизайна
+  </a>
+  
+    <nav class="md-nav" aria-label="Совмещение с++ кода и UMG дизайна">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Пишем код
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metabindwidget" class="md-nav__link">
+    Meta=(BindWidget)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebuildwidget" class="md-nav__link">
+    RebuildWidget
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Полный код класса
+  </a>
+  
+    <nav class="md-nav" aria-label="Полный код класса">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#userinterfacecoreh" class="md-nav__link">
+    Файл UserInterfaceCore.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userinterfacecorecpp" class="md-nav__link">
+    Файл UserInterfaceCore.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#umg_3" class="md-nav__link">
+    Собственные UMG виджеты
+  </a>
+  
+    <nav class="md-nav" aria-label="Собственные UMG виджеты">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rebuildwidget_1" class="md-nav__link">
+    RebuildWidget
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronizeproperties" class="md-nav__link">
+    SynchronizeProperties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releaseslateresources" class="md-nav__link">
+    ReleaseSlateResources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#titleblock" class="md-nav__link">
+    Виджет TitleBlock
+  </a>
+  
+    <nav class="md-nav" aria-label="Виджет TitleBlock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#titleblockwidgeth" class="md-nav__link">
+    Файл TitleBlockWidget.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#titleblockwidgetcpp" class="md-nav__link">
+    Файл TitleBlockWidget.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Объяснение принципов
+  </a>
+  
+    <nav class="md-nav" aria-label="Объяснение принципов">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Привязываемые параметры
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Категория виджета
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Добавление иконки для виджета
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавление иконки для виджета">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#umgruntimemoduleh" class="md-nav__link">
+    Файл UMGRuntimeModule.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umgruntimemodulecpp" class="md-nav__link">
+    Файл UMGRuntimeModule.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_K2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Registe_New_Asset_Type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_ACharacter_And_Enhanced%20Input.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACharacter и Enhanced Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_Gameplay_Ability_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Ability System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_Global_Data_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальнный доступ к данным
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_Global_Event_Bus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальная шина событий
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Решение проблем
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Решение проблем
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с кодировкой в LiveCoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/Reset_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Сброс (Reset) проекта
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/generatedh_Problems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с файлом .generated.h
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Советы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Советы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Change_Asset_Icons.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Asset Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Character_And_EnhancedInput.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character Boilerplate with Enhanced Input Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/DefaultToSelf_WorldContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DefaultToSelf WorldContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Different_UPROPERTY.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/GameInputMode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Изменение GameInputMode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Get_UScriptStruct_FromStruct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ::UScriptStruct из встроенной структуры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Input_Binding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События ввода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Iterate_TMap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterate TMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Read_Blueprint_Properties.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Чтение параметров Blueprint класса
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Return_UObject.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возвращение UObject по ссылке из функции
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Run_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Запуск консольных команд
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Screen_Size.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Размер экрана
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Slate_Snippets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Полезные сниппеты Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Spawn_Actors.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawn, призыв объектов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Time_Measuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Замер времени исполнения кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Trace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UEnum_To_String.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UEnum to FString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/UObject_Base_Class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Base Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/Variable_Type_Print_Template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Шаблон для печати типа переменной
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_Tips/struct_operator%3D%3D.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    struct и оператор ==
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Вступление
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#umg_1" class="md-nav__link">
+    Добавление виджетов UMG на экран
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавление виджетов UMG на экран">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Подготовка к работе
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#umg_2" class="md-nav__link">
+    Совмещение с++ кода и UMG дизайна
+  </a>
+  
+    <nav class="md-nav" aria-label="Совмещение с++ кода и UMG дизайна">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Пишем код
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metabindwidget" class="md-nav__link">
+    Meta=(BindWidget)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebuildwidget" class="md-nav__link">
+    RebuildWidget
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Полный код класса
+  </a>
+  
+    <nav class="md-nav" aria-label="Полный код класса">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#userinterfacecoreh" class="md-nav__link">
+    Файл UserInterfaceCore.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userinterfacecorecpp" class="md-nav__link">
+    Файл UserInterfaceCore.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#umg_3" class="md-nav__link">
+    Собственные UMG виджеты
+  </a>
+  
+    <nav class="md-nav" aria-label="Собственные UMG виджеты">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rebuildwidget_1" class="md-nav__link">
+    RebuildWidget
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronizeproperties" class="md-nav__link">
+    SynchronizeProperties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#releaseslateresources" class="md-nav__link">
+    ReleaseSlateResources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#titleblock" class="md-nav__link">
+    Виджет TitleBlock
+  </a>
+  
+    <nav class="md-nav" aria-label="Виджет TitleBlock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#titleblockwidgeth" class="md-nav__link">
+    Файл TitleBlockWidget.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#titleblockwidgetcpp" class="md-nav__link">
+    Файл TitleBlockWidget.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Объяснение принципов
+  </a>
+  
+    <nav class="md-nav" aria-label="Объяснение принципов">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Привязываемые параметры
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Категория виджета
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Добавление иконки для виджета
+  </a>
+  
+    <nav class="md-nav" aria-label="Добавление иконки для виджета">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#umgruntimemoduleh" class="md-nav__link">
+    Файл UMGRuntimeModule.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umgruntimemodulecpp" class="md-nav__link">
+    Файл UMGRuntimeModule.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="umg">UMG</h1>
+<p>Unreal Motion Graphics или <code>UMG</code> - это графическая обертка над виджетами <code>Slate</code>, позволяющая использовать эти виджеты в редакторе <code>Unreal</code>.</p>
+<h2 id="_1">Вступление</h2>
+<p>Чтобы посмотреть на список доступных по умолчанию <code>UMG</code> виджетов, давайте создадим новый <code>widget blueprint</code>.
+В <code>Content Browset</code> идем по пути <code>Add -&gt; User Interface -&gt; Widget Blueprint</code>.</p>
+<p><a class="glightbox" href="../images/fb87efb2e9d40f2a433315bd965ba807.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="fb87efb2e9d40f2a433315bd965ba807.png" auto_="auto;" display="block;" margin:="margin:" src="../images/fb87efb2e9d40f2a433315bd965ba807.png" /></a></p>
+<p>В появившемся всплывающем окне выбираем класс <code>UserWidget</code> и называем … <code>WidgetTest</code>.</p>
+<p><a class="glightbox" href="../images/576d68010ca8c79aa17a6fb389288f84.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="576d68010ca8c79aa17a6fb389288f84.png" auto_="auto;" display="block;" margin:="margin:" src="../images/576d68010ca8c79aa17a6fb389288f84.png" /></a></p>
+<p>Открыв созданный файл мы увидим перед собой окно графического редактора, со списком <code>UMG</code> виджетов в панели <code>Pallete</code>.</p>
+<p><a class="glightbox" href="../images/e93baca3200567163ce8a5549dc3ea73.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e93baca3200567163ce8a5549dc3ea73.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e93baca3200567163ce8a5549dc3ea73.png" /></a></p>
+<p>Эти виджеты можно перетаскивать на экран, формируя пользовательский интерфейс. В первую очередь тут нас интересуют виджеты <code>Overlay</code> и <code>CanvasPanel</code>, найти их можно в категории <code>Panel</code>.</p>
+<p><a class="glightbox" href="../images/3c91b8db0cfb078918e5efeb9a26afe6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3c91b8db0cfb078918e5efeb9a26afe6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3c91b8db0cfb078918e5efeb9a26afe6.png" /></a></p>
+<p><code>Canvas</code> работает как гибкая сетка, скалируемая под размер экрана.</p>
+<p>Хотя на самом деле я не должен тут объяснять, как работают базовые виджеты. Подразумевается, что покупатель, который полез в<code>c++</code> уже знает как они работают…
+Ладно, предположим, что читатель ничего не знает. Скорее всего большинство читателей эту часть статьи просто пропустит и будет соврешенно право.</p>
+<p>В <code>Canvas</code> вы можете задать т.н. <code>Anchors</code>, то есть якоря, на которых будет крепиться добавленный туда элемент управления. Добавьте <code>Button</code>.</p>
+<p><a class="glightbox" href="../images/675581027879492e43cbe60bc74d4c61.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="675581027879492e43cbe60bc74d4c61.png" auto_="auto;" display="block;" margin:="margin:" src="../images/675581027879492e43cbe60bc74d4c61.png" /></a></p>
+<p>Якоря отображаются как … своеобразный цветок в левом верхнем углу экрана.</p>
+<p>Именно на основе якорей кнопка выбирает собственные отступы, указанные в параметрах.</p>
+<p><a class="glightbox" href="../images/145e434005b9f901098d61c959f18f60.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="145e434005b9f901098d61c959f18f60.png" auto_="auto;" display="block;" margin:="margin:" src="../images/145e434005b9f901098d61c959f18f60.png" /></a></p>
+<p>Якоря можно перетащить на позицию кнопки, чтобы четко зафиксировать ее положение, при изменении размеров экрана.</p>
+<p><a class="glightbox" href="../images/f3465b678f60ccb3a1d610213b594f73.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f3465b678f60ccb3a1d610213b594f73.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f3465b678f60ccb3a1d610213b594f73.png" /></a></p>
+<p>Кнопка может быть растянута под размер якорей. Потянув за верхнюю и боковую части "цветка" вы можете сформировать прямоугольник.</p>
+<p><a class="glightbox" href="../images/11df386536b76e25e022c5c9f427583c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="11df386536b76e25e022c5c9f427583c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/11df386536b76e25e022c5c9f427583c.png" /></a></p>
+<p>Чтобы растянуть кнопку под якоря, достаточно установить параметры отступов в <code>0</code>.
+Установите <code>Offset Left</code>, <code>Offset Top</code>, <code>Offset Right</code> и <code>Offset Botton</code> в <code>0</code>.</p>
+<p><a class="glightbox" href="../images/4c529df6d3cfda0f35bf0808e71141c4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4c529df6d3cfda0f35bf0808e71141c4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4c529df6d3cfda0f35bf0808e71141c4.png" /></a></p>
+<p>Как вы видите - кнопка растянулась.</p>
+<h2 id="umg_1">Добавление виджетов <code>UMG</code> на экран</h2>
+<p>Чтобы добавить <code>UMG</code> виджет на экран нам нужен <code>blueprint</code> класс - <code>PlayerController</code>.
+Давайте его создадим.</p>
+<p>В <code>Content Browser</code> идем <code>Add -&gt; Blueprint Class</code>.</p>
+<p><a class="glightbox" href="../images/f3bee109980c5a36cbbb8da0d5066fcb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f3bee109980c5a36cbbb8da0d5066fcb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f3bee109980c5a36cbbb8da0d5066fcb.png" /></a></p>
+<p>Из заготовок выбираем <code>Player Controller</code>.</p>
+<p><a class="glightbox" href="../images/b4e33bd944a708433d6586163be06919.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="b4e33bd944a708433d6586163be06919.png" auto_="auto;" display="block;" margin:="margin:" src="../images/b4e33bd944a708433d6586163be06919.png" /></a></p>
+<p>Называем <code>BP_PlayerController</code>.</p>
+<p><a class="glightbox" href="../images/78073ca44bbf9ef5d088ca592a0b38fe.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="78073ca44bbf9ef5d088ca592a0b38fe.png" auto_="auto;" display="block;" margin:="margin:" src="../images/78073ca44bbf9ef5d088ca592a0b38fe.png" /></a></p>
+<p>Открываем созданный файл и добавляем в событие <code>Begin Play</code> узел <code>Create Widget</code>.</p>
+<p><a class="glightbox" href="../images/1aedbf38751c748e83c1e3a286ce85b6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1aedbf38751c748e83c1e3a286ce85b6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1aedbf38751c748e83c1e3a286ce85b6.png" /></a></p>
+<p>В созданном <code>blueprint</code> узле выбираем класс нашего виджета <code>WidgetTest</code>.</p>
+<p><a class="glightbox" href="../images/1f514bd2ac70487e81443155cecf504b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1f514bd2ac70487e81443155cecf504b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1f514bd2ac70487e81443155cecf504b.png" /></a></p>
+<p>Чтобы виджет появился на экране игрока выбираем узел <code>Add To Player Screen</code>.</p>
+<p><a class="glightbox" href="../images/789ee7f5c16e484af1462d2bc2b66087.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="789ee7f5c16e484af1462d2bc2b66087.png" auto_="auto;" display="block;" margin:="margin:" src="../images/789ee7f5c16e484af1462d2bc2b66087.png" /></a></p>
+<p>Теперь надо, чтобы наш контроллер загружался, при запуске игры. Для этого идем в <code>BP_ThirdPersonGameMode</code> и устанавливаем там в параметр <code>Player Controller Class</code> наш класс <code>BP_PlayerController</code>.</p>
+<p><a class="glightbox" href="../images/4f2eca321490fce6bb2cfb6db2877e79.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4f2eca321490fce6bb2cfb6db2877e79.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4f2eca321490fce6bb2cfb6db2877e79.png" /></a></p>
+<p>При запуске проекта виджет загружается и показывает кнопку, которую мы туда добавили ранее.</p>
+<p><a class="glightbox" href="../images/e55fd36ecf374b67ad9123f5bed85a1b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e55fd36ecf374b67ad9123f5bed85a1b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e55fd36ecf374b67ad9123f5bed85a1b.png" /></a></p>
+<h3 id="_2">Подготовка к работе</h3>
+<p>Создаем модуль <code>UMGRuntimeModule</code>.</p>
+<p><a class="glightbox" href="../images/7a915ff63de8203160c1dca8935283de.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7a915ff63de8203160c1dca8935283de.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7a915ff63de8203160c1dca8935283de.png" /></a></p>
+<p>Теперь надо подключить зависимости от соответствующих модулей.</p>
+<p>Открываем файл <code>.build.cs</code> и добавляем в зависимости строчку:
+<div class="highlight"><pre><span></span><code><span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;UMG&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Slate&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SlateCore&quot;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/cd879423296d79062135dcf7576ddba3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="cd879423296d79062135dcf7576ddba3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/cd879423296d79062135dcf7576ddba3.png" /></a></p>
+<p>Это позволит использовать в созданном модуле как <code>Slate</code>, так и <code>UMG</code>.</p>
+<h2 id="umg_2">Совмещение с++ кода и <code>UMG</code> дизайна</h2>
+<p>Программирование <code>UMG</code> виджетов через <code>blueprint</code> код не всегда эффективно из-за проблем производительности. Иногда, часть логики лучше вынести в <code>с++</code>, потому что такой код работает во много раз быстрее <code>blueprint</code> кода.</p>
+<p>При этом, в отличие от <code>Slate</code>, который полностью ориентирован на <code>с++</code>, у вас сохранится возможность использования графического редактора при организации элементов управления. Таким образом вы берете позитивные стороны обоих "миров".</p>
+<p>От <code>blueprint</code> вы получаете удобный редактор интерфейса, а от <code>с++</code> - производительность.</p>
+<p>За класс, позволяющий совмещать <code>UMG</code> дизайн с <code>с++</code> составляющей в Unreal Engine отвечает <code>UUserWidget</code>, который можно найти по пути <code>\Engine\Source\Runtime\UMG\Public\Blueprint\UserWidget.h</code>.
+Добавляем собственный класс, унаследованный от <code>UUserWidget</code>.
+<code>Tools -&gt; New C++ Class -&gt; All Classes -&gt; User Widget</code></p>
+<p><a class="glightbox" href="../images/499e358527ad0463ba04ae5cd719d201.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="499e358527ad0463ba04ae5cd719d201.png" auto_="auto;" display="block;" margin:="margin:" src="../images/499e358527ad0463ba04ae5cd719d201.png" /></a></p>
+<p>Я называю виджет <code>UserInterfaceCore</code>.</p>
+<p><a class="glightbox" href="../images/affd6db58aa3c039d0f3aa52d8f4db02.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="affd6db58aa3c039d0f3aa52d8f4db02.png" auto_="auto;" display="block;" margin:="margin:" src="../images/affd6db58aa3c039d0f3aa52d8f4db02.png" /></a></p>
+<h3 id="_3">Пишем код</h3>
+<p>Базовая заготовка, которую нам сгенерирует движок, никуда не годится. Ее надо переписать.</p>
+<p><a class="glightbox" href="../images/7ca94249da7d152c9d087c18d36be50c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="7ca94249da7d152c9d087c18d36be50c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/7ca94249da7d152c9d087c18d36be50c.png" /></a></p>
+<p>Классы, унаследованные от <code>UUserWidget</code> рекомендуется делать <code>abstract</code>, чтобы их нельзя было выбрать для спавна виджета. Потому что сами они элементы пользовательского интерфейса обычно не  содержат.</p>
+<p>Система построена так, чтобы пользователь использовал <code>UUserWidget</code> для добавления <code>blueprintable</code> методов и переменных, которые затем становятся доступны в унаследованных <code>UMG</code> виджетах.</p>
+<p>Поправим класс и добавим в него какую-нибудь примитивную функцию.
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Blueprint/UserWidget.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserInterfaceCore.generated.h&quot;</span>
+<span class="cm">/**</span>
+<span class="cm"> * Game User Interface base class</span>
+<span class="cm"> */</span>
+<span class="n">UCLASS</span><span class="p">(</span><span class="n">abstract</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UMGRUNTIMEMODULE_API</span><span class="w"> </span><span class="n">UUserInterfaceCore</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UUserWidget</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// constructor</span>
+<span class="w">    </span><span class="c1">// We can set default values in constructor</span>
+<span class="w">    </span><span class="c1">// we also can override some predefined default values</span>
+<span class="w">    </span><span class="n">UUserInterfaceCore</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// simple blueprintable variable</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Data&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Setter</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintSetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetNumericValue&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">NumericValue</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Setter for NumericValue</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Data&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SetNumericValue</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">inValue</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserInterfaceCore.h&quot;</span>
+<span class="c1">// We can set default values in constructor</span>
+<span class="c1">// we also can override some predefined default values</span>
+<span class="n">UUserInterfaceCore</span><span class="o">::</span><span class="n">UUserInterfaceCore</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">Super</span><span class="p">(</span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="n">NumericValue</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+<span class="c1">// Setter for NumericValue</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UUserInterfaceCore</span><span class="o">::</span><span class="n">SetNumericValue</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">inValue</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">NumericValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inValue</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+Полученный класс <code>UUserInterfaceCore</code> может быть установлен в качестве <code>parent</code> виджета для нашего <code>blueprint</code> класса <code>WidgetTest</code>.
+В данный момент <code>parent</code> классом виджета является просто заглушка <code>UserWidget</code>.</p>
+<p><a class="glightbox" href="../images/4ba2dc6eb2d1998d0467cbf9cd5db340.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4ba2dc6eb2d1998d0467cbf9cd5db340.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4ba2dc6eb2d1998d0467cbf9cd5db340.png" /></a></p>
+<p>Мы можем заменить ее на класс <code>UserInterfaceCore</code>, который только что создали.</p>
+<p>Для этого, в редакторе <code>UMG</code>, идем <code>File -&gt; Reparent Blueprint</code>.</p>
+<p><a class="glightbox" href="../images/4b63186807d90fba5a1535e9f5e7031b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4b63186807d90fba5a1535e9f5e7031b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4b63186807d90fba5a1535e9f5e7031b.png" /></a></p>
+<p>В появившемся меню выбираем класс <code>UserInterfaceCore</code>.</p>
+<p><a class="glightbox" href="../images/89c5291050436f338327f5b0e915a125.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="89c5291050436f338327f5b0e915a125.png" auto_="auto;" display="block;" margin:="margin:" src="../images/89c5291050436f338327f5b0e915a125.png" /></a></p>
+<p><a class="glightbox" href="../images/a6439cd822a11b87ac3cfa562e109cae.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a6439cd822a11b87ac3cfa562e109cae.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a6439cd822a11b87ac3cfa562e109cae.png" /></a></p>
+<p>Если теперь перейти в <code>Graph</code> секцию редактора, можно увидеть, что в панели <code>Details</code> повилась переменная <code>NumericValue</code>.</p>
+<p><a class="glightbox" href="../images/449d6ad601d583adaf5488c990426b31.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="449d6ad601d583adaf5488c990426b31.png" auto_="auto;" display="block;" margin:="margin:" src="../images/449d6ad601d583adaf5488c990426b31.png" /></a></p>
+<p>Так-же в редакторе будет доступна функция <code>SetNumericValue</code>.</p>
+<p><a class="glightbox" href="../images/11b629d44033dfbc7238800b65ad1d3d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="11b629d44033dfbc7238800b65ad1d3d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/11b629d44033dfbc7238800b65ad1d3d.png" /></a></p>
+<p>Используя такой подход разработчик может добавлять любую сложную логику внутрь с++ функций и совмещать производительность <code>с++</code> с визуальным редактором <code>blueprint</code>.</p>
+<h3 id="metabindwidget"><code>Meta=(BindWidget)</code></h3>
+<p>Через класс, унаследованный от <code>UUserWidget</code> можно запрашивать у разработчика те или иные виджеты.</p>
+<p>Делается это с использованием параметра <code>Meta = (BindWidget)</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">// This will force user to add TextBlock with name &quot;CharacterName&quot; to the UMG editor</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Character&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BindWidget</span><span class="p">))</span>
+<span class="n">UTextBlock</span><span class="o">*</span><span class="w"> </span><span class="n">CharacterName</span><span class="p">;</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/748bf36726dcef4da5140b1452829a9b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="748bf36726dcef4da5140b1452829a9b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/748bf36726dcef4da5140b1452829a9b.png" /></a></p>
+<p>Если скомпилировать код нашего класса, с добавленной выше строчкой, то в редакторе <code>UMG</code> перед нами появится ошибка: <code>A required widget binding "CharacterName" of type  Text  was not found.</code>.</p>
+<p><a class="glightbox" href="../images/c4275d015db721f4273af18118d8e752.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c4275d015db721f4273af18118d8e752.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c4275d015db721f4273af18118d8e752.png" /></a></p>
+<p>Ошибка прямо говорит разработчику, что на сцене должен присутствовать виджет типа <code>Text</code> с именем <code>CharacterName</code>.
+Если добавить соответствующий блок - ошибка пропадет.</p>
+<p><a class="glightbox" href="../images/c95ab6249f8a187b871f80f3c9e7b632.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="c95ab6249f8a187b871f80f3c9e7b632.png" auto_="auto;" display="block;" margin:="margin:" src="../images/c95ab6249f8a187b871f80f3c9e7b632.png" /></a></p>
+<p>Указатель на добавленный элемент управления автоматически передается в с++ код.</p>
+<p>Это очень удобно.</p>
+<h3 id="rebuildwidget"><code>RebuildWidget</code></h3>
+<p>Метод <code>RebuildWidget</code> является ключевым для любого виджета <code>UMG</code>. В этом методе происходит сборка виджета из элементов <code>Slate</code>. Так-же мы можем использовать этот метод для добавления на сцену собственных виджетов прямо через с++ код.
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// this method can be used to make widgets directly, if necessary</span>
+<span class="k">virtual</span><span class="w"> </span><span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">SWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">RebuildWidget</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="c1">// function to bind ConstructedButton</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Bindings&quot;</span><span class="p">)</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">OnClickedConstructedButton</span><span class="p">();</span>
+<span class="c1">// Dynamically constructed button, initialised in RebuildWidget method</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Controls&quot;</span><span class="p">)</span>
+<span class="n">UButton</span><span class="o">*</span><span class="w"> </span><span class="n">ConstructedButton</span><span class="p">;</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// this method can be used to make widgets directly, if necessary</span>
+<span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">SWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">UUserInterfaceCore</span><span class="o">::</span><span class="n">RebuildWidget</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">SWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SlateRootWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Super</span><span class="o">::</span><span class="n">RebuildWidget</span><span class="p">();</span><span class="w"> </span><span class="c1">// call parent</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">WidgetTree</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CanvasPanel</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ConstructedButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WidgetTree</span><span class="o">-&gt;</span><span class="n">ConstructWidget</span><span class="o">&lt;</span><span class="n">UButton</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UButton</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;ConstructedButton&quot;</span><span class="p">));</span>
+<span class="w">            </span><span class="c1">// add click event to the button</span>
+<span class="w">            </span><span class="n">FScriptDelegate</span><span class="w"> </span><span class="n">ClickDelegate</span><span class="p">;</span>
+<span class="w">            </span><span class="n">ClickDelegate</span><span class="p">.</span><span class="n">BindUFunction</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;OnClickedConstructedButton&quot;</span><span class="p">));</span>
+<span class="w">            </span><span class="n">ConstructedButton</span><span class="o">-&gt;</span><span class="n">OnClicked</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">ClickDelegate</span><span class="p">);</span>
+<span class="w">            </span><span class="n">UCanvasPanelSlot</span><span class="o">*</span><span class="w"> </span><span class="n">CvSlot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CanvasPanel</span><span class="o">-&gt;</span><span class="n">AddChildToCanvas</span><span class="p">(</span><span class="n">ConstructedButton</span><span class="p">);</span>
+<span class="w">            </span><span class="n">CvSlot</span><span class="o">-&gt;</span><span class="n">SetAnchors</span><span class="p">(</span><span class="n">FAnchors</span><span class="p">{</span><span class="w"> </span><span class="mf">0.1f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1f</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// slightly left upper corner</span>
+<span class="w">            </span><span class="c1">// set UserContext to make new control editable</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GetPlayerContext</span><span class="p">().</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">ButtonCasted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UUserWidget</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ConstructedButton</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ButtonCasted</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">ButtonCasted</span><span class="o">-&gt;</span><span class="n">SetPlayerContext</span><span class="p">(</span><span class="n">GetPlayerContext</span><span class="p">());</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">SlateRootWidget</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Dynamically constructed button, initialised in RebuildWidget method</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UUserInterfaceCore</span><span class="o">::</span><span class="n">OnClickedConstructedButton</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Button Clicked&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
+Стоит отметить, что делать так НЕ СТОИТ, это плохая идея. Что не отмеяет саму возможность.</p>
+<p>Виджеты созданные через <code>RebuildWidget</code> не будут доступны для редактирования и будут присутствовать на сцене всегда.</p>
+<p><a class="glightbox" href="../images/df5adee793bf316489d2f732d6dc7eb0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="df5adee793bf316489d2f732d6dc7eb0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/df5adee793bf316489d2f732d6dc7eb0.png" /></a></p>
+<p>При этом вы не найдете динамические виджеты в иерархии сцены.</p>
+<p><a class="glightbox" href="../images/e10e75574c66bd60b28e1ae3eee78be6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e10e75574c66bd60b28e1ae3eee78be6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e10e75574c66bd60b28e1ae3eee78be6.png" /></a></p>
+<p>События, привязанные к динамические созданным виджетам будут работать нормально.</p>
+<h3 id="_4">Полный код класса</h3>
+<h4 id="userinterfacecoreh">Файл <code>UserInterfaceCore.h</code></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Blueprint/UserWidget.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Blueprint/WidgetTree.h&quot;</span><span class="c1"> // WidgetTree</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Components/TextBlock.h&quot;</span><span class="c1"> // UTextBlock</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Components/Button.h&quot;</span><span class="c1"> // UButton</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Components/CanvasPanel.h&quot;</span><span class="c1"> // UCanvasPanel</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Components/CanvasPanelSlot.h&quot;</span><span class="c1"> // UCanvasPanelSlot</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserInterfaceCore.generated.h&quot;</span>
+<span class="cm">/**</span>
+<span class="cm"> * Game User Interface base class</span>
+<span class="cm"> */</span>
+<span class="n">UCLASS</span><span class="p">(</span><span class="n">abstract</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UMGRUNTIMEMODULE_API</span><span class="w"> </span><span class="n">UUserInterfaceCore</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UUserWidget</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// constructor</span>
+<span class="w">    </span><span class="c1">// We can set default values in constructor</span>
+<span class="w">    </span><span class="c1">// we also can override some predefined default values</span>
+<span class="w">    </span><span class="n">UUserInterfaceCore</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// this method can be used to make widgets directly, if necessary</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">SWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">RebuildWidget</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// simple blueprintable variable</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Data&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Setter</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintSetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetNumericValue&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">NumericValue</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Setter for NumericValue</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Data&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SetNumericValue</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">inValue</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// function to bind ConstructedButton</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Bindings&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">OnClickedConstructedButton</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// This will force user to add TextBlock with name &quot;CharacterName&quot; to the UMG editor</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Controls&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BindWidget</span><span class="p">))</span>
+<span class="w">    </span><span class="n">UTextBlock</span><span class="o">*</span><span class="w"> </span><span class="n">CharacterName</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Canvas Panel will be here</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Controls&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BindWidget</span><span class="p">))</span>
+<span class="w">    </span><span class="n">UCanvasPanel</span><span class="o">*</span><span class="w"> </span><span class="n">CanvasPanel</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Dynamically constructed button, initialised in RebuildWidget method</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Controls&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">UButton</span><span class="o">*</span><span class="w"> </span><span class="n">ConstructedButton</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="userinterfacecorecpp">Файл <code>UserInterfaceCore.cpp</code></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UserInterfaceCore.h&quot;</span>
+<span class="c1">// We can set default values in constructor</span>
+<span class="c1">// we also can override some predefined default values</span>
+<span class="n">UUserInterfaceCore</span><span class="o">::</span><span class="n">UUserInterfaceCore</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">Super</span><span class="p">(</span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="n">NumericValue</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+<span class="c1">// Setter for NumericValue</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UUserInterfaceCore</span><span class="o">::</span><span class="n">SetNumericValue</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">inValue</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">NumericValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inValue</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// this method can be used to make widgets directly, if necessary</span>
+<span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">SWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">UUserInterfaceCore</span><span class="o">::</span><span class="n">RebuildWidget</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">SWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SlateRootWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Super</span><span class="o">::</span><span class="n">RebuildWidget</span><span class="p">();</span><span class="w"> </span><span class="c1">// call parent</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">WidgetTree</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CanvasPanel</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ConstructedButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WidgetTree</span><span class="o">-&gt;</span><span class="n">ConstructWidget</span><span class="o">&lt;</span><span class="n">UButton</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UButton</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;ConstructedButton&quot;</span><span class="p">));</span>
+<span class="w">            </span><span class="c1">// add click event to the button</span>
+<span class="w">            </span><span class="n">FScriptDelegate</span><span class="w"> </span><span class="n">ClickDelegate</span><span class="p">;</span>
+<span class="w">            </span><span class="n">ClickDelegate</span><span class="p">.</span><span class="n">BindUFunction</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;OnClickedConstructedButton&quot;</span><span class="p">));</span>
+<span class="w">            </span><span class="n">ConstructedButton</span><span class="o">-&gt;</span><span class="n">OnClicked</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">ClickDelegate</span><span class="p">);</span>
+<span class="w">            </span><span class="n">UCanvasPanelSlot</span><span class="o">*</span><span class="w"> </span><span class="n">CvSlot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CanvasPanel</span><span class="o">-&gt;</span><span class="n">AddChildToCanvas</span><span class="p">(</span><span class="n">ConstructedButton</span><span class="p">);</span>
+<span class="w">            </span><span class="n">CvSlot</span><span class="o">-&gt;</span><span class="n">SetAnchors</span><span class="p">(</span><span class="n">FAnchors</span><span class="p">{</span><span class="w"> </span><span class="mf">0.1f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1f</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// slightly left upper corner</span>
+<span class="w">            </span><span class="c1">// set UserContext to make new control editable</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GetPlayerContext</span><span class="p">().</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">ButtonCasted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UUserWidget</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ConstructedButton</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ButtonCasted</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">ButtonCasted</span><span class="o">-&gt;</span><span class="n">SetPlayerContext</span><span class="p">(</span><span class="n">GetPlayerContext</span><span class="p">());</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">SlateRootWidget</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Dynamically constructed button, initialised in RebuildWidget method</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UUserInterfaceCore</span><span class="o">::</span><span class="n">OnClickedConstructedButton</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">LogTemp</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Button Clicked&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="umg_3">Собственные UMG виджеты</h2>
+<p>Все <code>UMG</code> виджеты являются высокоуровневой оберткой над <code>Slate</code>. При необходимости, разработчик может написать свой собственный уникальный виджет, который ничем не будет отличаться от тех, что представлены в системе.</p>
+<p><a class="glightbox" href="../images/9d7068bd157d35133f13d9929d62f207.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9d7068bd157d35133f13d9929d62f207.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9d7068bd157d35133f13d9929d62f207.png" /></a></p>
+<p>Все виджеты, которые вы видите в меню <code>Pallete</code> редактора <code>UMG</code> могут быть найдены в папке движка по пути <code>\Engine\Source\Runtime\UMG\Public\Components\</code>.</p>
+<p><a class="glightbox" href="../images/e0bad24269a4402df175916a3232480f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e0bad24269a4402df175916a3232480f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e0bad24269a4402df175916a3232480f.png" /></a></p>
+<p>Каждый <code>UMG</code> виджет, так или иначе, наследуется от базового класса <code>UWidget</code>. Найти его можно по пути <code>\Engine\Source\Runtime\UMG\Public\Components\Widget.h</code>.</p>
+<p><a class="glightbox" href="../images/5eb9c1279737d614b05f2f923b753eb1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5eb9c1279737d614b05f2f923b753eb1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5eb9c1279737d614b05f2f923b753eb1.png" /></a></p>
+<p>Данный класс содержит базовый набор переменных и методов, доступных для каждого <code>UMG</code> виджета.</p>
+<p><a class="glightbox" href="../images/e84e33e5be599aacc57a7c0fcebf16e4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="e84e33e5be599aacc57a7c0fcebf16e4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/e84e33e5be599aacc57a7c0fcebf16e4.png" /></a></p>
+<p>Давайте посмотрим, как устроен стандартный <code>UMG</code> виджет, на примере класса <code>\Engine\Source\Runtime\UMG\Public\Components\Button.h</code>.
+Внутри класса мы видим указатель на виджет <code>Slate</code>, который хранит в себе кнопку.
+<div class="highlight"><pre><span></span><code><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">SButton</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MyButton</span><span class="p">;</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/9bb2dec9770b9901e1bb7a07e2fa26b4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9bb2dec9770b9901e1bb7a07e2fa26b4.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9bb2dec9770b9901e1bb7a07e2fa26b4.png" /></a></p>
+<p>Данный указатель инициализируется в методе <code>RebuildWidget</code> и удаляется в методе <code>ReleaseSlateResources</code>.</p>
+<p><a class="glightbox" href="../images/534d865cff9e76197b9c25698aa3c115.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="534d865cff9e76197b9c25698aa3c115.png" auto_="auto;" display="block;" margin:="margin:" src="../images/534d865cff9e76197b9c25698aa3c115.png" /></a></p>
+<p><a class="glightbox" href="../images/aa1310accc6d12d6eae2563512b570b0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="aa1310accc6d12d6eae2563512b570b0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/aa1310accc6d12d6eae2563512b570b0.png" /></a></p>
+<p>Рассмотрим эти методы виджета.</p>
+<h3 id="rebuildwidget_1"><code>RebuildWidget</code></h3>
+<p>Ключевым методом в классе <code>UWidget</code> является <code>RebuildWidget</code>, именно в этом методе разработчик должен формировать итоговый вид виджета.</p>
+<p><a class="glightbox" href="../images/be000a5e50e349fab4d0a9d4531bcb00.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="be000a5e50e349fab4d0a9d4531bcb00.png" auto_="auto;" display="block;" margin:="margin:" src="../images/be000a5e50e349fab4d0a9d4531bcb00.png" /></a></p>
+<p>Делается сборка виджета с применением <code>Slate</code>. Например, кнопка <code>UButton</code> собирается так:
+<div class="highlight"><pre><span></span><code><span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">SWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">UButton</span><span class="o">::</span><span class="n">RebuildWidget</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">MyButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SNew</span><span class="p">(</span><span class="n">SButton</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">OnClicked</span><span class="p">(</span><span class="n">BIND_UOBJECT_DELEGATE</span><span class="p">(</span><span class="n">FOnClicked</span><span class="p">,</span><span class="w"> </span><span class="n">SlateHandleClicked</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">OnPressed</span><span class="p">(</span><span class="n">BIND_UOBJECT_DELEGATE</span><span class="p">(</span><span class="n">FSimpleDelegate</span><span class="p">,</span><span class="w"> </span><span class="n">SlateHandlePressed</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">OnReleased</span><span class="p">(</span><span class="n">BIND_UOBJECT_DELEGATE</span><span class="p">(</span><span class="n">FSimpleDelegate</span><span class="p">,</span><span class="w"> </span><span class="n">SlateHandleReleased</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">OnHovered_UObject</span><span class="p">(</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ThisClass</span><span class="o">::</span><span class="n">SlateHandleHovered</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">OnUnhovered_UObject</span><span class="p">(</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ThisClass</span><span class="o">::</span><span class="n">SlateHandleUnhovered</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ButtonStyle</span><span class="p">(</span><span class="o">&amp;</span><span class="n">WidgetStyle</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ClickMethod</span><span class="p">(</span><span class="n">ClickMethod</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">TouchMethod</span><span class="p">(</span><span class="n">TouchMethod</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">PressMethod</span><span class="p">(</span><span class="n">PressMethod</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">IsFocusable</span><span class="p">(</span><span class="n">IsFocusable</span><span class="p">)</span>
+<span class="w">        </span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">GetChildrenCount</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UButtonSlot</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GetContentSlot</span><span class="p">())</span><span class="o">-&gt;</span><span class="n">BuildSlot</span><span class="p">(</span><span class="n">MyButton</span><span class="p">.</span><span class="n">ToSharedRef</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MyButton</span><span class="p">.</span><span class="n">ToSharedRef</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="synchronizeproperties"><code>SynchronizeProperties</code></h3>
+<p>Метод <code>SynchronizeProperties</code> позволяет синхронизировать параметры между <code>UMG</code> виджетом и его <code>Slate</code> реализацией.</p>
+<p>В <code>UButton</code> данный метод выглядит так:
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UButton::SynchronizeProperties</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Super</span><span class="o">::</span><span class="n">SynchronizeProperties</span><span class="p">();</span>
+<span class="w">    </span><span class="n">MyButton</span><span class="o">-&gt;</span><span class="n">SetColorAndOpacity</span><span class="p">(</span><span class="w"> </span><span class="n">ColorAndOpacity</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="n">MyButton</span><span class="o">-&gt;</span><span class="n">SetBorderBackgroundColor</span><span class="p">(</span><span class="w"> </span><span class="n">BackgroundColor</span><span class="w"> </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="releaseslateresources"><code>ReleaseSlateResources</code></h3>
+<p>Методы <code>ReleaseSlateResources</code>  служит для очистки памяти от указателей на <code>Slate</code> виджеты.
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UButton::ReleaseSlateResources</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">bReleaseChildren</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Super</span><span class="o">::</span><span class="n">ReleaseSlateResources</span><span class="p">(</span><span class="n">bReleaseChildren</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MyButton</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="titleblock">Виджет <code>TitleBlock</code></h3>
+<p>Для демонстрации возможностей системы <code>UMG</code>, предлагаю реализовать собственный виджет, полностью на с++ и <code>Slate</code>. Пусть это будет <code>TitleBlock</code>, блок заголовка, с двумя картинками слева и справа.</p>
+<p>Добавляем новый класс в наш модуль. Для этого идем:<code>Tools -&gt; New C++ Class -&gt; All Classes</code>.
+Ищем класс <code>WidgetBlueprint</code>.</p>
+<p><a class="glightbox" href="../images/05eafafaf46026683f6573f007d3f773.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="05eafafaf46026683f6573f007d3f773.png" auto_="auto;" display="block;" margin:="margin:" src="../images/05eafafaf46026683f6573f007d3f773.png" /></a></p>
+<p>Я называю свой виджет <code>TitleBlockWidget</code>.</p>
+<p><a class="glightbox" href="../images/ca005029e45a478704f5839b5f83693f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ca005029e45a478704f5839b5f83693f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ca005029e45a478704f5839b5f83693f.png" /></a></p>
+<p>Далее нужно выполнить команду <code>Tools -&gt; Refresh Visual Studio 2022 Project</code>, чтобы добавленные файлы появились в <code>Solution Explorer</code>.</p>
+<p><a class="glightbox" href="../images/13dfd0e7cff0da3fad71dd1b388a48f6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="13dfd0e7cff0da3fad71dd1b388a48f6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/13dfd0e7cff0da3fad71dd1b388a48f6.png" /></a></p>
+<p>В созданных файлах я реализовал следующий код:</p>
+<h4 id="titleblockwidgeth">Файл <code>TitleBlockWidget.h</code></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CoreMinimal.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Components/Widget.h&quot;</span><span class="c1"> //  UMG Widget</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Components/TextBlock.h&quot;</span><span class="c1"> //  UMG TextBlock widget</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Widgets/SWidget.h&quot;</span><span class="c1"> // Slate Widget</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Widgets/SBoxPanel.h&quot;</span><span class="c1"> // SHorizontalBox</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Widgets/Layout/SScaleBox.h&quot;</span><span class="c1"> // SScaleBox</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Blueprint/UserWidget.h&quot;</span><span class="c1"> // UUserWidget</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Components/TextWidgetTypes.h&quot;</span><span class="c1"> // widget with text</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TitleBlockWidget.generated.h&quot;</span>
+<span class="cp">#define LOCTEXT_NAMESPACE &quot;TitleBlockWidgetText&quot;</span>
+<span class="cm">/**</span>
+<span class="cm"> * Title Block widget with corners</span>
+<span class="cm"> */</span>
+<span class="n">UCLASS</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Title Block&quot;</span><span class="p">))</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UMGRUNTIMEMODULE_API</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UWidget</span><span class="w"> </span><span class="c1">// UUserWidget</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// constructor</span>
+<span class="w">    </span><span class="c1">// here we can override some class default values</span>
+<span class="w">    </span><span class="n">UTitleBlockWidget</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FObjectInitializer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">Super</span><span class="p">(</span><span class="n">ObjectInitializer</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="n">ConstructorHelpers</span><span class="o">::</span><span class="n">FObjectFinder</span><span class="o">&lt;</span><span class="n">UObject</span><span class="o">&gt;</span><span class="w"> </span><span class="n">RobotoFontObj</span><span class="p">(</span><span class="o">*</span><span class="n">UWidget</span><span class="o">::</span><span class="n">GetDefaultFontName</span><span class="p">());</span>
+<span class="w">        </span><span class="n">Font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FSlateFontInfo</span><span class="p">(</span><span class="n">RobotoFontObj</span><span class="p">.</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;Italic&quot;</span><span class="p">));</span>
+<span class="w">        </span><span class="n">ColorAndOpacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FLinearColor</span><span class="o">::</span><span class="n">Green</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOCTEXT</span><span class="p">(</span><span class="s">&quot;TitleBlockWidgetDefaultText&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Text&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Justification</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ETextJustify</span><span class="o">::</span><span class="n">Center</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">//~ Begin UWidget Interface</span>
+<span class="w">    </span><span class="c1">// must return pallete category of widget in UMG Editor</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FText</span><span class="w"> </span><span class="n">GetPaletteCategory</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// main method where we form widget</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">SWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">RebuildWidget</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// method where we should sinc properties with the widget</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">SynchronizeProperties</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//~ End UWidget Interface</span>
+<span class="w">    </span><span class="c1">//~ Begin UVisual Interface</span>
+<span class="w">    </span><span class="c1">// this is important method. Here we should destroy all our widget&#39;s pointers</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ReleaseSlateResources</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">bReleaseChildren</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//~ End UVisual Interface</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Text Justification</span>
+<span class="cm">     */</span>
+<span class="w">     </span><span class="c1">// Text alignment in text block property</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Getter</span><span class="p">,</span><span class="w"> </span><span class="n">Setter</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintSetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetJustification&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Appearance&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">TEnumAsByte</span><span class="o">&lt;</span><span class="n">ETextJustify</span><span class="o">::</span><span class="n">Type</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Justification</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Getter</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ETextJustify</span><span class="o">::</span><span class="n">Type</span><span class="w"> </span><span class="nf">GetJustification</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Justification</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Text block text justification setter</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Appearance&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetJustification (Type)&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SetJustification</span><span class="p">(</span><span class="n">ETextJustify</span><span class="o">::</span><span class="n">Type</span><span class="w"> </span><span class="n">InJustification</span><span class="p">);</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Text Property</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Getter</span><span class="p">,</span><span class="w"> </span><span class="n">Setter</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintGetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GetText&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintSetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetText&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Content&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">MultiLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">FText</span><span class="w"> </span><span class="n">Text</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Will return Text Block Text</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Widget&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GetText (Text)&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">FText</span><span class="w"> </span><span class="n">GetText</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Allows to set text into widget</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Widget&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetText (Text)&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SetText</span><span class="p">(</span><span class="n">FText</span><span class="w"> </span><span class="n">InText</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// used to bind value of Text</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">()</span>
+<span class="w">    </span><span class="n">FGetText</span><span class="w"> </span><span class="n">TextDelegate</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * ColorAndOpacity</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Getter</span><span class="p">,</span><span class="w"> </span><span class="n">Setter</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintSetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetColorAndOpacity&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Appearance&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FSlateColor</span><span class="w"> </span><span class="n">ColorAndOpacity</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Getter for ColorAndOpacity, called automatically since there is Getter modifier on</span>
+<span class="w">    </span><span class="n">FSlateColor</span><span class="w"> </span><span class="nf">GetColorAndOpacity</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Setter for ColorAndOpacity</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Appearance&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SetColorAndOpacity</span><span class="p">(</span><span class="n">FSlateColor</span><span class="w"> </span><span class="n">InColorAndOpacity</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// used to bind value of ColorAndOpacity</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">()</span>
+<span class="w">    </span><span class="n">FGetSlateColor</span><span class="w"> </span><span class="n">ColorAndOpacityDelegate</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Font</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Getter</span><span class="p">,</span><span class="w"> </span><span class="n">Setter</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintSetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetFont&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Appearance&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FSlateFontInfo</span><span class="w"> </span><span class="n">Font</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Setter for Font</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Appearance&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SetFont</span><span class="p">(</span><span class="n">FSlateFontInfo</span><span class="w"> </span><span class="n">InFontInfo</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Getter for Font</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FSlateFontInfo</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">GetFont</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Font</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * LeftImage</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Getter</span><span class="p">,</span><span class="w"> </span><span class="n">Setter</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintSetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetLeftCornerImage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Appearance&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FSlateBrush</span><span class="w"> </span><span class="n">LeftCornerImage</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Appearance&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SetLeftCornerImage</span><span class="p">(</span><span class="n">FSlateBrush</span><span class="w"> </span><span class="n">InImage</span><span class="p">);</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FSlateBrush</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">GetLeftCornerImage</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">LeftCornerImage</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * RightImage</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Getter</span><span class="p">,</span><span class="w"> </span><span class="n">Setter</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintSetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetLeftCornerImage&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Appearance&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FSlateBrush</span><span class="w"> </span><span class="n">RightCornerImage</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Appearance&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SetRightCornerImage</span><span class="p">(</span><span class="n">FSlateBrush</span><span class="w"> </span><span class="n">InImage</span><span class="p">);</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FSlateBrush</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">GetRightCornerImage</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">RightCornerImage</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// make Text property bindable thru Unreal Editor</span>
+<span class="w">    </span><span class="n">PROPERTY_BINDING_IMPLEMENTATION</span><span class="p">(</span><span class="n">FText</span><span class="p">,</span><span class="w"> </span><span class="n">Text</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// make ColorAndOpacity property bindable thru Unreal Editor</span>
+<span class="w">    </span><span class="n">PROPERTY_BINDING_IMPLEMENTATION</span><span class="p">(</span><span class="n">FSlateColor</span><span class="p">,</span><span class="w"> </span><span class="n">ColorAndOpacity</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Slate Widget pointers</span>
+<span class="w">    </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">SHorizontalBox</span><span class="o">&gt;</span><span class="w"> </span><span class="n">WidgetContent</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">STextBlock</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TextBlock</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">SImage</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LeftCornerImageControl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">SImage</span><span class="o">&gt;</span><span class="w"> </span><span class="n">RightCornerImageControl</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="cp">#undef LOCTEXT_NAMESPACE</span>
+</code></pre></div>
+<h4 id="titleblockwidgetcpp">Файл <code>TitleBlockWidget.cpp</code></h4>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TitleBlockWidget.h&quot;</span>
+<span class="cp">#include UE_INLINE_GENERATED_CPP_BY_NAME(TitleBlockWidget)</span>
+<span class="cp">#define LOCTEXT_NAMESPACE &quot;TitleBlockWidgetText&quot;</span>
+<span class="c1">// must return pallete category of widget in UMG Editor</span>
+<span class="k">const</span><span class="w"> </span><span class="n">FText</span><span class="w"> </span><span class="nf">UTitleBlockWidget::GetPaletteCategory</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">LOCTEXT</span><span class="p">(</span><span class="s">&quot;Common&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Common&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// main method where we form widget</span>
+<span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">SWidget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="o">::</span><span class="n">RebuildWidget</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// form widget</span>
+<span class="w">    </span><span class="n">SAssignNew</span><span class="p">(</span><span class="n">WidgetContent</span><span class="p">,</span><span class="w"> </span><span class="n">SHorizontalBox</span><span class="p">)</span>
+<span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="n">SHorizontalBox</span><span class="o">::</span><span class="n">Slot</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">VAlign</span><span class="p">(</span><span class="n">VAlign_Center</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">HAlign</span><span class="p">(</span><span class="n">HAlign_Left</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AutoWidth</span><span class="p">()</span>
+<span class="w">    </span><span class="p">[</span>
+<span class="w">        </span><span class="n">SNew</span><span class="p">(</span><span class="n">SScaleBox</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">Stretch</span><span class="p">(</span><span class="n">EStretch</span><span class="o">::</span><span class="n">ScaleToFit</span><span class="p">)</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">            </span><span class="n">SAssignNew</span><span class="p">(</span><span class="n">LeftCornerImageControl</span><span class="p">,</span><span class="w"> </span><span class="n">SImage</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">DesiredSizeOverride</span><span class="p">(</span><span class="n">FVector2D</span><span class="p">{</span><span class="w"> </span><span class="mf">50.f</span><span class="p">,</span><span class="w"> </span><span class="mf">50.f</span><span class="w"> </span><span class="p">})</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="n">SHorizontalBox</span><span class="o">::</span><span class="n">Slot</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">VAlign</span><span class="p">(</span><span class="n">VAlign_Center</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">HAlign</span><span class="p">(</span><span class="n">HAlign_Fill</span><span class="p">)</span>
+<span class="w">    </span><span class="p">[</span>
+<span class="w">        </span><span class="n">SAssignNew</span><span class="p">(</span><span class="n">TextBlock</span><span class="p">,</span><span class="w"> </span><span class="n">STextBlock</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">Text</span><span class="p">(</span><span class="n">FText</span><span class="o">::</span><span class="n">FromString</span><span class="p">(</span><span class="s">&quot;Test Text Block&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">Justification</span><span class="p">(</span><span class="n">Justification</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ColorAndOpacity</span><span class="p">(</span><span class="n">ColorAndOpacity</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">Font</span><span class="p">(</span><span class="n">Font</span><span class="p">)</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="n">SHorizontalBox</span><span class="o">::</span><span class="n">Slot</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="n">VAlign</span><span class="p">(</span><span class="n">VAlign_Center</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">HAlign</span><span class="p">(</span><span class="n">HAlign_Right</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">AutoWidth</span><span class="p">()</span>
+<span class="w">    </span><span class="p">[</span>
+<span class="w">        </span><span class="n">SNew</span><span class="p">(</span><span class="n">SScaleBox</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">Stretch</span><span class="p">(</span><span class="n">EStretch</span><span class="o">::</span><span class="n">ScaleToFit</span><span class="p">)</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">            </span><span class="n">SAssignNew</span><span class="p">(</span><span class="n">RightCornerImageControl</span><span class="p">,</span><span class="w"> </span><span class="n">SImage</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">DesiredSizeOverride</span><span class="p">(</span><span class="n">FVector2D</span><span class="p">{</span><span class="w"> </span><span class="mf">50.f</span><span class="p">,</span><span class="w"> </span><span class="mf">50.f</span><span class="w"> </span><span class="p">})</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">WidgetContent</span><span class="p">.</span><span class="n">ToSharedRef</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="c1">// method where we should sinc properties with the widget</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="o">::</span><span class="n">SynchronizeProperties</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Super</span><span class="o">::</span><span class="n">SynchronizeProperties</span><span class="p">();</span>
+<span class="w">    </span><span class="n">TAttribute</span><span class="o">&lt;</span><span class="n">FText</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TextBinding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PROPERTY_BINDING</span><span class="p">(</span><span class="n">FText</span><span class="p">,</span><span class="w"> </span><span class="n">Text</span><span class="p">);</span>
+<span class="w">    </span><span class="n">TAttribute</span><span class="o">&lt;</span><span class="n">FSlateColor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ColorAndOpacityBinding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PROPERTY_BINDING</span><span class="p">(</span><span class="n">FSlateColor</span><span class="p">,</span><span class="w"> </span><span class="n">ColorAndOpacity</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TextBlock</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TextBlock</span><span class="o">-&gt;</span><span class="n">SetText</span><span class="p">(</span><span class="n">TextBinding</span><span class="p">);</span>
+<span class="w">        </span><span class="n">TextBlock</span><span class="o">-&gt;</span><span class="n">SetFont</span><span class="p">(</span><span class="n">Font</span><span class="p">);</span>
+<span class="w">        </span><span class="n">TextBlock</span><span class="o">-&gt;</span><span class="n">SetColorAndOpacity</span><span class="p">(</span><span class="n">ColorAndOpacityBinding</span><span class="p">);</span>
+<span class="w">        </span><span class="n">TextBlock</span><span class="o">-&gt;</span><span class="n">SetJustification</span><span class="p">(</span><span class="n">Justification</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">LeftCornerImageControl</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LeftCornerImageControl</span><span class="o">-&gt;</span><span class="n">SetImage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">LeftCornerImage</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">RightCornerImageControl</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RightCornerImageControl</span><span class="o">-&gt;</span><span class="n">SetImage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">RightCornerImage</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// this is important method. Here we should destroy all our widget&#39;s pointers</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="o">::</span><span class="n">ReleaseSlateResources</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">bReleaseChildren</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// free all shared pointers here</span>
+<span class="w">    </span><span class="n">Super</span><span class="o">::</span><span class="n">ReleaseSlateResources</span><span class="p">(</span><span class="n">bReleaseChildren</span><span class="p">);</span>
+<span class="w">    </span><span class="n">TextBlock</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">WidgetContent</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">LeftCornerImageControl</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">RightCornerImageControl</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="c1">// Text block text justification setter</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="o">::</span><span class="n">SetJustification</span><span class="p">(</span><span class="n">ETextJustify</span><span class="o">::</span><span class="n">Type</span><span class="w"> </span><span class="n">InJustification</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TextBlock</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TextBlock</span><span class="o">-&gt;</span><span class="n">SetJustification</span><span class="p">(</span><span class="n">InJustification</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Will return Text Block Text</span>
+<span class="n">FText</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="o">::</span><span class="n">GetText</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TextDelegate</span><span class="p">.</span><span class="n">IsBound</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">IsDesignTime</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TextDelegate</span><span class="p">.</span><span class="n">Execute</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TextBlock</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TextBlock</span><span class="o">-&gt;</span><span class="n">GetText</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Text</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Allows to set text into widget</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="o">::</span><span class="n">SetText</span><span class="p">(</span><span class="n">FText</span><span class="w"> </span><span class="n">InText</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InText</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TextBlock</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TextBlock</span><span class="o">-&gt;</span><span class="n">SetText</span><span class="p">(</span><span class="n">InText</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Setter for ColorAndOpacity</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="o">::</span><span class="n">SetColorAndOpacity</span><span class="p">(</span><span class="n">FSlateColor</span><span class="w"> </span><span class="n">InColorAndOpacity</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ColorAndOpacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InColorAndOpacity</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TextBlock</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TextBlock</span><span class="o">-&gt;</span><span class="n">SetColorAndOpacity</span><span class="p">(</span><span class="n">InColorAndOpacity</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Getter for ColorAndOpacity, called automatically since there is Getter modifier on</span>
+<span class="n">FSlateColor</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="o">::</span><span class="n">GetColorAndOpacity</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ColorAndOpacityDelegate</span><span class="p">.</span><span class="n">IsBound</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">IsDesignTime</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ColorAndOpacityDelegate</span><span class="p">.</span><span class="n">Execute</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ColorAndOpacity</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Setter for Font</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="o">::</span><span class="n">SetFont</span><span class="p">(</span><span class="n">FSlateFontInfo</span><span class="w"> </span><span class="n">InFontInfo</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InFontInfo</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TextBlock</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TextBlock</span><span class="o">-&gt;</span><span class="n">SetFont</span><span class="p">(</span><span class="n">Font</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="o">::</span><span class="n">SetLeftCornerImage</span><span class="p">(</span><span class="n">FSlateBrush</span><span class="w"> </span><span class="n">InImage</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">LeftCornerImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InImage</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TextBlock</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LeftCornerImageControl</span><span class="o">-&gt;</span><span class="n">SetImage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">InImage</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">UTitleBlockWidget</span><span class="o">::</span><span class="n">SetRightCornerImage</span><span class="p">(</span><span class="n">FSlateBrush</span><span class="w"> </span><span class="n">InImage</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">LeftCornerImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InImage</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TextBlock</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LeftCornerImageControl</span><span class="o">-&gt;</span><span class="n">SetImage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">InImage</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">#undef LOCTEXT_NAMESPACE</span>
+</code></pre></div>
+Данный код позволяет создать виджет с названием <code>TitleBlock</code>. Виджет создается как один из интегрированных в систему и найти его можно в категории <code>Common</code>.</p>
+<p><a class="glightbox" href="../images/41d4e29508b372f21b98d780cd36437a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="41d4e29508b372f21b98d780cd36437a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/41d4e29508b372f21b98d780cd36437a.png" /></a></p>
+<p>"По умолчанию" текст в виджете зеленый <code>Italic</code>.</p>
+<p><a class="glightbox" href="../images/5ffe62e4f5b85bf07fa4ece30d6d928b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="5ffe62e4f5b85bf07fa4ece30d6d928b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/5ffe62e4f5b85bf07fa4ece30d6d928b.png" /></a></p>
+<p>Для виджета возможно установить левую и правую картинку, а так-же общее направление текста.</p>
+<p><a class="glightbox" href="../images/1ab695e749b60236fdda8aa01907c6cb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1ab695e749b60236fdda8aa01907c6cb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1ab695e749b60236fdda8aa01907c6cb.png" /></a></p>
+<p>Шрифт тоже поддается изменению.</p>
+<p><a class="glightbox" href="../images/4454acea3954662e53c9b37e23234732.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4454acea3954662e53c9b37e23234732.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4454acea3954662e53c9b37e23234732.png" /></a></p>
+<p>Все изменения работают и виджет может быть смело использован на практике.</p>
+<p><a class="glightbox" href="../images/389f0f2b773b6499c1802bc31b62b02e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="389f0f2b773b6499c1802bc31b62b02e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/389f0f2b773b6499c1802bc31b62b02e.png" /></a></p>
+<p><a class="glightbox" href="../images/a986c0a30a1e0c17db436eb5546b661d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a986c0a30a1e0c17db436eb5546b661d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a986c0a30a1e0c17db436eb5546b661d.png" /></a></p>
+<h3 id="_5">Объяснение принципов</h3>
+<p>Виджет составлен мной из четырех элементов, это: контейнер <code>SHorizontalBox</code>, текстовый блок <code>STextBlock</code>, и две картинки <code>SImage</code>.
+Указатели на данные элементы хранятся в <code>Protected</code> секции класса.</p>
+<p><a class="glightbox" href="../images/706e3f8b38c7c65d872f988eb6bc3524.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="706e3f8b38c7c65d872f988eb6bc3524.png" auto_="auto;" display="block;" margin:="margin:" src="../images/706e3f8b38c7c65d872f988eb6bc3524.png" /></a></p>
+<p>Сборка виджета и инициализация указателей происходит в методе <code>RebuildWidget</code>. При сборке виджеты получают начальные значения параметров, которые я вывел в редактор.</p>
+<p><a class="glightbox" href="../images/4780460f0f1b934d5138259f3d5926e9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4780460f0f1b934d5138259f3d5926e9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4780460f0f1b934d5138259f3d5926e9.png" /></a></p>
+<p>Параметры виджета позволяют менять текст <code>Text</code> , шрифт <code>Font</code>, цвет текста <code>ColorAndOpacity</code>, расположение текста в панели <code>Justification</code>, а так-же тип изображения в левой <code>LeftCornerImage</code> и правой картинке <code>RightCornerImage</code>.
+При этом параметры <code>Text</code> и <code>ColorAndOpacity</code> могут быть привязаны к функции.</p>
+<h4 id="_6">Привязываемые параметры</h4>
+<p>Привязываемые параметры могут динамически получать свои значения из <code>blueprint</code> функции. За это отвечает автоматически добавляемый к параметру переключатель <code>Bind</code>.</p>
+<p><a class="glightbox" href="../images/cb5a13610556a1044a4e9399d5f269d0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="cb5a13610556a1044a4e9399d5f269d0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/cb5a13610556a1044a4e9399d5f269d0.png" /></a></p>
+<p>Чтобы создать такие параметры надо использовать макрос <code>PROPERTY_BINDING_IMPLEMENTATION</code> при задании параметра и макрос <code>PROPERTY_BINDING</code> при поулчении значения параметра.</p>
+<p>Вот как это выглядит, на примере переменной <code>Text</code>.
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Text Property</span>
+<span class="cm"> */</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Getter</span><span class="p">,</span><span class="w"> </span><span class="n">Setter</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintGetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GetText&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintSetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetText&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Content&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">MultiLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">))</span>
+<span class="n">FText</span><span class="w"> </span><span class="n">Text</span><span class="p">;</span>
+<span class="c1">// Will return Text Block Text</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Widget&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GetText (Text)&quot;</span><span class="p">))</span>
+<span class="n">FText</span><span class="w"> </span><span class="n">GetText</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="c1">// Allows to set text into widget</span>
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Widget&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SetText (Text)&quot;</span><span class="p">))</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">SetText</span><span class="p">(</span><span class="n">FText</span><span class="w"> </span><span class="n">InText</span><span class="p">);</span>
+<span class="c1">// used to bind value of Text</span>
+<span class="n">UPROPERTY</span><span class="p">()</span>
+<span class="n">FGetText</span><span class="w"> </span><span class="n">TextDelegate</span><span class="p">;</span>
+<span class="k">protected</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// make Text property bindable thru Unreal Editor</span>
+<span class="w">    </span><span class="n">PROPERTY_BINDING_IMPLEMENTATION</span><span class="p">(</span><span class="n">FText</span><span class="p">,</span><span class="w"> </span><span class="n">Text</span><span class="p">);</span>
+</code></pre></div>
+Добавление макроса <code>PROPERTY_BINDING_IMPLEMENTATION</code> автоматически требует добавления для выбранной переменной функций <code>BlueprintSetter</code>, <code>BlueprintGetter</code>, а так-же делегата, к которому будет привязан параметр. В случае с текстом это <code>FGetText</code>.
+Важно название <code>TextDelegate</code>.
+Движок Unreal Engine имеет несколько предзаданных делегатов для подобных параметров.</p>
+<p>Найти их можно в файле <code>\Engine\Source\Runtime\UMG\Public\Components\Widget.h</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">// Common Bindings - If you add any new common binding, you must provide a UPropertyBinding for it.</span>
+<span class="c1">// all primitive binding in UMG goes through native binding evaluators to prevent</span>
+<span class="c1">// thunking through the VM.</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_RetVal</span><span class="p">(</span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">FGetBool</span><span class="p">);</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_RetVal</span><span class="p">(</span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">FGetFloat</span><span class="p">);</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_RetVal</span><span class="p">(</span><span class="n">int32</span><span class="p">,</span><span class="w"> </span><span class="n">FGetInt32</span><span class="p">);</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_RetVal</span><span class="p">(</span><span class="n">FText</span><span class="p">,</span><span class="w"> </span><span class="n">FGetText</span><span class="p">);</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_RetVal</span><span class="p">(</span><span class="n">FSlateColor</span><span class="p">,</span><span class="w"> </span><span class="n">FGetSlateColor</span><span class="p">);</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_RetVal</span><span class="p">(</span><span class="n">FLinearColor</span><span class="p">,</span><span class="w"> </span><span class="n">FGetLinearColor</span><span class="p">);</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_RetVal</span><span class="p">(</span><span class="n">FSlateBrush</span><span class="p">,</span><span class="w"> </span><span class="n">FGetSlateBrush</span><span class="p">);</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_RetVal</span><span class="p">(</span><span class="n">ESlateVisibility</span><span class="p">,</span><span class="w"> </span><span class="n">FGetSlateVisibility</span><span class="p">);</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_RetVal</span><span class="p">(</span><span class="n">EMouseCursor</span><span class="o">::</span><span class="n">Type</span><span class="p">,</span><span class="w"> </span><span class="n">FGetMouseCursor</span><span class="p">);</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_RetVal</span><span class="p">(</span><span class="n">ECheckBoxState</span><span class="p">,</span><span class="w"> </span><span class="n">FGetCheckBoxState</span><span class="p">);</span>
+<span class="n">DECLARE_DYNAMIC_DELEGATE_RetVal</span><span class="p">(</span><span class="n">UWidget</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">FGetWidget</span><span class="p">);</span>
+</code></pre></div></p>
+<p><a class="glightbox" href="../images/9cb7c8a1ebf02578c83b1ebe2b0282b3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9cb7c8a1ebf02578c83b1ebe2b0282b3.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9cb7c8a1ebf02578c83b1ebe2b0282b3.png" /></a></p>
+<h4 id="_7">Категория виджета</h4>
+<p>За категорию, в которой появится виджет. отвечает метод <code>GetPaletteCategory</code>.
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// must return pallete category of widget in UMG Editor</span>
+<span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FText</span><span class="w"> </span><span class="nf">GetPaletteCategory</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// must return pallete category of widget in UMG Editor</span>
+<span class="k">const</span><span class="w"> </span><span class="n">FText</span><span class="w"> </span><span class="nf">UTitleBlockWidget::GetPaletteCategory</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">LOCTEXT</span><span class="p">(</span><span class="s">&quot;Common&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Common&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+Я разместил виджет в категории <code>Common</code>.</p>
+<h3 id="_8">Добавление иконки для виджета</h3>
+<p>Единственное, чего не хватает нашему виджету в данный момент - нормальной иконки.</p>
+<p><a class="glightbox" href="../images/ff0bb725a224b948308158ceaa14dd6a.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="ff0bb725a224b948308158ceaa14dd6a.png" auto_="auto;" display="block;" margin:="margin:" src="../images/ff0bb725a224b948308158ceaa14dd6a.png" /></a></p>
+<p>Давайте исправим этот недостаток.</p>
+<p>Иконки виджетов, которые вы видите по умолчанию, заданы в файле <code>\Engine\Source\Runtime\UMG\Private\UMGStyle.cpp</code>.</p>
+<p><a class="glightbox" href="../images/0d49ca127b0b01815af15d7be18029e7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0d49ca127b0b01815af15d7be18029e7.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0d49ca127b0b01815af15d7be18029e7.png" /></a></p>
+<p>Я предлагаю использовать одну из встроенных в движок иконок, например иконку <code>TextBlock'а</code>. Найти ее можно в папке <code>Content</code> движка по пути <code>\Engine\Content\Editor\Slate\UMG</code>.</p>
+<p><a class="glightbox" href="../images/1e26ae67f6442101b2772640e54ce946.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="1e26ae67f6442101b2772640e54ce946.png" auto_="auto;" display="block;" margin:="margin:" src="../images/1e26ae67f6442101b2772640e54ce946.png" /></a></p>
+<p><a class="glightbox" href="../images/f200e56be5460a0c355a68b11a6ee548.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f200e56be5460a0c355a68b11a6ee548.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f200e56be5460a0c355a68b11a6ee548.png" /></a></p>
+<p>Чтобы зарегистрировать иконку для класса виджета, требуется создать <code>SlateStyleSet</code>. Однако, реализовывать целый паттерн в отдельных файлах для всего одного класса - излишне. <code>StyleSet</code> можно встроить прямо в логику конструктора модуля. Давайте это сделаем.</p>
+<h4 id="umgruntimemoduleh">Файл <code>UMGRuntimeModule.h</code></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Modules/ModuleManager.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Slate/SlateGameResources.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Styling/ISlateStyle.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Styling/SlateStyle.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Styling/SlateStyleRegistry.h&quot;</span><span class="c1"> // to register our styles in</span>
+<span class="n">DECLARE_LOG_CATEGORY_EXTERN</span><span class="p">(</span><span class="n">UMGRuntimeModule</span><span class="p">,</span><span class="w"> </span><span class="n">All</span><span class="p">,</span><span class="w"> </span><span class="n">All</span><span class="p">);</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FUMGRuntimeModule</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IModuleInterface</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="cm">/* Called when the module is loaded */</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">StartupModule</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/* Called when the module is unloaded */</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ShutdownModule</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FSlateStyleSet</span><span class="o">&gt;</span><span class="w"> </span><span class="n">UiStyle</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="umgruntimemodulecpp">Файл <code>UMGRuntimeModule.cpp</code></h4>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;UMGRuntimeModule.h&quot;</span>
+<span class="n">DEFINE_LOG_CATEGORY</span><span class="p">(</span><span class="n">UMGRuntimeModule</span><span class="p">);</span>
+<span class="cp">#define LOCTEXT_NAMESPACE &quot;FUMGRuntimeModule&quot;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">FUMGRuntimeModule::StartupModule</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">FCoreStyle</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// register custom widget style class</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">UiStyle</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">//UiStyle = MakeShared&lt;FSlateStyleSet&gt;();</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FSlateStyleSet</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FSlateStyleSet</span><span class="p">(</span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;UMGRuntimeModuleStyles&quot;</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">SetContentRoot</span><span class="p">(</span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineContentDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Editor/Slate/UMG&quot;</span><span class="p">));</span><span class="w"> </span><span class="c1">// see Engine\Source\Runtime\UMG\Private\UMGStyle.cpp</span>
+<span class="w">        </span><span class="c1">// Common sizes for icons and thumbnails</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">FVector2D</span><span class="w"> </span><span class="n">Icon64x64</span><span class="p">(</span><span class="mf">64.f</span><span class="p">,</span><span class="w"> </span><span class="mf">64.f</span><span class="p">);</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">FVector2D</span><span class="w"> </span><span class="n">Icon16x16</span><span class="p">(</span><span class="mf">16.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">16.0f</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Set the Images of the properties to be equal of our new images, finding the property names can be a bit tricky however.</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;ClassThumbnail.TitleBlockWidget&quot;</span><span class="p">,</span><span class="k">new</span><span class="w"> </span><span class="n">FSlateVectorImageBrush</span><span class="p">(</span>
+<span class="w">                </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">RootToContentDir</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Text_64&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;.svg&quot;</span><span class="p">)),</span>
+<span class="w">                </span><span class="n">Icon64x64</span>
+<span class="w">            </span><span class="p">));</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;ClassIcon.TitleBlockWidget&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FSlateVectorImageBrush</span><span class="p">(</span>
+<span class="w">                </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">RootToContentDir</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Text&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;.svg&quot;</span><span class="p">)),</span>
+<span class="w">                </span><span class="n">Icon16x16</span>
+<span class="w">            </span><span class="p">));</span>
+<span class="w">        </span><span class="c1">// register our styles</span>
+<span class="w">        </span><span class="n">FSlateStyleRegistry</span><span class="o">::</span><span class="n">RegisterSlateStyle</span><span class="p">(</span><span class="o">*</span><span class="n">UiStyle</span><span class="p">.</span><span class="n">Get</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">UMGRuntimeModule</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;UMGRuntimeModule module has been loaded&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">FUMGRuntimeModule::ShutdownModule</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// unregister widget style and free memory</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">UiStyle</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">FSlateStyleRegistry</span><span class="o">::</span><span class="n">UnRegisterSlateStyle</span><span class="p">(</span><span class="o">*</span><span class="n">UiStyle</span><span class="p">.</span><span class="n">Get</span><span class="p">());</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span><span class="n">UMGRuntimeModule</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;UMGRuntimeModule module has been unloaded&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="cp">#undef LOCTEXT_NAMESPACE</span>
+<span class="n">IMPLEMENT_MODULE</span><span class="p">(</span><span class="n">FUMGRuntimeModule</span><span class="p">,</span><span class="w"> </span><span class="n">UMGRuntimeModule</span><span class="p">)</span>
+</code></pre></div>
+Если вы читали мою статью про <code>SlateRuntime</code> то сразу поймете как тут все работает.</p>
+<p>Первым шагом я регистрирую путь до папки <code>\Engine\Content\Editor\Slate\UMG</code> как <code>ContentRoot</code>.
+<div class="highlight"><pre><span></span><code><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">SetContentRoot</span><span class="p">(</span><span class="n">FPaths</span><span class="o">::</span><span class="n">EngineContentDir</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Editor/Slate/UMG&quot;</span><span class="p">));</span>
+</code></pre></div>
+Это позволяет использовать функцию <code>RootToContentDir</code>, которая автоматически этот путь подставляет для переданных в нее имен файлов.
+<div class="highlight"><pre><span></span><code><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;ClassThumbnail.TitleBlockWidget&quot;</span><span class="p">,</span><span class="k">new</span><span class="w"> </span><span class="n">FSlateVectorImageBrush</span><span class="p">(</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">RootToContentDir</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Text_64&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;.svg&quot;</span><span class="p">)),</span>
+<span class="w">        </span><span class="n">Icon64x64</span>
+<span class="w">    </span><span class="p">));</span>
+<span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;ClassIcon.TitleBlockWidget&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FSlateVectorImageBrush</span><span class="p">(</span>
+<span class="w">        </span><span class="n">UiStyle</span><span class="o">-&gt;</span><span class="n">RootToContentDir</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Text&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;.svg&quot;</span><span class="p">)),</span>
+<span class="w">        </span><span class="n">Icon16x16</span>
+<span class="w">    </span><span class="p">));</span>
+</code></pre></div>
+Далее берутся две иконки <code>Text.svg</code> и <code>Text_64.svg</code>, которые регистрируются в системе.</p>
+<p><a class="glightbox" href="../images/9dc39693664852adc62ca05e1ebb04fd.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9dc39693664852adc62ca05e1ebb04fd.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9dc39693664852adc62ca05e1ebb04fd.png" /></a></p>
+<p>После компиляции кода - движок надо перезапустить, иначе иконка не загрузится. Так происходит из-за того, что конструктор модуля вызывается всего один раз при запуске движка.</p>
+<p>При запуске вы можете наблюдать, что иконка <code>Text</code> применилась к нашему классу виджета <code>TitleBlockWidget</code>.</p>
+<p><a class="glightbox" href="../images/aefbc7bdabd5b3c26d80a4fd765621f1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="aefbc7bdabd5b3c26d80a4fd765621f1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/aefbc7bdabd5b3c26d80a4fd765621f1.png" /></a></p>
+<p>Теперь наш виджет почти не отличим от тех, которые поставляюстя вместе с движком <code>Unreal Engine</code>.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            К началу
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      aftamat4ik
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

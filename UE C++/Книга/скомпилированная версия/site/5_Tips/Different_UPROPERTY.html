@@ -1,0 +1,2647 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Справочник Unreal Engine">
+      
+      
+        <meta name="author" content="aftamat4ik">
+      
+      
+      
+        <link rel="prev" href="DefaultToSelf_WorldContext.html">
+      
+      
+        <link rel="next" href="GameInputMode.html">
+      
+      
+      <link rel="icon" href="../assets/icon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.3.2">
+    
+    
+      
+        <title>Переменные разных типов - Справочник Unreal Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.30068a00.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-header__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Справочник Unreal Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Переменные разных типов
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../1_Basics/1_First_Project.html" class="md-tabs__link">
+          
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../2_Core/1_Delegates.html" class="md-tabs__link">
+          
+  
+  Ключевые системы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../3_Advanced/1_HUD.html" class="md-tabs__link">
+          
+  
+  Продвинутая разработка
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-tabs__link">
+          
+  
+  Решение проблем
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="Change_Asset_Icons.html" class="md-tabs__link">
+          
+  
+  Советы
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Справочник Unreal Engine" class="md-nav__button md-logo" aria-label="Справочник Unreal Engine" data-md-component="logo">
+      
+  <img src="../assets/icon.png" alt="logo">
+
+    </a>
+    Справочник Unreal Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Основы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Основы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/1_First_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создаем первый проект в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/2_Engine_Introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Знакомство с движком
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/3_CPP_Recommendations.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Рекомендации по написанию кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/4_SimplePlugin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Создание простейшего плагина для Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/5_Macroses_Reflection_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Макросы Reflection System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/6_Logging.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Печать информации в лог
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/7_Pointers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Указатели
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/8_ModernCpp.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возможности современного c++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/9_Working_With_Strings.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа со строками
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/10_Timers_In_%D0%A1%2B%2B.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Таймеры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/11_Instances_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Доступ к различным сущностям
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Debug
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Asserts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Asserts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Basics/Debug/Debug_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug Console Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ключевые системы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Ключевые системы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/1_Delegates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События и Делегаты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/2_Components.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Компоненты в Unreal Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/3_SubObjects.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Суб Объекты
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/4_Multithreading.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Многопоточность
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/5_Function_Libraries.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Библиотеки Функций для Blueprint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/6_Latent_And_Async_Actions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Latent и Async Action
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/7_Gameplay_Tags.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/8_DataAssets_AssetManager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с ассетами и данными
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/9_FileSystem.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Работа с файловой системой
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/10_Anim_Instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anim Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/11_SubSystems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Подсистемы
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Core/12.%20UObject%20Interface.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Interface или UInterface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Продвинутая разработка
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Продвинутая разработка
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/1_HUD.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HUD или Heads-up Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/2_UFUNCTION_Wildcard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UFUNCTION Wildcard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/3_Slate%20Runtime.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slate Runtimе, введение в Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/4_UMG.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UMG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/5_K2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/6_Registe_New_Asset_Type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Регистрируем новый тип ассета
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/7_ACharacter_And_Enhanced%20Input.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACharacter и Enhanced Input
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/8_Gameplay_Ability_System.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gameplay Ability System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/9_Global_Data_Access.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальнный доступ к данным
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Advanced/10_Global_Event_Bus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Глобальная шина событий
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Решение проблем
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Решение проблем
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/LiveCoding_Encoding_Issues.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с кодировкой в LiveCoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/Reset_Project.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Сброс (Reset) проекта
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Resolving%20Issues/generatedh_Problems.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Проблемы с файлом .generated.h
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Советы
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Советы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Change_Asset_Icons.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Asset Icons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Character_And_EnhancedInput.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character Boilerplate with Enhanced Input Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="DefaultToSelf_WorldContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DefaultToSelf WorldContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Different_UPROPERTY.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Переменные разных типов
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Базовые типы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fname-ftext-fstring" class="md-nav__link">
+    FName, FText, FString
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aactor" class="md-nav__link">
+    Указатель на AActor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cc" class="md-nav__link">
+    Указатель на Клаcc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Указатель на текстуру
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-asset" class="md-nav__link">
+    Указатель на Data Asset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primary-data-asset-type" class="md-nav__link">
+    Указатель на Primary Data Asset Type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitflags-enum" class="md-nav__link">
+    BitFlags Enum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enum" class="md-nav__link">
+    Enum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#array" class="md-nav__link">
+    Array
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    Map
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level" class="md-nav__link">
+    Level
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    Input
+  </a>
+  
+    <nav class="md-nav" aria-label="Input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buildcs" class="md-nav__link">
+    .build.cs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gameplay-tags" class="md-nav__link">
+    Gameplay Tags
+  </a>
+  
+    <nav class="md-nav" aria-label="Gameplay Tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buildcs_1" class="md-nav__link">
+    .build.cs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_1" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animinstance" class="md-nav__link">
+    AnimInstance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#physics-asset" class="md-nav__link">
+    Physics Asset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tsoftobjectptr-actor-on-level" class="md-nav__link">
+    TSoftObjectPtr Actor on Level
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tsoftobjectptr-component" class="md-nav__link">
+    TSoftObjectPtr Component
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tweakobjectptr" class="md-nav__link">
+    TWeakObjectPtr
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ustaticmesh-asset" class="md-nav__link">
+    UStaticMesh Asset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uskeletalmesh-asset" class="md-nav__link">
+    USkeletalMesh Asset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#umaterialinstance-asset" class="md-nav__link">
+    UMaterialInstance Asset
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="GameInputMode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Изменение GameInputMode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Get_UScriptStruct_FromStruct.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ::UScriptStruct из встроенной структуры
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Input_Binding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    События ввода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Iterate_TMap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iterate TMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Read_Blueprint_Properties.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Чтение параметров Blueprint класса
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Return_UObject.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Возвращение UObject по ссылке из функции
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Run_Console_Commands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Запуск консольных команд
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Screen_Size.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Размер экрана
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Slate_Snippets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Полезные сниппеты Slate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Spawn_Actors.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spawn, призыв объектов
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Time_Measuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Замер времени исполнения кода
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Trace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="UEnum_To_String.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UEnum to FString
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="UObject_Base_Class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UObject Base Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Variable_Type_Print_Template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Шаблон для печати типа переменной
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="struct_operator%3D%3D.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    struct и оператор ==
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Базовые типы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fname-ftext-fstring" class="md-nav__link">
+    FName, FText, FString
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aactor" class="md-nav__link">
+    Указатель на AActor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cc" class="md-nav__link">
+    Указатель на Клаcc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Указатель на текстуру
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-asset" class="md-nav__link">
+    Указатель на Data Asset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primary-data-asset-type" class="md-nav__link">
+    Указатель на Primary Data Asset Type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitflags-enum" class="md-nav__link">
+    BitFlags Enum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enum" class="md-nav__link">
+    Enum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#array" class="md-nav__link">
+    Array
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    Map
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#level" class="md-nav__link">
+    Level
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    Input
+  </a>
+  
+    <nav class="md-nav" aria-label="Input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buildcs" class="md-nav__link">
+    .build.cs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gameplay-tags" class="md-nav__link">
+    Gameplay Tags
+  </a>
+  
+    <nav class="md-nav" aria-label="Gameplay Tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buildcs_1" class="md-nav__link">
+    .build.cs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_1" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animinstance" class="md-nav__link">
+    AnimInstance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#physics-asset" class="md-nav__link">
+    Physics Asset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tsoftobjectptr-actor-on-level" class="md-nav__link">
+    TSoftObjectPtr Actor on Level
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tsoftobjectptr-component" class="md-nav__link">
+    TSoftObjectPtr Component
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tweakobjectptr" class="md-nav__link">
+    TWeakObjectPtr
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ustaticmesh-asset" class="md-nav__link">
+    UStaticMesh Asset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uskeletalmesh-asset" class="md-nav__link">
+    USkeletalMesh Asset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#umaterialinstance-asset" class="md-nav__link">
+    UMaterialInstance Asset
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">Переменные разных типов</h1>
+<p>Поскольку меня иногда подводит память, в этой статье я буду собирать переменные разных типов, чтобы потом просто отсюда их копировать.</p>
+<h2 id="_2">Базовые типы</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Int</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="s">&quot;VariableExperiments|Int&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ExposeOnSpawn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">))</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">SomeNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="c1">// Float</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VariableExperiments|Float&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ClampMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0.5&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ClampMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;2.4&quot;</span><span class="p">))</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">someFloatTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.7f</span><span class="p">;</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/3fe6bd82ac527769ce0096ff478f68fb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3fe6bd82ac527769ce0096ff478f68fb.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3fe6bd82ac527769ce0096ff478f68fb.png" /></a></p>
+<h2 id="fname-ftext-fstring"><code>FName</code>, <code>FText</code>, <code>FString</code></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// String</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VariableExperiments|Text&quot;</span><span class="p">)</span>
+<span class="n">FString</span><span class="w"> </span><span class="n">SomeStringTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Test&quot;</span><span class="p">;</span>
+<span class="c1">// Name</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VariableExperiments|Text&quot;</span><span class="p">)</span>
+<span class="n">FName</span><span class="w"> </span><span class="n">SomeNameTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Test&quot;</span><span class="p">;</span>
+<span class="c1">// Text</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VariableExperiments|Text&quot;</span><span class="p">)</span>
+<span class="n">FText</span><span class="w"> </span><span class="n">SomeTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NSLOCTEXT</span><span class="p">(</span><span class="s">&quot;ObjectTestClass&quot;</span><span class="p">,</span><span class="s">&quot;SomeStringTest&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;This is Text!&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/eaaaeaf7654a74aecb2b5a458fdfda69.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="eaaaeaf7654a74aecb2b5a458fdfda69.png" auto_="auto;" display="block;" margin:="margin:" src="../images/eaaaeaf7654a74aecb2b5a458fdfda69.png" /></a></p>
+<h2 id="aactor">Указатель на <code>AActor</code></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// AActor class refrence</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameFramework/Actor.h&quot;</span>
+<span class="c1">// Actor refrence</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VariableExperiments&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ExposeOnSpawn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">))</span>
+<span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SomeActorRefrence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/4bac5ee0fdd0ee6ae09dfff351676293.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="4bac5ee0fdd0ee6ae09dfff351676293.png" auto_="auto;" display="block;" margin:="margin:" src="../images/4bac5ee0fdd0ee6ae09dfff351676293.png" /></a></p>
+<h2 id="cc">Указатель на Клаcc</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// AActor class refrence</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameFramework/Actor.h&quot;</span>
+<span class="c1">// Actor class refrence</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VariableExperiments&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ExposeOnSpawn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">))</span>
+<span class="n">TSubclassOf</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SomeActorClass</span><span class="p">;</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/41463deeb352c2cf36d2609e163f74ed.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="41463deeb352c2cf36d2609e163f74ed.png" auto_="auto;" display="block;" margin:="margin:" src="../images/41463deeb352c2cf36d2609e163f74ed.png" /></a></p>
+<h2 id="_3">Указатель на текстуру</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Texture2D asset refrence</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VariableExperiments&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ExposeOnSpawn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">))</span>
+<span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UTexture2D</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SomeTexture2D</span><span class="p">;</span>
+<span class="c1">//Texture asset refrence</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VariableExperiments&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ExposeOnSpawn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">))</span>
+<span class="n">UTexture</span><span class="o">*</span><span class="w"> </span><span class="n">SomeTexture</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// default value set in constructor</span>
+<span class="c1">// UTexture Default value</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SomeTexture</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// setting texture using LoadObject</span>
+<span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Script/Engine.Texture2D&#39;/Game/Characters/Mannequins/Textures/Shared/T_UE_Logo_M.T_UE_Logo_M&#39;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">SomeTexture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoadObject</span><span class="o">&lt;</span><span class="n">UTexture</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">LOAD_None</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/bddfe2388a36b20061135d76c888025b.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="bddfe2388a36b20061135d76c888025b.png" auto_="auto;" display="block;" margin:="margin:" src="../images/bddfe2388a36b20061135d76c888025b.png" /></a></p>
+<h2 id="data-asset">Указатель на <code>Data Asset</code></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// kismet</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Kismet/KismetSystemLibrary.h&gt;</span>
+<span class="c1">//Data asset refrence</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VariableExperiments&quot;</span><span class="p">)</span>
+<span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">UDataAsset</span><span class="o">&gt;</span><span class="w"> </span><span class="n">DataAssetRefrence</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// Data Asset Default Value</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DataAssetRefrence</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Script/DataAccess.CharacterData&#39;/Game/Characters/Data/DA_Character.DA_Character&#39;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DataAssetRefrence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UKismetSystemLibrary</span><span class="o">::</span><span class="n">MakeSoftObjectPath</span><span class="p">(</span><span class="n">Path</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/dbcea2bf1a3a34951d96c9d5f206d80f.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="dbcea2bf1a3a34951d96c9d5f206d80f.png" auto_="auto;" display="block;" margin:="margin:" src="../images/dbcea2bf1a3a34951d96c9d5f206d80f.png" /></a></p>
+<h2 id="primary-data-asset-type">Указатель на <code>Primary Data Asset Type</code></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Primary Data Asset Type test</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;VariableExperiments&quot;</span><span class="p">)</span>
+<span class="n">FPrimaryAssetType</span><span class="w"> </span><span class="n">Type</span><span class="p">;</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/84cc4ff9b9729bcd0bbf8952793328a0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="84cc4ff9b9729bcd0bbf8952793328a0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/84cc4ff9b9729bcd0bbf8952793328a0.png" /></a></p>
+<h2 id="bitflags-enum"><code>BitFlags</code> Enum</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Item Types Enum</span>
+<span class="c1">// This enum size limited by 8 maximum items since it&#39;s bitmask enum from uint8</span>
+<span class="n">UENUM</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Bitflags</span><span class="p">,</span><span class="w"> </span><span class="n">UseEnumValuesAsMaskValuesInEditor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">))</span>
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EItemTypes</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">uint8</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">NONE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Hidden</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Helmet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Gloves</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Sword</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Boots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="n">ENUM_CLASS_FLAGS</span><span class="p">(</span><span class="n">EItemTypes</span><span class="p">);</span>
+<span class="c1">// This is way of making unlimited enums thru namespaces</span>
+<span class="n">UENUM</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">,</span><span class="w"> </span><span class="n">Meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Bitflags</span><span class="p">,</span><span class="w"> </span><span class="n">UseEnumValuesAsMaskValuesInEditor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">))</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">EUnlimitedEnum</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="nc">Type</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">NONE</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Hidden</span><span class="p">),</span>
+<span class="w">        </span><span class="n">UNL_First</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">UMETA</span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;First&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="n">UNL_Second</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="n">UNL_Third</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="n">UNL_Quartis</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">        </span><span class="n">UNL_Quintis</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">        </span><span class="n">UNL_Sextus</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">        </span><span class="n">UNL_Septemus</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">        </span><span class="n">UNL_Octus</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">        </span><span class="n">UNL_Novus</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="c1">// i&#39;m pretty bad at Roman number names...</span>
+<span class="w">        </span><span class="n">UNL_Decemus</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">        </span><span class="n">UNL_Undecimus</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="p">}</span>
+<span class="n">ENUM_CLASS_FLAGS</span><span class="p">(</span><span class="n">EUnlimitedEnum</span><span class="o">::</span><span class="n">Type</span><span class="p">);</span>
+<span class="c1">// Bit Flags variable</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BitFlags&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Bitmask</span><span class="p">,</span><span class="w"> </span><span class="n">BitmaskEnum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/Script/TestModule.EItemTypes&quot;</span><span class="p">))</span>
+<span class="n">int32</span><span class="w"> </span><span class="n">ItemTypeFlags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StaticCast</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;</span><span class="p">(</span><span class="n">EItemTypes</span><span class="o">::</span><span class="n">Helmet</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">EItemTypes</span><span class="o">::</span><span class="n">Gloves</span><span class="p">);</span>
+<span class="c1">// Unlimited Bit Flags</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BitFlags&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Bitmask</span><span class="p">,</span><span class="w"> </span><span class="n">BitmaskEnum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/Script/TestModule.EUnlimitedEnum&quot;</span><span class="p">))</span>
+<span class="n">int32</span><span class="w"> </span><span class="n">UnlimitedEnumFlags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StaticCast</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;</span><span class="p">(</span><span class="n">EUnlimitedEnum</span><span class="o">::</span><span class="n">Type</span><span class="o">::</span><span class="n">UNL_First</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">EUnlimitedEnum</span><span class="o">::</span><span class="n">Type</span><span class="o">::</span><span class="n">UNL_Second</span><span class="p">);</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/f637f1b65d3cd4486c4ae1e0712049c6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="f637f1b65d3cd4486c4ae1e0712049c6.png" auto_="auto;" display="block;" margin:="margin:" src="../images/f637f1b65d3cd4486c4ae1e0712049c6.png" /></a></p>
+<h2 id="enum">Enum</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Item Types Enum</span>
+<span class="c1">// This enum size limited by 8 maximum items since it&#39;s bitmask enum from uint8</span>
+<span class="n">UENUM</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Bitflags</span><span class="p">,</span><span class="w"> </span><span class="n">UseEnumValuesAsMaskValuesInEditor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p">))</span>
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EItemTypes</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">uint8</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">NONE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Hidden</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Helmet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Gloves</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Sword</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Boots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="n">ENUM_CLASS_FLAGS</span><span class="p">(</span><span class="n">EItemTypes</span><span class="p">);</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;EditConditions|Enum&quot;</span><span class="p">)</span>
+<span class="n">EItemTypes</span><span class="w"> </span><span class="n">ItemType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EItemTypes</span><span class="o">::</span><span class="n">Boots</span><span class="p">;</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/2c24740564338ba68a40ce84c5a50fec.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2c24740564338ba68a40ce84c5a50fec.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2c24740564338ba68a40ce84c5a50fec.png" /></a></p>
+<h2 id="array">Array</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="n">USTRUCT</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">FObjectTestStruct</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_USTRUCT_BODY</span><span class="p">()</span>
+<span class="w">    </span><span class="n">FObjectTestStruct</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">Text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Text&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">SomeVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span><span class="p">;</span>
+<span class="w">        </span><span class="n">SomeTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Text</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">SomeVal</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">SomeTest</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="c1">// Arrays</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Arrays&quot;</span><span class="p">)</span>
+<span class="n">TArray</span><span class="o">&lt;</span><span class="w"> </span><span class="n">FObjectTestStruct</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">StructArray</span><span class="p">;</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Arrays&quot;</span><span class="p">)</span>
+<span class="n">TArray</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TestIntArray</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// Array default values set in the constructor</span>
+<span class="c1">// Fill Int Array</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TestIntArray</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TestIntArray</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">TestIntArray</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// Fill Struct Array</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">StructArray</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">StructArray</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">FObjectTestStruct</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="s">&quot;Test1&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="n">StructArray</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">FObjectTestStruct</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="s">&quot;Test2&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/3a259040d8ca6425e196cb994bb9dca9.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3a259040d8ca6425e196cb994bb9dca9.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3a259040d8ca6425e196cb994bb9dca9.png" /></a></p>
+<h2 id="map">Map</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Map</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Map&quot;</span><span class="p">)</span>
+<span class="n">TMap</span><span class="o">&lt;</span><span class="n">FString</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TestMap</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// Map filled in constructor</span>
+<span class="c1">// Fill Map</span>
+<span class="k">if</span><span class="p">(</span><span class="n">TestMap</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">()){</span>
+<span class="w">    </span><span class="n">TestMap</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Test&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4</span><span class="p">);</span>
+<span class="w">    </span><span class="n">TestMap</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;SomeTest&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/9d2d4d1cbd63fd53d303f8db56a16458.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="9d2d4d1cbd63fd53d303f8db56a16458.png" auto_="auto;" display="block;" margin:="margin:" src="../images/9d2d4d1cbd63fd53d303f8db56a16458.png" /></a></p>
+<h2 id="level">Level</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Level Refrence</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Levels</span><span class="p">)</span>
+<span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">UWorld</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LevelToLoad</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// Level value set in constructor</span>
+<span class="c1">// Default Level Value</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">LevelToLoad</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Script/Engine.World&#39;/Game/Maps/Level2.Level2&#39;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LevelToLoad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UKismetSystemLibrary</span><span class="o">::</span><span class="n">MakeSoftObjectPath</span><span class="p">(</span><span class="n">Path</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/a02f9151c172310728537d0a63656542.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="a02f9151c172310728537d0a63656542.png" auto_="auto;" display="block;" margin:="margin:" src="../images/a02f9151c172310728537d0a63656542.png" /></a></p>
+<h2 id="input">Input</h2>
+<h3 id="buildcs"><code>.build.cs</code></h3>
+<div class="highlight"><pre><span></span><code><span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;InputCore&quot;</span>
+<span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EnhancedInput&quot;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/81581514e6f0ca51904aae277ebe98e1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="81581514e6f0ca51904aae277ebe98e1.png" auto_="auto;" display="block;" margin:="margin:" src="../images/81581514e6f0ca51904aae277ebe98e1.png" /></a></p>
+<h3 id="code">Code</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Input</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;InputAction.h&quot;</span><span class="c1"> // enhanced input</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;InputMappingContext.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;EnhancedInputLibrary.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;EnhancedActionKeyMapping.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PlayerMappableInputConfig.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;InputTriggers.h&quot;</span>
+<span class="c1">//...</span>
+<span class="c1">// Input Action Mapping classic</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Input&quot;</span><span class="p">)</span>
+<span class="n">FInputActionKeyMapping</span><span class="w"> </span><span class="n">InputKeyMapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Test Action&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">FKey</span><span class="p">{</span><span class="n">EKeys</span><span class="o">::</span><span class="n">F</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+<span class="c1">// Enhanced Key Mapping</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Input&quot;</span><span class="p">)</span>
+<span class="n">FEnhancedActionKeyMapping</span><span class="w"> </span><span class="n">EnhancedMapping</span><span class="p">;</span>
+<span class="c1">// Default Key</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Input&quot;</span><span class="p">)</span>
+<span class="n">FKey</span><span class="w"> </span><span class="n">KeyMapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">F1</span><span class="p">;</span>
+<span class="c1">// Input Action as parameter in Data Asset</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Input&quot;</span><span class="p">)</span>
+<span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">UInputAction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">InputAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="c1">// Input Context as parameter in Data Asset</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Input&quot;</span><span class="p">)</span>
+<span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">UInputMappingContext</span><span class="o">&gt;</span><span class="w"> </span><span class="n">InputContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">//in contructor</span>
+<span class="c1">// Input Action loading</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">InputAction</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Script/EnhancedInput.InputAction&#39;/Game/ThirdPerson/Input/Actions/IA_Jump.IA_Jump&#39;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">InputAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UKismetSystemLibrary</span><span class="o">::</span><span class="n">MakeSoftObjectPath</span><span class="p">(</span><span class="n">Path</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// Input Context loadng</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">InputContext</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Script/EnhancedInput.InputMappingContext&#39;/Game/ThirdPerson/Input/IMC_Default.IMC_Default&#39;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">InputContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UKismetSystemLibrary</span><span class="o">::</span><span class="n">MakeSoftObjectPath</span><span class="p">(</span><span class="n">Path</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EnhancedMapping</span><span class="p">.</span><span class="n">Action</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">EnhancedMapping</span><span class="p">.</span><span class="n">Action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InputAction</span><span class="p">.</span><span class="n">Get</span><span class="p">();</span>
+<span class="w">    </span><span class="n">EnhancedMapping</span><span class="p">.</span><span class="n">Key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">Two</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/38bb461a0f3e6d0f4fd2d23cb7954f52.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="38bb461a0f3e6d0f4fd2d23cb7954f52.png" auto_="auto;" display="block;" margin:="margin:" src="../images/38bb461a0f3e6d0f4fd2d23cb7954f52.png" /></a></p>
+<h2 id="gameplay-tags">Gameplay Tags</h2>
+<h3 id="buildcs_1"><code>.build.cs</code></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// first put this into your module&#39;s .build.cs file</span>
+<span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;GameplayTags&quot;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/473beb8fc0a5c34e153a65642d5c2bad.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="473beb8fc0a5c34e153a65642d5c2bad.png" auto_="auto;" display="block;" margin:="margin:" src="../images/473beb8fc0a5c34e153a65642d5c2bad.png" /></a></p>
+<h3 id="code_1">Code</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// use &quot;GameplayTags&quot; in PublicDependencyModuleNames</span>
+<span class="c1">// Gameplay tag locked category</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GameplayTags&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Categories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Locomotion.Grounded&quot;</span><span class="p">))</span>
+<span class="n">FGameplayTag</span><span class="w"> </span><span class="n">GroundedLocomotionMode</span><span class="p">;</span>
+<span class="c1">// Gameplay tag</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GameplayTags&quot;</span><span class="p">)</span>
+<span class="n">FGameplayTag</span><span class="w"> </span><span class="n">TagTest</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// Assign tag default values in constructor</span>
+<span class="n">GroundedLocomotionMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">::</span><span class="n">RequestGameplayTag</span><span class="p">(</span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;Locomotion.Grounded.Walk&quot;</span><span class="p">));</span>
+<span class="n">TagTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">::</span><span class="n">RequestGameplayTag</span><span class="p">(</span><span class="n">FName</span><span class="p">(</span><span class="s">&quot;Locomotion.Grounded.Jog&quot;</span><span class="p">));</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/6548a5758da590fc2b03d1594f37df12.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="6548a5758da590fc2b03d1594f37df12.png" auto_="auto;" display="block;" margin:="margin:" src="../images/6548a5758da590fc2b03d1594f37df12.png" /></a></p>
+<h2 id="animinstance">AnimInstance</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// AnimInstance Class Refrence</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DifferentPointers&quot;</span><span class="p">)</span>
+<span class="n">TSubclassOf</span><span class="o">&lt;</span><span class="n">UAnimInstance</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AnimClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UAnimInstance</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">();</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/68ad1a97721433aa9ad22bd313c253d0.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="68ad1a97721433aa9ad22bd313c253d0.png" auto_="auto;" display="block;" margin:="margin:" src="../images/68ad1a97721433aa9ad22bd313c253d0.png" /></a></p>
+<h2 id="physics-asset">Physics Asset</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameFramework/Character.h&quot;</span>
+<span class="c1">// Physics Asset Refrence</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DifferentPointers&quot;</span><span class="p">)</span>
+<span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">UPhysicsAsset</span><span class="o">&gt;</span><span class="w"> </span><span class="n">PhysicsAsset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// physics asset default value</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PhysicsAsset</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Script/Engine.PhysicsAsset&#39;/Game/Characters/Mannequins/Rigs/PA_Mannequin.PA_Mannequin&#39;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">PhysicsAsset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UKismetSystemLibrary</span><span class="o">::</span><span class="n">MakeSoftObjectPath</span><span class="p">(</span><span class="n">Path</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/8418a043b3376a07d3099c47e5b51fae.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="8418a043b3376a07d3099c47e5b51fae.png" auto_="auto;" display="block;" margin:="margin:" src="../images/8418a043b3376a07d3099c47e5b51fae.png" /></a></p>
+<h2 id="tsoftobjectptr-actor-on-level"><code>TSoftObjectPtr</code> Actor on Level</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameFramework/Actor.h&quot;</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DifferentPointers&quot;</span><span class="p">)</span>
+<span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SomeSoftActorRef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// soft actor ref set in constructor</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SomeSoftActorRef</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">StringObjectOnLevelPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Game/Maps/Level1.Level1:PersistentLevel.BP_TestRefrenceActor_C_1&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">SomeSoftActorRef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UKismetSystemLibrary</span><span class="o">::</span><span class="n">MakeSoftObjectPath</span><span class="p">(</span><span class="n">StringObjectOnLevelPath</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/d1a8cb52a5f891351a7d3a5e271583fc.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d1a8cb52a5f891351a7d3a5e271583fc.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d1a8cb52a5f891351a7d3a5e271583fc.png" /></a></p>
+<h2 id="tsoftobjectptr-component"><code>TSoftObjectPtr</code> Component</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;GameFramework/Actor.h&quot;</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DifferentPointers&quot;</span><span class="p">)</span>
+<span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SomeSoftActorRef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DifferentPointers&quot;</span><span class="p">)</span>
+<span class="n">TSoftClassPtr</span><span class="o">&lt;</span><span class="n">UActorComponent</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SomeSoftComponentClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UCameraComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">();</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/0e66eecbee2be52882d9fc531ca4859e.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="0e66eecbee2be52882d9fc531ca4859e.png" auto_="auto;" display="block;" margin:="margin:" src="../images/0e66eecbee2be52882d9fc531ca4859e.png" /></a></p>
+<p><a class="glightbox" href="../images/abd3a39bd99e74dff15dfabe041b1f4c.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="abd3a39bd99e74dff15dfabe041b1f4c.png" auto_="auto;" display="block;" margin:="margin:" src="../images/abd3a39bd99e74dff15dfabe041b1f4c.png" /></a></p>
+<h2 id="tweakobjectptr"><code>TWeakObjectPtr</code></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// Actor Weak Refrence</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DifferentPointers&quot;</span><span class="p">)</span>
+<span class="n">TWeakObjectPtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ActorWeakRefrence</span><span class="p">;</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/3d571ad75f5a2b371c83abc839f14819.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="3d571ad75f5a2b371c83abc839f14819.png" auto_="auto;" display="block;" margin:="margin:" src="../images/3d571ad75f5a2b371c83abc839f14819.png" /></a></p>
+<h2 id="ustaticmesh-asset"><code>UStaticMesh</code> Asset</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Components/StaticMeshComponent.h&quot;</span>
+<span class="c1">// Static mesh ref</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PointerLoadingTest&quot;</span><span class="p">)</span>
+<span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">UStaticMesh</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LoadedStaticMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// Soft static mesh default valuse set in constructor</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">LoadedStaticMesh</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">StringAssetPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Script/Engine.StaticMesh&#39;/Game/LevelPrototyping/Meshes/SM_ChamferCube.SM_ChamferCube&#39;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LoadedStaticMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UKismetSystemLibrary</span><span class="o">::</span><span class="n">MakeSoftObjectPath</span><span class="p">(</span><span class="n">StringAssetPath</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/d31c006e34270a5dd0eac3fbf02e00e2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="d31c006e34270a5dd0eac3fbf02e00e2.png" auto_="auto;" display="block;" margin:="margin:" src="../images/d31c006e34270a5dd0eac3fbf02e00e2.png" /></a></p>
+<h2 id="uskeletalmesh-asset"><code>USkeletalMesh</code> Asset</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Components/SkeletalMeshComponent.h&quot;</span>
+<span class="c1">// Skeletal Mesh Refrence</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DifferentPointers&quot;</span><span class="p">)</span>
+<span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">USkeletalMesh</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SkeletalMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="c1">//...</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// Loading Skeletal Mesh in constructor</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SkeletalMesh</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Script/Engine.SkeletalMesh&#39;/Game/Characters/Mannequins/Meshes/SKM_Quinn_Simple.SKM_Quinn_Simple&#39;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">SkeletalMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UKismetSystemLibrary</span><span class="o">::</span><span class="n">MakeSoftObjectPath</span><span class="p">(</span><span class="n">Path</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/2b046f5894cec1b76a014bd0deaeac33.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="2b046f5894cec1b76a014bd0deaeac33.png" auto_="auto;" display="block;" margin:="margin:" src="../images/2b046f5894cec1b76a014bd0deaeac33.png" /></a></p>
+<h2 id="umaterialinstance-asset"><code>UMaterialInstance</code> Asset</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//.h</span>
+<span class="c1">// Material Instance Refrence</span>
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DifferentPointers&quot;</span><span class="p">)</span>
+<span class="n">TSoftObjectPtr</span><span class="o">&lt;</span><span class="n">UMaterialInstance</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MaterialInstanceRefrence</span><span class="p">;</span>
+<span class="c1">//.cpp</span>
+<span class="c1">// Loading Material Asset in constructor</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">MaterialInstanceRefrence</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;/Script/Engine.MaterialInstanceConstant&#39;/Game/Characters/UI/UiMaterial_Inst.UiMaterial_Inst&#39;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MaterialInstanceRefrence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UKismetSystemLibrary</span><span class="o">::</span><span class="n">MakeSoftObjectPath</span><span class="p">(</span><span class="n">Path</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a class="glightbox" href="../images/abe3c7953eade2d76513859d2a349f4d.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img 0="0" align="center;" alt="abe3c7953eade2d76513859d2a349f4d.png" auto_="auto;" display="block;" margin:="margin:" src="../images/abe3c7953eade2d76513859d2a349f4d.png" /></a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            К началу
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      aftamat4ik
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
